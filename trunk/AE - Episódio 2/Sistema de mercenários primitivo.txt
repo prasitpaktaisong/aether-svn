@@ -1,0 +1,14 @@
+O sistema de mercenários primitivos existe para dar base ao sistema de mercenários elementais que será adicionado no Episódio 3.
+O novo sistema de mercenários que iremos criar é diferente do atual, onde o novo mercenário será uma espécie de "Segundo Char", pois nele você poderá editar status, habilidades e afins.
+
+A idéia, é que quando você aluga o mercenário, você vai ganhando lealdade, para assim, upar ele, e seguindo com isso, você vai liberando habilidades nele, e também escolhendo os status que você quiser.
+Ele será bem mais complexo que o atual sistema de mercenários e necessitará de edições na source para conseguir ser feito.
+
+Imagens -
+[img]http://i166.photobucket.com/albums/u86/fanis_g1/mercenarytest2.png[/img]
+
+Status -
+[0%] Database de mercenários (Database)
+[5%] Liberar edições do mercenário (Source)
+[0%] NPC's (Script)
+[0%] Testes finais (Client)
