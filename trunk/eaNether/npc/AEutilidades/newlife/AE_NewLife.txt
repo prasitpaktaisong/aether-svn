@@ -1,0 +1,227 @@
+-	script	DelayMatilde	-1,{
+
+OnPCLoginEvent:
+	if(Elemento$ == ""){
+		atcommand "@disguise 802"; 
+	}
+}
+
+newlife,132,91,4	script	Peixes	629,{
+	mes "^0000FF[Peixes]^000000";
+	mes "Sua escolha é ^0000FFPeixes^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Peixes";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,126,85,4	script	Aquário	629,{
+	mes "^0000FF[Aquário]^000000";
+	mes "Sua escolha é ^0000FFAquário^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Aquário";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,124,79,4	script	Capricórnio	629,{
+	mes "^0000FF[Capricórnio]^000000";
+	mes "Sua escolha é ^0000FFCapricórnio^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Capricórnio";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,126,73,4	script	Sagitário	629,{
+	mes "^0000FF[Sagitário]^000000";
+	mes "Sua escolha é ^0000FFSagitário^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Sagitário";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,132,68,4	script	Escorpião	629,{
+	mes "^0000FF[Escorpião]^000000";
+	mes "Sua escolha é ^0000FFEscorpião^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Escorpião";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,137,66,4	script	Libra	629,{
+	mes "^0000FF[Libra]^000000";
+	mes "Sua escolha é ^0000FFLibra^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Libra";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,143,68,4	script	Virgem	629,{
+	mes "^0000FF[Virgem]^000000";
+	mes "Sua escolha é ^0000FFVirgem^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Virgem";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,149,74,4	script	Leão	629,{
+	mes "^0000FF[Leão]^000000";
+	mes "Sua escolha é ^0000FFLeão^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Leão";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,151,79,4	script	Câncer	629,{
+	mes "^0000FF[Câncer]^000000";
+	mes "Sua escolha é ^0000FFCâncer^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Câncer";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,149,85,4	script	Gêmeos	629,{
+	mes "^0000FF[Gêmeos]^000000";
+	mes "Sua escolha é ^0000FFGêmeos^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Gêmeos";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,143,91,4	script	Touro	629,{
+	mes "^0000FF[Touro]^000000";
+	mes "Sua escolha é ^0000FFTouro^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Touro";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}		
+}
+
+newlife,138,93,4	script	Áries	629,{
+	mes "^0000FF[Áries]^000000";
+	mes "Sua escolha é ^0000FFÁries^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Signo$, "Áries";
+			warp "new_1-1",53,111;
+			atcommand "@undisguise";
+			end;
+		case 2:
+			close;
+	}
+}	
+
+newlife,40,153,4	script	Água	625,{
+	mes "^0000FF[Água]^000000";
+	mes "Seu caminho é a ^0000FFÁgua^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Elemento$, "Água";
+			warp "newlife",137,78;
+			end;
+		case 2:
+			close;
+	}
+}
+
+newlife,71,153,4	script	Fogo	627,{
+	mes "^0000FF[Água]^000000";
+	mes "Seu caminho é o ^0000FFFogo^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Elemento$, "Fogo";
+			warp "newlife",137,78;
+			end;
+		case 2:
+			close;
+	}
+}
+
+newlife,55,138,4	script	Terra	628,{
+	mes "^0000FF[Água]^000000";
+	mes "Seu caminho é o ^0000FFTerra^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Elemento$, "Terra";
+			warp "newlife",137,78;
+			end;
+		case 2:
+			close;
+	}
+}
+
+newlife,55,169,4	script	Ar	626,{
+	mes "^0000FF[Água]^000000";
+	mes "Seu caminho é o ^0000FFAr^000000?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			set Elemento$, "Ar";
+			warp "newlife",137,78;
+			end;
+		case 2:
+			close;
+	}
+}

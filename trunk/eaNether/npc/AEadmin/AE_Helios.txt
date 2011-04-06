@@ -1,0 +1,33 @@
+daath,37,260,3	script	Hélios, Mestre do Sol	990,{
+	end;
+}
+
+/*daath,150,150,0	script	Dia	-1,{
+
+OnInit:	
+	if(gettime(3)>=06 && gettime(3)<18) goto L_day;
+		end;
+
+	L_day:
+		day;	
+		end;
+
+OnTimer1000:
+		Announce "Hélios: E, por entre a seda do manto da noite, o Sol surge uma vez mais.",8;
+		end;
+}
+
+daath,150,150,0	script	Noite	-1,{
+OnInit:	
+	if(gettime(3)<6 && gettime(3)>=18) goto L_night;
+		end;
+
+	L_night:
+		//day;
+		night;
+		end;
+
+OnTimer1000:	
+		Announce "Hélios: O crepúsculo então, tem fim entre o beijo entre o céu e o oceano, a Noite começa em silêncio.",8;	
+		end;
+}*/

@@ -1,0 +1,360 @@
+//_________________________________________________________________
+//___________________Indications Topographiques ___________________
+//_________________________________________________________________
+
+
+coppa,369,300,1	script	Daggard Bridge#1	111,{
+
+set @name$,"Daggard Bridge";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently at ^FF33FF Bridge Daggard ^000000.";
+	mes "North: Towards ^FF6633 Kiman Fares Forest^000000.";
+	mes "South: Toward the ^FF6633 Coppalana  Village^000000.";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild01,135,216,1	script	Sign#ep7a	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Kiman Farès Forest^000000.";
+	mes "North : Towards ^FF6633 Euhéméria Town^000000.";
+	mes "South : Towards ^FF6633 Coppalana Village^000000.";
+	mes "West : Towards ^FF6633 Kiman Farès Village^000000.";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild03,206,287,1	script	Sign#ep7b	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Kiman Farès Forest : Soknobeus Village^000000.";
+	mes "North : Towards ^FF6633 Kiman Farès Village^000000.";
+	mes "South-West : Towards ^FF6633 Traïana Lighthouse^000000.";
+	mes "South-Est : Towards ^FF6633 Stars Tower^000000.";
+	close;
+
+}
+
+ars_fild03,269,215,3	duplicate(Sign#ep7b)	Sign#ep7c	111
+
+//=========================================================================================
+
+ars_fild02,6,146,1	script	Sign#ep7d	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Kiman Farès Forest : Kiman Farès Village^000000.";
+	mes "West : Towards ^FF6633 Kiman Farès Forest^000000.";
+	mes "South : Towards ^FF6633 Soknobeus Village^000000.";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild02,222,261,1	script	Kiman Farès#ep7e	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in the ^FF33FF Kiman Farès Village^000000.";
+	close;
+}
+//=========================================================================================
+
+ars_fild03,157,131,1	script	Soknobeus#ep7f	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in the ^FF33FF Soknobeus Village^000000.";
+	close;
+}
+//=========================================================================================
+
+ars_fild05,87,208,1	script	Sign#ep7g	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Bacchias Mountains: Euhéméria Town^000000.";
+	mes "North-West : Towards ^FF6633 Abbaye du Col de Faymour^000000.";
+	mes "South-West : Towards ^FF6633 Kiman Farès Forest^000000.";
+	mes "North-Ouest : Towards ^FF6633 Gorges Profondes Mines^000000.";
+	mes "South-Ouest : Towards ^FF6633 Istar's Gate^000000.";
+	close;
+}
+
+ars_fild05,80,208,3	duplicate(Sign#ep7g)	Sign#ep7h	111
+//ars_fild05,82,398,3	duplicate(Sign#ep7g)	Sign#ep7k	111
+
+
+//=========================================================================================
+
+ars_fild05,68,176,1	script	Euhéméria#ep7i	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in the ^FF33FF Euhéméria Town^000000.";
+	close;
+}
+ars_fild05,63,176,3	duplicate(Euhéméria#ep7i)	Euhéméria#ep7j	111
+
+//=========================================================================================
+
+ars_fild06,171,6,1	script	Porte d'Istar#ep7l	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently at the ^FF33FF Istar's Gate^000000.";
+	mes "North : Towards ^FF6633 Arsinoé - The City^000000.";
+	close;
+}
+//=========================================================================================
+
+//ars_fild07,365,32,1	script	Sign#ep7m	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF L'Abbaye du Col du Feymur^000000.";
+//	mes "North-Est : Towards ^FF6633 The Light Citadel^000000.";
+//	mes "West : Towards ^FF6633 Octavie's Pass^000000.";
+//	mes "South : Towards ^FF6633 Euhémeria Town^000000.";
+//	close;
+//}
+//=========================================================================================
+
+//ars_fild07,63,176,1	script	Abbaye de Faymur#ep7n	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF L'Abbaye de Feymur^000000.";
+//	close;
+//}
+//=========================================================================================
+
+//ars_fild08,190,88,1	script	Passe d'Octavie#ep7o	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF Octavie's Pass^000000.";
+//	close;
+//}
+//ars_fild08,148,96,3	duplicate(Passe d'Octavie#ep7o)	Passe d'Octavie#ep7p	111
+
+//=========================================================================================
+
+//ars_fild08,8,177,1	script	Sign#ep7q	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF Octavie's Pass^000000.";
+//	mes "Est : Towards ^FF6633 Arsinoé : North Gate^000000.";
+//	mes "North-West : Towards ^FF6633 Le Col de Feymur^000000.";
+//	close;
+//}
+
+//=========================================================================================
+
+//ars_fild09,25,392,1	script	Sign#ep7r	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF Arsinoé : North Gate^000000.";
+//	mes "South-Est : Towards ^FF6633 Octavie's Pass^000000.";
+//	mes "North-West : Towards ^FF6633 Torn-Thalas's Lime^000000.";
+//	close;
+//}
+
+//ars_fild09,393,34,3	duplicate(Sign#ep7r)	Sign#ep7s	111
+
+
+//=========================================================================================
+
+ars_fild10,263,8,1	script	Sign#ep7t	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Kargha Desert : Torn-Thalas's Lime^000000.";
+	close;
+}
+//=========================================================================================
+
+//ars_fild16,46,341,1	script	Sign#ep7u	111,{
+
+//set @name$,"Sign";
+	
+	//mes "[" + @name$ + "]"; 
+	//mes "You are currently in ^FF33FF The Light Citadel^000000.";
+	//mes "North-Est : Towards ^FF6633 Lake of Crystalmir^000000.";
+	//mes "North-West : Towards ^FF6633 Col du Feymur^000000.";
+	//close;
+//}
+//=========================================================================================
+
+ars_fild11,168,75,1	script	Sign#ep7v	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Nèsos Village^000000.";
+	mes "South : Towards ^FF6633 Torn-Thalas's Lime^000000.";
+	mes "West : Towards ^FF6633 Kargha Desert^000000.";
+	close;
+}
+//=========================================================================================
+
+ars_fild13,161,17,1	script	Sign#ep7w	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Siwah Oasis^000000.";
+	mes "South : Towards ^FF6633 Kargha Desert^000000.";
+	mes "North-West : Towards ^FF6633 Siwah Oasis^000000.";
+	close;
+}
+
+//=========================================================================================
+
+ars_fild17,99,224,1	script	Sign#ep7x	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in Thébaïde Jungle, the ^FF33FF Stars Tower^000000.";
+	mes "North-West : Towards ^FF6633 Soknobeus Village^000000.";
+	mes "North-Est : Towards la^FF6633 Thébaïde^000000.";
+	close;
+}
+
+//=========================================================================================
+
+ars_fild18,7,259,1	script	Sign#ep7y	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently at ^FF33FF Thébaïde Town^000000.";
+	mes "West : The ^FF6633 Stars Tower^000000.";
+	mes "North : Towards ^FF6633 Thébaïde Jungle^000000.";
+	mes "South : Towards ^FF6633 Thébaïde Town^000000.";
+	close;
+}
+
+//=========================================================================================
+
+ars_fild19,117,140,1	script	Sign#ep7z	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Eupator's Farm^000000.";
+	mes "South : ^FF6633 Thébaïde^000000.";
+	mes "North-West : Towards ^FF6633 Crystalmir Lake^000000.";
+	close;
+}
+
+ars_fild19,11,277,3	duplicate(Sign#ep7z)	Sign#ep7aa	111
+
+//=========================================================================================
+
+//ars_fild20,393,23,1	script	Sign#ep7ab	111,{
+
+//set @name$,"Sign";
+	
+	//mes "[" + @name$ + "]"; 
+	//mes "You are currently in the ^FF33FF Crystalmir Lake^000000.";
+	//mes "West : ^FF6633 The Light Citadel^000000.";
+	//mes "South-Est : Towards ^FF6633 Eupator's Farmer^000000.";
+	//close;
+//}
+
+//=========================================================================================
+
+//ars_fild23,12,6,1	script	Sign#ep7ac	111,{
+
+//set @name$,"Sign";
+	
+//	mes "[" + @name$ + "]"; 
+//	mes "You are currently in ^FF33FF Red Forest^000000.";
+//	mes "South-West : ^FF6633 Gondar : Soufrière^000000.";
+//	mes "North-West : Towards ^FF6633 Gondar : Lalibela^000000.";
+//	close;
+//}
+//ars_fild19,11,277,3	duplicate(Sign#ep7ac)	Sign#ep7ad	111
+
+//=========================================================================================
+
+ars_fild24,333,14,1	script	Sign#ep7ae	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Soufrière^000000.";
+	mes "South-Est : ^FF6633 Gondar : Red Forest^000000.";
+	close;
+}
+//=========================================================================================
+
+ars_fild25,184,268,1	script	Sign#ep7af	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Rana's Empire : Two-Gates^000000.";
+	mes "North : ^FF6633 Arsinoé : The City^000000.";
+	mes "South-Est : ^FF6633 Rana's Empire : Highlands^000000.";
+	close;
+}
+ars_fild25,183,61,3	duplicate(Sign#ep7af)	Sign#ep7ag	111
+
+//=========================================================================================
+ars_fild25,184,268,1	script	Sign#ep7ah	111,{
+
+set @name$,"Sign";
+	
+	mes "[" + @name$ + "]"; 
+	mes "You are currently in ^FF33FF Rana's Empire : Highlands^000000.";
+	mes "South : ^FF6633 Rana's Empire : Dien Bian Fût Hill^000000.";
+	mes "North : ^FF6633 Rana's Empire : Two-Gates^000000.";
+	close;
+}
+ars_fild25,179,48,3	duplicate(Sign#ep7ah)	Sign#ep7ai	111
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

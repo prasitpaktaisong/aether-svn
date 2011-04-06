@@ -1,0 +1,408 @@
+nif_fild01,130,153,4	script	Árvore do Terror#mm	111,{
+	if(AE_MM > 6){
+		if(countitem(709) >= 5 && countitem(660) >= 3 && countitem(958) >= 300 && countitem(1009) >= 10){
+			delitem 709,5;
+			delitem 660,3;
+			delitem 958,300;
+			delitem 1009,10;
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "E agora, nas mãos de ^FF0000Hel^000000, seu destino está selado.";
+			set AE_MM,0;
+			close2;
+			specialeffect2 409;
+			getitem 5564,1;
+			end;
+		}		
+		mes "^FF0000[Árvore do Terror]^000000";
+		mes "Traga-me estes símbolos e eu oferecerei a você o seu destino:";
+		mes "• ^FF0000Izidor^000000 × ^FF00005^000000";
+		mes "• ^FF0000Vela do Marquês de Sade^000000 × ^FF00003^000000";
+		mes "• ^FF0000Mandíbulas Horrendas^000000 × ^FF0000300^000000";
+		mes "• ^FF0000Mão Divinas^000000 × ^FF000010^000000";
+		close;
+	}
+	if(AE_MM > 5){
+		if(countitem (7247) >=1){
+  			specialeffect2 563;
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "Já aguardava a sua chegada.";
+			delitem 7247,1;
+			next;
+ 			
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "^0008FF"+strcharinfo(0)+"^000000, sou a conexão mais precisa com o Deus que procura.";
+			next;
+			
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "Seu caminho não há mais volta. Isso é um fato.";
+			mes "Para terminar de cumprir seu destino, deverá receber o toque de ^FF0000Hel^000000.";
+			next;
+			
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "Traga-me estes símbolos e eu oferecerei a você o seu destino:";
+			mes "• ^FF0000Izidor^000000 × ^FF00005^000000";
+			mes "• ^FF0000Vela do Marquês de Sade^000000 × ^FF00003^000000";
+			mes "• ^FF0000Mandíbulas Horrendas^000000 × ^FF0000300^000000";
+			mes "• ^FF0000Mão Divinas^000000 × ^FF000010^000000";
+			next;
+			
+			mes "^FF0000[Árvore do Terror]^000000";
+			mes "Que seja feita a vontade de ^FF0000Hel^000000!";
+			Set AE_MM,7;
+			specialeffect2 563;
+			specialeffect2 625;
+			close;
+		}
+		mes "^FF0000[Árvore do Terror]^000000";
+		mes "Onde estais a prova de tua bravura?";
+		close;
+	}
+	mes "^66CDAA*Você sente uma presença tenebrosa*^000000";
+	close;
+}
+
+
+nif_fild01,302,81,4	script	Espectro Malígno#mm	795,{
+	if(AE_MM > 5){
+		mes "^0000FF[Espectro Malígno]^000000";
+		mes "Vá e cumpra seu destino diante da ^0008FFÁrvore do Terror^000000.";
+		close;
+	}
+	if(AE_MM > 4){
+		if(countitem (678) >=20){
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "Você foi mais rápido do que eu esperava.";
+			delitem 678, 20;
+			next;
+			
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "Apartir de agora considere-se reconhecido por ^0008FFHel^000000";
+			mes "Não pense que sua jornada acabou.";
+			next;
+	
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "Sei que você almeja a dádiva de Hel, a ^0008FFMáscara da Morte^000000...";
+			mes "O final de sua jornada não será fácil, asseguro-lhe.";
+			next;
+	
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "...";
+			mes "Leve isto com você, precisará mostrar a prova de sua determinação.";
+			getitem 7247,1;
+			next;
+	
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "Procure a ^0008FFÁrvore do Terror^000000. Ela fará a ultima conexão que precisa para atingir seus objetivos.";
+			next;
+	
+			mes "^0000FF[Espectro Malígno]^000000";
+			mes "Que ^0008FFHel^000000 te abençoe.";
+			mes "^66CDAA*Você sente algo mudar*^000000";
+			specialeffect2 655;
+			Set AE_MM,6;
+			close;
+		}
+	mes "^0000FF[Espectro Malígno]^000000";
+	mes "Só volte quando tiver as ^FF0000Garrafas de Veneno^000000.";
+	close;
+	}
+	if(AE_MM > 3){
+		mes "^0000FF[Espectro Malígno]^000000";
+		mes "Então você finalmente chegou, ^0008FF"+strcharinfo(0)+"^000000.";
+		next;
+		switch(select("• Como sabe meu nome?!")){
+			case 1:
+				next;
+				mes "^0000FF[Espectro Malígno]^000000";
+				mes "Sei ^0008FFtudo^000000 que é possível saber sobre você.";
+				mes "Depois que você escolheu este caminho sua mente não passa de um livro facilmente folheado por mim!";
+				next;
+
+				mes "^0000FF[Espectro Malígno]^000000";
+				mes "Interessante, não? Haha!";
+				switch(select("• Você ainda não viu nada.", "• Vá embora! Você me assusta!")){
+					case 1:
+						next;
+						mes "^0000FF[Espectro Malígno]^000000";
+						mes "Olha só, ainda desdenha de um ^0008FFServo de Hel^000000. Gostei de você.";
+						next;
+
+						mes "^0000FF[Espectro Malígno]^000000";
+						mes "Mas será que sua ousadia será suficiente para passar pela provcação da morte?";
+						next;
+						
+						mes "^0000FF[Espectro Malígno]^000000";
+						mes "Será que você é capaz de suportar todas as consequencias físicas e mentais de matar?";
+						next;
+						
+						mes "^0000FF[Espectro Malígno]^000000";
+						mes "Matar por ódio ou por vingança, pelo prazer de matar. Não por defesa ou meios honrosos.";
+						next;
+						
+						mes "^0000FF[Espectro Malígno]^000000";
+						mes "Você mataria, ^0008FF"+strcharinfo(0)+"^000000?";
+						switch(select("• Claro.", "• N-Não...")){
+							case 1:
+								next;
+								mes "^0000FF[Espectro Malígno]^000000";
+								mes "Assim que deve ser.";
+								mes "Como prova de sua lealdade a Hel, traga-me:";
+								mes "• ^FF0000Garrafa de Veneno^000000 × ^FF000020^000000";
+								mes "A morte compactada de forma sutil e eficaz. E não demore!";
+								specialeffect2 656;
+								next;
+								
+								mes "^0000FF[Espectro Malígno]^000000";
+								mes "^0008FFEle^000000 odeia esperar... Muhahaha!!";
+								specialeffect2 656;
+								Set AE_MM,5;
+								close;
+								
+							case 2:
+								next;
+								mes "^0000FF[Espectro Malígno]^000000";
+								mes "Sua mente ainda é fraca em demasia para me servir. Vá embora antes que eu mesmo dê cabo de você.";
+								close;
+						}
+						case 2:
+							next;
+							mes "^0000FF[Espectro Malígno]^000000";
+							mes "Sua mente ainda é fraca em demasia para me servir. Vá embora antes que eu mesmo dê cabo de você.";
+							close;
+			}
+			close;
+		}
+		close;
+	}
+	mes "^0000FF[Espectro Malígno]^000000";
+	mes "Quem é você?! Como ousa invadir o meu terreno?!";
+	next;
+
+	mes "^0000FF[Espectro Malígno]^000000";
+	mes "Vá embora antes que eu tire o seu bem mais precioso: ^0008FFA Vida^000000!";
+	specialeffect2 372;
+	close;
+}
+
+nif_fild02,64,65,4	script	Anantes, O Maldito#mm	456,{
+	if(AE_MM > 3){
+		mes "^0000FF[Anantes]^000000";
+		mes "Você ainda não viu nada! Encontre o ^0008FFEspectro Malígno^000000 e dê continuidade em sua marcha de sangue.";
+		close;
+	}
+	if(AE_MM > 2){
+		if(countitem(702) >=1){
+			mes "^0000FF[Anantes]^000000";
+			mes "Vejamos...";
+			next;
+	
+			mes "^0000FF[Anantes]^000000";
+			mes "Provou-me que és capaz de matar, agora não há mais volta. Você pertence a ^0008FFHel^000000!";
+			delitem 702,1;
+			next;
+			
+			switch(select("• Hel?")){
+				case 1:
+					mes "^0000FF[Anantes]^000000";
+					mes "Sim! ^FF0000Hel^000000! A Deusa dos pecadores e assassinos! Detentora do mal! Haha!";
+					specialeffect2 563;
+					next;
+					
+					mes "^0000FF[Anantes]^000000";
+					mes "Agora seu destino é matar. Para um dia ser agraciado com a ^0008FFMáscara da Morte^000000!";
+					mes "Não hesite! Afinal, agora você é um de nós!";
+					next;
+
+					mes "^0000FF[Anantes]^000000";
+					mes "Precisa cumprir mais tarefas e adentrar mais nas sombras. Tome cuidado para sua fera não interior não tomar conta de você!";
+					next;
+					
+					mes "^0000FF[Anantes]^000000";
+					mes "Em algum lugar destas terras habita o ^0008FFEspectro Malígno^000000. Encontre-o!";
+					Set AE_MM,4;
+					close;	
+			}
+		}
+		mes "^0000FF[Anantes]^000000";
+		mes "Mate! Traga-me ^FF0000Sangue de Animal^000000!";
+		close;
+	}
+	if(AE_MM > 1){
+		mes "^0000FF[Anantes]^000000";
+		mes "Pelo que parece aquele profeta de araque deu com a lingua nos dentes. Se você está aqui, deve saber que tem uma escolha a fazer.";
+		next;
+  
+		mes "^0000FF[Anantes]^000000";
+		mes "É fácil notar que o seu caminho é o caminho da morte! Haha! Será então que você está a procura do artefato mais precioso para os pecadores, huh? A ^0008FFMáscara da Morte^000000?!";
+		next;
+		
+		mes "^0000FF[Anantes]^000000";
+		mes "Hahaha!";
+		mes "Saiba que para obter esta dádiva, infante, terá que passar por uma provação.";
+		switch(select("• O que devo fazer?!")){
+			case 1:
+				next;
+				mes "^0000FF[Anantes]^000000";
+				mes "Escolher seu destino.";
+				next;
+				
+				mes "^0000FF[Anantes]^000000";
+				mes "Agora é a hora de desistir caso queira.";
+				next;
+				
+				mes "^0000FF[Anantes]^000000";
+				mes "Caso aceite, estará se aliando as forças das trevas!! E não há volta!";
+				next;
+				
+				switch(select("• Aceito a provação.","• Recuso, odeio a morte.")){
+					case 1:
+						mes "^0000FF[Anantes]^000000";
+						mes "Então está feito!!";
+						mes "Muhahahaha!";
+						specialeffect2 563;
+						specialeffect2 531;
+						next;
+
+						mes "^0000FF[Anantes]^000000";
+						mes "Como prova de sua determinação traga-me:";
+						mes "• ^FF0000Sangue de Animal^000000 × ^FF00001^000000";
+						mes "A prova de um assassinato perfeito!";
+						mes "Hahaha!!";
+						Set AE_MM,3;
+						close;
+						
+					case 2:
+						mes "^0000FF[Anantes]^000000";
+						mes "Não passas de um amador!";
+						close; 
+				}
+		}
+	}
+	mes "^0000FF[Anantes]^000000";
+	mes "O luar das trevas...";
+	next;
+	
+	mes "^0000FF[Anantes]^000000";
+	mes "Parece que o tempo de agir chegou!";
+	mes "Hahaha!";
+	close;
+}
+
+niflheim,262,142,4	script	Tiresias, O Cego#mm	730,{
+	if(AE_MM > 1){
+		mes "^0000FF[Tiresias]^000000";
+		mes "Somente ^0008FFuma^000000 pessoa nos arredores desta cidade condenada poderá te ajudar.";
+		close;
+	}
+	if(AE_MM > 0){
+		mes "^0000FF[Tiresias]^000000";
+		mes "Vejo que está em busca do seu próprio destino...";
+		mes "Alguém revelou minha localização a você, disto tenho certeza.";
+		next;
+
+		mes "^0000FF[Tiresias]^000000";
+		mes "Agora pergunta-te como sei de tantas coisas... Percebo em tua ingenuidade.";
+		next;
+		
+		mes "^0000FF[Tiresias]^000000";
+		mes "Creio que é do seu interesse saber: Sou um amaldiçoado e abençoado ao mesmo tempo.";
+		next;
+		
+		mes "^0000FF[Tiresias]^000000";
+		mes "Domino o ^0008FFMantis^000000, o dom da previsão. Entretanto, em troca perdi minha visão.";
+		next;
+		
+		mes "^0000FF[Tiresias]^000000";
+		mes "É nítida a sua curiosidade e indecisão.";
+		mes "Tens um lado a escolher, não tens?";
+		switch(select("• Exatamente!","• Nunca! Saia e perto de mim!")){
+			case 1:
+				next;
+				mes "^0000FF[Tiresias]^000000";
+				mes "O seu destino agora está em suas mãos. Existe ^0008FFuma pessoa^000000 nos arredores desta cidade condenada que saberia encaminhar você para o caminho que tanto deseja.";
+				next;
+				
+				mes "^0000FF[Tiresias]^000000";
+				mes "Como encontrá-la?";
+				mes "Você saberá.";
+				mes "Cabe a você decidir qual lado seguir e assumir as tuas responsabilidades após disso.";
+				next;
+				
+				mes "^0000FF[Tiresias]^000000";
+				mes "Vidas estão em jogo. Preste bastante atenção em sua escolha: Após decidido, sua decisao ^0008FFnunca mais^000000 terá volta.";
+				switch(select("• Por que não prevê meu futuro?")){
+					case 1:
+						next;
+						mes "^0000FF[Tiresias]^000000";
+						mes "Acredite em mim. Não gostaria de saber o que te aguardas.";
+						Set AE_MM,2;
+						close;
+				}
+			case 2:
+				next;
+				mes "^0000FF[Tiresias]^000000";
+				mes "Realmente pareces imaturo demais para o destino que te aguardas.";
+				close;
+		}
+	} 
+	mes "^0000FF[Tiresias]^000000";
+	mes "...Que tu tens os olhos abertos à luz, mas não enxergas teus males, ignorando quem és, o lugar onde estás...";
+	next;
+
+	mes "^0000FF[Tiresias]^000000";
+	mes "E até aqueles com quem vives...";
+	close;
+}
+ 
+//== • Viajante Sombrio - Passo 1 ~
+payon,76,286,4	script	Viajante Sombrio#mm	735,{
+	if(AE_MM > 0){
+		mes "^0000FF[Viajante]^000000";
+		mes "A cegueira pode ser uma dádiva.";
+		mes "Procure um ^0008FFCego^000000 nos arredores da cidade da morte. Talvez o que deseje, você possa encontrar.";
+		close;
+	} 
+	mes "^0000FF[Viajante]^000000";
+	mes "Vivemos em um mundo podre por dentro...";
+	next;
+	
+	mes "^0000FF[Viajante]^000000";
+	mes "Assassinatos, covardias, sangue...";
+	next;
+	
+	mes "^0000FF[Viajante]^000000";
+	mes "A perda, a dor, o sofrimento. Isso seria capaz de alterar vidas?";
+	switch(select("• Sim, sofrimento é a base do caráter.","• Não, isso é maldoso!")){
+		case 1:
+			next;
+			mes "^0000FF[Viajante]^000000";
+			mes "O mundo tem várias vertentes.";
+			mes "Deuses, Representantes e Mortais...";
+			mes "Algo planejado antes mesmo do seu nacimento, perceba a sua insignificancia.";
+			next;
+			
+			mes "^0000FF[Viajante]^000000";		 
+			mes "Porém, algo que você pode ser um fator decisivo... Uma guerra vem por aí, escolha seu lado.";
+			next;
+	
+			mes "^0000FF[Viajante]^000000";
+			mes "...";
+			next;
+	
+			mes "^0000FF[Viajante]^000000";
+			mes "Reflita.";
+			mes "Procure um ^0008FFCego^000000 nos arredores da cidade da morte. Talvez o que deseje, você possa encontrar.";
+			Set AE_MM,1;
+			close;
+		
+		case 2:
+			next;
+	
+			mes "^0000FF[Viajante]^000000";
+			mes "...";
+			mes "Desfrute da sua ignorância. Enquanto pode.";
+			close;
+	}
+	close;
+}
+		

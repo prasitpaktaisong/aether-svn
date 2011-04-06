@@ -1,0 +1,257 @@
+ama_fild01,344,324,5	script	Aino Kaoru#ama	609,{
+	if(AE_Ninpou == 8){
+		if(countitem(687) > 0 && countitem(689) > 0 && countitem(691) > 0 && countitem(693) > 0){
+			mes "^0000FF[Kaoru]^000000";
+			mes "Muito bem, vamos terminar logo com isso...";
+			mes "Vou entragar sua ^0000FFMagia^000000 em troca de sua ajuda.";
+			mes "Prepare-se!";
+			next;
+			
+			delitem 687,1;
+			delitem 689,1;
+			delitem 691,1;
+			delitem 693,1;
+			specialeffect2 55;
+			getitem 5362,1;
+			mes "^0000FF[Kaoru]^000000";
+			mes "Boa jornada para você, viajante!";
+			set AE_Ninpou,0;
+			close;
+		}
+		mes "^0000FF[Kaoru]^000000";
+		mes "Quatro pergaminhos mágicos, isso, traga para mim:";
+		mes "• ^0000FFColuna de Pedra Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLanças de Gelo Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLanças de Fogo Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFRelâmpago Nível 5^000000 × ^0000FF1^000000";
+		close;
+	}
+	if(AE_Ninpou == 7){
+		mes "^0000FF[Kaoru]^000000";
+		mes "N-Não pode ser...";
+		mes "Sinto a presença de ^FF0000Michiro^000000 em você!";
+		next;
+		
+		mes "^0000FF[Kaoru]^000000";
+		mes "Ah, então ela mandou sua energia...";
+		mes "Espero que ela não tenha forçado demais o ^0000FFEther^000000 de seu corpo...";
+		next;
+		
+		mes "^0000FF[Kaoru]^000000";
+		mes "Muito bem, com toda esse energia, será possível criar um ^0000FFPergaminho de Ninpou^000000 para cada um de nós...";
+		mes "Mas ainda preciso do toque dos quatro elementos...";
+		next;
+		
+		mes "^0000FF[Kaoru]^000000";
+		mes "Quatro pergaminhos mágicos, isso, traga para mim:";
+		mes "• ^0000FFColuna de Pedra Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLanças de Gelo Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLanças de Fogo Nível 5^000000 × ^0000FF1^000000";
+		mes "• ^0000FFRelâmpago Nível 5^000000 × ^0000FF1^000000";
+		next;	
+
+		mes "^0000FF[Kaoru]^000000";
+		mes "Manterei a situação aqui, enquanto te espero, agora vá!";
+		set AE_Ninpou,8;
+		close;
+	}
+	if(AE_Ninpou > 4){
+		mes "^0000FF[Kaoru]^000000";
+		mes "Viajante, tu viestes até aqui em meu encontro...";
+		mes "Diga a minhã irmã que não posso regressar...";
+		close;
+	}	
+	if(AE_Ninpou == 4){
+		mes "^0000FF[Kaoru]^000000";
+		mes "^0000FFAino^000000...";
+		mes "Como vou encará-la? Não pude proteger este lugar! Estou desonrado...";
+		next;
+		
+		mes "^0000FF[Kaoru]^000000";
+		mes "Bom, viajante, tu viestes até aqui em meu encontro...";
+		mes "Diga a minhã irmã que não posso regressar...";
+		set AE_Ninpou,5;
+		close;
+	}
+	mes "^0000FF[Kaoru]^000000";
+	mes "...";
+	mes "Não fui sequer capaz de impedir...";
+	close;
+} 
+
+ama_in01,18,109,5	script	Aino Michiro#ama	608,{
+	if(AE_Ninpou >= 7){
+		mes "^FF0000[Michiro]^000000";
+		mes "Por favor...";
+		mes "Entregue minha ^0000FFMagia^000000 para meu irmão!";
+		close;
+	}
+	if(AE_Ninpou == 6){
+		if(countitem(7099) >= 20 && countitem(7118) >= 20 && countitem(618) >= 10){
+			mes "^FF0000[Michiro]^000000";
+			mes "Oh, você conseguiu tudo!";
+			mes "Perfeito, me dê um instante!";
+			next;
+			
+			delitem 7099,20;
+			delitem 7118,20;
+			delitem 618,10;
+			mes "^FF0000[Michiro]^000000";
+			mes "Muito bem, darei praticamente toda a minha ^0000FFEnergia Espiritual^000000, leve-a para o meu irmão, assim ele conseguirá refazer os ^0000FFPergaminhos de Ninpou^000000 e voltará para casa...";
+			next;
+			
+			mes "^FF0000[Michiro]^000000";
+			mes "Bom... vamos logo com isso...";
+			next;
+
+			specialeffect2 21;
+			specialeffect2 21;
+			specialeffect2 58;
+			specialeffect2 21;
+			specialeffect2 21;
+			mes "^FF0000[Michiro]^000000";
+			mes "Agora, por favor... vá...";
+			set AE_Ninpou,7;
+			close;
+		}
+		mes "^FF0000[Michiro]^000000";
+		mes "Perfeito!";
+		mes "Para fazer o ^0000FFRitual^000000 inicial, vou precisar de algumas escrituras...";
+		mes "• ^0000FFPergaminho Antigo^000000 × ^0000FF20^000000";
+		mes "• ^0000FFPergaminho Gasto^000000 × ^0000FF20^000000";
+		mes "• ^0000FFPergaminho Desgastado^000000 × ^0000FF10^000000";
+		next;
+				
+		mes "^FF0000[Michiro]^000000";
+		mes "Vou estar esperando...";
+		close;
+	}
+	if(AE_Ninpou == 5){
+		mes "^FF0000[Michiro]^000000";
+		mes "O que? Ele... foi derrotado?";
+		next;
+
+		mes "^FF0000[Michiro]^000000";
+		mes "Maldição! Minha ^0000FFMagia^000000 foi fraca demais!";
+		next;
+		
+		mes "^FF0000[Michiro]^000000";
+		mes "...";
+		next;
+		
+		mes "^FF0000[Michiro]^000000";
+		mes "Por favor...";
+		mes "Por favor, me ajude!";
+		next;
+		
+		mes "^FF0000[Michiro]^000000";
+		mes "Irei tentar fazer os ^0000FFPergaminhos de Ninpou^000000 mais uma vez! Se me ajudar, farei um para você como recompensa!";
+		switch(select("• Eu aceito!","• Desculpe, não posso.")){
+			case 1:
+				next;
+				mes "^FF0000[Michiro]^000000";
+				mes "Perfeito!";
+				mes "Para fazer o ^0000FFRitual^000000 inicial, vou precisar de algumas escrituras...";
+				mes "• ^0000FFPergaminho Antigo^000000 × ^0000FF20^000000";
+				mes "• ^0000FFPergaminho Gasto^000000 × ^0000FF20^000000";
+				mes "• ^0000FFPergaminho Desgastado^000000 × ^0000FF10^000000";
+				next;
+				
+				mes "^FF0000[Michiro]^000000";
+				mes "Vou estar esperando...";
+				set AE_Ninpou,6;
+				close;
+			case 2:
+				close;
+		}
+	}
+	if(AE_Ninpou == 4){
+		mes "^FF0000[Michiro]^000000";
+		mes "Por favor! Ajude-o, tenho medo que ele possa estar em verdadeiros apuros!";
+		close;
+	}
+	if(AE_Ninpou == 3){
+		if(countitem(609) >= 10){
+			mes "^FF0000[Michiro]^000000";
+			mes "Não é possível, você conseguiu!";
+			next;
+			
+			delitem 609,10;
+			mes "^FF0000[Michiro]^000000";
+			mes "Não sei se posso confiar em você, mas estou com muito medo...";
+			next;
+			
+			mes "^FF0000[Michiro]^000000";
+			mes "Meu irmão, ^0000FFKaoru^000000, carregava consigo os poderosos ^0000FFPergaminhos de Ninpou^000000, magia secreta e, há muito tempo, proibida em ^0000FFAmatsu^000000.";	
+			next;
+			
+			mes "^FF0000[Michiro]^000000";
+			mes "Ele precisava usá-los para selar um mal que estava em torno de ^0000FFAmatsu^000000, mas já fazem dias e ele não regressou...";
+			next;	
+			
+			mes "^FF0000[Michiro]^000000";
+			mes "Por favor! Ajude-o, tenho medo que ele possa estar em verdadeiros apuros!";
+			set AE_Ninpou,4;
+			close;
+		}
+		mes "^FF0000[Michiro]^000000";
+		mes "Eu já sabia que não conseguiria...";
+		mes "Eu pedi apenas ^0000FF10 Amuletos^000000.";
+		mes "Deve ser fácil para alguém forte conseguir isso...";
+		close;
+	}
+	if(AE_Ninpou == 2){
+		mes "^FF0000[Michiro]^000000";
+		mes "...";
+		switch(select("• Insistir sobre ^0000FFKaoru^000000.","• Nada.")){
+			case 1:
+				next;
+				
+				mes "^FF0000[Michiro]^000000";
+				mes "Por que quer tanto saber? Você não pode fazer nada!";
+				switch(select("• Posso provar o contrário.","• Nada.")){
+					case 1:
+						next;
+						mes "^FF0000[Michiro]^000000";
+						mes "Duvido que possa!";
+						mes "Se és tão forte assim, prove!";
+						next;
+					
+						mes "^FF0000[Michiro]^000000";
+						mes "Se pode mesmo me ajudar, traga-me:";
+						mes "• ^0000FFAmuleto^000000 × ^0000FF10^000000";
+						set AE_Ninpou, 3;
+						close;
+				}
+
+			case 2:
+				close;
+		}
+	}
+	if(AE_Ninpou == 1){
+		mes "^FF0000[Michiro]^000000";
+		mes "...";
+		switch(select("• Perguntar sobre ^0000FFKaoru^000000.","• Nada.")){
+			case 1:
+				next;
+				
+				mes "^FF0000[Michiro]^000000";
+				mes "Desculpe, não quero falar sobre isso...";
+				set AE_Ninpou,2;
+				close;
+				
+			case 2:
+				close;
+		}
+	}
+	mes "^FF0000[Michiro]^000000";
+	mes "Me pergunto...";
+	mes "Será que ^0000FFKaoru^000000 está bem...";
+	next;
+	
+	mes "^FF0000[Michiro]^000000";
+	mes "Oh...";
+	mes "Estava pensando alto, desculpe-me...";
+	set AE_Ninpou,1;
+	close;
+}

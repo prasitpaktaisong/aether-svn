@@ -1,0 +1,11 @@
+-	script	#PromoVIP1	-1,{
+
+OnPCLoginEvent:
+	If (#PromoVIP < 1) {
+		Set #PromoVIP,1;
+		CallFunc ("addVip",GetCharID (3),120);
+		getitem 20002,1;
+		dispbottom "- Você recebeu 5 dias de VIP Promocionais!";
+	}
+	End;
+}

@@ -1,0 +1,48 @@
+vip,21,28,4	script	Amarya#vip	71,{
+	cutin "wedding_marry01",2;
+	mes "^FF0000[Amarya]^000000";
+	mes "Saudações, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	mes "Gostaria de alterar suas ^0000FFRoupas^000000 por alguns minutos?";
+	next; 
+
+	switch(select("• Treajes Formais","• Trajes Natalinos","• Trajes de Verão","• Retirar","• Cancelar")){
+		case 1:
+			sc_start SC_Wedding,600000,0;
+			mes "^FF0000[Amarya]^000000";
+			mes "Feito!";
+			close2;
+			cutin "",255;
+			end;
+
+		case 2:
+			sc_start SC_Xmas,600000,0;
+			mes "^FF0000[Amarya]^000000";
+			mes "Feito!";
+			close2;
+			cutin "",255;
+			end;
+
+		case 3:
+			sc_start SC_Summer,600000,0;
+			mes "^FF0000[Amarya]^000000";
+			mes "Feito!";
+			close2;
+			cutin "",255;
+			end;
+
+		case 4:
+			sc_end SC_Wedding;
+			sc_end SC_Xmas;
+			sc_end SC_Summer;
+			mes "^FF0000[Amarya]^000000";
+			mes "Feito!";
+			close2;
+			cutin "",255;
+			end;
+
+		case 5:
+			close2;
+			cutin "",255;
+			end;
+	}
+}

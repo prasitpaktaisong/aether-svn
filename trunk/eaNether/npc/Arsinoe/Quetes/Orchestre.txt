@@ -1,0 +1,364 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Arsinoé - Orchestre
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = Orchestre : Inscriptions
+// 2 = Orchestre : Script
+// 3 = Orchestre : Monstres
+// 4 = Orchestre : Spectateur
+//
+//_________________________________________________________________
+//___________________Orchestre : Inscription ______________________
+//_________________________________________________________________
+
+ars_in14,114,29,1	script	Docteur Moreau#ep7	865,{
+
+set @name$,"Docteur Moreau";
+
+if($@ep7orch==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the Orchestra of Arsinoe!";
+	mes "Would you like participate ?";
+	next;
+	menu "No",-,"Yes !",submenu1;
+	close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]";
+	mes "Let's start!";
+	close2;
+	if($@ep7orch>=1) {mes "[" + @name$ + "]";mes "A person is already there!";close;}
+	set $@Play_Orch$,strcharinfo(0);
+	donpcevent "EP7_orchestre::OnDepart";
+	warp "ars_in14",110,41;
+	end;
+	}
+
+if($@ep7orch>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can't participate in the Orchestra of Arsinoe yet!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Arsinoe Orchestra - WaitingRoom",0,"EP7_orchestre::OnBGJoin",1;
+	end;
+}
+//_________________________________________________________________
+//___________________Orchestre :  Script __________________________
+//_________________________________________________________________
+
+-	script	EP7_orchestre	-1,{
+
+OnInit:
+
+	//Fenêtre
+	donpcevent "Docteur Moreau#ep7::OnBG";
+
+	//Nettoyage
+	deletearray .Otoursave[0],127;
+	deletearray .Otourtime[0],127;
+	set $@orch_tour,0; //nb du tour
+	set $@ep7orch, 0;
+	set $@orch_use,0;
+	set .orch_round,0;
+
+	set .orch_mob, .orch_mob|1;
+	set .orch_mob, .orch_mob|2;
+	set .orch_mob, .orch_mob|4;
+	set .orch_mob, .orch_mob|8;
+	set .orch_mob, .orch_mob|16;
+	set .orch_mob, .orch_mob|32;
+
+	//Mise en place des notes
+	setarray .Otourname$[1],"Choriste#1","Choriste#2","Choriste#3","Choriste#4","Choriste#5","Choriste#6";
+	
+	end;	
+
+
+OnDepart:
+
+	// Variables
+	set $@ep7orch, 1;
+
+
+	if( $EP7Annonce == 0 ) {mapannounce "ars_in14","Moreau's Chorists just started !",1,0x33CC00;}
+	if( $EP7Annonce == 1 ) {announce "Moreau's Chorists just started !",0,0x33CC00;}	
+
+	sleep2 5000;
+	areaannounce "ars_in14",96,56,125,35,"Goulescter : We will soon begin!",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 5000;
+	areaannounce "ars_in14",96,56,125,35,"5",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in14",96,56,125,35,"4",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in14",96,56,125,35,"3",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in14",96,56,125,35,"2",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in14",96,56,125,35,"1",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in14",96,56,125,35,"Let's go !",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+
+	sleep2 2000;
+//==============================================
+
+OnPlayMelo:
+	
+	if($@orch_tour > 75) {
+		areaannounce "ars_in14",96,56,125,35,"Goulescter : Congratulations! You have just perform 75 notes in a row! You can take your reward after this perfect score!",bc_map,"0x33CC00",FW_NORMAL,20,0,40;
+		sleep2 3000;
+		donpcevent "Goulescter#ep7::OnTalk5";
+		set $@ep7orch, 2;
+		sleep2 60000;
+		areawarp "ars_in14",96,56,125,35,"ars_in14",109,28; //Sortie
+		donpcevent "EP7_orchestre::OnInit";
+		end;}
+
+	set $@orch_tour,$@orch_tour+1;
+	set .orch_round,1;
+
+	set .@time, rand(1000,1500);
+	setarray .Otourtime[$@orch_tour],.@time;
+
+
+	set .@mob, rand(1,6);
+	setarray .Otoursave[$@orch_tour],.@mob;
+	set .@size, getarraysize(.Otoursave);
+
+	for( set .@i, 1; .@i < .@size; set .@i, .@i +1 ) {
+	donpcevent ""+.Otourname$[.Otoursave[.@i]]+"::OnPlay";
+	sleep2 .Otourtime[.@i];}
+
+	sleep2 3000;
+	donpcevent "Goulescter#ep7::OnTalk1";
+	set $@orch_use,1;
+	sleep2 1500;
+
+
+OnSpawn:
+
+	if(.orch_mob & 1) {monster "ars_in14",121,46,"Choriste",3900,1,"EP7_orchestre::OnPlay1";set .orch_mob, .orch_mob-1;}
+	if(.orch_mob & 2) {monster "ars_in14",121,44,"Choriste",3901,1,"EP7_orchestre::OnPlay2";set .orch_mob, .orch_mob-2;}
+	if(.orch_mob & 4) {monster "ars_in14",121,42,"Choriste",3902,1,"EP7_orchestre::OnPlay3";set .orch_mob, .orch_mob-4;}
+	if(.orch_mob & 8) {monster "ars_in14",121,40,"Choriste",3903,1,"EP7_orchestre::OnPlay4";set .orch_mob, .orch_mob-8;}
+	if(.orch_mob & 16) {monster "ars_in14",121,38,"Choriste",3904,1,"EP7_orchestre::OnPlay5";set .orch_mob, .orch_mob-16;}
+	if(.orch_mob & 32) {monster "ars_in14",121,36,"Choriste",3905,1,"EP7_orchestre::OnPlay6";set .orch_mob, .orch_mob-32;}
+	initnpctimer;
+	end;
+
+//==============================================
+
+OnPlay1: set .kill,1;set .orch_mob, .orch_mob|1;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+OnPlay2: set .kill,2;set .orch_mob, .orch_mob|2;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+OnPlay3: set .kill,3;set .orch_mob, .orch_mob|4;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+OnPlay4: set .kill,4;set .orch_mob, .orch_mob|8;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+OnPlay5: set .kill,5;set .orch_mob, .orch_mob|16;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+OnPlay6: set .kill,6;set .orch_mob, .orch_mob|32;setnpctimer 0;stopnpctimer; donpcevent "EP7_orchestre::OnCheck";end;
+
+//==============================================
+OnTimer15000:
+
+	if($@ep7orch == 1) {
+	donpcevent "Goulescter#ep7::OnTalk6";
+	killmonsterall "ars_in14";
+	sleep2 2000;
+	mapannounce "ars_in14","Goulescter : You've failed to reproduce the melody!",1,0x33CC00;
+	sleep2 3000;
+	donpcevent "Goulescter#ep7::OnTalk5";
+	set $@ep7orch, 2;
+	sleep2 60000;
+	areawarp "ars_in14",96,56,125,35,"ars_in14",109,28; //Sortie
+	donpcevent "EP7_orchestre::OnInit";}
+	end;
+
+
+OnCheck:
+
+	set .size, getarraysize(.Otoursave);
+
+
+
+	//On joue la séquence
+	if(.orch_round <= .size) {
+		
+		if(.kill==.Otoursave[.orch_round]){
+
+		//Fin de la séquence
+			if(.orch_round == .size-1) {
+				set $@orch_use,0;
+				donpcevent "Goulescter#ep7::OnTalk3";
+				
+				killmonsterall "ars_in14";
+				set .orch_mob, .orch_mob|1;
+				set .orch_mob, .orch_mob|2;
+				set .orch_mob, .orch_mob|4;
+				set .orch_mob, .orch_mob|8;
+				set .orch_mob, .orch_mob|16;
+				set .orch_mob, .orch_mob|32;
+
+				sleep2 3000;
+				donpcevent "EP7_orchestre::OnPlayMelo";
+
+				end;}
+
+
+
+
+		//donpcevent "Goulescter#ep7::OnTalk4";
+		set .orch_round,.orch_round+1;
+		donpcevent "EP7_orchestre::OnSpawn";end;}}
+
+
+
+
+
+
+
+	donpcevent "Goulescter#ep7::OnTalk2";
+	killmonsterall "ars_in14";
+	sleep2 2000;
+	mapannounce "ars_in14","Goulescter : You haven't succeeded in reproducing the melody!",1,0x33CC00;
+	sleep2 3000;
+	donpcevent "Goulescter#ep7::OnTalk5";
+	set $@ep7orch, 2;
+	sleep2 60000;
+	areawarp "ars_in14",96,56,125,35,"ars_in14",109,28; //Sortie
+	donpcevent "EP7_orchestre::OnInit";
+	end;
+
+}
+
+
+//_________________________________________________________________
+//___________________Orchestre : Monstres _________________________
+//_________________________________________________________________
+
+ars_in14,107,51,4	script	Choriste#1	3900,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 172;
+	//sound
+	end;
+}
+//========================================================================================
+ars_in14,109,53,4	script	Choriste#2	3901,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 173;
+	//sound
+	end;
+}
+//========================================================================================
+ars_in14,111,51,4	script	Choriste#3	3902,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 175;
+	//sound
+	end;
+}
+//========================================================================================
+ars_in14,114,50,4	script	Choriste#4	3903,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 177;
+	//sound
+	end;
+}
+//========================================================================================
+ars_in14,117,54,4	script	Choriste#5	3904,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 179;
+	//sound
+	end;
+}
+//========================================================================================
+ars_in14,119,50,4	script	Choriste#6	3905,{
+
+set @name$,"Choriste";
+	
+	mes "[" + @name$ + "]";
+	mes "The Chorister is in full swing!";
+	close;
+OnPlay:
+	specialeffect 314;
+	//sound
+	end;
+}
+//========================================================================================
+
+ars_in14,114,37,4	script	Goulescter#ep7	878,{
+
+set @name$,"Goulescter";
+	
+	mes "[" + @name$ + "]";
+
+	if($@ep7orch == 2 && $@Play_Orch$ == strcharinfo(0)) {
+		if($@orch_tour > EP7_ORCH) {mes "You have set a new personal performance!";}
+		mes "You've just completed a sequence of ["+$@orch_tour+"] notes.";
+		mes "Here's your prize :";
+
+		if($@orch_tour == 75 && EP7_ORCH < 75) {
+			next;
+			mes "[" + @name$ + "]";
+			mes "You just made a perfect score, congratulations! Here is an additional price for you!";}
+
+		close2;
+		getitem $ep7_Tcoins,$@orch_tour;
+		if($@orch_tour == 75 && EP7_ORCH < 75) {getitem  $ep7recompense[40], $ep7recompensenb[40];}
+		if($@orch_tour > EP7_ORCH) {set EP7_ORCH,$@orch_tour;}
+		set $@ep7orch,3;
+		warp "ars_in14",109,28;
+		end;
+		}
+
+
+		mes "Your record is a sequence of ["+EP7_ORCH+"] notes !";
+		mes "Try to improve your score!";
+		close;
+
+OnTalk1:npctalk "Let's play the melody!";end;
+OnTalk2:npctalk "Wrong note!";end;
+OnTalk3:npctalk "Well done! Listen carefully the next one!";end;
+OnTalk4:npctalk "Right";end;
+OnTalk5:npctalk "Come see me for your reward ...";end;
+OnTalk6:npctalk "Too late, you gotta hurry anyway!";end;
+}
+
+

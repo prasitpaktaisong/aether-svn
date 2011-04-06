@@ -1,0 +1,4 @@
+// Item Usage Delay Table
+// ItemID,Reuse Milliseconds
+
+12257,2000

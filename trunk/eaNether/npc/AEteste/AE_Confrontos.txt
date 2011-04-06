@@ -1,0 +1,241 @@
+daath,30,251,5	script	Frags	51,{
+	end;
+
+OnInit:
+OnSet:
+	setarray $streakpvpmap$[0],"daath","pvp01","pvp02","pvp03","pvp04","pvp05";
+	setarray $streakpvpotmap$[0],"pvpot01","pvpot02";
+	setarray $streakbgmap$[0],"bat_a01","bat_a02","bat_a03","bat_a04","bat_a05","bat_b01","bat_b02","bat_b03","bat_b04","bat_b05","bat_c01","bat_c02","bat_c03","bat_c04","bat_c05","bat_c06","bat_c07","bat_c08";
+	setarray $streakwoemap$[0],"aldeg_cas01","aldeg_cas02","aldeg_cas03","aldeg_cas04","aldeg_cas05","gefg_cas01","gefg_cas02","gefg_cas03","gefg_cas04","gefg_cas05","payg_cas01","payg_cas02","payg_cas03","payg_cas04","payg_cas05","prtg_cas01","prtg_cas02","prtg_cas03","prtg_cas04","prtg_cas05";
+	setarray $streakwoeotmap$[0],"nguild_alde","nguild_gef","nguild_pay","nguild_prt";
+	setarray $streakwoe2map$[0],"schg_cas01","schg_cas02","schg_cas03","schg_cas04","schg_cas05","arug_cas01","arug_cas02","arug_cas03","arug_cas04","arug_cas05";
+	end;
+	
+OnPCLoginEvent:
+	if(AE_LadderOn < 1){
+		query_sql "INSERT INTO all_ladder (`char_id`, `name`, `pvp_win`, `pvp_lost`, `pvp_streak`, `pvpot_win`, `pvpot_lost`, `pvpot_streak`, `bg_win`, `bg_lost`, `bg_streak`, `woe_win`, `woe_lost`, `woe_streak`, `woeot_win`, `woeot_lost`, `woeot_streak`, `woese_win`, `woese_lost`, `woese_streak`) VALUES ('"+getcharid(0)+"', '"+escape_sql(strcharinfo(0))+"', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0')";		
+	}
+	end;
+	
+OnPCKillEvent:
+	for(set @mapcount,0; @mapcount <= getarraysize($streakpvpmap$); set @mapcount, @mapcount + 1){
+		if($streakpvpmap$[@mapcount] == strcharinfo(3)){
+			set PvP_Streak,PvP_Streak + 1;
+			query_sql "SELECT pvp_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  pvp_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(strcharinfo(1) != ""){
+				getpartymember(getcharid(1));
+				if($@partymembercount > 1){
+					if(rand(1,33) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				} else {
+					if(rand(1,25) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				}
+			} else {
+				if(rand(1,25) == 1){
+					getitem 20052,1;	
+				}
+			}
+			if(PvP_Streak > PvP_HStreak){
+				set PvP_HStreak, PvP_Streak;
+				query_sql "UPDATE  all_ladder SET  pvp_streak = "+PvP_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakpvpotmap$); set @mapcount, @mapcount + 1){
+		if($streakpvpotmap$[@mapcount] == strcharinfo(3)){
+			set PvPOT_Streak,PvPOT_Streak + 1;
+			query_sql "SELECT pvpot_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  pvpot_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(strcharinfo(1) != ""){
+				getpartymember(getcharid(1));
+				if($@partymembercount > 1){
+					if(rand(1,33) == 1){
+						getitemparty 20053,1,getcharid(1),strcharinfo(3);
+					}
+				} else {
+					if(rand(1,25) == 1){
+						getitemparty 20053,1,getcharid(1),strcharinfo(3);
+					}
+				}
+			} else {
+				if(rand(1,25) == 1){
+					getitem 20053,1;	
+				}
+			}
+			if(PvPOT_Streak > PvPOT_HStreak){
+				set PvPOT_HStreak, PvPOT_Streak;
+				query_sql "UPDATE  all_ladder SET  pvpot_streak = "+PvP_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}	
+	for(set @mapcount,0; @mapcount <= getarraysize($streakbgmap$); set @mapcount, @mapcount + 1){
+		if($streakbgmap$[@mapcount] == strcharinfo(3)){
+			set BG_Streak, BG_Streak + 1;
+			query_sql "SELECT bg_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  bg_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(rand(1,16) == 1){
+				getitem 20052,1;	
+			}			
+			if(BG_Streak > BG_HStreak){
+				set BG_HStreak, BG_Streak;
+				query_sql "UPDATE  all_ladder SET  bg_streak = "+BG_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoemap$); set @mapcount, @mapcount + 1){
+		if($streakwoemap$[@mapcount] == strcharinfo(3)){
+			set WoE_Streak, WoE_Streak + 1;
+			query_sql "SELECT woe_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  woe_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(strcharinfo(1) != ""){
+				getpartymember(getcharid(1));
+				if($@partymembercount > 1){
+					if(rand(1,16) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				} else {
+					if(rand(1,12) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				}
+			} else {
+				if(rand(1,12) == 1){
+					getitem 20052,1;	
+				}
+			}			
+			if(WoE_Streak > WoE_HStreak){
+				set WoE_HStreak, WoE_Streak;
+				query_sql "UPDATE  all_ladder SET  woe_streak = "+WoE_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoeotmap$); set @mapcount, @mapcount + 1){
+		if($streakwoeotmap$[@mapcount] == strcharinfo(3)){
+			set WoEOT_Streak, WoEOT_Streak + 1;
+			query_sql "SELECT woeot_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  woeot_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(strcharinfo(1) != ""){
+				getpartymember(getcharid(1));
+				if($@partymembercount > 1){
+					if(rand(1,16) == 1){
+						getitemparty 20053,1,getcharid(1),strcharinfo(3);
+					}
+				} else {
+					if(rand(1,12) == 1){
+						getitemparty 20053,1,getcharid(1),strcharinfo(3);
+					}
+				}
+			} else {
+				if(rand(1,12) == 1){
+					getitem 20053,1;	
+				}
+			}				
+			if(WoEOT_Streak > WoEOT_HStreak){
+				set WoEOT_HStreak, WoEOT_Streak;
+				query_sql "UPDATE  all_ladder SET  woeot_streak = "+WoEOT_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoesemap$); set @mapcount, @mapcount + 1){
+		if($streakwoesemap$[@mapcount] == strcharinfo(3)){
+			set WoESE_Streak, WoESE_Streak + 1;
+			query_sql "SELECT woese_win FROM all_ladder WHERE char_id = "+getcharid(0), @wins;
+			query_sql "UPDATE  all_ladder SET  woese_win = "+(@wins+1)+" WHERE  char_id = "+getcharid(0);
+			if(strcharinfo(1) != ""){
+				getpartymember(getcharid(1));
+				if($@partymembercount > 1){
+					if(rand(1,16) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				} else {
+					if(rand(1,12) == 1){
+						getitemparty 20052,1,getcharid(1),strcharinfo(3);
+					}
+				}
+			} else {
+				if(rand(1,12) == 1){
+					getitem 20052,1;
+				}
+			}				
+			if(WoESE_Streak > WoESE_HStreak){
+				set WoESE_HStreak, WoESE_Streak;
+				query_sql "UPDATE  all_ladder SET  woese_streak = "+WoESE_HStreak+" WHERE  char_id = "+getcharid(0);
+			}
+			end;
+		}
+	}		
+	
+OnPCDieEvent:
+	for(set @mapcount,0; @mapcount <= getarraysize($streakpvpmap$); set @mapcount, @mapcount + 1){
+		if($streakpvpmap$[@mapcount] == strcharinfo(3)){
+			set PvP_Streak, 0;
+			query_sql "SELECT pvp_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET  pvp_lost = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakpvpotmap$); set @mapcount, @mapcount + 1){
+		if($streakpvpotmap$[@mapcount] == strcharinfo(3)){
+			set PvP_Streak, 0;
+			query_sql "SELECT pvpot_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET  pvpot_lost = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakbgmap$); set @mapcount, @mapcount + 1){
+		if($streakbgmap$[@mapcount] == strcharinfo(3)){
+			set BG_Streak, 0;
+			query_sql "SELECT bg_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET  bg_lost = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoemap$); set @mapcount, @mapcount + 1){
+		if($streakwoemap$[@mapcount] == strcharinfo(3)){
+			set WoE_Streak, 0;
+			query_sql "SELECT woe_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET woe_lost = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}	
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoeotmap$); set @mapcount, @mapcount + 1){
+		if($streakwoeotmap$[@mapcount] == strcharinfo(3)){
+			set WoEOT_Streak, 0;
+			query_sql "SELECT woeot_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET woeot_lost = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}
+	for(set @mapcount,0; @mapcount <= getarraysize($streakwoesemap$); set @mapcount, @mapcount + 1){
+		if($streakwoesemap$[@mapcount] == strcharinfo(3)){
+			set WoESE_Streak, 0;
+			query_sql "SELECT woese_lost FROM all_ladder WHERE char_id = "+getcharid(0), @dies;
+			query_sql "UPDATE  all_ladder SET woese_lose = "+(@dies+1)+" WHERE  char_id = "+getcharid(0);
+			end;
+		}
+	}
+
+	
+OnWhisperGlobal:	
+	if (getgmlevel() >= 80 && compare(@whispervar0$,"on")){
+		dispbottom "• Arrays do Sistema de Frags: Ativadas •";
+		donpcevent "Frags::OnSet";
+		end;
+	}		
+}
+
+//PvP_Streak
+//PvP_HStreak
+//BG_Streak
+//BG_HStreak
+//WoE_Streak
+//WoE_HStrak 

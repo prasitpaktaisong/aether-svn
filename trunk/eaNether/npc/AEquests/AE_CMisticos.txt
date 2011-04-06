@@ -1,0 +1,113 @@
+//== Rust Blackhand
+prt_monk,261,91,3	script	Rust Blackhand#edq	826,{
+	set .@new_maje,checkquest(3043);
+	mes "^0000FF[Rust Blackhand]^000000";
+	mes "Quem é você? O que quer de mim?";
+	next;
+	mes "^0000FF[Rust Blackhand]^000000";
+	mes "Você não é um ^0000FFMonge^000000, o que quer?";
+	if ((.@new_maje == 0) || (.@new_maje == 1) || (AE_CMistico == 1)){
+		next;
+		
+		mes "^0000FF[Rust Blackhand]^000000";
+		mes "Você trouxe os materiais?";
+		next;
+		if ((countitem(6004) > 0) && (countitem(2256) > 0) && (countitem(7799) > 29) && (countitem(7798) > 49) && (Zeny > 990000)) {
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Oh, você preparou bem os materiais, por que não espera ali um instante?";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Faz um bom tempo que não via isso...";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "...";
+			next;
+			delitem 6004,1;
+			delitem 2256,1; 
+			delitem 7799,30; 
+			delitem 7798,50; 
+			set zeny,zeny-990000;
+			completequest 3043;
+			set AE_CMistico, 0;
+			getitem 5518,1;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Está feito, você deve estar empolgado, eu entendo.";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Eu não aceito pedidos ou encomendas, então, aproveite essa raridade!";
+			close;
+		}
+		else {
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Provávelmente você não entendeu o que eu disse, apenas com isso, não posso fazer nada.";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Vou repetir os materiais para você, vá e consiga todos.";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "• ^0000FFBoneco de Bafomé Maldito^000000 × ^0000FF1^000000";
+			mes "• ^0000FFChifres Majestosos^000000 × ^0000FF1^000000";
+			mes "• ^0000FFCristal da Escuridão^000000 × ^0000FF30^000000";
+			mes "• ^0000FFFragmento da Escuridão^000000 × ^0000FF50^000000";
+			mes "• ^0000FF990^000000.^0000FF000^000000z";
+			close;
+		}
+	}
+	if (countitem(6004) > 0){
+		next;
+		
+		switch(select("• Sobre o ^0000FFBoneco Maldito de Bafomé^000000.:• Cancelar")) {
+		case 1:
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "O que? O que você disse?";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Como? Você conseguiu um ^0000FFBoneco de Bafomé Maldito^000000? Você é mais forte do que eu imaginava...";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Tudo bem, vou te ajudar.";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Se você deseja desse boneco outro par de ^0000FFChifres Místicos de Bafomé^000000, eu posso fazê-lo.";
+			next;
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Vou te dizer os materiais novamente, você deseja mesmo fazer?";
+			next;
+			switch(select("• Sim:• Não")) {
+			case 1:
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "Isso, homens sábios sabem aproveitar as oportunidades! Deixe-me listar os materiai que preciso...";
+				next;
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "• ^0000FFBoneco de Bafomé Maldito^000000 × ^0000FF1^000000";
+				mes "• ^0000FFChifres Majestosos^000000 × ^0000FF1^000000";
+				mes "• ^0000FFCristal da Escuridão^000000 × ^0000FF30^000000";
+				mes "• ^0000FFFragmento da Escuridão^000000 × 50^000000";
+				mes "• ^0000FF990^000000.^0000FF000^000000z";
+				next;
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "Você pode conseguir os ^0000FFChifres Majestosos^000000 do ^0000FFBafomé^000000 mais fraco do ^0000FFLabirinto da Floresta^000000 e os ^0000FFCristais^000000 e ^0000FFFragmentos da Escuridão^000000, derrotando as incarnações do ^0000FFimperador Morroc^000000.";
+				next;
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "Tenho certeza que conseguirá esses materiais, afinal, você selou o ^0000FFBafomé^000000 real, não é mesmo?";
+				setquest 3043;
+				set AE_CMistico,1;
+				close;
+				
+			case 2:
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "Oh...";
+				mes "Se você pensa que pode ficar com esse boneco...";
+				next;
+				mes "^0000FF[Rust Blackhand]^000000";
+				mes "Não tenho nenhuma responsabilidade quanto o que isso pode causar na sua vida..";
+				close;
+			}
+		case 2:
+			mes "^0000FF[Rust Blackhand]^000000";
+			mes "Mas que garot"+((Sex)?"o":"a")+"petulante...";
+			close;
+		}
+	}
+	close;
+}

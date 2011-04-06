@@ -1,0 +1,111 @@
+prontera,146,173,5	script	May, Poring Verdadeiro	408,{
+		mes "^FF0000[May]^000000";
+		mes "Olá, "+strcharinfo(0)+" em que posso te ajudar?";
+		next;
+		switch(select("• Participar","• Informações","• Cancelar")){
+			case 1:
+				if(!.poringcatch){
+					mes "^FF0000[May]^000000";
+					mes "A ^0000FFCaça^000000 ao ^0000FFPoring Verdadeiro^000000 não está ocorrendo agora.";
+					close;
+				}
+				mes "^FF0000[May]^000000";
+				mes "Boa sorte e que vença o melhor!";
+				next;
+
+				warp "poring_c01", 100, 100;
+				end;
+
+			case 2:
+				mes "^FF0000[May]^000000";
+				mes "Serão invocados ^0000FF100 Porings^000000 em uma arena, todos, com exceção de ^0000FF1^000000 são falsos e têm nomes diferentes. Ganha aquele que conseguir achar o ^0000FFPoring^000000 verdadeiro antes que o tempo, ^0000FF10^000000 minutos, acabe.";
+				next;
+				
+				mes "^FF0000[May]^000000";
+				mes "Os horários atualmente são:";
+				mes "• ^0000FF01^000000:^0000FF00^000000          • ^0000FF04^000000:^0000FF00^000000";
+				mes "• ^0000FF07^000000:^0000FF00^000000          • ^0000FF10^000000:^0000FF00^000000";
+				mes "• ^0000FF13^000000:^0000FF00^000000          • ^0000FF16^000000:^0000FF00^000000";
+				mes "• ^0000FF19^000000:^0000FF00^000000          • ^0000FF22^000000:^0000FF00^000000";
+				close;
+				
+			case 3:
+				close;
+		}
+
+		OnClock0100: callsub OnEventStart;
+		OnClock0400: callsub OnEventStart;
+		Onclock0700: callsub OnEventStart;
+		Onclock1000: callsub OnEventStart;
+		OnClock1300: callsub OnEventStart;
+		OnClock1600: callsub OnEventStart;
+		OnClock1900: callsub OnEventStart;
+		OnClock2200: callsub OnEventStart;
+
+		OnEventStart:
+			announce "May: A Caça ao Poring Verdadeiro está aberta! Me procurem em Prontera para participar!",0;
+			npctalk "Venham participar da Caça ao Poring Verdadeiro comigo!";
+			initnpctimer;
+			monster "poring_c01",0,0,"Poring",2501,1,strnpcinfo(0)+"::OnMobKilled";
+			monster "poring_c01",0,0,"Pouring",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Proing",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Poirng",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Poing",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Porimg",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Porinq",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Por|ng",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Por1ng",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Porong",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"P0ring",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"P@ring",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Porng",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Porning",2501,25,strnpcinfo(0)+"::OnWrongKilled";
+			set .poringcatch,1;
+			end;
+			return;
+
+		OnTimer600000:
+			stopnpctimer;
+			announce "May: Tempo esgotado! Boa sorte em uma próxima vez!",0;
+			set .poringcatch,0;
+			killmonsterall "poring_c01";
+			mapwarp "poring_c01","prontera",142,170;
+			end;
+
+		OnMobKilled:
+			stopnpctimer;
+			announce "May: "+strcharinfo(0)+" encontrou o Poring Verdadeiro!",0;
+			dispbottom "Parabéns! Você encontrou o Poring Verdadeiro!";
+			set @poringverd, rand(1,100);
+			if(@poringverd == 1) getitem 20147,1;
+			if(@poringverd >= 2 && @poringverd <= 9) getitem 12210,1;
+			if(@poringverd >= 10 && @poringverd <= 29) getitem 12208,1;
+			if(@poringverd >= 30 && @poringverd <= 55) getitem 20006,1;
+			if(@poringverd >= 56 && @poringverd <= 100) getitem 607,10;
+			set #AE_EvtPt, #AE_EvtPt+15;
+			dispbottom "[Poring Verdadeiro]";
+			dispbottom "- Você adquiriu 15 Pontos de Evento."; 
+			dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+			killmonsterall "poring_c01";
+			set .poringcatch,0;
+			mapwarp "poring_c01","prontera",142,170;
+			end;
+
+		OnWrongKilled:
+			dispbottom "Você errou!";
+			warp "prontera", 150, 150;
+			end;
+
+		OnInit:
+			setcell "poring_c01",100,111,101,110,cell_walkable,0;
+			setcell "poring_c01",106,111,107,110,cell_walkable,0;
+			end;
+}
+
+poring_c01	mapflag	nobranch
+poring_c01	mapflag	noicewall
+poring_c01	mapflag	nomemo
+poring_c01	mapflag	noreturn
+poring_c01	mapflag	pvp	off
+poring_c01	mapflag	noskill
+poring_c01	mapflag	nosave

@@ -1,0 +1,760 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Culte de Danifae
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = The Worship of Danifae: Part One
+// 2 = The Worship of Danifae: Part Two
+//
+//_________________________________________________________________
+//___________________Le Culte de Danifae (Part. 1)_________________
+//_________________________________________________________________
+
+ars_in01,76,142,4	script	Julien l'Apostat#ep7	932,{
+
+set @name$,"Julien l'Apostat";
+
+if (EP7_BANDIT <= 50)  goto nondebloquee;
+
+if (EP7_DANIFAE == 0)  goto sub1;
+if (EP7_DANIFAE <= 3)  goto sub2;
+if (EP7_DANIFAE == 4)  goto sub3;
+if (EP7_DANIFAE == 5)  goto sub4;
+if (EP7_DANIFAE == 6)  goto sub5;
+if (EP7_DANIFAE <= 9)  goto sub6;
+if (EP7_DANIFAE >= 10)  goto sub7;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "No, I'm not a priest of Tyr, you are here in an ecumenical temple,";
+	mes "much of the deities of Arsinoe are represented here. Myself, I offer to the cult of Danifae.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "But we have a huge problems right now, the triplets of Danifae, who are her children and the guardians of the temples";
+	mes "are no longer helping the faithful members of our church!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Even our Goddess, remains silent to our pleas, we no longer feel her presence among us ...";
+	mes "No believer can no longer communicate or visit the major temples, namely those filled by the grace of Triplets of Danifae.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Our followers are not turned to the arts warriors, but by the contemplation, if you are willing to help us, we would be delighted because we pray beautiful person no longer meets our demands.";
+	mes "Our church would be delighted if you will take some of your time to search for our Goddess ... We must first look in the temples in Arsinoe, there are three temples, one for each of the triplets, the faithful ones will guide you through the path. ";
+	close2;
+	setquest 70320;
+	set EP7_DANIFAE,1;
+	end;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "But we have a huge problem right now, the triplets of Danifae, who are his children and the guardians of the temples";
+	mes "no longer leave the faithful receive communion in the churches!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "She even our Goddess, remains silent to our pleas, we no longer feel her presence among us ...";
+	mes "No believer can no longer communicate or visit the major temples, namely those filled by the grace of Triplets of Danifae.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Our followers are not turned to the arts warriors, but by the contemplation, if you are willing to help us, we would be delighted because we pray beautiful person no longer meets our demands.";
+	mes "Our church would be delighted if you deign to take your time to search our Goddess ... We must first seek the temples in Arsinoe, they are three, one for each of the triplets, the faithful will guide you through the path. ";
+	close;
+	
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I already received a report on the situation, and to be honest with you, it raises more problems than it solves them.";
+	mes "I see you carry the Soul of Calliope, unfortunately we don't know what to do without Danifae to help us, I think we should look for the temples of his two other daughters ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately, our worship is very special and it would be perjury that give you an indication of our secret temples, very few people are aware of their existence, let alone their location.";
+	mes "I'll wait for you, please, we found for the other two souls, they are located in Arsinoe, meanwhile, I'll inquire at our main temple in the city of Arsinoe. ";
+	close2;
+	set EP7_DANIFAE,5;
+	end;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "So you have these souls for me?";
+	next;
+	menu "Yes",submenu1,"No, what sould I do ?",submenu2,"Cancel",-;
+
+	close;
+
+	submenu1:
+
+		mes "[" + @name$ + "]"; 
+		mes "Let's see this:";
+		next;
+		if(countitem(29003) < 1) goto submenu2;
+		if(countitem(29004) < 1) goto submenu2;
+		if(countitem(29005) < 1) goto submenu2;
+		mes "[" + @name$ + "]"; 
+		mes "Well now, this is already fact, I received news of the prelates of our faith, they are currently considering various options to find Danifae.";
+		mes "We need you to go to our temple in the capital, you will be there and you'll receive more information about our worship.";
+		close2;
+		delitem 29003,1;
+		delitem 29004,1;
+		delitem 29005,1;
+		getitem $ep7_Tcoins,$ep7silvercoinnb[4];
+		changequest 70320,70321;
+		set EP7_DANIFAE,6;
+		end;
+
+sub5:
+		mes "[" + @name$ + "]"; 
+		mes "Well now, this is already fact, I received news of the prelates of our faith, they are currently considering various options to find Danifae.";
+		mes "We need you to go to our temple in the capital, you will be there and you'll receive more information about our worship.";
+		close;
+		
+sub6:
+		mes "[" + @name$ + "]"; 
+		mes "I can't unfortunately go with you, but our Prophet's visit a cave near Lake Crystalmir ...";
+		mes "At least there I already mentioned this retreat in the past ...";
+		close;
+
+sub7:
+		mes "[" + @name$ + "]"; 
+		mes "The Return of our goddess is a great relief for us all! Now we must mobilize our forces to locate those Magicians.";
+		close;
+
+nondebloquee:
+
+	mes "[" + @name$ + "]"; 
+	mes "No, I'm not a priest of Tyr, you are here in an ecumenical temple,";
+	mes "much of the deities of Arsinoe are represented here. Myself, I officy to the cult of Danifae.";
+	close;
+
+submenu2:
+
+	mes "[" + @name$ + "]"; 
+	mes "You must bring me the souls of the triplets of Danifae, each has a secret temple in Arsinoe.";
+	mes "So, I need those Euterpe, Urania and Calliope, once they are together, we see with our temple in the capital, Arsinoe.";
+	close;
+
+}
+
+//===============================================================================
+
+ars_fild07,147,95,4	script	Prêtre de Danifae#ep7	60,{
+
+set @name$,"Prêtre de Danifae";
+
+if (EP7_DANIFAE == 0)  goto sub1;
+if (EP7_DANIFAE == 1)  goto sub2;
+if (EP7_DANIFAE == 2)  goto sub3;
+if (EP7_DANIFAE == 3)  goto sub4;
+if (EP7_DANIFAE == 4)  goto sub5;
+if (EP7_DANIFAE >= 5)  goto sub6;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "No, I can not let you enter this cave, I can let you run your loss!";
+	mes "This is a cave temple dedicated to Goddess our Danifae.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "No, I can not let you enter this cave, I can let you run your loss!";
+	mes "This is a cave temple dedicated to Goddess our Danifae.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you come on behalf of Julian the Apostate!";
+	mes "So you're aware of the disappearance of our divinity, and thus the transformation of triplets!";
+	mes "We do not know of anything that could happened, but this temple, one of Calliope has solved completely invaded by Demons ... The evil and powerful forces are behind this phenomena, we do not yet know what happened, but nevertheless, we will fight and help our Goddess! ";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Go into the temple, if you're brave enough, but I must encourage you to greater caution, if you find something, comes to see me because we're struggling to understand the situation ...";
+	close2;
+ 	set EP7_DANIFAE,2;
+	end;
+	
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "No, I can not let you enter this cave, I can let you run your loss!";
+	mes "This is a cave temple dedicated to Goddess our Danifae.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you come on behalf of Julian the Apostate!";
+	mes "So you're aware of the disappearance of our divinity, and thus the transformation of triplets!";
+	mes "We do not know of anything that could happened, but this temple, one of Calliope has solved completely invaded by Demons ... The evil and powerful forces are behind this phenomena, we do not yet know what happened, but nevertheless, we will fight and help our Goddess! ";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Go into the temple, if you're brave enough, but I must tell you to be cautious, if you find something, comes to see me because we're struggling to understand the situation ...";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "What a catastrophe, this abomination was Calliope! She is a daughter of Danifae, how is it that his mother disappears without warning and she is transformed into such a monstrosity! Besides our temple defiled by the Army of Shadows !";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "There are two other temples dedicated to Danifae in Arsinoe, I'm not talking of temples Euhéméria nor the city of Arsinoe, but the temples attached to girls Danifae in places where they have decided to make their homes. ";
+	mes "But before you embark on such research, I advise you to go ask for some explanations to Julian the Apostate in his temple Euhéméria.";
+	close2;
+	set EP7_DANIFAE,4;
+	end;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "What a catastrophe, this abomination was Calliope! She is one of the daughters of Danifae, how is it that his mother disappears without warning and she is transformed into such a monstrosity! Besides our temple defiled by the Army of Shadows !";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "There are two other temples dedicated to Danifae in Arsinoe, I'm not talking of temples Euhéméria nor the city of Arsinoe, but the temples attached to girls Danifae in places where they have decided establish their homes. ";
+	mes "But before you embark on such research, I advise you to go ask for some explanations to Julian the Apostate in his temple Euhéméria.";	
+	close;
+
+sub6:
+	mes "[" + @name$ + "]"; 
+	mes "I am wholeheartedly with you that our prayers will accompany you along your travels!";
+	close;
+	
+}
+
+//===============================================================================
+
+ars_fild07,117,112,0	script	#warpep7dan1	45,1,1,{
+	
+	if (EP7_DANIFAE <= 1)  goto sub1;
+	if (EP7_DANIFAE >= 2)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "Priest of Danifae beckons you must don't enter the cave.";
+		close;
+
+	sub2:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "After a short tunnel, you'll see a large cave with skylight crystals from the ceiling of the cave.";
+		close2;
+		warp "ars_dun03",23,275;
+		end;
+}
+//===============================================================================
+coppa,286,292,0	script	#warpep7dan2	45,1,1,{
+	
+	if (EP7_DANIFAE <= 4)  goto sub1;
+	if (EP7_DANIFAE >= 5)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't enter in the cave";
+		close;
+
+	sub2:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "The temple is located in the hollow of a large root from a tree in the forest Kiman Fares, light from fungi phosporescents.";
+		close2;
+		warp "ars_dun03",241,27;
+		end;
+}
+//===============================================================================
+ars_in01,169,207,0	script	#warpep7dan3	111,1,1,{
+	
+	if (EP7_DANIFAE <= 4)  goto sub1;
+	if (EP7_DANIFAE >= 5)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't venture into the cave, it is too dark.";
+		close;
+
+	sub2:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "After a short tunnel, you see a large cave with skylight crystals from the ceiling of the cave.";
+		close2;
+		warp "ars_dun03",68,24;
+		end;
+}
+
+//===============================================================================
+
+-	script	EP7_Danifae	-1,{
+
+OnInit:
+	disablenpc "#warpep7danrec1";
+	disablenpc "#warpep7danrec2";
+	disablenpc "#warpep7danrec3";
+	monster "ars_dun03",89,199,"Calliope",3843,1,"EP7_Danifae::OnBossKill1";
+	monster "ars_dun03",204,268,"Euterpe",3844,1,"EP7_Danifae::OnBossKill2";
+	monster "ars_dun03",146,60,"Uranie",3845,1,"EP7_Danifae::OnBossKill3";	
+	end;
+	
+OnBossKill1:
+	
+	mapannounce "ars_dun03","Danifae's Priest : Take the Portal and come see me! !",0,0x66CC33;
+	enablenpc "#warpep7danrec1";
+	sleep2 120000;	
+	disablenpc "#warpep7danrec1";
+	monster "ars_dun03",89,199,"Calliope",3843,1,"EP7_Danifae::OnBossKill1";
+	end;
+
+OnBossKill2:
+	
+	mapannounce "ars_dun03","You just have eliminate Euterpe, take the Portal!",0,0x66CC33;
+	enablenpc "#warpep7danrec2";
+	sleep2 60000;	
+	disablenpc "#warpep7danrec2";
+	monster "ars_dun03",204,268,"Euterpe",3844,1,"EP7_Danifae::OnBossKill2";
+	end;
+
+OnBossKill3:
+	
+	mapannounce "ars_dun03","You just have eliminate Euterpe, take the Portal!",0,0x66CC33;
+	enablenpc "#warpep7danrec3";
+	sleep2 60000;	
+	disablenpc "#warpep7danrec3";
+	monster "ars_dun03",146,60,"Uranie",3845,1,"EP7_Danifae::OnBossKill3";	
+	end;
+}
+//===============================================================================
+
+ars_dun03,92,193,0	script	#warpep7danrec1	45,1,1,{
+	
+	if (EP7_DANIFAE <= 1)  goto sub1;
+	if (EP7_DANIFAE == 2)  goto sub2;
+	if (EP7_DANIFAE >= 3)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level of quest.";
+		close2;
+		warp "ars_fild07",117,117;
+		end;
+
+
+	sub2:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You just get the soul of Calliope.";
+		close2;
+		getitem 29003,1;
+		set EP7_DANIFAE,3;
+		warp "ars_fild07",117,117;
+		end;
+
+	sub3:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You've already received the Soul of Calliope.";
+		close2;
+		warp "ars_fild07",117,117;
+		end;
+}
+//===============================================================================
+
+ars_dun03,242,228,0	script	#warpep7danrec2	45,1,1,{
+	
+	if (EP7_DANIFAE <= 4)  goto sub1;
+	if (EP7_DANIFAE == 5)  goto sub2;
+	if (EP7_DANIFAE >= 6)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level of quest.";
+		close2;
+		warp "coppa",290,292;
+		end;
+
+
+	sub2:
+		if(countitem(29004) >= 1) goto sub3;
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You just got the soul of Euterpe.";
+		close2;
+		getitem 29004,1; //Euterpe
+		warp "coppa",290,292;
+		end;
+
+	sub3:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You've already received the Soul of Euterpe.";
+		close2;
+		warp "coppa",290,292;
+		end;
+}
+
+//===============================================================================
+
+ars_dun03,68,25,0	script	#warpep7danrec3	45,1,1,{
+	
+	if (EP7_DANIFAE <= 4)  goto sub1;
+	if (EP7_DANIFAE == 5)  goto sub2;
+	if (EP7_DANIFAE >= 6)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level of quest.";
+		close2;
+		warp "ars_in01",166,207;
+		end;
+
+
+	sub2:
+
+		if(countitem(29005) >= 1) goto sub3;
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You just got the soul of Uranie.";
+		close2;
+		getitem 29005,1; //Uranie
+		warp "ars_in01",166,207;
+		end;
+
+	sub3:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You've already received the Soul of Uranie.";
+		close2;
+		warp "ars_in01",166,207;
+		end;
+}
+
+
+//_________________________________________________________________
+//___________________Le Culte de Danifae (Part. 2)_________________
+//_________________________________________________________________
+
+ars_in02,120,93,4	script	Prélat Anthiole#ep7	921,{
+
+set @name$,"Prélat Anthiole";
+
+if (EP7_DANIFAE <= 5)  goto sub1;
+if (EP7_DANIFAE == 6)  goto sub2;
+if (EP7_DANIFAE <= 9)  goto sub3;
+if (EP7_DANIFAE <= 10)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I am a servant of Danifae I look after our temple in the absence of our prophet, Tanzgue.";
+	mes "He went in search of our divinity has not been responding to our prayers, but this does not look like a layman like you ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Although you can always please me by asking Julian the Apostate, who is on a mission to Euhéméria to return back with the information it has collected.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I am a servant of Danifae I look after our temple in the absence of our prophet, Tanzgue.";
+	mes "He went in search of our divinity that is not responding to our prayers, but this does not look a layman like you ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you have news about Julian Aspotat!?";
+	mes "Tell me what kind of information, he has gathered ?";
+	next;
+	mes "[" + @name$ + "]";
+	mes "He dared to let an outsider in our sacred caves! Vingts Gods! He will be entitled to questioning!";
+	mes "But we're going to spend good time appeasing the souls of children Danifae, but their mother is going to be difficult.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "I think our order can trust you, you've already demonstrated your commitment to our worship battling and risking your life against our enemies.";
+	mes "Our Prophet Tanzgue has a very special divine connection, it is the confidant of the goddess, a strong bond between them.";
+	mes "He's has been gone, a few days, answering an irresistible call of the goddess.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately, we find at any price, he holds the key to this mystery, but how to find it ...";
+	mes "The Magus Gawelle owns a shop in Mount Bacchias, she saw him heading toward the mountains, to our knowledge this is the last person to have crossed.";
+	mes "Finding her, is our last hope!";
+	close2;
+	changequest 70321,70322;
+	set EP7_DANIFAE,7;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]";
+	mes "I think our order can trust you, you've already demonstrated your commitment to our worship battling and risking your life against our enemies.";
+	mes "Our Prophet Tanzgue a very special divine connection, it is the confidant of the goddess, a strong bond between them.";
+	mes "He's has been gone , a few days, answering an irresistible call of the goddess.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately, we find at any price, he holds the key to this mystery, but how to find it ...";
+	mes "The Magus Gawelle owns a shop in Mount Bacchias, she saw him heading toward the mountains, to our knowledge this is the last person to have crossed.";
+	mes "Finding her, is our last hope!";
+	close;
+
+sub4:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you found Tanzgue, but also our goddess, we honor you brave adventurer!";
+	mes "Now, we are actively seeking those responsible for this wicked act, to purge Arsinoé!";
+	close;
+
+}
+
+//Passage vers Arsinoé/service/Le batelier de Crystalmir (Variable à 8)
+
+
+//===============================================================================
+
+ars_fild20,38,82,4	script	Prophète Tanzgue#ep7	805,{
+
+set @name$,"Prophète Tanzgue";
+
+if (EP7_DANIFAE <= 7)  goto sub1;
+if (EP7_DANIFAE == 8)  goto sub2;
+if (EP7_DANIFAE == 9)  goto sub3;
+if (EP7_DANIFAE >= 10)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I should not find you here, this is not a place for a heathen like you.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I can't go, I must console Danifae is my main vocation.";
+	mes "Anthiole wants to see me? Oh, how he learned about the souls of children Danifae?";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "You have them!";
+	mes "That changes everything! Danifae withdrew from the world because her children has been kidnapped!";
+	mes "Let him tell the story, I know she's here, I feel her presence and immense sadness.";
+	mes "I dared not cross the portal without an invitation from him, but go ahead and tell him the good news!"	;
+	close2;
+	changequest 70322,70323;
+	set EP7_DANIFAE,9;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I can't go, I must console Danifae is my main vocation.";
+	mes "Anthiole wants to see me? Oh, how he learned for the souls of children Danifae?";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "You have them!";
+	mes "That changes everything! Danifae withdrew from the world because her children has been kidnapped!";
+	mes "Let him tell the story, I know she's here, I feel her presence and immense sadness.";
+	mes "I dared not cross the portal without an invitation from him, but go ahead and tell him the good news!"	;
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Nice victory, but new issues arise.";
+	close;
+}
+
+
+
+//===============================================================================
+
+ars_fild20,52,76,0	script	#warpep7dun08a	45,1,1,{
+	
+	if (EP7_DANIFAE <= 8)  goto sub1;
+	if (EP7_DANIFAE >= 9)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "A force field blocks this entrance.";
+		close;
+
+
+	sub2:
+
+		warp "ars_dun08",71,26;
+		end;
+
+}
+
+//===============================================================================
+
+ars_dun08,76,28,4	script	Prophète Tanzgue#ep72	805,{
+
+set @name$,"Prophète Tanzgue";
+
+if (EP7_DANIFAE <= 8)  goto sub1;
+if (EP7_DANIFAE == 9)  goto sub2;
+if (EP7_DANIFAE >= 10)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Leave this sanctuary right now!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Something wrong, we should move a bit ... The altar of the Goddess is a little further ...";
+	mes "I feel bad, this is not the usual peaceful atmosphere in our temple ...";
+	close;
+
+sub3:
+
+	mes "[" + @name$ + "]"; 
+	mes "We can go inside in peace now.";
+	close;
+}
+
+//===============================================================================
+
+-	script	EP7_Danifae2	-1,{
+
+OnInit:
+
+	disablenpc "#warpep7dun08b";
+	disablenpc "Déesse Danifae#ep7";
+	disablenpc "Prophète Tanzgue#ep73";
+	monster "ars_dun08",72,114,"Gayzoir",3855,1,"EP7_Danifae2::OnBossKill1";	
+	end;
+	
+OnBossKill1:
+	
+	//Cinématique
+	mapannounce "ars_dun08","Prophet Tanzgue : Damn, that was the devil!?!",0,0x66CC33;
+	
+	enablenpc "Prophète Tanzgue#ep73";
+	enablenpc "Déesse Danifae#ep7";
+	sleep2 2000;
+	donpcevent "Prophète Tanzgue#ep73::OnTalk1";
+	sleep2 3000;	
+	donpcevent "Déesse Danifae#ep7::OnTalk1";
+	sleep2 3000;
+	donpcevent "Prophète Tanzgue#ep73::OnTalk2";
+	sleep2 4000;
+	donpcevent "Déesse Danifae#ep7::OnTalk2";
+	sleep2 4000;
+	donpcevent "Déesse Danifae#ep7::OnTalk3";
+	sleep2 4000;
+	donpcevent "Prophète Tanzgue#ep73::OnTalk3";
+	sleep2 4000;
+	donpcevent "Déesse Danifae#ep7::OnTalk4";
+	sleep2 4000;
+	donpcevent "Prophète Tanzgue#ep73::OnTalk4";
+	sleep2 4000;
+	donpcevent "Déesse Danifae#ep7::OnTalk5";
+	sleep2 3000;
+	donpcevent "Déesse Danifae#ep7::OnTalk6";
+
+
+
+	enablenpc "#warpep7dun08b";
+	sleep2 120000;	
+	//Récompense
+	disablenpc "#warpep7dun08b";
+	disablenpc "Déesse Danifae#ep7";
+	disablenpc "Prophète Tanzgue#ep73";
+	monster "ars_dun08",72,114,"Gayzoir",3855,1,"EP7_Danifae2::OnBossKill1";
+	end;
+
+}
+
+//========================================================================================================
+
+ars_dun08,69,113,4	script	Prophète Tanzgue#ep73	805,{
+
+set @name$,"Prophète Tanzgue";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet ...";
+	close;
+
+OnTalk1:
+
+	npctalk "My Goddess I'm here, I'm the bearer of great news, but what happens there exactly?";
+	end;
+
+OnTalk2:
+
+	npctalk "Who has dared to make this insult to Her Goddess?";
+	end;
+
+OnTalk3:
+
+	npctalk "Don't worry for your children, these young warriors have freed their souls!";
+	end;
+
+OnTalk4:
+
+	npctalk "I'm devoted to my goddess ...";
+	end;
+}
+//========================================================================================================
+
+ars_dun08,75,112,4	script	Déesse Danifae#ep7	485,{
+
+set @name$,"Déesse Danifae";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet ...";
+	close;
+
+OnTalk1:
+
+	npctalk "My children, my dears! They came to take them!";
+	end;
+
+OnTalk2:
+
+	npctalk "I received threats Gayzoir, that old demon came out of hell!";
+	end;
+
+OnTalk3:
+
+	npctalk "It's the works of wizards, they didn't want me to intervene in the world of men, and the children were hostages!";
+	end;
+
+OnTalk4:
+
+	npctalk "Thank you, I'll be back in human affairs, Tanzgue my favorite, we have work to do!";
+	end;
+
+OnTalk5:
+
+	npctalk "I'll take my place in heaven, and fight this looming threat!";
+	end;
+
+OnTalk6:
+
+	npctalk "Adventurers, thank you for your help, take this portal, and you will leave the Temple of Retirement.";
+	end;
+}
+
+//===============================================================================
+
+ars_dun08,72,108,0	script	#warpep7dun08b	45,1,1,{
+	
+	if (EP7_DANIFAE <= 8)  goto sub1;
+	if (EP7_DANIFAE == 9)  goto sub2;
+	if (EP7_DANIFAE >= 10)  goto sub3;
+	
+	sub1:		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level of quest.";
+		close;
+
+	sub2:
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You got your reward.";
+		close2;
+		set EP7_DANIFAE,10;
+		changequest 70323,70324;
+		getitem $ep7recompense[16],$ep7recompensenb[16];
+		warp "ars_fild20",144,146;
+		end;
+	sub3:
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You get food.";
+		close2;
+		getitem $ep7foodid[4],$ep7foodnb[2];
+		getitem $ep7foodid[5],$ep7foodnb[2];
+		getitem $ep7foodid[6],$ep7foodnb[2];
+		warp "ars_fild20",144,146;
+		end;
+}
+
+
+
+
+
+
+

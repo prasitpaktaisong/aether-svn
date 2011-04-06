@@ -1,0 +1,570 @@
+izlude,137,158,3	script	Marie Mellody#izl	877,{
+	if(AE_Five == 7){
+		if((countitem(7198) > 199) && (countitem(520) > 199) && (countitem(7298) > 199) && (countitem(706) > 4) && (countitem(4195) > 0)){
+			mes "^0000FF[Marie]^000000";
+			mes "Muito bem! Completou o ^0000FFDesafio de Miya^000000!";
+			next;
+			
+			delitem 7198,200;
+			delitem 520,200;
+			delitem 7298,200;
+			delitem 706,5;
+			delitem 4195,1;
+			mes "^FF0000[Marie]^000000";
+			mes "Agora, pode pegar sua merecida recompensa!";
+			mes "A ^0000FFBoneco de Gato de Folha^000000!";
+			next;
+			
+			getitem 5555,1;
+			mes "^FF0000[Marie]^000000";
+			mes "Até mais ver!";
+			set AE_Five,0;
+			close;
+		}
+		mes "^FF0000[Marie]^000000";
+		mes "Oh, vejo que você está participando dos jogos de minha irmã, ^0000FFMiya^000000.";
+		next;
+
+		mes "^FF0000[Marie]^000000";
+		mes "Para ganhar sua recompensa, deve me trazer:";
+		mes "• ^0000FFFolha Gigante^000000 × ^0000FF200^000000";
+		mes "• ^0000FFFolha de Hinalle^000000 × ^0000FF200^000000";
+		mes "• ^0000FFFolha de Figo^000000 × ^0000FF200^000000";
+		mes "• ^0000FFTrevo de Quatro Folhas^000000 × ^0000FF5^000000";
+		mes "• ^0000FFCarta Gato de Folha^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^FF0000[Marie]^000000";
+		mes "Boa sorte!";
+		close;
+	}
+	mes "^FF0000[Marie]^000000";
+	mes "Não importa o quanto o tempo passe, ^0000FFIzlude^000000 nunca muda...";
+	close;
+}
+
+alberta,49,251,3	script	Garoll Mellody#alb	713,{
+	if(AE_Five == 6){
+		if((countitem(544) > 199) && (countitem(1023) > 399) && (countitem(720) > 49)){
+			mes "^0000FF[Garoll]^000000";
+			mes "Muito bem! Completou o ^0000FFDesafio de Miya^000000!";
+			next;
+			
+			delitem 544,200;
+			delitem 1023,400;
+			delitem 720,49;
+			mes "^0000FF[Garoll]^000000";
+			mes "Agora, pode pegar sua merecida recompensa!";
+			mes "A ^0000FFDisfarce de Peixe^000000!";
+			next;
+			
+			getitem 5380,1;
+			mes "^0000FF[Garoll]^000000";
+			mes "Até mais ver!";
+			set AE_Five,0;
+			close;
+		}
+		mes "^0000FF[Garoll]^000000";
+		mes "Oh, vejo que você está participando dos jogos de minha irmã, ^0000FFMiya^000000.";
+		next;
+
+		mes "^0000FF[Garoll]^000000";
+		mes "Para ganhar sua recompensa, deve me trazer:";
+		mes "• ^0000FFPeixe Cru^000000 × ^0000FF200^000000";
+		mes "• ^0000FFCauda de Peixe^000000 × ^0000FF400^000000";
+		mes "• ^0000FFAquamarina^000000 × ^0000FF50^000000";
+		next;
+		
+		mes "^0000FF[Garoll]^000000";
+		mes "Boa sorte!";
+		close;
+	}
+	mes "^0000FF[Garoll]^000000";
+	mes "Os ares de ^0000FFAlberta^000000 estão mudando...";
+	close;
+}
+
+morocc,224,84,3	script	Heet Mellody#moc	86,{
+	if(AE_Five == 5){
+		if((countitem(7111) >= 120) && (countitem(7112) >= 100) && (countitem(7151) >= 85) && (countitem(2278) >= 1)){
+			mes "^0000FF[Heet]^000000";
+			mes "Muito bem! Completou o ^0000FFDesafio de Miya^000000!";
+			next;
+			
+			delitem 7111,120;
+			delitem 7112,100;
+			delitem 7151,80;
+			delitem 2278,1;
+			mes "^0000FF[Heet]^000000";
+			mes "Agora, pode pegar sua merecida recompensa!";
+			mes "A ^0000FFMáscara de Saco de Papel^000000!";
+			next;
+			
+			getitem 5410,1;
+			mes "^0000FF[Heet]^000000";
+			mes "Até mais ver!";
+			set AE_Five,0;
+			close;
+		}
+		mes "^0000FF[Heet]^000000";
+		mes "Oh, vejo que você está participando dos jogos de minha irmã, ^0000FFMiya^000000.";
+		next;
+
+		mes "^0000FF[Heet]^000000";
+		mes "Para ganhar sua recompensa, deve me trazer:";
+		mes "• ^0000FFPedaço de Papel^000000 × ^0000FF120^000000";
+		mes "• ^0000FFLâmina de Papel^000000 × ^0000FF100^000000";
+		mes "• ^0000FFPapel Amarelado^000000 × ^0000FF80^000000";
+		mes "• ^0000FFMáscara Feliz^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^0000FF[Heet]^000000";
+		mes "Boa sorte!";
+		close;
+	}
+	mes "^0000FF[Heet]^000000";
+	mes "As areias de ^0000FFMorroc^000000 estão cada vez mais frias, o ^0000FFSol^000000 parece querer abandonar esse lugar.";
+	close;
+}
+
+geffen,103,72,5	script	Allie Mellody#gef	95,{
+	if(AE_Five == 4){
+		if((countitem(2209) > 0) && (countitem(5083) > 0) && (countitem(10015) > 0) && (countitem(2244) > 0)){
+			mes "^FF0000[Allie]^000000";
+			mes "Muito bem! Completou o ^0000FFDesafio de Miya^000000!";
+			next;
+			
+			delitem 2209,1;
+			delitem 5083,1;
+			delitem 10015,1;
+			delitem 2244,1;
+			mes "^FF0000[Allie]^000000";
+			mes "Agora, pode pegar sua merecida recompensa!";
+			mes "A ^0000FFLacinho Meigo^000000!";
+			next;
+			
+			getitem 5140,1;
+			mes "^FF0000[Allie]^000000";
+			mes "Até mais ver!";
+			set AE_Five,0;
+			close;
+		}
+		mes "^FF0000[Allie]^000000";
+		mes "Oh, vejo que você está participando dos jogos de minha irmã, ^0000FFMiya^000000.";
+		next;
+
+		mes "^FF0000[Allie]^000000";
+		mes "Para ganhar sua recompensa, deve me trazer:";
+		mes "• ^0000FFLaço [1]^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Vermelho^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Verde^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Grande^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^FF0000[Allie]^000000";
+		mes "Boa sorte!";
+		close;
+	}
+	mes "^FF0000[Allie]^000000";
+	mes "^0000FFGeffen^00000 é uma cidade muito silenciosa...";
+	close;
+}
+
+zorya,216,155,3	script	Light Mellody#zor	50,{
+	if(AE_Five == 3){
+		if((countitem(738) >= 5) && (countitem(7101) >= 50) && (countitem(7115) >= 50) && (countitem(746) >= 50)){
+			mes "^0000FF[Light]^000000";
+			mes "Muito bem! Completou o ^0000FFDesafio de Miya^000000!";
+			next;
+			
+			delitem 738,5;
+			delitem 7101,50;
+			delitem 7115,50;
+			delitem 746,50;
+			mes "^0000FF[Light]^000000";
+			mes "Agora, pode pegar sua merecida recompensa!";
+			mes "A ^0000FFPlaca de AFK^000000!";
+			next;
+			
+			getitem 5474,1;
+			mes "^0000FF[Light]^000000";
+			mes "Até mais ver!";
+			set AE_Five,0;
+			close;
+		}
+		mes "^0000FF[Light]^000000";
+		mes "Oh, vejo que você está participando dos jogos de minha irmã, ^0000FFMiya^000000.";
+		next;
+
+		mes "^0000FF[Light]^000000";
+		mes "Para ganhar sua recompensa, deve me trazer:";
+		mes "• ^0000FFEstojo de Lápis^000000 × ^0000FF5^000000";
+		mes "• ^0000FFPena de Grand Peco^000000 × ^0000FF50^000000";
+		mes "• ^0000FFPena de Harpia^000000 × ^0000FF50^000000";
+		mes "• ^0000FFBolinha de Gude^000000 × ^0000FF50^000000";
+		next;
+		
+		mes "^0000FF[Light]^000000";
+		mes "Boa sorte!";
+		close;
+	}
+	mes "^0000FF[Light]^000000";
+	mes "A ^0000FFNoite Eterna^000000 em ^0000FFZorya^000000 é realmente algo muito bonito.";
+	close;
+}
+
+prontera,139,178,5	script	Miya Mellody#prt	607,{
+	if(AE_Five == 7){
+		mes "^FF0000[Miya]^000000";
+		mes "Bom, para conseguir um ^0000FFBoneco de Gato de Folha^000000, siga para ^0000FFIzlude^000000 e procure pelo minha pequena irmã, ^0000FFMarie^000000.";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+		mes "• ^0000FFFolha Gigante^000000 × ^0000FF200^000000";
+		mes "• ^0000FFFolha de Hinalle^000000 × ^0000FF200^000000";
+		mes "• ^0000FFFolha de Figo^000000 × ^0000FF200^000000";
+		mes "• ^0000FFTrevo de Quatro Folhas^000000 × ^0000FF5^000000";
+		mes "• ^0000FFCarta Gato de Folha^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "^0000FFMarie^000000 vai estar te esperando.";
+		mes "Até logo!";
+		close;
+	}	
+	if(AE_Five == 6){
+		mes "^FF0000[Miya]^000000";
+		mes "Bom, para conseguir um ^0000FFDisfarce de Peixe^000000, siga para ^0000FFAlberta^000000 e procure pelo meu irmão, ^0000FFGaroll^000000.";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+		mes "• ^0000FFPeixe Cru^000000 × ^0000FF200^000000";
+		mes "• ^0000FFCauda de Peixe^000000 × ^0000FF400^000000";
+		mes "• ^0000FFAquamarina^000000 × ^0000FF50^000000";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "^0000FFGaroll^000000 vai estar te esperando.";
+		mes "Até logo!";
+		close;
+	}
+	if(AE_Five == 5){
+		mes "^FF0000[Miya]^000000";
+		mes "Bom, para conseguir um ^0000FFMáscara de Saco de Papel^000000, siga para ^0000FFMorroc^000000 e procure pelo meu irmão, ^0000FFHeet^000000.";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+		mes "• ^0000FFPedaço de Papel^000000 × ^0000FF120^000000";
+		mes "• ^0000FFLâmina de Papel^000000 × ^0000FF100^000000";
+		mes "• ^0000FFPapel Amarelado^000000 × ^0000FF80^000000";
+		mes "• ^0000FFMáscara Feliz^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "^0000FFHeet^000000 vai estar te esperando.";
+		mes "Até logo!";
+		close;
+	}
+	if(AE_Five == 4){
+		mes "^FF0000[Miya]^000000";
+		mes "Bom, para conseguir um ^0000FFLacinho Meigo^000000, siga para ^0000FFGeffen^000000 e procure pelo minha irmã, ^0000FFAllie^000000.";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "Para que você seja digno de receber sua recompensa, ela pedirá:";
+		mes "• ^0000FFLaço [1]^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Vermelho^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Verde^000000 × ^0000FF1^000000";
+		mes "• ^0000FFLaço Grande^000000 × ^0000FF1^000000";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "^0000FFAllie^000000 vai estar te esperando.";
+		mes "Até logo!";
+		close;
+	}
+	if(AE_Five == 3){
+		mes "^FF0000[Miya]^000000";
+		mes "Bom, para conseguir uma ^0000FFPlaca de AFK^000000, siga para ^0000FFZorya^000000 e procure pelo meu irmão, ^0000FFLight^000000.";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+		mes "• ^0000FFEstojo de Lápis^000000 × ^0000FF5^000000";
+		mes "• ^0000FFPena de Grand Peco^000000 × ^0000FF50^000000";
+		mes "• ^0000FFPena de Harpia^000000 × ^0000FF50^000000";
+		mes "• ^0000FFBolinha de Gude^000000 × ^0000FF50^000000";
+		next;
+		
+		mes "^FF0000[Miya]^000000";
+		mes "^0000FFLight^000000 vai estar te esperando.";
+		mes "Até logo!";
+		close;
+	}
+	if(AE_Five == 2){
+		mes "^FF0000[Miya]^000000";
+		mes "Agora, deixarei você escolher que jogo quer seguir.";
+		mes "Essas são as recompensas:";
+		switch(select("• Placa de AFK","• Lacinho Meigo","• Máscara de Saco de Papel","• Disfarce de Peixe","• Boneco de Gato de Folha","• Cancelar")){
+			case 1:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Bom, para conseguir uma ^0000FFPlaca de AFK^000000, siga para ^0000FFZorya^000000 e procure pelo meu irmão, ^0000FFLight^000000.";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+				mes "• ^0000FFEstojo de Lápis^000000 × ^0000FF5^000000";
+				mes "• ^0000FFPena de Grand Peco^000000 × ^0000FF50^000000";
+				mes "• ^0000FFPena de Harpia^000000 × ^0000FF50^000000";
+				mes "• ^0000FFBolinha de Gude^000000 × ^0000FF50^000000";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "^0000FFLight^000000 vai estar te esperando.";
+				mes "Até logo!";
+				set AE_Five,3;
+				close;
+				
+			case 2:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Bom, para conseguir um ^0000FFLacinho Meigo^000000, siga para ^0000FFGeffen^000000 e procure pelo minha irmã, ^0000FFAllie^000000.";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "Para que você seja digno de receber sua recompensa, ela pedirá:";
+				mes "• ^0000FFLaço [1]^000000 × ^0000FF1^000000";
+				mes "• ^0000FFLaço Vermelho^000000 × ^0000FF1^000000";
+				mes "• ^0000FFLaço Verde^000000 × ^0000FF1^000000";
+				mes "• ^0000FFLaço Grande^000000 × ^0000FF1^000000";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "^0000FFAllie^000000 vai estar te esperando.";
+				mes "Até logo!";
+				set AE_Five,4;
+				close;
+				
+			case 3:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Bom, para conseguir um ^0000FFMáscara de Saco de Papel^000000, siga para ^0000FFMorroc^000000 e procure pelo meu irmão, ^0000FFHeet^000000.";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+				mes "• ^0000FFPedaço de Papel^000000 × ^0000FF250^000000";
+				mes "• ^0000FFLâmina de Papel^000000 × ^0000FF250^000000";
+				mes "• ^0000FFPapel Amarelado^000000 × ^0000FF250^0000000";
+				mes "• ^0000FFMáscara Feliz^000000 × ^0000FF1^000000";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "^0000FFHeet^000000 vai estar te esperando.";
+				mes "Até logo!";
+				set AE_Five,5;
+				close;
+				
+			case 4:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Bom, para conseguir um ^0000FFDisfarce de Peixe^000000, siga para ^0000FFAlberta^000000 e procure pelo meu irmão, ^0000FFGaroll^000000.";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+				mes "• ^0000FFPeixe Cru^000000 × ^0000FF200^000000";
+				mes "• ^0000FFCauda de Peixe^000000 × ^0000FF400^000000";
+				mes "• ^0000FFAquamarina^000000 × ^0000FF50^000000";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "^0000FFHeet^000000 vai estar te esperando.";
+				mes "Até logo!";
+				set AE_Five,6;
+				close;
+		
+			case 5:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Bom, para conseguir um ^0000FFBoneco de Gato de Folha^000000, siga para ^0000FFIzlude^000000 e procure pelo minha pequena irmã, ^0000FFMarie^000000.";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+				mes "• ^0000FFFolha Gigante^000000 × ^0000FF200^000000";
+				mes "• ^0000FFFolha de Hinalle^000000 × ^0000FF200^000000";
+				mes "• ^0000FFFolha de Figo^000000 × ^0000FF200^000000";
+				mes "• ^0000FFTrevo de Quatro Folhas^000000 × ^0000FF5^000000";
+				mes "• ^0000FFCarta Gato de Folha^000000 × ^0000FF1^000000";
+				next;
+				
+				mes "^FF0000[Miya]^000000";
+				mes "^0000FFMarie^000000 vai estar te esperando.";
+				mes "Até logo!";
+				set AE_Five,7;
+				close;
+				
+			case 6:
+				next;
+				mes "^FF0000[Miya]^000000";
+				mes "Me procure quando tiver decidido.";
+				close;
+		}
+	}	
+	if(AE_Five == 1){
+		if(countitem(2626) > 0){
+			mes "^FF0000[Miya]^000000";
+			mes "Uh, você foi muito bem em sua primeira tarefa!";
+			next;
+
+			delitem 2626,1;
+			set AE_Five,2;
+			mes "^FF0000[Miya]^000000";
+			mes "Agora, deixarei você escolher que jogo quer seguir.";
+			mes "Essas são as recompensas:";
+			switch(select("• Placa de AFK","• Lacinho Meigo","• Máscara de Saco de Papel","• Disfarce de Peixe","• Boneco de Gato de Folha","• Cancelar")){
+				case 1:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Bom, para conseguir uma ^0000FFPlaca de AFK^000000, siga para ^0000FFZorya^000000 e procure pelo meu irmão, ^0000FFLight^000000.";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+					mes "• ^0000FFEstojo de Lápis^000000 × ^0000FF100^000000";
+					mes "• ^0000FFPena de Grand Peco^000000 × ^0000FF100^000000";
+					mes "• ^0000FFPena de Harpia^000000 × ^0000FF100^000000";
+					mes "• ^0000FFBolinha de Gude^000000 × ^0000FF100^000000";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "^0000FFLight^000000 vai estar te esperando.";
+					mes "Até logo!";
+					set AE_Five,3;
+					close;
+					
+				case 2:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Bom, para conseguir um ^0000FFLacinho Meigo^000000, siga para ^0000FFGeffen^000000 e procure pelo minha irmã, ^0000FFAllie^000000.";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "Para que você seja digno de receber sua recompensa, ela pedirá:";
+					mes "• ^0000FFLaço [1]^000000 × ^0000FF1^000000";
+					mes "• ^0000FFLaço Vermelho^000000 × ^0000FF1^000000";
+					mes "• ^0000FFLaço Verde^000000 × ^0000FF1^000000";
+					mes "• ^0000FFLaço Grande^000000 × ^0000FF1^000000";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "^0000FFAllie^000000 vai estar te esperando.";
+					mes "Até logo!";
+					set AE_Five,4;
+					close;
+					
+				case 3:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Bom, para conseguir um ^0000FFMáscara de Saco de Papel^000000, siga para ^0000FFMorroc^000000 e procure pelo meu irmão, ^0000FFHeet^000000.";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+					mes "• ^0000FFPedaço de Papel^000000 × ^0000FF250^000000";
+					mes "• ^0000FFLâmina de Papel^000000 × ^0000FF250^000000";
+					mes "• ^0000FFPapel Amarelado^000000 × ^0000FF250^000000";
+					mes "• ^0000FFMáscara Feliz^000000 × ^0000FF1^000000";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "^0000FFHeet^000000 vai estar te esperando.";
+					mes "Até logo!";
+					set AE_Five,5;
+					close;
+					
+				case 4:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Bom, para conseguir um ^0000FFDisfarce de Peixe^000000, siga para ^0000FFAlberta^000000 e procure pelo meu irmão, ^0000FFGaroll^000000.";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+					mes "• ^0000FFPeixe Cru^000000 × ^0000FF200^000000";
+					mes "• ^0000FFCauda de Peixe^000000 × ^0000FF400^000000";
+					mes "• ^0000FFAquamarina^000000 × ^0000FF50^000000";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "^0000FFHeet^000000 vai estar te esperando.";
+					mes "Até logo!";
+					set AE_Five,6;
+					close;
+			
+				case 5:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Bom, para conseguir um ^0000FFBoneco de Gato de Folha^000000, siga para ^0000FFIzlude^000000 e procure pelo minha pequena irmã, ^0000FFMarie^000000.";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "Para que você seja digno de receber sua recompensa, ele pedirá:";
+					mes "• ^0000FFFolha Gigante^000000 × ^0000FF200^000000";
+					mes "• ^0000FFFolha de Hinalle^000000 × ^0000FF200^000000";
+					mes "• ^0000FFFolha de Figo^000000 × ^0000FF200^000000";
+					mes "• ^0000FFTrevo de Quatro Folhas^000000 × ^0000FF5^000000";
+					mes "• ^0000FFCarta Gato de Folha^000000 × ^0000FF1^000000";
+					next;
+					
+					mes "^FF0000[Miya]^000000";
+					mes "^0000FFMarie^000000 vai estar te esperando.";
+					mes "Até logo!";
+					set AE_Five,7;
+					close;
+					
+				case 6:
+					next;
+					mes "^FF0000[Miya]^000000";
+					mes "Me procure quando tiver decidido.";
+					close;
+			}
+		}
+		mes "^FF0000[Miya]^000000";
+		mes "Para ver se você é mesmo capaz de prosseguir, quero que me traga:";
+		mes "• ^FF0000Rosário [1]^000000 × ^FF00001^000000";
+		mes "Vou estar esperando.";
+		close;
+	}
+	mes "^FF0000[Miya]^000000";
+	mes "Olá. Como você se chama?";
+	next;
+	
+	mes "^FF0000[Miya]^000000";
+	mes "Ah, "+((Sex)?"^0000FF":"^FF0000")+""+strcharinfo(0)+"^000000.";
+	mes "Você me parece bem corajos"+((Sex)?"o":"a")+".";
+	mes "Que tal participar de um jogo comigo e com meus irmãos?";
+	next;
+	switch(select("• Sim","• Não")){
+		case 1:
+			next;
+			mes "^FF0000[Miya]^000000";
+			mes "Fico feliz!";
+			mes "Bom, para ver se você é mesmo capaz de prosseguir, quero que me traga:";
+			mes "• ^FF0000Rosário [1]^000000 × ^FF00001^000000";
+			mes "Vou estar esperando.";
+			set AE_Five,1;
+			close;
+			
+		case 2:
+			next;
+			mes "^FF0000[Miya]^000000";
+			mes "Me procure se estiver interessad"+((Sex)?"o":"a")+".";
+			close;
+	}
+}	

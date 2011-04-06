@@ -1,0 +1,3 @@
+zor_in01,260,257,5	script	GameOver	512,{
+}
+

@@ -1,0 +1,370 @@
+//============================================================ 
+//===== eAthena Script ======================================= 
+//= Aerie's Tears
+//===== By: ================================================== 
+//= Aerie PinkPanther
+//===== Current Version: ===================================== 
+//= Script 1.20
+//= Map 1.40
+//===== Compatible With: ===================================== 
+//= eAthena SVN 13800+
+//===== Remerciements : ====================================== 
+//= To the Tao-RO  players who tested all previous episodes and this one in his test version.
+// Thank you for their encouragement and compliments, and error reports!
+//= To the Guildmember of Neko No Spirit / Solar Stream / Renaissance / Ohana / Cross of Destiny / Absolute Envy / Angel's Kiss
+//= For the first Legends of Midgard : Arakasi / Volubilis / Darsao / Erih / Steak Haché / Globe Occulaire / Ayumi / Qian Lin / 
+// Zelady / Shugo / Akabane / Duce / Mortys Krigg / Yuna / Yummy & Tasty / Eedja / Atar / Earth / Siloe / Essindra / Kaleya /
+// Messiah / Keroberus / Craft ...
+//============================================================ 
+
+
+//_________________________________________________________________
+//_________ Episode : VII - Arsinoé : Aerie's Tears _______________
+//_________________________________________________________________
+//
+//Aerie's Tears (Scénario / Script / Maps by Aerie PinkPanther)
+//Traduction by TrueNoir and Mirabell
+//
+//This is a kind of Stand-Alone, a new continent, independant of the rest of Rune-Midgard (except for the access quest at Alberta).
+//The aim is to increase the quest's interest in Ragnarök, by instancied quests, animated NPC, a true scenario, exploration of new horizons ... 
+//Created for a party of 4-5 players, you can't do it alone, it's more like a basic RPG.  
+//The Continent of Arsinoé is a single scenario with various quests. You have two independant campaigns :
+//The Goblin King and The Rana's Empire where you lare leading an army in a succession of instances in differents battlefields.
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// - Maps : 				(Maps Index)
+// - Arsinoé, Aerie's Tears : 		(Index of used scripts)
+// - Variables used :			(Players Variables used, with his max valor)
+// - Configuration :			(Configure global options for Arsinoé)
+// - Récompenses Global : 		(Configure all rewards of the Continent)
+// - OnLoginEvent :			(Effects to apply at each connection)
+// - Apparition Heures : 		(Server Hourly : Night at 08 p.m. / Day at 08 a.m.)
+// - Testeur NPC :			(Give all variables / disabled per default)
+// - Taille NPC :			(Fix NPCs size)
+//
+//
+//_________________________________________________________________
+//___________________ Index : Map Utilisées _______________________
+//_________________________________________________________________
+//
+
+//coppa = Coppalana Beach
+//tantale_ile = Tantale Island
+
+//ars_fild01 = Kiman Farès Forest
+//ars_fild02 = Kiman Farès Forest : Kiman Farès
+//ars_fild03 = Kiman Farès Forest : Soknobeus
+//ars_fild04 = Traïana's Lighthouse
+//ars_fild05 = Bacchias Mountains : Euhéméria
+//ars_fild06 = Arsinoé : Istar's Gate
+//ars_fild07 = Bacchias Mountains : Le Col de Faymour
+//ars_fild08 = Bacchias Mountains : Octavie's Pass
+//ars_fild09 = Arsinoé : North Gate
+//ars_fild10 = Kargha Desert : Torn-Thalas's Lime
+//ars_fild11 = Kargha Desert : Nèsos Village
+//ars_fild12 = Kargha Desert
+//ars_fild13 = Kargha Desert : Oasis of Siwah (ext.)
+//ars_fild14 = Kargha Desert : Oasis of Siwah  (int.)
+//ars_fild15 = Kargha Desert : Terkish
+//ars_fild16 = Bacchias Mountains : The Light Citadel
+//ars_fild17 = Thébaïde Jungle : The Tower of Stars
+//ars_fild18 = Thébaïde Jungle : Thébaïde
+//ars_fild19 = Thébaïde Jungle : Eupator's Farm
+//ars_fild20 = Bacchias Mountains : Lake of Crystalmir
+//ars_fild21 = Gondar : Lalibela
+//ars_fild22 = Arsinoé : The City
+//ars_fild23 = Gondar : Red Forest
+//ars_fild24 = Gondar : Soufrière
+//ars_fild25 = Rana's Empire : Two-Gates
+//ars_fild26 = Rana's Empire : Highlands
+//ars_fild27 = Rana's Empire : Dian Bian Fût Hill
+//ars_fild28 = Rana's Empire : Dian Bian Fût Hill
+//ars_fild29 = Rana's Empire : La Rana, Arena
+//ars_fild30 = UnderWorld : Le Chemin des Dames
+//ars_fild31 = UnderWorld : Icarie's Gate
+//ars_fild32 = UnderWorld : Hylars's Cave
+//ars_fild33 = Hylarheim : Hylarheim
+//ars_fild34 = Hylarheim : Thunder Fortress
+//ars_fild35 = UnderWorld : Menzobaren Bridge
+//ars_fild36 = Hylarheim : Port-Sirène
+//ars_fild37 = UnderWorld : Morloc'h's Whipers
+//ars_fild38 = UnderWorld
+//ars_fild39 = UnderWorld : Le Léthé
+//ars_fild40 = UnderWorld : Da'Urdein
+//ars_fild41 = Urunesti
+//ars_fild42 = Urunesti : Fairies Lake
+//ars_fild43 = Sidon : The Descent of Hake
+//ars_fild44 = Sidon : The Temple of Dagon
+//ars_fild45 = Hylarheim : Hospital Helpers
+//ars_fild46 = Sidon
+//ars_fild47 = Sidon : The Abyss
+//ars_fild48 = Kargha Desert
+//ars_fild49 = Kargha Desert : The Temple of Petosiris
+//ars_fild50 = Hylarheim : Plains of Daltigoth
+//ars_fild51 = Mont Bacchias : The Violets Towers
+//ars_fild52 = Néraka : L'Envol
+//ars_fild53 = Néraka : IceWind Dale
+//ars_fild54 = Néraka : The Gate
+//ars_fild55 = Néraka : City
+//ars_fild56 = Gondar : Gnoll Fortress
+//ars_fild57 = Gondar : Canyon
+
+//ars_phare = Traïana's Lighthouse (indoor)
+//ars_dun01 = Gomorrhe Necropolis
+//ars_dun02 = Gomorrhe Necropolis : Royal Family's Crypt
+//ars_dun03 = Danifae's Temples
+//ars_dun04 = The Tower of Stars : Indoor
+//ars_dun05 = The Tower of Stars : Top
+//ars_dun06 = Lalibela : Indoor
+//ars_dun07 = Lalibela : Indoor
+//ars_dun08 = Bacchias Mountains : Temple of Retirement
+//ars_dun09 = Gondar : Soufrière
+//ars_dun10 = Octavie's Pass : Bandits's Cavern
+//ars_dun11 = Royal Auditorium : Instance
+//ars_dun12 = Harpocrate's Monastery : Instance
+//ars_dun13 = Arsinoé : Temple of Mortys
+//ars_dun14 = Arsinoé : Chibi Youma's Home
+//ars_dun15 = Arsinoé : Chibi Youmas Home
+//ars_dun16 = Soulavein : The Temple
+//ars_dun17 = Da'Urdein : Planar Sphere
+//ars_dun18 = Da'Urdein : Planar Sphere
+//ars_dun19 = Da'Urdein : Planar Sphere
+//ars_dun20 = Da'Urdein : Assault
+//ars_dun21 = Dream : The Hall of the Lich
+//ars_dun22 = Dream : The Ruins of Arsinoe
+//ars_dun23 = Dream : Corridors of Time
+//ars_dun24 = Urunesti : The Tower of Shogunka
+//ars_dun25 = Sidon : Crystal Turtle
+//ars_dun26 = Crypts
+//ars_dun27 = Temple Petosiris
+//ars_dun28 = Temple Petosiris
+//ars_dun29 = Temple Petosiris
+//ars_dun30 = Temple Petosiris
+//ars_dun31 = Euhéméria : Marathon
+//ars_dun32 = Repère du Noble-Mage
+//ars_dun33 = Ice Descent
+//ars_dun34 = Néraka : Mines de Davaeorn
+//ars_dun35 = Néraka : Mines de Davaeorn
+//ars_dun36 = Néraka : Mines de Davaeorn
+//ars_dun37 = Néraka : Mines de Davaeorn
+//ars_dun38 = Néraka : La Fronde
+//ars_dun39 = Néraka : Throne Room
+
+//ars_in01 = Euhéméria : Indoor
+//ars_in02 = Arsinoé : Indoor
+//ars_in03 = Soufrière : Indoor
+//ars_in04 = Arsinoé : Harpocrate's Monastery
+//ars_in05 = Arsinoé : Royal Auditorium
+//ars_in06 = The Hope Tower
+//ars_in07 = La Rana : Arena
+//ars_in08 = Soulavein : Entrance
+//ars_in09 = Da'Urdein : Indoor
+//ars_in10 = Urunesti : Indoor
+//ars_in11 = Urunesti : Hospital Helpers
+//ars_in12 = Néraka : Mercenaires
+//ars_in13 = Néraka : Indoor
+//ars_in14 = Arsinoé : Indoor
+//
+//_________________________________________________________________
+//___________________Index : Arsinoé : Aerie's Tears ______________
+//_________________________________________________________________
+//
+
+// I: Main Quest
+
+// 1 = Daphnis Proposition
+// 2 = Tantale Island
+// 3 = Coppalana: Boitata
+// 4 = Coppalana: Bridge Daggard and NPC
+// 5 = Kiman Fares: The Revival of the Dead
+// 6 = The Ferryman
+// 7 = Daphnis Arsinoe
+// 8 = Birth of Lalibela
+// 9 = Birth of Lalibela: Final
+// 10 = Final Fight
+
+
+// II: Goblin King
+
+// 1 = Kargha Desert: Torn-Thalas's Lime
+// 2 = Kargha Desert Oasis of Siwah (ext.)
+// 3 = Kargha Desert Oasis of Siwah (int.)
+// 4 = Kargha Desert: Terkish
+
+
+// III: Danifae's Cult
+
+// 1 = The Worship of Danifae: Part One
+// 2 = The Worship of Danifae: Part Two
+
+
+// IV: The Cult of Harpocrate
+
+// 1 = Harpocrate Worship: The Lord of the Stars
+// 2 = Harpocrate Worship: The Academy
+
+
+// V: Magicians of Arsinoe
+
+// 1 = Magicians of Arsinoe: The Magnus Gaëlle
+// 2 = Magicians of Arsinoe: Dragon Gondar
+// 3 = Magicians of Arsinoe: Fight Pavloff
+
+
+// VI : Quête transversales
+
+// 1 = Coppalana : La Fête du Village
+// 2 = Coppalana : Le Concours de Pêche
+// 3 = Kiman Farès : La Plante du Désert
+// 4 = Euhéméria : Les Pleurs de Tarine
+// 5 = Hylarheim : Les Marins Disparus
+
+// VIII: Euhéméria
+
+// 1 = Euhéméria: Scalps The Bandits (Quest Mayor)
+// 2 = Traïana's Lighthouse: The Crystals (Quest Mayor)
+// 3 = Traïana's Lighthouse: Smugglers (Quest Mayor)
+// 4 = Traïana's Lighthouse: Orcs
+// 5 = Euhéméria: Tarine's cry
+
+// IX: Arsinoe
+
+// 1 = Agathon Paraclet
+
+
+// X: Legend of Rana
+
+// 1 = Legend of Rana: The Fourth Legion
+// 2 = Legend of Rana: The Highlands
+// 3 = Legend of Rana: Dian Bian Fût
+// 4 = The Fort of the Fourth Legion
+// 5 = Legend of Rana: Rana, The Goddess 
+
+// XI: The Zombies
+
+// 1 = The Zombies: The Temple of Mortys
+// 2 = The Zombies: The Slaughter
+// 3 = The Zombies: The House of Chibi Youma
+
+// XII : Soulavein, The Lost City
+
+// 1 = Soulavein : Inscriptions
+// 2 = Soulavein : Scripts
+// 3 = Soulavein : Rewards
+// 4 = Soulavein : Warps
+// 5 = Soulavein : Functions
+
+// XIII : OmbreTerre
+
+// 1 = OmbreTerre : Icarie's Gate
+// 2 = OmbreTerre : Hylarheim's Gate
+// 3 = OmbreTerre : Thunder Fortress
+// 4 = OmbreTerre : Black Perl
+// 5 = OmbreTerre : Da'Urdein
+// 6 = OmbreTerre : Insurrection
+// 7 = OmbreTerre : Planar Sphere
+
+// XIV : Introduction
+
+// 1 = Introduction : Incomming
+// 2 = Le Rêve : The Lich
+// 3 = Le Rêve : The Castel
+// 4 = Introduction : Portal
+// 5 = Introduction : Characters
+// 6 = Introduction : Animations
+
+// XV : L'épidémie d'Urunesti
+
+// 1 = Urunesti : On Our Way Back Home
+// 2 = Urunesti : Shogunka
+// 3 = Sidon : The Seaweed
+// 4 = Sidon : Le Crystal d'Ursula
+// 5 = Kargha : Djoser's Members
+// 6 = Kargha : Larvae
+
+//============================================================================
+
+//A) Fonctions :
+
+// 1 = Daphnis
+// 2 = Missionary Order of Tyr
+// 3 = Walk
+// 4 = Title: Slayer of Goblins (and Others)
+// 5 = Population
+// 6 = Arsinoïte Railway Company
+// 7 = High Deeds of Arsinoe
+// 8 = NPC Lorill
+// 9 = Arena
+
+
+//B) Services :
+
+// 1 = Missionary Order of Tyr
+// 2 = Population
+// 3 = Arsinoïte Railway Company
+// 4 = Gate of Istar
+// 5 = Boat, Lake Crystalmir
+// 6 = High Deeds of Arsinoe
+
+
+//C) Warps
+//D) Monstres
+
+//E) Marchands
+
+// 1 = Umaya, the Trading Compagny
+// 2 = Function: Quest Level
+// 3 = Function: Level Shop
+// 4 = List of Shops
+// 5 = Secondary Characters
+
+//F) Panneaux
+
+//G) Les Arènes de La Rana :
+
+// 1 = The Arena: Manager
+// 2 = The Arena: Keepers
+// 3 = The Arena: Warps
+// 4 = The Arena: Core
+// 5 = The Arena: Reward
+
+//
+//
+//_________________________________________________________________
+//___________________ Variables used ______________________________
+//_________________________________________________________________
+//
+//	set EP7_GLOBAL,0;  	//Variable Main Quest 				(End at 40)
+//	set EP7_SOIN,0;    	//Variable Cure					(End at 10)
+//
+//	set EP7_FETE,0;	   	//Variable Day Village 				(End at 52)
+//	set EP7_PHARE,0;   	//Variable The Crystals 			(End at 6)
+//	set EP7_ORC,0;     	//Variable Orcs					(End at 3)
+//   	set EP7_CBANDE,0;  	//Variable Smugglers				(End at 3)
+//	set EP7_BANDIT,0;  	//Variable Scalps The Bandits 			(End at 203)
+//
+//      set EP7_LIME,0;    	//Variable Goblin King		 		(End at 9)
+//      set EP7_AME,0;     	//Variable Tarine's cry				(End at 7)
+//      set EP7_MAGE,0;    	//Variable Magicians of Arsinoe 		(Part. 1, End at 6 / Part. 2, End at 13)
+//      set EP7_PLANTE,0;  	//Variable Plant of the Desert 			(End at 5)
+//	set EP7_DANIFAE,0; 	//Variable Danifae's Cult 			(Part. 1, End at 6 / Part. 2, End at 10)
+//	set EP7_HARPO,0;   	//Variable The Cult of Harpocrate		(Part. 1, End at 4 / Part. 2, End at 11)
+//	set EP7_RANA,0;    	//Variable Legend of Rana			(End at 9)
+//
+//	set EP7_TRAIN,0;      	//Variable Arsinoïte Railway Company		(End at 8)
+//	set EP7_MARCHAND,0;   	//Variable Umaya, the Trading Compagny		(End at 16)
+//	set EP7_ARENA,0;      	//Variable The Arena				(End at 200+)
+//      set EP7_ZOMBIE,0;	//Variable The Zombies				(End at 6)
+//
+//      set EP7_OMBRET,0;	//Variable UnderWorld				(End at 21)
+//      set EP7_CARTE,0;	//Variable Arsinoé's Cartographe		(End at 21)
+//      set EP7_INTRO,0;	//Variable Introduction				(End at 7)
+//	set EP7_URUNESTI,0;	//Variable Urunesti				(End at 18)
+//
+//	set EP7_SAIL,0;		//Missing Sailors				(End at 3)
+//	set EP7_PECHE,0;	//Fishing Competition				(End at 4)		
+//
+//

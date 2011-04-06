@@ -1,0 +1,89 @@
+//== Aether Script ===========================================
+// • NPCs de Morroc
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Morroc
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Aurea - Lendárias Asas de Anjo e Demônio (04/07/2010)
+// • 1.1 - Adicionado Selo de Anubis - Elmo de Anubis (12/08/2010)
+//============================================================
+
+//== • Áurea - Quest: Lendárias Asas de Demônio ==============
+morocc,110,212,3	script	Áurea, A Demônio#moc	1752,{
+	if(AE_Asas == 3){
+		mes "^FF0000[Áurea]^000000";
+		mes "Se tu desejas uma, basta que me traga:";
+		mes "• ^FF0000Pequena Asa Maligna^000000 × ^FF0000200^000000";
+		mes "• ^FF0000Água Amaldiçoada^000000 × ^FF0000100^000000";
+		mes "• ^FF0000Livro do Diabo^000000 × ^FF00001^000000";
+		if(((countitem(1039)) >= 200) && ((countitem(12020)) >= 100) && ((countitem(642)) >= 1)){
+			switch(select("• Entregar-lhe os itens.","• Não fazer nada.")){
+				case 1:
+					next;
+					delitem 1039,200;
+					delitem 12020,100;
+					delitem 642,1;
+					mes "^FF0000[Áurea]^000000";
+					mes "É bom perceber que há aqueles que enxergam a essência do lado ^0000FFSombrio^000000...";
+					set AE_Asas, 0;
+					getitem 5376,1;
+					close;
+				case 2:
+					close;
+			}
+		}
+		close;
+	}
+
+	mes "^FF0000[Áurea]^000000";
+	mes "Nas profundezas da escuridão é que as ^0000FFAlmas^000000 descobrem quem são verdadeiramente...";
+	if(AE_Asas == 2){
+		switch(select("• Perguntar sobre as ^0000FFLendas Demoníacas^000000.","• Não fazer nada.")){
+			case 1:
+				next;
+				mes "^FF0000[Áurea]^000000";
+				mes "Hum...";
+				mes "As ^0000FFLendárias Asas de Demônio^000000 são, na verdade, um ^0000FFArtefato^000000 feito com o ^0000FFCoração de Demônio^000000, dado à aqueles que querem experimentar o poder das ^0000FFSombras^000000.";
+				next;
+				
+				mes "^FF0000[Áurea]^000000";
+				mes "Se tu desejas uma, basta que me traga:";
+				mes "• ^FF0000Pequena Asa Maligna^000000 × ^FF0000200^000000";
+				mes "• ^FF0000Água Amaldiçoada^000000 × ^FF0000100^000000";
+				mes "• ^FF0000Livro do Diabo^000000 × ^FF00001^000000";
+				set AE_Asas,3;
+				close;
+				
+			case 2:
+				close;
+		}	
+	}
+	close;
+
+}
+
+//== • Selo de Anubis - Quest: Elmo de Anubis ================
+in_sphinx4,206,119,0	script	Selo de Anubis#moc	111,{
+	mes "^0000FF[Selo]^000000";
+	mes "^FF0000*lê-se gravado na estátua*^000000";
+	mes "Somente a ^0000FFSenha^000000 do ^0000FFSelo^000000 pode libertar o ^0000FFPode de Anubis^000000";
+	if(AE_Anubis == 7){
+		input @AE_Anubis$;
+		if(@AE_Anubis$ == AE_AnbSenha$){
+			close2;
+			specialeffect2 514;
+			getitem 5490,1;
+			set AE_Anubis,0;
+			set AE_AnbSenha$,"";
+			end;
+		}
+		if(@AE_Anubis$ != AE_AnbSenha$){
+			dispbottom "*A Senha do Selo está incorreta*";
+			end;
+		}
+	}
+	close;
+}

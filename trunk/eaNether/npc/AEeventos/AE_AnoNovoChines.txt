@@ -1,0 +1,168 @@
+daath,30,251,5	script	Ryoma#daath	531,{
+	cutin "jpn_algol01",2;
+	mes "^0000FF[Ryoma]^000000";
+	mes "Saudações, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	if(getgmlevel()	< 99){	
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "Deseja ativar ou desativar o ^0000FFEvento do Ano Novo Chinês^000000?";
+	switch(select("• Ativar","• Desativar","• Cancelar")){
+		case 1:
+			set $chinany,1;
+			mes "Ativado, senhor"+((Sex)?"":"ita")+".";
+			close2;
+			cutin "",255;
+			end;
+
+			
+		case 2:
+			set $chinany,0;
+			mes "Desativado, senhor"+((Sex)?"":"ita")+".";
+			close2;
+			cutin "",255;
+			end;
+
+			
+		case 3:
+			mes "Como desejar, senhor"+((Sex)?"":"ita")+".";
+			close2;
+			cutin "",255;
+			end;
+	}
+
+OnClock0145:
+OnClock0545:
+OnClock0945:
+OnClock1345:
+OnClock1745:
+OnClock2145:
+OnEvento:
+	if($chinany == 1){
+		announce "O Ano Novo Oriental do Coelho acaba de invadir Midgard.",0,0x00FFFF;
+		sleep2 5000;
+		announce "Neste momento, 30 Avatares dos Dragões Orientais aparecerão em Amatsu ou em Louyang.",0,0x00FFFF;
+		sleep2 5000;
+		announce "Ao tocá-los, vocês deverão ser mandados para um lugar especial!",0,0x00FFFF;
+		sleep2 5000;
+		announce "Boa sorte e Feliz Ano Novo Oriental!",0,0x00FFFF;
+		sleep2 5000;
+		
+		set $nycity, rand(1,2);
+		if($nycity == 1) set $nycity$, "amatsu";
+		if($nycity == 2) set $nycity$, "louyang";
+		monster $nycity$,0,0,"Avatar de Ano Novo",2502,30,"Ryoma#daath::OnAvatarKill";	
+		set $nyavatars, 30;
+		set $nycoelhos, 600;
+		killmonsterall "poring_w01";
+		areamonster "poring_w01",82,177,123,90,"Símbolo do Ano Novo",2503,600,"Ryoma#daath::OnCoelhoKill";
+	}	
+	end;
+		
+OnAvatarKill:
+	set $nyavatars, $nyavatars - 1;
+	if($nyavatars > 1){
+		mapannounce $nycity$,"Restam "+$nyavatars+" Avatares de Ano Novo na Cidade!",0;
+	}
+	if($nyavatars == 1){
+		mapannounce $nycity$,"O último Avatar de Ano Novo foi encontrado!",0;
+	}
+	warp "poring_w01",96,95;
+	end;
+
+OnCoelhoKill:
+	set $nycoelhos, $nycoelhos - 1;
+	set @nydrop1, rand(1,4);
+	set @nydrop2, rand(1,5);
+	set @nydrop3, rand(1,500);
+	set @nydrop4, rand(1,4);
+	
+	if(@nydrop1 == 1){
+		getitem 20027,1;
+	}
+	if(@nydrop2 == 1){
+		set @nyrand, rand(1,10);
+		set #AE_EvtPt, #AE_EvtPt + @nyrand;		
+		dispbottom "[Ano Novo Oriental]";
+		dispbottom "- Você adquiriu "+@nyrand+" Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";	
+	}
+
+	if(@nydrop3 >= 1 && @nydrop3 <= 5) getitem 14537,1;
+	if(@nydrop3 >= 6 && @nydrop3 <= 10) getitem 12710,1;
+	if(@nydrop3 >= 11 && @nydrop3 <= 15) getitem 12350,1;
+	if(@nydrop3 >= 16 && @nydrop3 <= 20) getitem 12060,1;
+	if(@nydrop3 >= 21 && @nydrop3 <= 25) getitem 12055,1;
+	if(@nydrop3 >= 26 && @nydrop3 <= 30) getitem 12050,1;
+	if(@nydrop3 >= 31 && @nydrop3 <= 35) getitem 12065,1;	
+	if(@nydrop3 >= 36 && @nydrop3 <= 40) getitem 12070,1;	
+	if(@nydrop3 >= 41 && @nydrop3 <= 45) getitem 12045,1;
+	if(@nydrop3 >= 46 && @nydrop3 <= 50) getitem 12238,1;
+	if(@nydrop3 >= 51 && @nydrop3 <= 55) getitem 9038,1;
+	
+	if(@nydrop4 == 1){
+		getitem 12134,1;	
+	}
+	if($nycoelhos == 0){
+		announce "A Comemoração do Ano Novo Oriental do Coelho acabou por enquanto.",0,0x00FFFF;	
+		killmonsterall $nycity$;
+		mapwarp "poring_w01","prontera",150,150;
+	}
+	end;
+	
+OnWhisperGlobal:
+	if (getgmlevel() < 40) end;
+	if (compare(@whispervar0$,"on")) donpcevent "Ryoma#daath::OnEvento";
+	end;	
+}
+
+prontera,145,189,5	script	Ryoma#prt	531,{
+	cutin "jpn_algol01",2;
+	mes "^0000FF[Ryome]^000000";
+	mes "Olá, jovem aventureir"+((Sex)?"o":"a")+".";
+	mes "Durante a comemoração do ^0000FFAno Novo Oriental^000000, estarei aqui para fazer uma troca.";
+	next;
+	
+	mes "^0000FF[Ryome]^000000";
+	mes "Entregarei um:";
+	mes "• ^0000FFChapéu Alado Chinês^000000 × ^0000FF1^000000";
+	mes "Em troca de:";
+	mes "• ^FF0000Cartão do Ano Novo Chinês^000000 × ^FF0000100^000000";
+	if(countitem(20027) < 100){
+		mes "Venha quando os conseguir!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "Gostaria de fazer a troca?";
+	next;
+	
+	switch(select("• Sim","• Não")){
+		case 1:
+			delitem 20027,100;
+			getitem 5841,1;
+			mes "^0000FF[Ryome]^000000";
+			mes "Volte caso consiga mais ^0000FFCartões^000000";
+			close2;
+			cutin "",255;
+			end;
+			
+		case 2:
+			mes "^0000FF[Ryome]^000000";
+			mes "Me procure se for do seu interesse.";
+			close2;
+			cutin "",255;
+			end;
+	}
+}
+
+poring_w01	mapflag	nobranch
+poring_w01	mapflag	nomemo
+poring_w01	mapflag	noreturn
+poring_w01	mapflag	pvp	off
+poring_w01	mapflag	noskill
+poring_w01	mapflag	nosave
+poring_w01	mapflag	nowarp
+poring_w01	mapflag	nowarpto
+poring_w01	mapflag	noteleport

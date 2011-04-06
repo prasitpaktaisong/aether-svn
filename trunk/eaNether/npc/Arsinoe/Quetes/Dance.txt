@@ -1,0 +1,438 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Euhéméria - Dance
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = Dance : Inscriptions
+// 2 = Dance : Script
+// 3 = Dance : Récompense
+// 4 = Dance : Spectateur
+//
+//_________________________________________________________________
+//___________________Dance : Inscriptions _________________________
+//_________________________________________________________________
+
+
+ars_in01,93,44,1	script	Instructeur Osani#ep7	951,{
+
+set @name$,"Instructeur Osani";
+
+if($@ep7boule==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the training of young Magician !";
+	mes "Do want to participate?";
+	next;
+	menu "No",-,"Yes !",submenu1;
+	close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]";
+	mes "Let's start!";
+	close2;
+	if($@ep7boule>=1) {mes "[" + @name$ + "]";mes "A player is already there!";close;}
+	set $@Play_Dance$,strcharinfo(0);
+	donpcevent "EP7_boule::OnDepart";
+	warp "ars_in01",86,50;
+	end;
+	}
+
+if($@ep7boule>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can't participate in the training of young Magicians yet!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Training of Magicians - Waiting room",0,"EP7_boule::OnBGJoin",1;
+	end;
+}
+
+//_________________________________________________________________
+//___________________Dance : Script _______________________________
+//_________________________________________________________________
+
+-	script	EP7_boule	-1,{
+
+OnInit:
+
+	//Fenêtre
+	donpcevent "Instructeur Osani#ep7::OnBG";
+
+	//Noms des directions
+	setarray .Mname$[0],"Up","Down","Right","Left","Upper Right","Upper Left","Down Right","Down Left";
+
+	//Note / Réussite
+	setarray $@Mrecord[0],0,0;
+
+	//Palliers, le dernier (4) final à faire
+	setarray $@Mpallier[0],20,35,55,75,100; 
+
+	//Variables
+	set $@ep7boule, 0;
+	//Score Total
+	set $@Ep7_Mrecord,0;
+	set $@Ep7_Metat,0;
+	end;	
+
+
+OnDepart:
+
+	// Variables
+	set $@ep7boule, 1;
+
+
+	if( $EP7Annonce == 0 ) {mapannounce "ars_in01","Training of Magigians has just begun!",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Training of Magigians has just begun!",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+
+
+//==============================================
+
+	sleep2 5000;
+	areaannounce "ars_in01",76,61,97,34,"Instructor Osani : We will begin soon !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 5000;
+	areaannounce "ars_in01",76,61,97,34,"5",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in01",76,61,97,34,"4",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in01",76,61,97,34,"3",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in01",76,61,97,34,"2",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in01",76,61,97,34,"1",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	areaannounce "ars_in01",76,61,97,34,"Let's Go !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 2000;
+
+	//Départ
+	donpcevent "EP7_boule::OnStart";
+	donpcevent "EP7_boule::OnPublic";
+	end;
+	
+
+//==============================================
+
+OnStart:
+
+	//Fin
+	if ($@Mrecord[0] == $@Mpallier[4]) {donpcevent "EP7_boule::OnEnd";end;}
+
+	switch( rand(8) ) {
+	case 0: set .Mnum,0; set .Valid,1; donpcevent "EP7_boule::OnSpawn";end;
+	case 1: set .Mnum,1; set .Valid,2; donpcevent "EP7_boule::OnSpawn";end;
+	case 2: set .Mnum,2; set .Valid,3; donpcevent "EP7_boule::OnSpawn";end;
+	case 3: set .Mnum,3; set .Valid,4; donpcevent "EP7_boule::OnSpawn";end;
+	case 4: set .Mnum,4; set .Valid,5; donpcevent "EP7_boule::OnSpawn";end;
+	case 5: set .Mnum,5; set .Valid,6; donpcevent "EP7_boule::OnSpawn";end;
+	case 6: set .Mnum,6; set .Valid,7; donpcevent "EP7_boule::OnSpawn";end;
+	case 7: set .Mnum,7; set .Valid,8; donpcevent "EP7_boule::OnSpawn";end;}
+
+//==============================================
+
+OnSpawn:
+
+	//Définir le tour
+	set $@Mrecord[0],$@Mrecord[0]+1;
+	//Variable état
+	set $@Ep7_Metat,0;
+
+	//Annonce
+	areaannounce "ars_in01",76,61,97,34,"Position : "+.Mname$[.Mnum]+"",bc_map,"0xFF00CC",FW_NORMAL,20,0,40;
+
+	//Notes
+	monster "ars_in01",87,52,""+.Mname$[0]+"",3900,1,"EP7_boule::OnDir1";
+	monster "ars_in01",87,48,""+.Mname$[1]+"",3901,1,"EP7_boule::OnDir2";
+	monster "ars_in01",89,50,""+.Mname$[2]+"",3902,1,"EP7_boule::OnDir3";
+	monster "ars_in01",85,50,""+.Mname$[3]+"",3903,1,"EP7_boule::OnDir4";
+	monster "ars_in01",89,52,""+.Mname$[4]+"",3904,1,"EP7_boule::OnDir5";
+	monster "ars_in01",85,52,""+.Mname$[5]+"",3905,1,"EP7_boule::OnDir6";
+	monster "ars_in01",89,48,""+.Mname$[6]+"",3906,1,"EP7_boule::OnDir7";
+	monster "ars_in01",85,48,""+.Mname$[7]+"",3907,1,"EP7_boule::OnDir8";
+
+	//Temps
+	if ($@Mrecord[0] <= $@Mpallier[0]) {set .@ep7_Mtime, rand(3500,5000);}
+	if ($@Mrecord[0] <= $@Mpallier[1]) {set .@ep7_Mtime, rand(3000,4500);}
+	if ($@Mrecord[0] <= $@Mpallier[2]) {set .@ep7_Mtime, rand(2500,4000);}
+	if ($@Mrecord[0] <= $@Mpallier[3]) {set .@ep7_Mtime, rand(2000,3500);}	
+	set .@ep7_Mtime, rand(2000,3500);
+	sleep2 .@ep7_Mtime;
+		
+	//Repère npctalk
+	if ($@Ep7_Metat == 0) {donpcevent "Deezee#ep7::OnTalk0";}
+	if ($@Ep7_Metat == 1) {donpcevent "Deezee#ep7::OnTalk1";}
+	if ($@Ep7_Metat == 2) {donpcevent "Deezee#ep7::OnTalk2";}
+	sleep2 500;
+	//Nettoyer
+	killmonster "ars_in01","EP7_boule::OnDir1";
+	killmonster "ars_in01","EP7_boule::OnDir2";
+	killmonster "ars_in01","EP7_boule::OnDir3";
+	killmonster "ars_in01","EP7_boule::OnDir4";
+	killmonster "ars_in01","EP7_boule::OnDir5";
+	killmonster "ars_in01","EP7_boule::OnDir6";
+	killmonster "ars_in01","EP7_boule::OnDir7";
+	killmonster "ars_in01","EP7_boule::OnDir8";
+	//Relance
+	donpcevent "EP7_boule::OnStart";
+	end;
+
+OnKill:
+
+	killmonster "prontera","EP7_boule::OnDir1";
+	killmonster "prontera","EP7_boule::OnDir2";
+	killmonster "prontera","EP7_boule::OnDir3";
+	killmonster "prontera","EP7_boule::OnDir4";
+	killmonster "prontera","EP7_boule::OnDir5";
+	killmonster "prontera","EP7_boule::OnDir6";
+	killmonster "prontera","EP7_boule::OnDir7";
+	killmonster "prontera","EP7_boule::OnDir8";
+	end;
+
+//==============================================
+	
+OnDir1:
+
+	if (.Valid == 1) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 1) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir2:
+	if (.Valid == 2) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 2) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir3:
+	if (.Valid == 3) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 3) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir4:
+	if (.Valid == 4) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 4) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir5:
+	if (.Valid == 5) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 5) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir6:
+	if (.Valid == 6) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 6) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir7:
+	if (.Valid == 7) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 7) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+OnDir8:
+	if (.Valid == 8) {set $@Mrecord[1],$@Mrecord[1]+1;set $@Ep7_Metat,1;}
+	if (.Valid != 8) {set $@Ep7_Metat,2;}
+	donpcevent "EP7_boule::OnKill";
+	end;
+
+//==============================================
+
+OnPublic:
+
+	if ($@ep7boule >= 2) {end;}
+	sleep2 20000;
+	set $@Mtempvar0,$@Mrecord[0];
+	set $@Mtempvar1,$@Mrecord[1]*100;
+	set $@Mtempvar,$@Mtempvar1/$@Mtempvar0;
+
+	if ($@Mtempvar < 30) {
+		donpcevent "Spectateur#ep7M1::OnTalk0";donpcevent "Spectateur#ep7M2::OnTalk0";donpcevent "Spectateur#ep7M3::OnTalk0";
+		donpcevent "EP7_boule::OnPublic";end;}
+	if ($@Mtempvar < 60) {
+		donpcevent "Spectateur#ep7M1::OnTalk1";donpcevent "Spectateur#ep7M2::OnTalk1";donpcevent "Spectateur#ep7M3::OnTalk1";
+		donpcevent "EP7_boule::OnPublic";end;}
+	if ($@Mtempvar < 99) {
+		donpcevent "Spectateur#ep7M1::OnTalk2";donpcevent "Spectateur#ep7M2::OnTalk2";donpcevent "Spectateur#ep7M3::OnTalk2";
+		donpcevent "EP7_boule::OnPublic";end;}
+	if ($@Mtempvar == 100) {
+		donpcevent "Spectateur#ep7M1::OnTalk3";donpcevent "Spectateur#ep7M2::OnTalk3";donpcevent "Spectateur#ep7M3::OnTalk3";
+		donpcevent "EP7_boule::OnPublic";end;}
+
+
+	donpcevent "EP7_boule::OnPublic";
+	end;
+
+//==============================================
+
+OnEnd:
+
+	areaannounce "ars_in01",76,61,97,34,"It's all over!",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	donpcevent "Deezee#ep7::OnTalk3";
+	sleep2 3000;
+	areawarp "ars_in01",84,53,89,48,"ars_in01",88,59;
+
+	//Fin de l'event
+	set $@ep7boule,2;
+	//Réinitialisation
+	sleep2 180000;
+	donpcevent "EP7_boule::OnInit";	
+	end;
+}
+
+//_________________________________________________________________
+//___________________Dance : Récompense ___________________________
+//_________________________________________________________________
+
+ars_in01,87,56,1	script	Deezee#ep7	950,{
+
+set @name$,"Deezee";
+
+if ($@ep7boule == 0 || $@ep7boule == 1) {
+	mes "[" + @name$ + "]";
+	mes "For the current game, the total points are:";
+	mes "^4d4dff - "+$@Mrecord[1]+"/"+$@Mrecord[0]+"^000000 -";
+	mes "Your record is : "+EP7_DANCE+"/"+$@Mpallier[4]+" !";
+	close;}
+
+if ($@ep7boule == 2 && $@Play_Dance$ == strcharinfo(0)) {
+
+	if ($@Mrecord[1] <= EP7_DANCE) {
+		mes "[" + @name$ + "]";
+		mes "Your score is "+$@Mrecord[1]+", You got "+$@Mrecord[1]/2+" "+getitemname($ep7_Tcoins)+" yet !";
+		close2;
+		getitem $ep7_Tcoins,$@Mrecord[1]/2;
+		set $@ep7boule,3;
+		end;}
+
+	if ($@Mrecord[1] > EP7_DANCE) {
+		mes "[" + @name$ + "]";
+		mes "Your score is "+$@Mrecord[1]+", You got "+$@Mrecord[1]+" "+getitemname($ep7_Tcoins)+" yet !";
+		mes "This is your new record ! The reward is doubled!";
+		if ($@Mrecord[1] == $@Mpallier[4]) {mes "You had a perfect score, here is a special price for you!";}
+		close2;
+		set EP7_DANCE,$@Mrecord[1];
+		getitem $ep7_Tcoins,$@Mrecord[1];
+		set $@ep7boule,3;
+		if ($@Mrecord[1] == $@Mpallier[4]) {getitem $ep7recompense[38],$ep7recompensenb[38];}
+		end;}
+}
+
+	mes "[" + @name$ + "]";
+	mes "For the game, the total points are:";
+	mes "^4d4dff - "+$@Mrecord[1]+"/"+$@Mrecord[0]+"^000000 -";
+	close;
+	
+OnTalk0:npctalk "Too late!";end;
+OnTalk1:npctalk "Well done!";end;
+OnTalk2:npctalk "Wrong note!";end;
+OnTalk3:npctalk "Come see me for your reward!";end;
+}
+
+//_________________________________________________________________
+//___________________Dance : Spectateur ___________________________
+//_________________________________________________________________
+
+ars_in01,92,53,1	script	Spectateur#ep7M1	67,{
+
+set @name$,"Spectateur";
+
+	mes "[" + @name$ + "]";
+	mes "There are often poor quality players!";
+	close;
+	
+OnTalk0:npctalk "Get out, you're nobody!"; end;
+OnTalk1:npctalk "Come on, try!"; end;
+OnTalk2:npctalk "You're on the right track, go on!"; end;
+OnTalk3:npctalk "It's great, continue!"; end;
+}
+//==============================================
+ars_in01,81,53,1	script	Spectateur#ep7M2	80,{
+
+set @name$,"Spectateur";
+
+	mes "[" + @name$ + "]";
+	mes "There are often poor quality players!";
+	close;
+	
+OnTalk0:npctalk "Pitiful!"; end;
+OnTalk1:npctalk "You can do better!"; end;
+OnTalk2:npctalk "Very well, friend!"; end;
+OnTalk3:npctalk "Fantastic!"; end;
+}
+//==============================================
+ars_in01,85,44,1	script	Spectateur#ep7M3	93,{
+
+set @name$,"Spectateur";
+
+	mes "[" + @name$ + "]";
+	mes "There are often poor quality players!";
+	close;
+	
+OnTalk0:npctalk "Go hang yourself!";end;
+OnTalk1:npctalk "Nah, you just suck!"; end;
+OnTalk2:npctalk "The beat is good!"; end;
+OnTalk3:npctalk "Wahuh! Encore Encore!"; end;
+;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
