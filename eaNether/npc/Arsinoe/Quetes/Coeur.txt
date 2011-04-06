@@ -1,0 +1,411 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//The Heart
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = The Heart's Blurbs
+// 2 = Hearts: Memories
+// 3 = The Heart: Released
+// 4 = Heart: Title
+//
+//_________________________________________________________________
+//________________The Heart's Blurbs_________________________
+//_________________________________________________________________
+
+
+ars_in17,108,102,4	script	Aerie PinkPanther#coeur	485,{
+
+set @name$,"Aerie PinkPanther";
+
+	mes "[" + @name$ + "]"; 
+	mes "Now you're a god Arsinoe, you will probably worship among the inhabitants of Arsinoe.";
+	close;
+
+
+OnTalk1:
+	mapannounce "ars_in17","Aerie PinkPanther : Step right up, it is time to conclude!",1,0xFF33CC;end;
+
+OnTalk2:
+	npctalk "What an adventure! Ornélia, So let us review the situation.";
+	end;
+
+OnTalk3:
+	npctalk "Congratulations!";
+	end;
+
+OnTalk4:
+	mapannounce "ars_in17","Aerie PinkPanther : Thank you for playing on my continent!",1,0xFF33CC;
+	sleep2 5000;
+	mapannounce "ars_in17","Aerie PinkPanther : I hope you had as much fun as I had!",1,0xFF33CC;
+	sleep2 5000;
+	mapannounce "ars_in17","Aerie PinkPanther : And who knows, maybe one day we will cross into a world of Midgard!",1,0xFF33CC;
+	sleep2 5000;
+	mapannounce "ars_in17","Aerie PinkPanther : Thank you to the administrators "+$EP7ServName$+" you have available Arsinoe !",1,0xFF33CC;
+	sleep2 5000;
+	set $@ep7Anim6,0;
+	end;
+}
+//=====================================================================================
+
+ars_in17,107,106,4	script	Archimage Ornélia#coeur	893,{
+
+set @name$,"Archimage Ornélia";
+
+	mes "[" + @name$ + "]"; 
+	mes "You could eliminate it faster ... I emptied my spellbook!";
+	close;
+
+OnTalk1:
+	npctalk "As you may have noticed our excursion into the Abyss was a success.";
+	end;
+
+OnTalk2:
+	npctalk "But we must not forget those who died during the perilous operation...";
+	end;
+
+OnTalk3:
+	npctalk "Soldiers of the Fourth Legion who valiantly engaged the doors to hordes demons Ust Nashar!";
+	end;
+
+OnTalk4:
+	npctalk "Fenrir returned to prison and we will close the portal of the Abyss.";
+	end;
+
+OnTalk5:
+	npctalk "Religious Objects missing, the starting point of the War, were made at different Cults.";
+	end;
+
+OnTalk6:
+	npctalk "It remains for us to rebuild and pacify certain regions, and continue the hunt for Grey Mages.";
+	end;
+
+OnTalk7:
+	npctalk "Some will never change...";
+	end;
+
+OnTalk8:
+	npctalk "All the People of Arsinoe thank you for your dedication and courage!";
+	end;
+}
+
+//========================================================================================================
+ars_in17,107,99,4	script	Dynaheir#coeur	510,{
+
+set @name$,"Dynaheir";
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah thanks to our little excursion, I'll finally be able to resume my place at the Academy!";
+	close;
+
+OnTalk1:
+	npctalk "Pray for those who can not contemplate our victory!";
+	end;
+
+OnTalk2:
+	npctalk "It's going well we have few new adventures to undertake!";
+	end;
+
+}
+//========================================================================================================
+ars_in17,102,99,4	script	Ursula Hupoi#coeur	850,{
+
+set @name$,"Ursula Hupoi";
+
+	mes "[" + @name$ + "]"; 
+	mes "After exploring the wilderness of Sidon and Kargah, I like to go to Midgard...";
+	close;
+
+OnTalk1:
+	npctalk "And all the other fellows, who were called at Dream Urunesti!";
+	end;
+
+OnTalk2:
+	npctalk "And who could go far to save theirs, not exceeding forests Kiman Fares.";
+	end;
+}
+//========================================================================================================
+ars_in17,102,106,4	script	Daphnis#coeur	650,{
+
+set @name$,"Daphnis";
+
+	mes "[" + @name$ + "]"; 
+	mes "I will reimburse the journey from Alberta, but so you know... I don't keep too much gold...";
+	close;
+
+OnTalk1:
+	npctalk "For the Magi of the Academy! For Less Harpocrates!";
+	end;
+
+OnTalk2:
+	npctalk "As for me, since no one has asked me, I intend to stay in Arsinoe!";
+	end;
+
+OnTalk3:
+	npctalk "So if generous people could offer me some gold bars so I could buy a small castle...";
+	end;
+}
+//_________________________________________________________________
+//________________Le Coeur : Urunesti _____________________________
+//_________________________________________________________________
+
+ars_in17,133,96,3	script	Joka l'éclairé#coeur	493,{
+
+set @name$,"Joka l'éclairé";
+
+	mes "[" + @name$ + "]"; 
+	mes "Your village, Urunesti, you will long remember!";
+	close;
+
+}
+//========================================================================================================
+
+ars_in17,131,98,1	script	Spiria Symphonia#coeur	62,8,8,{
+
+set @name$,"Spiria Symphonia";
+
+	mes "[" + @name$ + "]"; 
+	mes "I would not have believed that thou mayest become as much! All children in the village wants to be like you now!";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Thébaïde _____________________________
+//_________________________________________________________________
+
+ars_in17,77,85,5	script	Ribald#coeur	751,{
+
+set @name$,"Ribald";
+
+	mes "[" + @name$ + "]"; 
+	mes "I still prefer to drink tea with Nachtstern than return to fight in the Tower of Stars.";
+	close;
+}
+//========================================================================================================
+ars_in17,78,88,5	script	NachtStern#coeur	3850,{
+
+set @name$,"NachtStern";
+
+	mes "[" + @name$ + "]"; 
+	mes "If one day you want to come and drink tea in my lap, do not hesitate.";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Sidon ________________________________
+//_________________________________________________________________
+
+ars_in17,134,120,3	script	Glohiu Yossik#coeur	739,{
+
+set @name$,"Glohiu Yossik";
+
+	mes "[" + @name$ + "]"; 
+	mes "Do you think we've forgotten what you did in the heart of Sidon!";
+	mes "Motorbike to one day return to our world!";	 
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : OmbreTerre ___________________________
+//_________________________________________________________________
+
+ars_in17,134,84,4	script	Svankmajer#coeur	998,{
+
+set @name$,"Svankmajer";
+
+	mes "[" + @name$ + "]"; 
+	mes "Thank you for your help and taking Da'Urdein with the Planar Sphere.";
+	mes "Now I am the Lord of these lands, our relations were resumed with the Hylarheim thanks to you.";	 
+	close;
+}
+
+//_________________________________________________________________
+//________________Le Coeur : Kargah _______________________________
+//_________________________________________________________________
+
+ars_in17,136,111,1	script	Colonel De Nursie#coeur	659,{
+
+set @name$,"Colonel De Nursie";
+
+	mes "[" + @name$ + "]"; 
+	mes "You are a legend among legions of Arsinoe!";
+	mes "We will long remember this memorable campaign against the goblins who were ready to invade our beloved city of Arsinoe.";	 
+	close;
+}
+//========================================================================================================
+ars_in17,132,107,4	script	Sénéchal Lin#coeur	416,{
+
+set @name$,"Sénéchal Lin";
+
+	mes "[" + @name$ + "]"; 
+	mes "What a great assault on Terkish unfortunately I had to leave with one eye ... But what fun to massacre des Gobelins!";
+	close;
+}
+
+//_________________________________________________________________
+//________________Le Coeur : Rana _________________________________
+//_________________________________________________________________
+
+ars_in17,112,71,2	script	Général Lorill#coeur	414,8,8,{
+
+set @name$,"Général Lorill";
+
+	mes "[" + @name$ + "]"; 
+	mes "I remember that I owe you my place and my title of General of the Legions of Arsinoe.";
+	mes "I requested my transfer, those pesky trees and La Rana annoy me...";
+	close;
+}
+//========================================================================================================
+ars_in17,108,75,1	script	Déesse de La Rana#coeur	3870,{
+
+
+set @name$,"Déesse de La Rana";
+
+	mes "[" + @name$ + "]"; 
+	mes "We love talented fighters. Our Arena LA Rana you will always be open!";
+	close;
+}
+
+//_________________________________________________________________
+//________________Le Coeur : Lalibela _____________________________
+//_________________________________________________________________
+
+
+ars_in17,124,72,1	script	Prêtre Merlay#coeur	481,{
+
+set @name$,"Prêtre Merlay";
+
+	mes "[" + @name$ + "]"; 
+	mes "Our Worship in Lalibela was able to return, my heart is joy, especially since the return of the Child.";
+	close;
+}
+//========================================================================================================
+ars_in17,121,76,4	script	Anne#coeur	75,{
+
+set @name$,"Anne";
+
+	mes "[" + @name$ + "]"; 
+	mes "My child is back thanks to you, this is more vile Sorcerer.";
+	close;
+}
+
+//_________________________________________________________________
+//________________Le Coeur : Bacchias _____________________________
+//_________________________________________________________________
+
+ars_in17,97,71,4	script	Mage Gawelle#coeur	661,{
+
+set @name$,"Mage Gawelle";
+
+	mes "[" + @name$ + "]"; 
+	mes "This whole adventure did not help my apprentice smarter, but hey you can not have everything!";
+	close;
+}
+//========================================================================================================
+ars_in17,100,75,1	script	Commandant Paraclet#co	415,{
+
+set @name$,"Commandant Paraclet";
+
+	mes "[" + @name$ + "]"; 
+	mes "Our garrison's Pass Octavia begins to welcome the veterans of Kargah, so we'll definitely be able to hunt the bandits Mountains Bacchias.";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Hylarheim ____________________________
+//_________________________________________________________________
+
+ars_in17,87,74,1	script	Shackey Sarinac#coeur	846,{
+
+set @name$,"Shackey Sarinac";
+
+	mes "[" + @name$ + "]"; 
+	mes "These liches not bother us much, and with your help the Strong Storm is finally back in our possession.";
+	close;
+}
+
+//_________________________________________________________________
+//________________Le Coeur : Néraka _______________________________
+//_________________________________________________________________
+
+ars_in17,74,122,5	script	Roi Baudouin I#coeur	988,{
+
+set @name$,"Roi Baudouin I";
+
+	mes "[" + @name$ + "]"; 
+	mes "The purge will continue among the Nobles, I am particularly disappointed with their behavior, and we have fallen far behind in exports of iron.";
+	close;
+}
+//========================================================================================================
+ars_in17,77,120,4	script	Gryphon#coeur	1259,{
+
+set @name$,"Gryphon";
+
+	mes "[" + @name$ + "]"; 
+	mes "The Gryphons do not like talking with strangers...";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Gondar _______________________________
+//_________________________________________________________________
+
+ars_in17,87,129,4	script	Icarie#coeur	430,{
+
+set @name$,"Icarie";
+
+	mes "[" + @name$ + "]"; 
+	mes "I have more pitches now, the King of Arsinoe authorized trade with Hylarheim and the Underdark.";
+	close;
+}
+//========================================================================================================
+
+ars_in17,90,134,4	script	Dragon de Gondar#coeur	3857,{
+
+set @name$,"Dragon de Gondar";
+
+	mes "[" + @name$ + "]"; 
+	mes "The vuivre plae is again, I feel more disruption in the flow of Arsinoe magic ... Next time knock on the door instead of attacking me and ask me a question.";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Coppalana ____________________________
+//_________________________________________________________________
+
+ars_in17,98,129,4	script	Chef Rafloc'h#coeur	477,{
+
+set @name$,"Chef Rafloc'h";
+
+	mes "[" + @name$ + "]"; 
+	mes "May the spirit of boitata be with you!";
+	close;
+}
+//========================================================================================================
+
+ars_in17,102,129,4	script	Servante Kloiacha#coeur	474,{
+
+set @name$,"Servante du Boitata";
+
+	mes "[" + @name$ + "]"; 
+	mes "We are waiting still for the village feast, do not hesitate to spend the night.";
+	close;
+}
+//_________________________________________________________________
+//________________Le Coeur : Kiman Farès __________________________
+//_________________________________________________________________
+
+ars_in17,123,131,4	script	Chef Pevnec#coeur	472,{
+
+set @name$,"Chef Pevnec";
+
+	mes "[" + @name$ + "]"; 
+	mes "It is quite a long time since you fell because of a simple jig!";
+	close;
+}
+
+
+
+
+//_________________________________________________________________
+//________________Le Coeur : Sortie _______________________________
+//_________________________________________________________________
+

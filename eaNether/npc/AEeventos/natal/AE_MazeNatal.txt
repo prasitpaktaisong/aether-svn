@@ -1,0 +1,188 @@
+job_wiz,100,97,0	script	Maze#c4	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze3 == 4){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "arug_cas05",141,47;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,116,82,0	script	Maze#c3	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze3 == 3){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "arug_cas05",141,47;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,131,97,0	script	Maze#c2	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze3 == 2){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "arug_cas05",141,47;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,115,113,0	script	Maze#c1	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze3 == 1){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "arug_cas05",141,47;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,30,97,0	script	Maze#b4	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze2 == 4){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",115,97;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,45,82,0	script	Maze#b3	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze2 == 3){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",115,97;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,61,97,0	script	Maze#b2	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze2 == 2){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",115,97;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,46,113,0	script	Maze#b1	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze2 == 1){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",115,97;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,98,169,0	script	Maze#a4	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze1 == 4){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",45,98;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,113,154,0	script	Maze#a3	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze1 == 3){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",45,98;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,129,169,0	script	Maze#a2	45,1,1,{
+	end;
+
+OnTouch:	
+	if($AE_NatalMaze1 == 2){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",45,98;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}
+
+job_wiz,113,185,0	script	Maze#a1	45,1,1,{
+	if($AE_NatalMaze1 == 1){
+		set #AE_EvtPt, #AE_EvtPt+10;
+		dispbottom "[Resgate ao Espírito de Natal]";
+		dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		warp "job_wiz",45,98;
+		end;
+	}	
+	warp "prontera",150,150;
+	end;
+}

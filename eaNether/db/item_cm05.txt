@@ -1,0 +1,11 @@
+// Old Violet Box Obtainable Items Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+
+9,12045,1650	//Panqueca de Lutie
+9,12050,1650	//Vinho de Mastela
+9,12065,1650	//Salada Verde
+9,12060,1650	//Asa de Morcego com Abóbora no Vapor
+9,12055,1650	//Pão de Carne Picante Frito
+9,12070,1650	//Caudas de Escorpião Fritas

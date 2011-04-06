@@ -1,0 +1,1407 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Quêtes Néraka
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = Neraka : Les Gryphons
+// 2 = Neraka : Salle du Trône
+// 3 = Neraka : Les Mercenaires
+// 4 = Neraka : Baron Sengir
+// 5 = Neraka : Le Nid de l'Aigle
+// 6 = Neraka : La Fronde
+// 7 = Neraka : Les Mines
+//
+//_________________________________________________________________
+//___________________Neraka : Les Gryphons ________________________
+//_________________________________________________________________
+
+ars_fild52,34,164,4	script	Sven Van Motten#1	731,{
+
+set @name$,"Sven Van Motten";
+
+if (EP7_NERAKA == 0)  goto sub1;
+if (EP7_NERAKA >= 1)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Good day adventurer, do you know in what realm you are in?"; 
+	mes "You've just entered into the land of Neraka, if you are looking for a job while you're armed, you made the right choice for sure!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Our King is researching Mercenary right now, I think you'll do the trick, so feel free to move over to the Throne Room.";
+	next;
+	mes "[" + @name$ + "]"; 	
+	mes "The routes are difficult in the mountains Bacchias, that is why we use Gryphons, they are available to people wishing to travel in our region.";
+	mes "On a flight don't forget to change your viewing angle over you and you can run your gryphon easier!";
+	close2;
+	setquest 70430;
+	set EP7_NERAKA,1;
+	end;
+
+sub2:
+	mes "[" + @name$ + "]"; 	
+	mes "The routes are difficult in the mountains Bacchias, that is why we use Gryphons, they are available to people wishing to travel in our region.";
+	mes "On a flight don't forget to change your viewing angle over you and you can run your gryphon easier!";
+	close;
+}
+//==================================================================================================
+
+ars_fild52,20,161,0	script	#arsfild52a	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:disguise 1259;set EP7_FLY,1;warp "ars_fild53",166,63;end;	}
+//=================================
+ars_fild53,172,62,0	script	#arsfild52b	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:undisguise;set EP7_FLY,0;warp "ars_fild52",25,161;end;	}
+
+
+//==================================================================================================
+
+ars_fild53,70,95,0	script	#arsfild53a	45,1,1,{
+	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't ride the Gryphons at the moment.";
+		close;
+
+	sub2:
+		set EP7_FLY,0;
+		undisguise;
+		warp "ars_fild53",64,95;
+		end;
+	
+}
+//=================================
+ars_fild53,67,95,0	script	#arsfild53b	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:disguise 1259;set EP7_FLY,1;warp "ars_fild53",73,95;end;	}
+
+//==================================================================================================
+
+ars_fild53,174,142,0	script	#arsfild53c	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:disguise 1259;set EP7_FLY,1;warp "ars_fild53",167,142;end;	}
+//=================================
+ars_fild53,170,142,0	script	#arsfild53d	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:undisguise;set EP7_FLY,0;warp "ars_fild53",174,139;end;	}
+
+//==================================================================================================
+
+ars_fild54,62,56,0	script	#arsfild54a	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:undisguise;set EP7_FLY,0;warp "ars_fild54",53,56;end;	}
+//=================================
+ars_fild54,57,56,0	script	#arsfild54b	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:disguise 1259;set EP7_FLY,1;warp "ars_fild54",65,56;end;	}
+
+//==================================================================================================
+
+ars_fild54,114,162,0	script	#arsfild54c	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:undisguise;set EP7_FLY,0;warp "ars_fild54",114,170;end;	}
+//=================================
+ars_fild54,114,166,0	script	#arsfild54d	45,1,1,{	
+	if (EP7_NERAKA == 0)  goto sub1;
+	if (EP7_NERAKA >= 1)  goto sub2;
+
+	sub1:mes "[" + strcharinfo(0) + "]"; mes "You can't ride the Gryphons at the moment.";close;
+	sub2:disguise 1259;set EP7_FLY,1;warp "ars_fild54",114,159;end;	}
+
+
+//==================================================================================================
+
+//_________________________________________________________________
+//___________________Neraka : Salle du Trône ______________________
+//_________________________________________________________________
+
+ars_in13,101,166,4	script	Roi Baudouin I#ep7	988,{
+
+set @name$,"Roi Baudouin I";
+
+if (EP7_NERAKA == 0)  goto sub1;
+if (EP7_NERAKA <= 11)  goto sub2;
+if (EP7_NERAKA == 12)  goto sub3;
+if (EP7_NERAKA <= 14)  goto sub4;
+if (EP7_NERAKA <= 16)  goto sub5;
+if (EP7_NERAKA >= 21)  goto sub6;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't be here, the Kingdom of Neraka is independent of the Empire of Arsinoe and we are always suspicious spies of Arsinoe."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 	
+	mes "Although we still don't trust strangers, I must recognize their usefulness in these troubled times ...";
+	mes "I guess you didn't come here to trade your weapons, or for tourism in our wasteland!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Do you want to then become a mercenary and be paid? We have work to offer and we pay well, which earned us the best warriors that came from the continent.";
+	mes "I'll give permission to introduce you to Tivi Ranalc'h at the Porte de Nerak, he trained and tested our goons and assigns tasks.";
+	mes "So you'll have to swear allegiance to our crown and better serve our interests, paid service of course!";
+	close2;
+	if (EP7_NERAKA == 1) {
+	changequest 70430,70431;
+	set EP7_NERAKA,2;}
+	end;
+
+sub3:
+	if($@ep7Anim1 == 2) {
+		mes "[" + @name$ + "]"; 
+		mes "Our fears were indeed well founded, the plotters will take action to forcibly take my throne!";
+		mes "The question remains, when? And even that? We know nothing of these Magi Grey or who commands them ...";
+		next;
+ 		mes "[" + @name$ + "]"; 
+		mes "You have to go back Tivias Ranalc'h, it is imperative that he comes with his troops into the city to repel the assault!";
+		mes "And please, hurry, time is running out!";
+		close2;
+		if (EP7_NERAKA == 12){
+		set EP7_NERAKA,13;
+		changequest 70439,70440;}
+		end;}
+
+
+	mes "[" + @name$ + "]"; 
+	mes "Tivias Ranalc'h contacted me to tell me that you had undertaken this perilous mission, and you see and so this is a tribute to you!";
+	mes "The Comte de Nemours will be judged by his peers and they will come together.";
+	close2;
+	if($@ep7Anim1 == 0) {donpcevent "EP7_intro::OnEvent8";}
+	end;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "You have to go back Tivias Ranalc'h, it is imperative that he comes with his troops into the city to repel the assault!";
+	mes "And please, hurry, time is running out!";
+	close;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "You must avenge us! The Grey Mages will pay for their treachery!";
+	close;
+
+sub6:
+
+	mes "[" + @name$ + "]"; 
+	mes "The crown of Neraka is very grateful to you, if you ever need our assistance, we would be honored to help you.";
+	close;	
+		
+
+//===============================
+
+OnTalk1:
+	npctalk "Chancellor, please bring the council, we will examine the Comte de Nemours.";end;
+
+OnTalk2:
+	npctalk "The situation is serious, these mercenaries come to bring us evidence of the treachery of Nemours.";end;
+
+OnTalk3:
+	npctalk "A terrible threat hanging over our city, Guards! Bring Nemours!";end;
+
+OnTalk4:
+	npctalk "So an attack against our city will be launched ... Who's In Charge? Who is your master?";end;
+
+OnTalk5:
+	npctalk "Mercenaries come see me I'll give you my orders. The hour is grave Risfec, Tocsin ring!";end;
+
+OnTalk6:
+	npctalk "Guyenne, Würtemberg, you will organize the first line of defense and send your scouts. We must find the source of the attack!";end;
+
+}
+//==================================================================================================
+
+ars_in13,95,165,4	script	Chancelier Risfek#ep7	995,{
+
+set @name$,"Chancelier Risfek";
+
+	mes "[" + @name$ + "]"; 
+	mes "The City of Neraka is subject to imperialist pressure Arsinoe who covets our mineral wealth.";
+	mes "For that we recruit the best fighters in the continent to defend ourselves, but the attacks and plots are more-recurring.";
+	close;
+
+OnTalk1:
+	npctalk "Although my King, Guyenne and Würtemberg will arrive ...";end;
+
+OnTalk2:
+	npctalk "You are accused of having executed the emissaries of the King and of conspiring against the Crown.";end;
+
+OnTalk3:
+	npctalk "These mercenaries come to bring us accounts of your book that proves your betrayal!";end;
+
+OnTalk4:
+	npctalk "Your expenses show enormous sums to maintain a strong army! Where is this army?";end;
+}
+
+//==================================================================================================
+
+ars_in13,100,160,4	script	Comte de Nemours#ep72	993,{
+
+set @name$,"Comte de Nemours";
+
+	mes "[" + @name$ + "]"; 
+	mes "He left me! Damn Magi Grey, I will not trust them.";
+	close;
+
+OnTalk1:
+	npctalk "I came here of my own accord, at least it seems to me ...";end;
+
+OnTalk2:
+	npctalk "I don't care for the Crown as my superiors, the City of Neraka is one step in our Great Vision!";end;
+
+OnTalk3:
+	npctalk "Your servants are out of my personal care. The Grey Mages, I became one of their main dignitary.";end;
+
+OnTalk4:
+	npctalk "Thanks to Shandalar's spells, I became the Noble-Mage's most powerful!";end;
+
+OnTalk5:
+	npctalk "It is already running. It is too late to save your throne!";end;
+
+OnTalk6:
+	npctalk "I have accomplished my mission by diverting your attention, now, I am going to lead my army!";end;
+
+OnTalk7:
+	npctalk "My brave Würtemberg, magic has been Still selecting an unknown in your weak mind!";end;
+
+OnTalk8: 
+	npctalk "Rooopppiiiieeee Kreellllloirrraaaa !";
+	specialeffect 513; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460;sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460;end;
+
+}
+//==================================================================================================
+
+ars_in13,103,162,4	script	Comte du Wurtemberg#ep7	985,{
+
+set @name$,"Comte du Wurtemberg";
+
+	mes "[" + @name$ + "]"; 
+	mes "The Nobles are less and less confidence, the enemy is among us. Death to traitors!";
+	close;
+
+OnTalk1:
+	npctalk "Here we are, please excuse us for not having been present earlier.";end;
+
+OnTalk2:
+	npctalk "And how do you intend to go about it? You'll not get far with my blade stuck in your heart!";end;
+
+OnTalk3:
+	npctalk "We will arm the people and launching exploration missions! For Neraka!";end;
+}
+//==================================================================================================
+
+ars_in13,96,162,4	script	Comte de Guyenne#ep7	987,{
+
+set @name$,"Comte de Guyenne";
+
+	mes "[" + @name$ + "]"; 
+	mes "My men are dedicated to the King and the City, see a traitor as Nemours here is a grave insult to our ideals.";
+	close;
+
+OnTalk1:
+	npctalk "Cowardly Dog, an order and bathe my sword in his heart!";end;
+OnTalk2:
+	npctalk "Nemours, black sheep! Bane of Harlot!";end;
+OnTalk3:
+	npctalk "Cursed magicians! They aren't worth more than those murderers!";end;
+OnTalk4:
+	npctalk "For Néraka !";end;
+}
+//_________________________________________________________________
+//___________________Neraka : Les Mercenaires _____________________
+//_________________________________________________________________
+
+ars_in12,131,148,4	script	Tivias Ranalc'h#ep7	964,{
+
+set @name$,"Tivias Ranalc'h";
+
+if (EP7_NERAKA <= 1)  goto sub1;
+if (EP7_NERAKA <= 3)  goto sub2;
+if (EP7_NERAKA <= 12)  goto sub3;
+if (EP7_NERAKA <= 14)  goto sub4;
+if (EP7_NERAKA <= 16)  goto sub5;
+if (EP7_NERAKA >= 21)  goto sub6;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "If you want to one day work for our kingdom, think of asking permission to King Baudoin to practice the profession of Mercenaries."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 	
+	mes "Greetings, then you're ready to pass the test of mercenaries, the Champ de Mars?";
+	mes "Be careful, it's difficult, you'll have to meet a few companions, because we need to form a strong collective spirit among us.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "As a mercenary, you have to come across the continent to see beyond the sea, you need to know yourself to better serve the crown.";
+	mes "Well, you have to spend the first 50 laps, to reach the battle against Nelson, then you can go out to validate your trial.";
+	mes "Once validated, you will have access to a few missions on the table in the lobby.";
+	close2;
+	if (EP7_NERAKA == 2) {
+	changequest 70431,70432;
+	set EP7_NERAKA,3;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Congratulations, now you have the right to wear the title of Mercenary Nerak! Go on to do missions for us and increases your reputation.";
+	mes "So you have the right to take with you mercenaries increasingly powerful, and the right to access missions more important.";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Eh? What did you say?";
+	mes "An attack in the heart of Neraka ... If the King Baudoin commands us, we are ready to march on the city.";
+	mes "I'll count on you to support us in defending the city. Return validate touch the money for your previous mission, then accept the new terms and the Fronde.";
+	mes "We'll meet at the front door Nerak to assign our defensive positions.";
+	close2;
+	if (EP7_NERAKA == 13) {
+	changequest 70440,70441;
+	set EP7_NERAKA,14;}
+	end;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "The main thing is saved, the city held firm. We will have to wear the thrusting open enemy territory.";
+	close;
+
+sub6:
+	mes "[" + @name$ + "]"; 
+	mes "I don't know what to tell you, you became a hero to Nerak! If you want the most powerful mercenary our country will be delighted to put at your service!";
+	close;
+}
+
+//==================================================================================================
+
+ars_in12,125,34,5	script	Missions#ep7	728,{
+
+set @name$,"Missions";
+
+if (EP7_NERAKA <= 3) {mes "[" + @name$ + "]";mes "You can't get missions until you become a mercenary of Neraka!";close;}
+
+	setarray .@MercoQ$[1],"Le Baron Sengir","Delivery of Ice","The Eagle's Nest","La Fronde","Mines";
+	setarray .@MercoLvl[1],4,7,10,15,18; //Valeur du début
+	setarray .@MercoLvl2[1],6,9,14,17,20; //Valeur de Fin
+
+	mes "[" + @name$ + "]";
+	mes "Missions :";
+
+	set .@size, getarraysize(.@MercoQ$);
+	for( set .@i, 1; .@i < .@size; set .@i, .@i +1 ) {
+	mes "- " + .@MercoQ$[.@i] + " :";
+
+	if (EP7_NERAKA < .@MercoLvl[.@i] || EP7_NERAKA > .@MercoLvl2[.@i]) {
+	mes "^FF3300 Non Disponible^000000";} else{mes "^66FF33 Disponible^000000";}}
+
+	next;
+	set .@Menu$, "";
+	for( set .@i, 1; .@i < .@size; set .@i, .@i +1 ) {
+	set .@Menu$, .@Menu$ + .@MercoQ$[.@i] + ":";}
+
+	set .@choiceID$, .@MercoQ$[select(.@Menu$)];
+
+//==============================================
+
+		if(.@choiceID$ == .@MercoQ$[1]) {
+
+			if (EP7_NERAKA <= 5) {
+				mes "[" + @name$ + "]";
+				mes ""+.@MercoQ$[1]+" :";
+				mes "This mission is to avenge the honor of the Crown Neraka, Baron Sengir, a close associate of the King, hugely diverted money to the king.";
+				mes "He was able to settle in a rich deumeure of the city of Arsinoe";
+				mes "Your mission is to eliminate him.";
+				if (EP7_NERAKA == 5) {close;}
+				close2;
+				completequest 70433;
+				setquest 70434;
+				set EP7_NERAKA,5;
+				end;}	
+
+			if (EP7_NERAKA == 6) {
+				mes "[" + @name$ + "]";	
+				mes "Congratulations, mission "+.@MercoQ$[1]+" : Accomplished!";
+				close2;
+				completequest 70435;
+				set EP7_NERAKA,7;
+				getitem $ep7_Tcoins,$ep7silvercoinnb[10];
+				end;}	
+			
+
+		mes "[" + @name$ + "]";
+		mes "This mission is not avalible to you.";
+ 		close;}
+
+//==============================================
+
+		if(.@choiceID$ == .@MercoQ$[2]) {
+
+			if (EP7_NERAKA == 7 || EP7_NERAKA == 8) {
+
+				mes "[" + @name$ + "]";
+				mes ""+.@MercoQ$[2]+" :";
+				mes "You must deliver the ice of Neraka to Sheikh BarYoucef in a given time. He wants the ice and not water!";
+				mes "Go to the City of Neraka and contact Arganie, he will guide you in your mission.";
+				if (EP7_NERAKA == 8) {close;}
+				close2;
+				setquest 70436;
+				set EP7_NERAKA,8;
+				end;}
+
+
+			if (EP7_NERAKA == 9) {
+				mes "[" + @name$ + "]";	
+				mes "Congratulations, mission "+.@MercoQ$[2]+" : Accomplished!";
+				close2;
+				completequest 70437;
+				set EP7_NERAKA,10;
+				getitem $ep7_Tcoins,$ep7silvercoinnb[11];
+				end;}	
+
+
+		mes "[" + @name$ + "]";
+		mes "Cette Mission ne vous est pas disponible.";
+ 		close;}
+
+//==============================================
+
+
+		if(.@choiceID$ == .@MercoQ$[3]) {
+
+			if (EP7_NERAKA == 10 || EP7_NERAKA == 11 || EP7_NERAKA == 12 || EP7_NERAKA == 13) {
+
+				mes "[" + @name$ + "]";
+				mes ""+.@MercoQ$[3]+" :";
+				mes "King Baudoin is concerned, the Comte de Nemours no longer responds to his summons to the court.";
+				mes "None of the envoys returned, the King feared a betrayal of the Count who in the past has always proved somewhat reliable.";
+				next;
+				mes "[" + @name$ + "]";
+				mes "You'll have to investigate in his tower. You get a warrant to force entry into his home.";
+				mes "If proven treacherous, you must report any evidence of his guilt. The king asks you to bring him back alive to his court, so he can be judged by his peers.";
+				if (EP7_NERAKA == 11 || EP7_NERAKA == 12 || EP7_NERAKA == 13) {close;}
+				close2;
+				setquest 70438;
+				set EP7_NERAKA,11;
+				end;}
+
+
+			if (EP7_NERAKA == 14) {
+				mes "[" + @name$ + "]";	
+				mes "Congratulations, mission "+.@MercoQ$[3]+" : Accomplished!";
+				close2;
+				completequest 70441;
+				set EP7_NERAKA,15;
+				getitem $ep7_Tcoins,$ep7silvercoinnb[12];
+				end;}	
+
+
+		mes "[" + @name$ + "]";
+		mes "This mission is not avalible to you.";
+ 		close;}
+
+//==============================================
+
+
+		if(.@choiceID$ == .@MercoQ$[4]) {
+
+			if (EP7_NERAKA == 15 || EP7_NERAKA == 16) {
+
+				mes "[" + @name$ + "]";
+				mes ""+.@MercoQ$[4]+" :";
+				mes "King Baudoin sure that an attack by rebellious nobles allied to the Magi Gray is preparing to infest the City of Neraka.";
+				mes "The presence of all mercenaries is required to defend the king.";
+				mes "To hear your assignment you must contact Tivias Ranalc'h at the Door of Neraka.";
+				if (EP7_NERAKA == 16) {close;}
+				close2;
+				setquest 70442;
+				set EP7_NERAKA,16;
+				end;}
+
+			if (EP7_NERAKA == 17) {
+				mes "[" + @name$ + "]";	
+				mes "Congratulations, mission "+.@MercoQ$[4]+" : Accomplished!";
+				close2;
+				completequest 70443;
+				set EP7_NERAKA,18;
+				getitem $ep7_Tcoins,$ep7silvercoinnb[13];
+				end;}	
+
+
+
+		mes "[" + @name$ + "]";
+		mes "This mission is not avalible to you.";
+ 		close;}
+
+
+
+//==============================================
+
+		if(.@choiceID$ == .@MercoQ$[5]) {
+
+			if (EP7_NERAKA == 18 || EP7_NERAKA == 19) {
+
+				mes "[" + @name$ + "]";
+				mes ""+.@MercoQ$[5]+" :";
+				mes "We now know that the old mines Neraka's the home of Frondeurs.";
+				mes "We'll have to conduct a cons-offensive to eliminate muscular Slingers Gray and Magi.";
+				mes "We believe that the Magi Grey conduct their operations from this base. On this luck mercenary!";
+				if (EP7_NERAKA == 19) {close;}
+				close2;
+				setquest 70444;
+				set EP7_NERAKA,19;
+				end;}
+
+			if (EP7_NERAKA == 20) {
+				mes "[" + @name$ + "]";	
+				mes "Congratulations, mission "+.@MercoQ$[5]+" : Accomplished!";
+				close2;
+				completequest 70445;
+				set EP7_NERAKA,21;
+				getitem $ep7recompense[39],1;
+				callfunc "arsi_CondoTitre";
+				announce "[" + strcharinfo(0) +"] became the [" + $EP7_TCONDO + "] Condottiere of Néraka !",bc_all,0x33FF00;
+				end;}	
+
+
+
+		mes "[" + @name$ + "]";
+		mes "This mission is not avalible to you.";
+ 		close;}
+
+}
+//==================================================================================================
+
+ars_in12,111,93,5	script	Condottiere#ep7	963,{
+
+set @name$,"Condottiere";
+
+
+	mes "[" + @name$ + "]";
+	mes "I'm agreements between a sponsor and the mercenaries, but of course another mercenary with a reputation and the means, may seek companions to assist him in his quests.";
+	mes "Do you want therefore to contract for a mercenary?";
+	next;
+
+	if( select("Contract:Quit") == 2 )
+			{mes "[" + @name$ + "]";mes "You're the boss!";close;}
+
+	//deletearray .@ItemConid[0],127;	
+
+	if (EP7_NERAKA <= 4) {
+	//lvl 1
+	setarray .@ItemConid[1],12153,12163,12173;
+	setarray .@ItemConnb[1],10,10,10;}
+
+	if (EP7_NERAKA > 4 && EP7_NERAKA <= 10) {
+	//lvl 5
+	setarray .@ItemConid[1],12153,12163,12173,12157,12167,12177;
+	setarray .@ItemConnb[1],10,10,10,50,50,50;}
+
+	if (EP7_NERAKA > 10 && EP7_NERAKA <= 15) {
+	//lvl 7
+	setarray .@ItemConid[1],12153,12163,12173,12157,12167,12177,12159,12169,12179;
+	setarray .@ItemConnb[1],10,10,10,50,50,50,70,70,70;}
+
+	if (EP7_NERAKA > 15 && EP7_NERAKA <= 20) {
+	//lvl 8
+	setarray .@ItemConid[1],12153,12163,12173,12157,12167,12177,12159,12169,12179,12160,12170,12180;
+	setarray .@ItemConnb[1],10,10,10,50,50,50,70,70,70,80,80,80;}
+
+	if (EP7_NERAKA >= 21) {
+	//lvl 10
+	setarray .@ItemConid[1],12153,12163,12173,12157,12167,12177,12159,12169,12179,12160,12170,12180,12162,12172,12182;
+	setarray .@ItemConnb[1],10,10,10,50,50,50,70,70,70,80,80,80,100,100,100;}
+
+
+		set .@size, getarraysize(.@ItemConid);
+		mes "[" + @name$ + "]";
+
+		for( set .@i, 1; .@i < .@size; set .@i, .@i +1 )
+		mes "- " + getitemname(.@ItemConid[.@i]) + " : "+.@ItemConnb[.@i]+"";
+
+		mes "What do you choose?";
+		next;
+
+		set .@Menu$, "";
+		for( set .@i, 1; .@i < .@size; set .@i, .@i +1 )
+		set .@Menu$, .@Menu$ + getitemname(.@ItemConid[.@i]) + ":";
+
+		set .@choiceID, .@ItemConid[select(.@Menu$)];
+
+		for( set .@i, 1; .@i < .@size; set .@i, .@i +1 )
+		if(.@choiceID == .@ItemConid[.@i]) {set .@choiceNB,.@ItemConnb[.@i];}
+
+		mes "[" + @name$ + "]";
+		mes "Would you get a ^0000FF" + getitemname(.@choiceID) + "^000000 and this for "+.@choiceNB+" " + getitemname($ep7_Tcoins) + " ?";
+		next;
+
+		if( select("Yes:No") == 2 )
+		{
+		mes "[" + @name$ + "]";
+		mes "As you wish ...";
+		close;
+		}
+
+		if( countitem($ep7_Tcoins) < .@choiceNB ) {mes "[" + @name$ + "]";mes "You got only "+countitem($ep7_Tcoins)+" / "+.@choiceN+" " + getitemname($ep7_Tcoins) + " !"; close;}
+		mes "[" + @name$ + "]";
+		mes "And here you are mercenary, pay attention to you anyway!";
+		close2;
+		getitem .@choiceID,1;
+		delitem $ep7_Tcoins,.@choiceNB;
+		end;
+		
+
+}
+
+//_________________________________________________________________
+//___________________Neraka : Baron Sengir ________________________
+//_________________________________________________________________
+
+ars_in02,273,278,4	script	Baron Sengir#ep7	806,{
+
+set @name$,"Baron Sengir";
+
+if ($@EP7_sengir == 2)  goto recompense;
+if (EP7_NERAKA <= 4)  goto sub1;
+if (EP7_NERAKA == 5)  goto sub2;
+if (EP7_NERAKA >= 6)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Please leave my house or I'll have to call the guard!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "That smell, that smells unhealthy, but yes mercenaries! shame to live so his sword!";
+	mes "I knew that old Baudoin did not let me alone, get ready to fight!"; 
+	close2;
+	if ($@EP7_sengir == 0)  {donpcevent "EP7_sengir::OnMonsterSpawn";}
+	end;
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Here lies the body of Baron Sengir.";
+	close;
+
+recompense:
+
+	if (EP7_NERAKA >= 6)  goto sub3;
+	mes "[" + @name$ + "]"; 
+	mes "You just got the head of Baron Sengir."; 
+	close2;
+	set EP7_NERAKA,6;
+	changequest 70434,70435;
+	end;
+	
+
+}
+//=====================================================================
+
+-	script	EP7_sengir	-1,{
+
+OnInit:
+	set $@EP7_sengir,0;
+	end;
+	
+OnMonsterSpawn:
+	
+	//variable event
+	set $@EP7_sengir,1;
+	
+	//Boss
+	monster "ars_in02",276,273,"Félin",3910,1,"EP7_sengir::OnMonsterKill"; 
+	monster "ars_in02",269,244,"Félin",3910,1,"EP7_sengir::OnMonsterKill"; 
+	monster "ars_in02",251,270,"Félin",3910,1,"EP7_sengir::OnMonsterKill"; 
+	monster "ars_in02",253,253,"Félin",3910,1,"EP7_sengir::OnMonsterKill"; 
+	set $@monster_ep7sengir,4;
+	end;
+
+OnMonsterKill:
+
+	set $@monster_ep7sengir, $@monster_ep7sengir-1;
+	if($@monster_ep7sengir==0) {
+		mapannounce "ars_in02","You have kill the Baron Sengir.",0,0x66CC33;
+		set $@EP7_sengir,2;
+		sleep2 180000;
+		donpcevent "EP7_sengir::OnInit";
+		}
+	end;
+}
+
+//_________________________________________________________________
+//___________________Neraka : Le Nid de l'Aigle ___________________
+//_________________________________________________________________
+
+ars_dun32,55,46,0	script	#arsdun32a	45,1,1,{
+	
+	if (EP7_NERAKA <= 10)  goto sub1;
+	if (EP7_NERAKA >= 11)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "The door is closed. A guard opened a window to it by telling you to vacate, you have no permission to enter in the Tower of the Comte de Nemours.";
+		close2;
+		if ($@EP7_nemours == 0){donpcevent "EP7_nemours::OnMonsterSpawn";}
+		end;
+	sub2:
+		warp "ars_dun32",48,135;
+		end;
+	
+}
+//=====================================================================
+
+-	script	EP7_nemours	-1,{
+
+OnInit:
+	set $@EP7_nemours,0;
+	killmonsterall "ars_dun32";
+	
+	
+OnMonsterSpawn:
+	
+	//variable event
+	set $@EP7_nemours,1;
+
+	areamonster "ars_dun32",107,171,52,112,"Mage Gris",3863,5,"EP7_nemours::OnMonsterKill";
+	areamonster "ars_dun32",107,171,52,112,"Archer Griffor",3911,15,"EP7_nemours::OnMonsterKill";
+	areamonster "ars_dun32",107,171,52,112,"Soldat Griffor",3912,10,"EP7_nemours::OnMonsterKill";
+	set $@monster_ep7nemours,30;
+	end;
+
+//Première Salle 
+OnMonsterKill:
+
+	set $@monster_ep7nemours, $@monster_ep7nemours-1;
+	if($@monster_ep7nemours==0) {
+		mapannounce "ars_dun32","Comte de Nemours : Fools ! Fools! You can't win this battle!",0,0x66CC33;
+		set $@EP7_nemours,2;
+		sleep2 5000;
+		donpcevent "EP7_nemours::OnMonsterSpawn2";
+		}
+	end;
+
+
+//Deuxième Salle
+OnMonsterSpawn2:
+
+	areamonster "ars_dun32",163,132,122,20,"Sombre Acolyte",3864,3,"EP7_nemours::OnMonsterKill2";
+	areamonster "ars_dun32",163,132,122,20,"Mage Gris",3863,2,"EP7_nemours::OnMonsterKill2";
+	areamonster "ars_dun32",163,132,122,20,"Soldat Griffor",3912,10,"EP7_nemours::OnMonsterKill2";
+	set $@monster_ep7nemours,15;
+	end;
+
+OnMonsterKill2:
+
+	set $@monster_ep7nemours, $@monster_ep7nemours-1;
+	if($@monster_ep7nemours==0) {
+		mapannounce "ars_dun32","Comte de Nemours : Well, you've won!",0,0x66CC33;
+		set $@EP7_nemours,3;
+		sleep2 240000;
+		donpcevent "EP7_nemours::OnInit";
+		}
+	end;
+
+}
+//=====================================================================
+
+ars_dun32,122,135,0	script	#arsdun32b	45,1,1,{
+	
+	if ($@EP7_nemours <= 1)  goto sub1;
+	if ($@EP7_nemours >= 2)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't force the door, it is protected by magic!";
+		close;
+	sub2:
+		warp "ars_dun32",132,135;
+		end;
+	
+}
+//=====================================================================
+
+ars_dun32,123,22,4	script	Comte de Nemours#ep7	993,{
+
+set @name$,"Comte de Nemours";
+
+if (EP7_NERAKA <= 10)  goto sub1;
+if (EP7_NERAKA >= 11)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Out of my sight !"; 
+	close2;
+	warp "ars_dun32",45,46;
+	end;
+sub2:
+
+	if ($@EP7_nemours == 3)  {
+		mes "[" + @name$ + "]"; 
+		mes "I'm finished, my troops have been eliminated, and I imagine that your partner wants me working with him ...";
+		mes "You can imagine what kind of agreement I have contracted with the Magi Grey!";
+		mes "They'll kill me in one word, before I can explain my situation But I'll follow you.";
+		close2;
+		if (EP7_NERAKA == 11) {changequest 70438,70439;	set EP7_NERAKA,12; getitem 29083,1;}
+		warp "ars_dun32",45,46;
+		end;}
+
+	mes "[" + @name$ + "]"; 
+	mes "Fools, what do you find here? Grey Mages will protect me, Shandalar promised me!";
+	close;
+
+}
+
+//_________________________________________________________________
+//___________________Neraka : La Fronde ___________________________
+//_________________________________________________________________
+
+ars_fild54,108,172,4	script	Tivias Ranalc'h#ep72	964,{
+
+set @name$,"Tivias Ranalc'h";
+
+if (EP7_NERAKA <= 15)  goto sub1;
+if (EP7_NERAKA >= 16)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "If you need me, I am in my training center a little longer."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 	
+	mes "Ah, there you are, the situation is rather complicated, the Fronde had acted more quickly than expected ... They have already infiltrated the city and I don't know how!";
+	mes "Well, we will have to lead the assault and a fairly quickly, hope that the King is still alive.";
+	mes "Our latest information shows that he has barricaded himself in his castle with the Guards. The time will be a key to our success.";
+	next;
+	
+	
+	if($@EP7_fronde <= 1) {
+		mes "[" + @name$ + "]";
+		mes "Well, we have targets to meet and time is running out!";
+		next;
+		if( select("Let's go: I will prepare") == 2 )
+			{
+			mes "[" + @name$ + "]";
+			mes "Don't delay, otherwise it will be too late for our Kingdom.";
+			close;
+			}
+		if($@EP7_fronde == 0) {donpcevent "EP7_fronde::OnStart";}
+		mes "[" + @name$ + "]";
+		mes "Let the show begin!";
+		close2;
+		warp "ars_dun38",157,19;
+		end;}
+
+	if($@EP7_fronde >= 2) {
+		mes "[" + @name$ + "]";
+		mes "A squadron of mercenaries had already been sent to save the King.";
+		mes "If they fail, you are our last chance!";
+		close;}
+
+}
+//=====================================================================
+
+-	script	EP7_fronde	-1,{
+
+OnInit:
+	set $@EP7_fronde,0;
+	killmonsterall "ars_dun38";
+	killmonsterall "ars_dun39";
+	disablenpc "#arsdun38a";
+	disablenpc "#arsdun38b";
+	disablenpc "Tivias Ranalc'h#ep73";	
+	end;
+	
+OnStart:
+
+	set $@EP7_fronde,1;
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild54","Instance -- La Fronde of Néraka has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- La Fronde of Néraka has just begun !",0,0xFF6600;}
+	sleep2 5000;
+	donpcevent "EP7_fronde::OnMonsterSpawn";
+	donpcevent "EP7_fronde::OnCheckTime";
+	sleep2 120000;
+	set $@EP7_fronde,2;
+	end;
+
+OnMonsterSpawn:
+	
+	areamonster "ars_dun38",400,0,0,400,"Mage Gris",3863,10,"EP7_fronde::OnMonsterKill";
+	areamonster "ars_dun38",400,0,0,400,"Archer Griffor",3911,25,"EP7_fronde::OnMonsterKill";
+	areamonster "ars_dun38",400,0,0,400,"Soldat Griffor",3912,40,"EP7_fronde::OnMonsterKill";
+
+	monster "ars_dun38",177,140,"Colonel Kadafik",3918,1,"EP7_fronde::OnBossKill"; 
+	set $@monster_ep7fronde,1;
+	end;
+
+OnBossKill:
+
+	set $@monster_ep7fronde, $@monster_ep7fronde-1;
+	if($@monster_ep7fronde==0) {
+		mapannounce "ars_dun38","Tivias Ranalc'h : The Way is clear, we can reach the Throne Room !",0,0x66CC33;
+		enablenpc "#arsdun38a";
+		donpcevent "EP7_fronde::OnFinal";
+		}
+	end;
+
+OnMonsterKill: end;
+
+OnFinal:
+
+	areamonster "ars_dun39",400,0,0,400,"Mage Gris",3863,5,"EP7_fronde::OnMonsterKill";
+	monster "ars_dun39",100,160,"Comte de Nemours",3919,1,"EP7_fronde::OnBossKill2"; 
+	set $@monster_ep7fronde,1;
+	end;
+
+OnBossKill2:
+
+	set $@monster_ep7fronde, $@monster_ep7fronde-1;
+	if($@monster_ep7fronde==0) {
+		mapannounce "ars_dun39","Roi Baudouin I : La Fronde has just failed because of your intervention !",0,0x66CC33;
+		set $@EP7_fronde,3;
+		enablenpc "Tivias Ranalc'h#ep73";	
+		sleep2 10000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk1";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk2";
+		sleep2 5000;
+		donpcevent "Tivias Ranalc'h#ep73::OnTalk1";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk3";
+		sleep2 5000;
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk4";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk5";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk6";
+		sleep2 5000;
+		donpcevent "Tivias Ranalc'h#ep73::OnTalk2";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk7";
+		sleep2 5000;
+		donpcevent "Roi Baudouin I#ep72::OnTalk8";
+	
+		enablenpc "#arsdun38b";
+
+		sleep2 180000;
+		donpcevent "EP7_fronde::OnInit";
+		}
+	end;
+
+OnCheckTime:
+
+	sleep2 3600000;
+	if($@EP7_fronde ==2) {donpcevent "EP7_fronde::OnInit";}
+	end;
+}
+
+//=====================================================================
+
+ars_dun39,100,167,4	script	Roi Baudouin I#ep72	988,{
+
+set @name$,"Roi Baudouin I";
+
+if($@EP7_fronde <=2) {
+	mes "[" + @name$ + "]"; 
+	mes "You must push the Comte de Nemours, my shield will not last much longer at this rate!"; 
+	close;}
+
+if($@EP7_fronde >=3) {
+	mes "[" + @name$ + "]"; 
+	mes "Thanks for your help! Take the portal to teleport!";
+	close;}
+	
+OnTalk1:
+	npctalk "I never thought that the Nemours had gathered such forces so soon.";end;
+
+OnTalk2:
+	npctalk "The attack occurred in the city within the same, by the mines!";end;
+
+OnTalk3:
+	npctalk "Tivias Yes, the gallery has been recapped in flight the last troops of Nemours, but it appears clear that they are not the brains behind this plan.";end;
+
+OnTalk4:
+	npctalk "The Grey Mages are not from Arsinoe, I wonder why they put out so many ways our city ..";end;
+
+OnTalk5:
+	npctalk "I fear that our enemies are even in number, according to our latest reports, the attack comes from the old mines of Neraka.";end;
+
+OnTalk6:
+	npctalk "Those at the entrance of the city, closed over 50 years ... The guard did not notice anything strange yet recently ...";end;
+
+OnTalk7:
+	npctalk "Send your scouts, if the enemy presence is detected, please run a regular attack to avenge us!";end;
+
+OnTalk8:
+	npctalk "Mercenaries, you can take this portal to teleport, you have accomplished your mission.";end;
+
+}
+//=====================================================================
+
+ars_dun39,96,164,4	script	Tivias Ranalc'h#ep73	964,{
+
+set @name$,"Tivias Ranalc'h";
+
+	mes "[" + @name$ + "]"; 
+	mes "Beautiful work, nerak owes you a candle, but we must not rest on our laurels too soon ...";
+	close;
+
+OnTalk1:
+	npctalk "Neraka mines have been infiltrated?";end;
+
+OnTalk2:
+	npctalk "It seems that my mercenary will have work my King!";end;
+	
+}
+//=====================================================================
+
+ars_dun38,158,163,0	warp	#arsdun38a	1,1,ars_dun39,100,91
+
+ars_dun39,100,87,0	warp	#arsdun38c	1,1,ars_dun38,158,160
+//=====================================================================
+
+ars_dun39,100,163,0	script	#arsdun38b	45,1,1,{
+	
+	if (EP7_NERAKA <= 15)  goto sub1;
+	if (EP7_NERAKA == 16)  goto sub2;
+	if (EP7_NERAKA >= 17)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_fild54",114,175; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just pushed the Fronde of the Nobles of Neraka. The crown is going!";
+		set EP7_NERAKA,17;
+		changequest 70442,70443;	
+		warp "ars_fild54",114,175; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_fild54",114,175; //retour début
+		end;
+	
+}
+
+
+//_________________________________________________________________
+//___________________Neraka : Les Mines ___________________________
+//_________________________________________________________________
+
+ars_fild54,39,61,0	script	#arsfild58x	45,1,1,{
+	
+	if (EP7_NERAKA <= 18)  goto sub1;
+	if (EP7_NERAKA >= 19)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "Old mines Neraka. They have been closed for a long time and seem busier.";
+		close;
+
+	sub2:
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "Old mines Neraka. They have been closed for a long time and seem busy.";
+		mes "But to you it's not, you may well think that there is a catch!";	
+		close2;
+		warp "ars_dun34",34,187;
+		end;
+	
+}
+//=====================================================================
+
+ars_dun34,129,87,3	script	Mercenaire Yavik#ep7	821,{
+
+
+set @name$,"Mercenaire Yavik";
+
+	if($@EP7_MinesNera==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the assault of Mines Davaeorn!";
+	close;
+	end;
+	}
+	if($@EP7_MinesNera>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team spirit is currently participating in the assault of Mines Davaeorn!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Mines de Davaeorn - Waiting Room",$EP7_InstJoueurs,"EP7_MinesNera::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsdun35a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_dun34,132,92,0	script	#arsdun35a	45,1,1,{
+	
+	if (EP7_NERAKA <= 18)  goto sub1;
+	if (EP7_NERAKA >= 19)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_dun35",21,186; //instance
+		end;
+	
+}
+
+//===================================================================================
+-	script	EP7_MinesNera	-1,{
+
+
+OnInit:
+	set $@EP7_MinesNera,0;
+
+	killmonsterall "ars_dun35";
+	killmonsterall "ars_dun36";
+	killmonsterall "ars_dun37";
+
+	donpcevent "Mercenaire Yavik#ep7::OnBG";
+
+	disablenpc "#arsdun35a"; //début instance
+	//disablenpc "#arsdun35b"; //lvl 2-3
+	//disablenpc "#arsdun35c"; //lvl 3-4	
+	disablenpc "#arsdun35d"; //Final récompense
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;
+	
+	end;
+
+OnBGJoin:
+	if( $@EP7_MinesNera == 0)
+		donpcevent "EP7_MinesNera::OnReadyCheck";
+	end;
+	
+OnReadyCheck:
+	if( $@EP7_MinesNera )
+		end;
+
+	set .@EP7_MinesNera, getwaitingroomstate(0,"Mercenaire Yavik#ep7");
+	
+	if( .@EP7_MinesNera < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_dun34","Instance -- Les Mines de Davaeorn : " + .@EP7_MinesNera + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@EP7_MinesNera, 1;
+	// warp joueurs
+	donpcevent "Mercenaire Yavik#ep7::OnEnterBG";
+
+	if( $EP7Annonce == 0 ) {mapannounce "ars_dun34","Instance -- Les Mines de Davaeorn has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Les Mines de Davaeorn has just begun !",0,0xFF6600;}
+
+	// Start Match!!
+	initnpctimer;
+
+	// npcs les fenetres
+	delwaitingroom "Mercenaire Yavik#ep7";
+	donpcevent "EP7_MinesNera::OnSpawn";
+	end;
+
+//=============================================================
+
+OnTimer40000:
+
+	disablenpc "#arsdun35a";
+	end;
+
+OnTimer7400000:
+
+	mapannounce "ars_dun35","Mines has just been flooded, you can't continue your exploration.",1,0xFF6600;
+	mapannounce "ars_dun36","Mines has just been flooded, you can't continue your exploration.",1,0xFF6600;
+	mapannounce "ars_dun37","Mines has just been flooded, you can't continue your exploration.",1,0xFF6600;
+	sleep2 5000;
+	mapwarp "ars_dun35","ars_dun34",38,186;
+	mapwarp "ars_dun35","ars_dun34",38,186;
+	mapwarp "ars_dun35","ars_dun34",38,186;
+	donpcevent "EP7_MinesNera::OnInit";
+	end;
+
+//=============================================================
+
+OnBossKill:
+
+	if($@EP7_MinesNera == 3) {set $@EP7_MinesNera,4;}
+
+	set $@monster_ep7minesN, $@monster_ep7minesN-1;
+	if($@monster_ep7minesN==0) {
+
+		if($@EP7_MinesNera == 1) {
+			mapannounce "ars_dun35","You just get the Rune magic to lift the protections of the door leading to the lower level.",0,0x66CC33;
+			set $@EP7_MinesNera,2;
+			donpcevent "EP7_MinesNera::OnSpawn";
+			end;}
+
+		if($@EP7_MinesNera == 2) {
+			mapannounce "ars_dun36","You just get the Rune magic to lift the protections of the door leading to the lower level.",0,0x66CC33;
+			set $@EP7_MinesNera,3;
+			donpcevent "EP7_MinesNera::OnSpawn";
+			end;}
+
+		if($@EP7_MinesNera == 4) {
+			mapannounce "ars_dun37","The leader of the Fronde and the Magi Grey Nerak just fallen, Davaeorn no more. You have to exit the mine through the elevator.",0,0x66CC33;
+			enablenpc "#arsdun35d";	
+			sleep2 240000;
+			donpcevent "EP7_MinesNera::OnInit";
+			end;}
+
+		}
+	end;
+
+OnSpawn: 	
+
+	if ($@EP7_MinesNera == 1) {monster "ars_dun35",83,92,"Hareishan",3914,1,"EP7_MinesNera::OnBossKill";}
+	if ($@EP7_MinesNera == 2) {monster "ars_dun36",95,181,"Natasha",3915,1,"EP7_MinesNera::OnBossKill";}
+	if ($@EP7_MinesNera == 3) {monster "ars_dun37",76,97,"Davaeorn",3916,1,"EP7_MinesNera::OnBossKill";}
+	if ($@EP7_MinesNera == 4) {end;}
+	set $@monster_ep7minesN,1;
+	end;
+
+
+}
+//===================================================================================
+
+ars_dun35,82,41,0	script	#arsdun35b	45,1,1,{
+	
+	if (EP7_NERAKA <= 18)  goto sub1;
+	if (EP7_NERAKA >= 19)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		if($@EP7_MinesNera == 2) {
+		warp "ars_dun36",15,76; //instance
+		end;}
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You feel that the door is heavily protected by magic, you will have to find a way to remove the defensive spells.";
+		close;	
+}
+
+//===================================================================================
+
+ars_dun36,167,38,0	script	#arsdun35c	45,1,1,{
+	
+	if (EP7_NERAKA <= 18)  goto sub1;
+	if (EP7_NERAKA >= 19)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		if($@EP7_MinesNera == 3) {
+		warp "ars_dun37",78,188; //instance
+		end;}
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You feel that the door is heavily protected by magic, you will have to find a way to remove the defensive spells.";
+		close;	
+}
+
+//===================================================================================
+
+ars_dun37,63,55,0	script	#arsdun35d	45,1,1,{
+	
+	if (EP7_NERAKA <= 18)  goto sub1;
+	if (EP7_NERAKA == 19)  goto sub2;
+	if (EP7_NERAKA >= 20)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_dun34",38,186; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You have to eliminate Davaeorn, the chief of the Magi Gray.";
+		set EP7_NERAKA,20;
+		changequest 70444,70445;	
+		warp "ars_dun34",38,186; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_dun34",38,186; //retour début
+		end;
+	
+}

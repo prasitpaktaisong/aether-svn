@@ -1,0 +1,204 @@
+//== • Brasilis - Missão de Carnaval - Nathan - Dominadora do Espírito do Fogo ~
+daath,1,1,3,20048	sshop	CarnaShop4	111,5818:10,5819:10
+veins,140,251,3	script	Espírito do Fogo#carv	2071,{
+	end;
+}
+
+veins,139,253,3	script	Nathan#carv	852,{
+	mes "^0000FF[Nathan]^000000";
+	mes "Olá, eu sou ^FF0000Nathan^000000, o ^0000FFDominador^000000 do ^0000FFEspírito do Fogo^000000.";
+	mes "Em que posso te ajudar?";
+	next;
+	
+	switch(select("• Trocar ^0000FFFichas de Carnaval^000000","• Cancelar")){
+		case 1:
+			if(AE_Carnaval < 5){
+				mes "^0000FF[Ernesto]^000000";
+				mes "Para trocar ^0000FFFichas de Carnaval^000000 comigo, primeiro terá de me pagar:";
+				mes "• ^FF0000Ficha de Carnaval Verde^000000 × ^FF00001^000000";
+				if(countitem(20048) < 1){
+					mes "Me procure quando os conseguir!";
+					close;
+				}
+				next;
+				
+				switch(select("• Entregar ^0000FFFichas de Carnaval Vermelhas^000000.")){
+					delitem 20048,1;
+					
+					mes "^0000FF[Ernesto]^000000";
+					mes "Muito bem, agora permitirei que troque ^0000FFFichas de Carnaval^000000 comigo.";
+					set AE_Carnaval,5;
+					close;
+				}
+			}		
+			mes "^0000FF[Nathan]^000000";
+			mes "Muito bem, o que deseja?";
+			close2;
+			callshop "CarnaShop4",0;
+			end;
+			
+		case 2:
+			close;
+	}
+}
+
+//== • Brasilis - Missão de Carnaval - Amélia - Dominadora do Espírito da Água ~
+daath,1,1,3,20047	sshop	CarnaShop3	111,5316:15,5478:15,5519:15,20048:10
+jawaii,205,289,3	script	Espírito da Água#carv	2070,{
+	end;
+}
+
+jawaii,204,289,3	script	Ernesto#carv	868,{
+	mes "^0000FF[Ernesto]^000000";
+	mes "Olá, eu sou ^FF0000Ernesto^000000, o ^0000FFDominador^000000 do ^0000FFEspírito da Água^000000.";
+	mes "Em que posso te ajudar?";
+	next;
+	
+	switch(select("• Trocar ^0000FFFichas de Carnaval^000000","• Cancelar")){
+		case 1:
+			if(AE_Carnaval < 4){
+				mes "^0000FF[Ernesto]^000000";
+				mes "Para trocar ^0000FFFichas de Carnaval^000000 comigo, primeiro terá de me pagar:";
+				mes "• ^FF0000Ficha de Carnaval Vermelha^000000 × ^FF00001^000000";
+				if(countitem(20047) < 1){
+					mes "Me procure quando os conseguir!";
+					close;
+				}
+				next;
+				
+				switch(select("• Entregar ^0000FFFichas de Carnaval Vermelhas^000000.")){
+					delitem 20047,1;
+					
+					mes "^0000FF[Ernesto]^000000";
+					mes "Muito bem, agora permitirei que troque ^0000FFFichas de Carnaval^000000 comigo.";
+					set AE_Carnaval,4;
+					close;
+				}
+			}
+			mes "^0000FF[Ernesto]^000000";
+			mes "Muito bem, o que deseja?";
+			close2;
+			callshop "CarnaShop3",0;
+			end;
+			
+		case 2:
+			close;
+	}
+}
+
+//== • Brasilis - Missão de Carnaval - Amélia - Dominadora do Espírito da Terra ~
+daath,1,1,3,20046	sshop	CarnaShop2	111,19517:35,20149:35,19513:35,20047:10
+louyang,221,320,3	script	Espírito da Terra#carv	2072,{
+	end;
+}
+
+louyang,220,320,3	script	Amélia#carv	510	,{
+	mes "^FF0000[Amélia]^000000";
+	mes "Olá, eu sou ^FF0000Amélia^000000, a ^0000FFDominadora^000000 do ^0000FFEspírito da Terra^000000.";
+	mes "Em que posso te ajudar?";
+	next;
+	
+	switch(select("• Trocar ^0000FFFichas de Carnaval^000000","• Cancelar")){
+		case 1:
+			if(AE_Carnaval < 3){
+				mes "^FF0000[Amélia]^000000";
+				mes "Para trocar ^0000FFFichas de Carnaval^000000 comigo, primeiro terá de me pagar:";
+				mes "• ^FF0000Ficha de Carnaval Azul^000000 × ^FF00001^000000";
+				if(countitem(20046) < 1){
+					mes "Me procure quando os conseguir!";
+					close;
+				}
+				next;
+				
+				switch(select("• Entregar ^0000FFFichas de Carnaval Azuis^000000.")){
+					delitem 20046,1;
+					
+					mes "^FF0000[Amélia]^000000";
+					mes "Muito bem, agora permitirei que troque ^0000FFFichas de Carnaval^000000 comigo.";
+					set AE_Carnaval,3;
+					close;
+				}
+			}
+			mes "^FF0000[Amélia]^000000";
+			mes "Muito bem, o que deseja?";
+			close2;
+			callshop "CarnaShop2",0;
+			end;
+			
+		case 2:
+			close;
+	}
+}
+
+//== • Brasilis - Missão de Carnaval - Maria - Dominadora do Espírito do Vento ~
+daath,1,1,3,20045	sshop	CarnaShop1	111,19521:100,19514:100,5332:100,5307:100,20046:10
+gonryun,221,144,3	script	Espírito do Vento#carv	2073,{
+	end;
+}
+
+gonryun,220,144,3	script	Maria#carv	478,{
+	mes "^FF0000[Maria]^000000";
+	mes "Olá, eu sou ^FF0000Maria^000000, a ^0000FFDominadora^000000 do ^0000FFEspírito do Vento^000000.";
+	mes "Em que posso te ajudar?";
+	next;
+	
+	switch(select("• Trocar ^0000FFFichas de Carnaval^000000","• Cancelar")){
+		case 1:
+			if(AE_Carnaval < 2){
+				mes "^FF0000[Maria]^000000";
+				mes "Para trocar ^0000FFFichas de Carnaval^000000 comigo, primeiro terá de me pagar:";
+				mes "• ^FF0000Ficha de Carnaval Amarela^000000 × ^FF00001^000000";
+				if(countitem(20045) < 1){
+					mes "Me procure quando os conseguir!";
+					close;
+				}
+				next;
+				
+				switch(select("• Entregar ^0000FFFichas de Carnaval Amarelas^000000.")){
+					delitem 20045,1;
+					
+					mes "^FF0000[Maria]^000000";
+					mes "Muito bem, agora permitirei que troque ^0000FFFichas de Carnaval^000000 comigo.";
+					set AE_Carnaval,2;
+					close;
+				}
+			}
+			mes "^FF0000[Maria]^000000";
+			mes "Muito bem, o que deseja?";
+			close2;
+			callshop "CarnaShop1",0;
+			end;
+			
+		case 2:
+			close;
+	}
+}
+
+
+//== • Brasilis - Missão de Carnaval - Sebastian ~
+brasilis,263,53,3	script	Sebastian#carv	482,{
+	if(AE_Carnaval >= 1){
+		mes "^0000FF[Sebastian]^000000";
+		mes "Os ^0000FFEspíritos de Brasilis^000000 costumam ficar muito agitados nessa época. Invadem ^0000FFBrasilis^000000 em busca de encontrar quem possa os deter. ";
+		next;
+
+		mes "^0000FF[Sebastian]^000000";
+		mes "Se conseguir juntar suas recompensas, ao vencê-los, quem sabe, de alguma forma, os ^0000FFDominadores dos Espíritos de Brasilis^000000 possam recompensar você de alguma forma.";
+		close;
+	}
+	mes "^0000FF[Sebastian]^000000";
+	mes "Então as ^0000FFFestividades de Carnaval^000000 estão começando novamente. Esta é, com certeza uma época perigosa.";
+	next;
+	
+	switch(select("• Perigosa?")){
+		mes "^0000FF[Sebastian]^000000";
+		mes "Sim, os ^0000FFEspíritos de Brasilis^000000 costumam ficar muito agitados nessa época. Invadem ^0000FFBrasilis^000000 em busca de encontrar quem possa os deter. ";
+		next;
+
+		mes "^0000FF[Sebastian]^000000";
+		mes "Se conseguir juntar suas recompensas, ao vencê-los, quem sabe, de alguma forma, os ^0000FFDominadores dos Espíritos de Brasilis^000000 possam recompensar você de alguma forma.";
+		set AE_Carnaval,1;
+		close;
+	}
+}
+

@@ -1,0 +1,141 @@
+pay_fild10,280,99,0	script	Espírito#pay	802,3,3,{
+
+OnTouch:
+	if(AE_Eddga == 2){
+		hideoffnpc "Espírito#pay";
+		if((countitem(1030) >= 3) && (countitem(5045) >= 1) && (countitem(948) >= 300) && (countitem(5084) >= 1)){
+			mes "^0000FF[Espírito]^000000";
+			mes "Muito bem, escolhid"+((Sex)?"o":"a")+"!";
+			mes "Provou ser digno de nosso respeito e reconhecimento...";
+			mes "Aqui está o seu ^0000FFSimbolo da Força^000000, guarde-o com cuidado";
+			next;
+			
+			delitem 1030,3;
+			delitem 5045,1;
+			delitem 948,300;
+			delitem 5084,1;
+			getitem 5497,1;
+			mes "^0000FF[Espírito]^000000";
+			mes "Que os ^0000FFDeuses^000000 te guiem!";
+			close2;
+			set AE_Eddga,0;
+			hideonnpc "Espírito#pay";
+			end;
+		}
+		sleep2 500;
+		npctalk "Sua missão ainda não está completa, escolhid"+((Sex)?"o":"a")+". Estarei esperando o seu regresso.";
+		sleep2 2000;
+		hideonnpc "Espírito#pay";
+		close;
+	}
+	if(AE_Eddga > 0){
+		dispbottom "*Passando pelo local, um vento frio começa a soprar intensamente*";
+		sleep2 500;
+		switch(select("• Ignorar","• Aproximar-se")){
+			case 1:
+				hideonnpc "Espírito#pay";
+				close;
+				
+			case 2:
+				dispbottom "*O vento começa a soprar mais forte...*";
+				sleep2 1000;
+				npctalk "Siiimba...";
+				sleep2 2000;
+				npctalk "SIIIIMBAAAA....";
+				switch(select("• Mas eu não me chamo Simba!")){
+					case 1:
+						hideoffnpc "Espírito#pay";
+						sleep2 500;
+						npctalk "Venha, Simba!";
+						sleep2 500;
+						switch(select("• E você também não me parece um Leão...")){
+							case 1:
+								mes "^0000FF[Espírito]^000000";
+								mes "Cale-se! Ninguém precisa saber...";
+								mes "*cof cof*";
+								next;
+								
+								mes "^0000FF[Espírito]^000000";
+								mes "Os ^0000FFDeuses^000000 reconheceram sua força e você foi encarregado de uma missão espiritual!";
+								mes "Você aceita?";
+								next;
+								
+								switch(select("• Não estou interessado...","• Sim, me eleve aos ^0000FFDeuses^000000, espírito!")){
+									case 1:
+										mes "^0000FF[Espírito]^000000";
+										mes "Oh!";
+										mes "É uma pena, escolhid"+((Sex)?"o":"a")+".";
+										mes "Siga seu caminho em paz.";
+										hideonnpc "Espírito#pay";
+										close;
+										
+									case 2:
+										mes "^0000FF[Espírito]^000000";
+										mes "Ótimo!";
+										mes "Então, preste atenção, para a sua missão, será necessário...";
+										next;
+										switch(select("• Acho que ainda não está na hora...","• O que eu tenho que fazer?")){
+											case 1:
+												mes "^0000FF[Espírito]^000000";
+												mes "Volte quando sua alma for forte para a sua missão!";
+												hideonnpc "Espírito#pay";
+												close;
+												
+											case 2:
+												mes "^0000FF[Espírito]^000000";
+												mes "Ouça com atenção, para me provar sua força, deve reunir os seguintes artefatos:";
+												mes "• ^FF0000Pata de Tigre^000000 × ^FF00003^000000";
+												mes "• ^FF0000Cartola^000000 × ^FF00001^000000";
+												mes "• ^FF0000Pata de Urso^000000 × ^FF0000300^000000";
+												mes "• ^FF0000Fumacento Dorminhoco^000000 × ^FF00001^000000";
+												next;
+												
+												mes "^0000FF[Espírito]^000000";
+												mes "Que os ^0000FFDeuses^000000 te guiem!"; 
+												set AE_Eddga,2;
+												close2;
+												hideonnpc "Espírito#pay";
+												end;
+										}
+								}
+						}
+				}
+		}
+	}
+	
+OnInit:
+	hideonnpc "Espírito#pay";
+	end;
+}
+
+payon,123,229,5	script	Tayamine	90,{
+	cutin "v_sprakki01",2;
+	mes "^FF0000[Tayamine]^000000";
+	if(AE_Eddga > 0){
+		mes "Talvez não lhe pareça muito assustador...";
+		mes "Mas só de pensar em ^0000FFEspíritos^000000, fico com calafrios...";
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "Essa histórias me dão medo...";
+	next;
+	switch(select("• Ignorar","• Perdão, que histórias?")){
+		case 1:
+			cutin "",255;
+			close;
+			
+		case 2:
+			mes "^FF0000[Tayamine]^000000";
+			mes "São lendas que dizem que a força do ^0000FFRei Tigre^000000 podem ser conseguidas com um ^0000FFEspírito^000000 à ^0000FFSudeste^000000 de ^0000FFPayon^000000";
+			next;
+
+			mes "^FF0000[Tayamine]^000000";
+			mes "Talvez não lhe pareça muito assustador...";
+			mes "Mas só de pensar em ^0000FFEspíritos^000000, fico com calafrios...";
+			set AE_Eddga,1;
+			close2;
+			cutin "",255;
+			end;
+	}
+}

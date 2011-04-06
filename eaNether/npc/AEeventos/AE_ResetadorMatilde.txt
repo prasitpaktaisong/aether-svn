@@ -1,0 +1,15 @@
+daath,30,254,5	script	Controlador da Matilde	713,{
+	mes "^0000FF[Controlador da Matilde]^000000";
+	mes "Resetar o ^FF0000Jogo da Velha^000000?";
+	next;
+	switch(select("• Sim","• Não")){
+		case 1:
+			set $quest,0;
+			mes "^0000FF[Controlador da Matilde]^000000";
+			mes "Feito.";
+			close;
+			
+		case 2:
+			close;
+	}
+}	

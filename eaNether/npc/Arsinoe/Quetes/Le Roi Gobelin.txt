@@ -1,0 +1,1629 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Quête Roi Gobelin
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+
+// 1 = Désert de Kargha : La Lime du Torn-Thalas
+// 2 = Désert de Kargha : Oasis de Siwah (ext.)
+// 3 = Désert de Kargha : Oasis de Siwah (int.)
+// 4 = Désert de Kargha : Terkish
+
+
+
+//_________________________________________________________________
+//________________Désert de Kargha : La Lime du Torn-Thalas _______
+//_________________________________________________________________
+
+ars_fild06,57,67,4	script	Général Athanase#1	404,8,8,{
+
+set @name$,"Général Athanase";
+
+if (EP7_GLOBAL < 10)  goto L_nonvalide;
+if (EP7_LIME == 0)  goto sub1;
+if (EP7_LIME >= 1)  goto sub2;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "The Four Doors Arsinoe are closed at this time, to the north we are experiencing a lime head Gobelins."; 
+	mes "They left their native desert home Kargha to invest our Kingdom"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The last I heard, chief's goblins and their allies occupy minotaurs Lime-Thalas Torn,"; 
+	mes "our last frontier along the river of the same name before these horrific monsters are at the North Gate of Arsinoe."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We are looking for mercenaries, finally anyone can hold a weapon and fight against the hordes of looters."; 
+	mes "Oh, I see you coming, not salary we want volunteers to help the Knights of Arsinoe to save our continent.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "Obviously you're not from our area, the fate of our city does not interest you and probably will not, but a noble fight should he not win a fighter as you?";
+	next;
+	mes "[" + @name$ + "]";
+	mes "Our men gathered at the North Gate of Arsinoe, although it's not so far removed from that of Istar, access to";
+	mes "the Holy Kingdom of Arsinoe is no longer possible because of the many spies that would send us Goblin King.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "We'll have you pass by Mount Bacchias makes up the Col de Faymour then you just follow the road to Octavia's Pass to the river-Torn Thalas and North Gate.";
+	mes "Once there, please talk to me at the head of the garrison at the North Gate, the Seneschal Lin, he can give you the permissions to get to the lime-Torn Thalas, our last line of defense.";
+	close2;
+	setquest 70250;
+	set EP7_LIME,1;
+	end;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "The Four Doors Arsinoe are closed at this time, to our north we are experiencing a lime head Gobelins."; 
+	mes "They left their native desert home Kargha to invest our Kingdom"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The last I heard, chiefs goblins and their allies occupy minotaurs Lime-Thalas Torn,"; 
+	mes "our last frontier along the river of the same name before these horrific monsters are at the North Gate of Arsinoe."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We are looking for mercenaries, and anyone that can hold a weapon and fight against the hordes of looters."; 
+	mes "Oh, I see you coming,there is no pay we want volunteers to help the Knights of Arsinoe to save our continent.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "Obviously you're not from our area, the fate of our city does not interest you and probably will not, but a noble fight should he not win a fighter as you?";
+	next;
+	mes "[" + @name$ + "]";
+	mes "Our men gathered at the North Gate of Arsinoe, although it's not so far removed from that of Istar, access to";
+	mes "the Holy Kingdom of Arsinoe is no longer possible because of the many spies that would send us Goblin King.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "We'll have you pass by Mount Bacchias makes up the Col de Faymour then you just follow the road to Octavia's Pass to the river-Torn Thalas and North Gate.";
+	mes "Once there, please talk to me at the head of the garrison at the North Gate, the Seneschal Lin, he can give you the permissions to get to the lime-Torn Thalas, our last line of defense.";
+	close;
+
+L_nonvalide:
+
+	mes "[" + @name$ + "]"; 
+	mes "The Four Doors Arsinoe are closed at this time, on our north we are experiencing a lime head Gobelins."; 
+	mes "They left their native desert home Kargha to invest our Kingdom"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The last I heard, chiefs goblins and their allies occupy minotaurs Lime-Thalas Torn,"; 
+	mes "our last frontier along the river of the same name before these horrific monsters are at the North Gate of Arsinoe."; 	
+	close;
+	
+OnTouch:
+	if (EP7_LIME == 0) {showevent 1,0;} end;
+}
+//=========================================================================================
+
+ars_fild09,130,62,4	script	Sénéchal Lin#1	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME == 0)  goto sub1;
+if (EP7_LIME == 1)  goto sub2;
+if (EP7_LIME == 2)  goto sub3;
+if (EP7_LIME == 3)  goto sub4;
+if (EP7_LIME == 4)  goto sub5;
+if (EP7_LIME == 5)  goto sub6; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Oh ... You arrived from Mount Bacchias, right? Dirty as you are, it's obvious!"; 
+	mes "Well, you will excuse us, but the conflict raged on our doorstep and we must remain vigilant in case of breccia on the front line."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Envoys of General Athanasius? Well, we don't spit on my faith more troops ..."; 
+	mes "The situation is almost critical on the file, I'll give you permission to participate"; 
+	mes "to our great counter-strike, which I bet it will be successful!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "But now that I think about it Garrison's Pass Octavia has not been informed of our cons-offensive along the Torn-Thalas,"; 
+	mes "I'd like you to go see them finally ,Commander Paraclet he can provide me with a contingent of men who are ready to fight.";
+	close2;
+	changequest 70250,70251;
+	set EP7_LIME,2;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Envoys of General Athanasius? Well, we don't spit on my faith more troops ..."; 
+	mes "The situation is almost critical on the file, I'll give you permission to participate"; 
+	mes "to our great counter-strike, which I bet it will be successful!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "But now that I think about it Garrison's Pass Octavia has not been informed of our cons-offensive along the Torn-Thalas,"; 
+	mes "I'd like you to go see them finally ,Commander Paraclet he can provide me with a contingent of men ready to fight.";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Good company for more legion of the lime of Torn-Thalas, our workforce should be sufficient, we lack"; 
+	mes "more than men of fire the I Legion must réogarniser the West Gate and the assault could take place."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well, congratulations you're in the auxiliary troops of the Third Legion! Keep these documents in case of control."; 
+	mes "Come to the North Bastion Torn in this door, I'll be there you can learn more about our position.";
+	close2;
+	changequest 70252,70253;
+	set EP7_LIME,4;
+	end;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "Good company for more legion of the lime of Torn-Thalas, our workforce should be sufficient, we lack"; 
+	mes "more than men of fire the I Legion must réogarniser the West Gate and the assault could take place."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well, congratulations you're in the auxiliary troops of the Third Legion! Keep these documents in case of control."; 
+	mes "Come to the North Bastion Torn in this door, I'll be there you can learn more about our position.";
+	close;
+
+sub6:
+	mes "[" + @name$ + "]"; 
+	mes "Impressive, I don't think you were a warrior as great!"; 
+	mes "Thank you for your help, if you want we continue our offensive north into the desert Kargha,";
+	mes "We have a number of lands to recover, we leave the royal authorities to lead our troops to the Oasis of Siwa ...";
+	next;
+
+}
+
+//=========================================================================================
+
+ars_fild08,82,62,4	script	Commandant Paraclet#1	415,{
+
+set @name$,"Commandant Paraclet";
+
+if (EP7_LIME <= 1)  goto sub1;
+if (EP7_LIME == 2)  goto sub2;
+if (EP7_LIME == 3)  goto sub3;
+if (EP7_LIME >= 4)  goto sub1;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Welcome to the Pass of Octavia adventurer! Few people take the path to even make it to the Northern Kingdom ..."; 
+	mes "The region is no longer what it was, the old railroad is no longer active since a long time, it linked the mines"; 
+	mes "to cristal Mount Bacchias to Arsinoe, from there this a long road."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We are the Knights of the Arsinoe is our goal is to maintain the balance of forces here, out of internal conflicts that plague our kingdom for decades."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "You bring me messages Senechal Lin!? Lime has just break!?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you gave me one of those damn scared! so, let's see that letter ..."; 
+	mes "Reinforcements, reinforcements, still more reinforcements! If we continue like this we will never have enough men to hold the strategic places of the kingdom!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well my men will prepare their packages, polishing their swords, prepare mountures properly, and follow the road to the North Gate clown.";
+	mes "What is certain is that a defeat on the Torn-Thalas leave our kingdom without much defense, but also without defenders!";
+	mes "See Senechal Lin Returns to announce the arrival of an additional company under his command ...";
+	close2;
+	changequest 70251,70252;
+	set EP7_LIME,3;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "You bring me messages Senechal Lin!? Lime has just break!?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you gave me one of those damn scared! so, let's see that letter ..."; 
+	mes "Reinforcements, reinforcements, still more reinforcements! If we continue like this we will never have enough men to hold the strategic places of the kingdom!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well my men will prepare their packages, polishing their swords, prepare mountures properly, and follow the road to the North Gate clown.";
+	mes "What is certain is that a defeat on the Torn-Thalas leave our kingdom without much defense, but also without defenders!";
+	mes "See Senechal Lin Returns to announce the arrival of an additional company under his command ...";
+	close;
+
+}
+//=========================================================================================
+ars_fild10,199,60,0	script	#arsfild10a	45,1,1,{
+	
+	if (EP7_LIME <= 3)  goto sub1;
+	if (EP7_LIME >= 4)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the permission to enter the Bastion of Torn.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild10",199,69; //instance
+		end;
+	
+}
+//=========================================================================================
+
+ars_fild10,217,96,4	script	Sénéchal Lin#2	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME <= 3)  goto sub1;
+if (EP7_LIME == 4)  goto sub2;
+if (EP7_LIME >= 5)  goto sub3; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here is war here";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "There you are, we will proceed to the assault to repel the advancing goblins, the omens are good! Aerie watch over us!"; 
+	mes "Memorize out our plan of attack, he will have to act quickly to avoid enemy reinforcements currently chasing the Second Legion."; 
+	mes "After a stroke forced sickle they find themselves in the Desert Kargha, we'll save them later.";
+	next;
+ 	mes "[" + @name$ + "]"; 
+	mes "We will first conduct a frontal assault to the command post to destabilize the defenders";
+	mes "Then, it will free the imprisoned knights in the east, then push their garnison in the south that should happen very quickly,";
+	mes "we need to have perfect coordination to avoid being overwhelmed.";
+	next;
+ 	mes "[" + @name$ + "]"; 
+	mes "It was then found in the north, along the road to the wilderness of Kargha order to establish a new command post.";
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "A great victory that is! Your help was invaluable! "; 
+	mes "Thank you for your help, if you wish we continue our offensive to the north into the desert Kargha,";
+	mes "We have a number of land required, we leave the royal authorities to lead our troops to the Oasis of Siwah ...";
+	close;
+
+}
+//=========================================================================================
+
+ars_fild10,234,86,1	script	Colonel De Nursie#1	707,{
+
+
+set @name$,"Colonel De Nursie";
+
+	if($@ep7lime==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now try to liberate the Lime of Torn-Thalas !";
+	close;
+	end;
+	}
+	if($@ep7lime>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently attempting to clear the Lime of Torn-Thalas ! !";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "The Lime of Torn Thalas - Waiting Room",$EP7_InstJoueurs,"EP7_lime::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild10b";
+	end;
+
+
+}
+
+//==================================================================
+ars_fild10,245,86,0	script	#arsfild10b	45,1,1,{
+	
+	if (EP7_LIME <= 3)  goto sub1;
+	if (EP7_LIME >= 4)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild10",270,145; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_lime	-1,{
+
+OnInit:
+	
+	setcell "ars_fild10",151,197,147,192,cell_walkable,0; //non walkable : PC sortie
+	setcell "ars_fild10",19,135,13,137,cell_walkable,0; //non walkable : Prisonnier
+	setcell "ars_fild10",152,230,149,225,cell_walkable,0; //non walkable : Gardien des clés
+	setcell "ars_fild10",79,138,74,139,cell_walkable,0; //non walkable : Le goulot
+	setcell "ars_fild10",133,264,132,271,cell_walkable,0; //non walkable : Sortie finale
+
+	disablenpc "#arsfild10b";
+	disablenpc "#arsfild10c";
+
+	donpcevent "Colonel De Nursie#1::OnBG";
+
+	killmonsterall "ars_fild10";
+
+	set $@ep7lime, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7lime == 0 )
+		donpcevent "EP7_lime::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7lime )
+		end;
+	set .@ep7lime, getwaitingroomstate(0,"Colonel De Nursie#1");
+	
+	if( .@ep7lime < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild10","Instance -- Lime of Torn Thalas : " + .@ep7lime + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7lime, 1;
+	// warp joueurs
+	donpcevent "Colonel De Nursie#1::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild10","Instance -- Lime du Torn Thalas has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Lime of Torn Thalas has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Colonel De Nursie#1";
+	end;
+
+OnTimer1000:
+	
+	//fretin : étape 1
+	areamonster "ars_fild10",154,171,273,147,"Soldat Gobelin",3822,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",154,171,273,147,"Soldat Gobelin",3823,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",154,171,273,147,"Soldat Gobelin",3824,10,"EP7_lime::OnMyMobDead";
+
+	//Mini-MvP
+
+	monster "ars_fild10",166,194,"Héros Gobelin",3831,1,"EP7_lime::OnBossDead1";
+	monster "ars_fild10",178,199,"Lieutenant Gobelin",3826,1,"EP7_lime::OnBossDead1";
+
+	set $@monster_ep7lime,2;
+	end;
+
+OnTimer20000:
+
+	mapannounce "ars_fild10","You have one hour to drive the Goblin lines!",0,0x66CC33;
+	disablenpc "#arsfild10b";
+	end;
+
+OnTimer3600000:
+
+	mapannounce "ars_fild10","Général Toadinne : What Tarkish Empire dominates the Arsinoe!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild10";
+	mapwarp "ars_fild10","ars_fild10",269,120;
+	sleep2 30000;
+	donpcevent "EP7_lime::OnInit";
+	end;
+
+//=================================================================================================
+
+OnMyMobDead:
+	end;
+
+
+OnBossDead1:
+
+	set $@monster_ep7lime, $@monster_ep7lime-1;
+	if($@monster_ep7lime==0) {
+
+		mapannounce "ars_fild10","Sénéchal Lin : Their PC is useless, go to the prison camp for reinforcements!",0,0x6CC6666;
+		setcell "ars_fild10",151,197,147,192,cell_walkable,1; //walkable : PC sortie
+		
+		//fretin : étape 2
+		areamonster "ars_fild10",147,147,8,226,"Soldat Gobelin",3822,30,"EP7_lime::OnMyMobDead";
+		areamonster "ars_fild10",147,147,8,226,"Panzer Gobelin",3828,15,"EP7_lime::OnMyMobDead";
+		areamonster "ars_fild10",147,147,8,226,"Esclave Minotaure",3833,10,"EP7_lime::OnMyMobDead";
+		}
+	end;
+
+OnEvent1:
+
+	mapannounce "ars_fild10","Sénéchal Lin : According to our information the gatekeeper is located in North-East! Go faster!",0,0x6CC6666;
+	setcell "ars_fild10",152,230,149,225,cell_walkable,1; //walkable : Gardien des clés
+		
+	//fretin : étape 3
+	areamonster "ars_fild10",269,293,133,148,"Soldat Gobelin",3822,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",269,293,133,148,"Soldat Gobelin",3823,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",269,293,133,148,"Soldat Gobelin",3824,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",269,293,133,148,"Archer Gobelin",3825,20,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",269,293,133,148,"Panzer Gobelin",3828,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",269,293,133,148,"Trappeur Gobelin",3829,10,"EP7_lime::OnMyMobDead";
+	//Mini-MvP
+
+	monster "ars_fild10",283,249,"Gardien des Clés",3827,1,"EP7_lime::OnBossDead2";
+	set $@monster_ep7lime,1;
+	end;
+
+OnBossDead2:
+
+	set $@monster_ep7lime, $@monster_ep7lime-1;
+	if($@monster_ep7lime==0) {
+
+	mapannounce "ars_fild10","Sénéchal Lin : I have the key, will release the prisoners before the goblin regiments returning from the southern front!",0,0x6CC6666;
+	setcell "ars_fild10",19,135,13,137,cell_walkable,1; //walkable : Prisonnier
+	set $@ep7lime, 3;
+	//fretin : étape 4
+	areamonster "ars_fild10",6,145,148,237,"Soldat Gobelin",3822,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",6,145,148,237,"Soldat Gobelin",3823,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",6,145,148,237,"Soldat Gobelin",3824,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",6,145,148,237,"Archer Gobelin",3825,20,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",6,145,148,237,"Panzer Gobelin",3828,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",6,145,148,237,"Trappeur Gobelin",3829,10,"EP7_lime::OnMyMobDead";
+	}
+	end;
+
+OnEvent2:
+
+	mapannounce "ars_fild10","Sénéchal Lin : There is new reforts! Well here are the troops of General Toadinne coming from the south, we must reject and kill him to lift the siege of our Lime!",0,0x6CC6666;
+	setcell "ars_fild10",79,138,74,139,cell_walkable,1; // walkable : Le goulot
+
+	//fretin : étape 5
+	areamonster "ars_fild10",53,134,90,12,"Archer Gobelin",3825,40,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",53,134,90,12,"Sniper Gobelin",3827,10,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",53,134,90,12,"Trappeur Gobelin",3829,15,"EP7_lime::OnMyMobDead";
+
+	//Mini-MvP
+
+	monster "ars_fild10",37,50,"Maitre Minotaure",3834,2,"EP7_lime::OnMyMobDead";
+
+	//MvP
+
+	monster "ars_fild10",37,50,"Général Toadinne",3830,1,"EP7_lime::OnBossDead3";
+	set $@monster_ep7lime,1;
+	end;
+
+OnBossDead3:
+
+	set $@monster_ep7lime, $@monster_ep7lime-1;
+	if($@monster_ep7lime==0) {
+
+	mapannounce "ars_fild10","Sénéchal Lin : Great Victory! But it's not finished, you should take the North Road. Hurry you only have a few seconds to access the Kargha Desert.",0,0x6CC6666;
+	setcell "ars_fild10",133,264,132,271,cell_walkable,1; //walkable : Final
+	enablenpc "#arsfild10c";
+
+	//fretin : étape 5
+	areamonster "ars_fild10",282,190,59,291,"Soldat Gobelin",3822,20,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",282,190,59,291,"Soldat Gobelin",3823,20,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",282,190,59,291,"Panzer Gobelin",3828,15,"EP7_lime::OnMyMobDead";
+	areamonster "ars_fild10",282,190,59,291,"Esclave Minotaure",3833,5,"EP7_lime::OnMyMobDead";
+		
+	sleep2 240000;
+	mapannounce "ars_fild10","Général Toadinne : What Tarkish Empire dominates the Arsinoe!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild10";
+	mapwarp "ars_fild10","ars_fild10",269,120;
+	sleep2 30000;
+	donpcevent "EP7_lime::OnInit";
+	end;
+	}
+	end;
+
+
+}
+
+//==================================================================
+ars_fild10,12,139,0	script	Prisonnier Capeau#1	870,1,1,{
+	
+	if ($@ep7lime == 0)  goto sub1;
+	if ($@ep7lime == 1)  goto sub2;
+	if ($@ep7lime == 2)  goto sub1;
+	if ($@ep7lime == 3)  goto sub3;
+	if ($@ep7lime == 4)  goto sub4;
+	
+	sub2:
+		
+		mes "[" + @name$ + "]"; 
+		mes "Help us! We are survivors of the Legion I finally relief for us!";
+		mes "I need the keys to unlocking the other soldiers, so we can help to your fight!";
+		close2;
+		if ($@ep7lime == 1) {
+		donpcevent "EP7_lime::OnEvent1";
+		set $@ep7lime, 2;}
+		end;
+
+	sub1:
+		
+		mes "[" + @name$ + "]"; 
+		mes "Help us! We are survivors of the Legion I finally relief for us!";
+		mes "I need the keys to unlocking the other soldiers, so we can help to your fight!";
+		close;
+
+	sub3:
+
+		mes "[" + @name$ + "]"; 
+		mes "Fine, we'll get our weapons and you help !";
+		close2;
+		if ($@ep7lime == 3) {
+		donpcevent "EP7_lime::OnEvent2";
+		set $@ep7lime, 4;}
+		end;
+
+	sub4:
+
+		mes "[" + @name$ + "]"; 
+		mes "Fine, we'll get our weapons and you help !";
+		close;
+	
+}
+
+//==================================================================
+ars_fild10,63,292,0	script	#arsfild10c	45,1,1,{
+	
+	if (EP7_LIME <= 3)  goto sub1;
+	if (EP7_LIME == 4)  goto sub2;
+	if (EP7_LIME >= 5)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_fild10",269,120; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You has just pushed the Goblin army from the Lime of Torn-Thalas.";
+		getitem $ep7recompense[9],$ep7recompensenb[9];
+		//âme
+		set EP7_LIME,5;
+		changequest 70253,70254;	
+		warp "ars_fild11",113,12; //instance sortie
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get meals.";
+		getitem $ep7foodid[4],$ep7foodnb[2];
+		getitem $ep7foodid[5],$ep7foodnb[2];
+		getitem $ep7foodid[6],$ep7foodnb[2];
+		warp "ars_fild11",113,12; //instance sortie
+		end;
+	
+}
+//==================================================================
+ars_fild10,181,183,1	script	Panneau#ep7karga1	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "Poste de Commandement.";
+	close;
+}
+//==================================================================
+ars_fild10,52,172,1	script	Panneau#ep7karga2	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "Camp des prisonniers.";
+	close;
+}
+
+//==================================================================
+ars_fild10,246,269,1	script	Panneau#ep7karga3	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "Bastion du Maître des Clés.";
+	close;
+}
+
+//==================================================================
+ars_fild10,81,142,1	script	Panneau#ep7karga4	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "Camp retranché du Général Toadinne.";
+	close;
+}
+
+//==================================================================
+ars_fild10,136,273,1	script	Panneau#ep7karga5	111,{
+
+set @name$,"Panneau";
+	
+	mes "[" + @name$ + "]"; 
+	mes "Vers le Village de Nèsos.";
+	close;
+}
+
+//_________________________________________________________________
+//________________Désert de Kargha : Oasis de Siwah (ext.)_________
+//_________________________________________________________________
+
+
+ars_fild11,6,104,0	script	#arsfild11a	45,1,1,{
+	
+	if (EP7_LIME <= 5)  goto sub1;
+	if (EP7_LIME >= 6)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You should talk to the Seneschal Lin before going further.";
+		close;
+
+	sub2:
+
+		warp "ars_fild12",136,392;
+		end;	
+}
+//==================================================================
+
+ars_fild11,25,104,4	script	Ecuyer d'Arsinoé#1	413,4,4,{
+
+OnTouch:
+
+	if (EP7_LIME <= 5)  {
+	npctalk "Hey, you! The Seneschal Lin wants to see you, he is the village of a few meters Nêsos!";
+}
+	end;
+}
+//==================================================================
+
+ars_fild11,180,65,4	script	Sénéchal Lin#3	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME <= 4)  goto sub1;
+if (EP7_LIME == 5)  goto sub2;
+if (EP7_LIME == 6)  goto sub3;
+if (EP7_LIME >= 7)  goto sub4; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here, it's war here !"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "What a victory! Arsinoe's Gate is saved for the moment. We continue to push the goblin troops away from the lime-Thalas of Torn."; 
+	mes "Listen to me, I'll explain you the fallowing counter-strike :";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "In the last attack we could combine the I and III Legion, now we must join the remains of the Second Legion.";
+	mes "It has become isolated since the coup of sickle army Gobeline, she took refuge in the Oasis of Siwah.";
+	mes "Your mission will be to reach them through the enemy defenses. Once we grouped the three legions will lead the final assault on the capital Goblin.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have to cross part of the desert Kargha to join our forward command post."; 
+	mes "ou can rest and buy equipment in the village of Nêsos, has just been released from the yoke of goblins.";	
+	close2;
+	changequest 70254,70255;
+	set EP7_LIME,6;
+	end;	
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "What a victory! Arsinoe's Gate is saved for the moment. We continue to push the goblin troops away from the lime-Thalas of Torn."; 
+	mes "Listen to me, I'll explain you the fallowing counter-strike :";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "In the last attack we could combine the I and III Legion, now we must join the remains of the Second Legion.";
+	mes "It has become isolated since the coup of sickle army Gobeline, she took refuge in the Oasis of Siwah.";
+	mes "Your mission will be to reach them through the enemy defenses. Once we grouped the three legions will lead the final assault on the capital Goblin.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have to cross part of the desert Kargha to join our forward command post."; 
+	mes "ou can rest and buy equipment in the village of Nêsos, has just been released from the yoke of goblins.";	
+	close;
+
+sub4:
+
+	mes "[" + @name$ + "]"; 
+	mes "Nice win, we meet us inside the Oasis of Siwah!";
+	close;
+
+}
+//==================================================================
+ars_fild13,164,53,4	script	Sénéchal Lin#4	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME <= 5)  goto sub1;
+if (EP7_LIME == 6)  goto sub2;
+if (EP7_LIME >= 7)  goto sub4; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here is war here !"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Well, this time nothing really very complicated, it will just have to find a way."; 
+	mes "You're going to lead the assault, we must take a position on some specific points to ensure our progress.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have to first release a farm occupied, then we head towards the bridge. At this point, we'll have to destroy a garrison at this place,";
+	mes "so we can ensure our supply for the supplies to troops of the Second Legion."; 
+	mes "Address yourself to Colonel De Nursia to start the offensive.";
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Well, this time nothing really very complicated, it will just have to find a way."; 
+	mes "You're going to lead the assault, we must take a position on some specific points to ensure our progress.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have to first release a farm occupied, then we head towards the bridge. At this point, we'll have to destroy a garrison at this place,";
+	mes "so we can ensure our supply for the supplies to troops of the Second Legion."; 
+	mes "Address yourself to Colonel De Nursia to start the offensive.";
+	close;
+
+sub4:
+
+	mes "[" + @name$ + "]"; 
+	mes "Nice win, we meet us inside the Oasis of Siwah!";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild13,172,69,1	script	Colonel De Nursie#2	707,{
+
+
+set @name$,"Colonel De Nursie";
+
+	if($@ep7lime2==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now try to liberate the Oasis of Siwah!";
+	close;
+	end;
+	}
+	if($@ep7lime2>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently attempting to clear the Oasis of Siwah!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Siwah Oasis - Waiting Room",$EP7_InstJoueurs,"EP7_lime2::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild13a";
+	end;
+
+
+}
+
+//==================================================================
+ars_fild13,168,80,0	script	#arsfild13a	45,1,1,{
+	
+	if (EP7_LIME <= 5)  goto sub1;
+	if (EP7_LIME >= 6)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild13",168,89; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_lime2	-1,{
+
+OnInit:
+	
+	setcell "ars_fild13",82,71,76,71,cell_walkable,0; //non walkable : Pont
+	
+	disablenpc "#arsfild13a";
+	disablenpc "#arsfild13b";
+
+	donpcevent "Colonel De Nursie#2::OnBG";
+
+	killmonsterall "ars_fild13";
+
+	set $@ep7lime2, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7lime2 == 0 )
+		donpcevent "EP7_lime2::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7lime2 )
+		end;
+	set .@ep7lime2, getwaitingroomstate(0,"Colonel De Nursie#2");
+	
+	if( .@ep7lime2 < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild13","Instance -- Siwah Oasis : " + .@ep7lime2 + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7lime2, 1;
+	// warp joueurs
+	donpcevent "Colonel De Nursie#2::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild13","Instance -- Siwah Oasis has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Siwah Oasis has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Colonel De Nursie#2";
+	end;
+
+OnTimer1000:
+	
+	//fretin : étape 1
+	areamonster "ars_fild13",140,92,209,203,"Soldat Gobelin",3822,10,"EP7_lime2::OnKillFerme";
+	areamonster "ars_fild13",140,92,209,203,"Soldat Gobelin",3823,10,"EP7_lime2::OnKillFerme";
+	areamonster "ars_fild13",140,92,209,203,"Soldat Gobelin",3824,10,"EP7_lime2::OnKillFerme";
+	areamonster "ars_fild13",140,92,209,203,"Lieutenant Gobelin",3826,5,"EP7_lime2::OnKillFerme";
+	areamonster "ars_fild13",140,92,209,203,"Sniper Gobelin",3827,5,"EP7_lime2::OnKillFerme";
+
+	set $@monster_ep7lime2,40;
+	end;
+
+OnTimer20000:
+
+	mapannounce "ars_fild13","You have 30 minutes to accomplish the goals!",0,0x66CC33;
+	disablenpc "#arsfild13a";
+	end;
+
+OnTimer25000:
+
+	mapannounce "ars_fild13","Sénéchal Lin : You must first free the farm, killing all the Goblins!",0,0x66CC33;
+	end;
+
+OnTimer1800000:
+
+	mapannounce "ars_fild13","Sénéchal Lin : Too late! Withdraw! Reinforcements have arrived!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild13";
+	mapwarp "ars_fild13","ars_fild13",171,42;
+	sleep2 30000;
+	donpcevent "EP7_lime2::OnInit";
+	end;
+
+//=======================================================================
+OnMyMobDead:
+
+	end;
+
+OnKillFerme:
+
+	set $@monster_ep7lime2, $@monster_ep7lime2-1;
+	if($@monster_ep7lime2==0) {
+	mapannounce "ars_fild13","Sénéchal Lin : Right now we hold the farm! All attack the garrison!",0,0x66CC33;
+		
+	//fretin : étape 1
+
+	areamonster "ars_fild13",85,22,39,57,"Archer Gobelin",3825,10,"EP7_lime2::OnMyMobDead";
+	areamonster "ars_fild13",85,22,39,57,"Soldat Gobelin",3824,10,"EP7_lime2::OnMyMobDead";
+	areamonster "ars_fild13",85,22,39,57,"Panzer Gobelin",3828,10,"EP7_lime2::OnMyMobDead";
+	
+
+	//Mini-MvP
+	monster "ars_fild13",24,28,"Chef de la Garnison",3831,1,"EP7_lime2::OnKillBoss";
+	set $@monster_ep7lime2,1;
+	end;
+	}
+	end;
+
+OnKillBoss:
+
+	set $@monster_ep7lime2, $@monster_ep7lime2-1;
+	if($@monster_ep7lime2==0) {
+	mapannounce "ars_fild13","Sénéchal Lin : The road is open, the supply can be done! Quick let us shelter in the Oasis across the bridge.",0,0x66CC33;
+		
+	//fretin : étape 1
+	areamonster "ars_fild13",26,145,103,195,"Soldat Gobelin",3822,10,"EP7_lime2::OnMyMobDead";
+	areamonster "ars_fild13",26,145,103,195,"Soldat Gobelin",3823,10,"EP7_lime2::OnMyMobDead";
+	areamonster "ars_fild13",26,145,103,195,"Soldat Gobelin",3824,10,"EP7_lime2::OnMyMobDead";
+	areamonster "ars_fild13",26,145,103,195,"Panzer Gobelin",3828,10,"EP7_lime2::OnMyMobDead";
+	setcell "ars_fild13",82,71,76,71,cell_walkable,1; //walkable : Pont
+
+	//OUverture
+	enablenpc "#arsfild13b";
+	sleep2 180000;
+	killmonsterall "ars_fild13";
+	mapwarp "ars_fild13","ars_fild13",171,42;
+	sleep2 30000;
+	donpcevent "EP7_lime2::OnInit";
+	end;
+	}
+	end;
+
+}
+
+
+//==================================================================
+ars_fild13,67,200,0	script	#arsfild13b	45,1,1,{
+	
+	if (EP7_LIME <= 5)  goto sub1;
+	if (EP7_LIME == 6)  goto sub2;
+	if (EP7_LIME >= 7)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_fild13",35,219; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You've joined the Oasis of Siwah.";
+		getitem $ep7recompense[10],$ep7recompensenb[10];
+		set EP7_LIME,7;	
+		changequest 70255,70256;
+		warp "ars_fild14",35,219; //instance sortie
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get meals.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_fild14",35,219; //instance sortie
+		end;
+	
+}
+
+//_________________________________________________________________
+//________________Désert de Kargha : Oasis de Siwah (int.)_________
+//_________________________________________________________________
+
+ars_fild14,142,180,4	script	Sénéchal Lin#5	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME <= 6)  goto sub1;
+if (EP7_LIME == 7)  goto sub2;
+if (EP7_LIME >= 8)  goto sub3; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here. Its war here!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Finally, we were able to join the legion II! Troops of knights Arsinoe North at last."; 
+	mes "We must wait and somewhat our course, the time lines of supplies into place.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We are now in the Oasis of Siwah is a known location for travelers to the wastelands of the North.";
+	mes "In normal times, it is a pleasant place to rest, away from the terrible heat of the desert. The capital Goblin, Terkish not be long.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well, we must consolidate our lead, goblin troops are preparing an assault on the Oasis of Siwah";
+	mes "Go see the Colonel de Nursie to support Oasis.";
+	close;
+
+sub3:
+
+	mes "[" + @name$ + "]"; 
+	mes "Good, hard battle but brilliantly done! Now their troops fell back to their capitals to defend it.";
+	mes "The final victory is near! We will be able to lead the final assault against the citadel of Terkish!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Would you go to the Citadel Terkish for the final assault?";
+	next;
+	menu "Yes !",submenu1,"I still have to prepare myself!",submenu2;
+
+	submenu1:
+
+		mes "[" + @name$ + "]"; 
+		mes "That column put in motion!";
+		close2;
+		warp "ars_fild15",220,17;
+		end;
+
+	submenu2:
+
+		mes "[" + @name$ + "]"; 
+		mes "Don't wait too long, it would be a shame to miss the grand finale!";
+		close;
+
+
+}
+
+//=========================================================================================
+
+ars_fild14,127,162,1	script	Colonel De Nursie#3	707,{
+
+
+set @name$,"Colonel De Nursie";
+
+	if($@ep7lime3==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Bien " + strcharinfo(0) + ",";
+	mes "You can now try to defend the Oasis of Siwah !";
+	close;
+	end;
+	}
+	if($@ep7lime3>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Bien " + strcharinfo(0) + ",";
+	mes "A team is currently attempt to defend the Oasis of Siwah !";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "The Oasis of Siwa - Waiting Room",$EP7_InstJoueurs,"EP7_lime3::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild14a";
+	end;
+
+
+}
+
+//==================================================================
+ars_fild14,134,158,0	script	#arsfild14a	45,1,1,{
+	
+	if (EP7_LIME <= 6)  goto sub1;
+	if (EP7_LIME >= 7)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild14",134,149; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_lime3	-1,{
+
+OnInit:
+	
+	disablenpc "#arsfild14a";
+	disablenpc "#arsfild14b";
+
+	donpcevent "Colonel De Nursie#3::OnBG";
+
+	killmonsterall "ars_fild14";
+
+	set $@ep7lime3, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7lime3 == 0 )
+		donpcevent "EP7_lime3::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7lime3 )
+		end;
+	set .@ep7lime3, getwaitingroomstate(0,"Colonel De Nursie#3");
+	
+	if( .@ep7lime3 < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild14","Instance -- The Oasis of Siwah : " + .@ep7lime3 + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7lime3, 1;
+	// warp joueurs
+	donpcevent "Colonel De Nursie#3::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild14","Instance -- The Oasis of Siwah has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- The Oasis of Siwah has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Colonel De Nursie#3";
+	end;
+
+OnTimer1000:
+
+	//Total des Monstres pour les 30 minutes
+	donpcevent "EP7_lime3::OnSpawnMob";
+	set $@monster_ep7lime3,540;
+	end;
+
+OnTimer20000:
+
+	mapannounce "ars_fild14","You must push the different waves of attack!",0,0x66CC33;
+	disablenpc "#arsfild14a";
+	end;
+
+OnTimer25000:
+
+	mapannounce "ars_fild14","Sénéchal Lin : Hold on! waves of attacks will happen!",0,0x66CC33;
+	end;
+
+
+OnTimer180000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+OnTimer400000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+OnTimer600000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+OnTimer800000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+OnTimer1000000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+OnTimer1200000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : New troops arrive!",0,0x66CC33;
+	end;
+
+
+OnTimer1400000:
+
+	donpcevent "EP7_lime3::OnSpawnMob";
+	mapannounce "ars_fild14","Sénéchal Lin : The last wave of attack! Eliminate them all!",0,0x66CC33;
+	end;
+
+OnTimer3600000:
+
+	mapannounce "ars_fild14","Sénéchal Lin : Too late! Our defense is broken up!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild14";
+	mapwarp "ars_fild14","ars_fild14",134,165;
+	sleep2 30000;
+	donpcevent "EP7_lime3::OnInit";
+	end;
+
+//=======================================================================
+
+OnSpawnMob:
+	
+	//fretin : vague 1 / Nombre de Monstres : 30 + 30 + 30 = 90 x 8 = 720
+	areamonster "ars_fild14",169,110,217,51,"Soldat Gobelin",3822,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Soldat Gobelin",3823,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Soldat Gobelin",3824,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Archer Gobelin",3825,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Lieutenant Gobelin",3826,1,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Sniper Gobelin",3827,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Panzer Gobelin",3828,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Trappeur Gobelin",3828,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Esclave Minotaure",3833,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",169,110,217,51,"Maitre Minotaure",3834,1,"EP7_lime3::OnMobDead";
+
+	areamonster "ars_fild14",120,4,26,98,"Soldat Gobelin",3823,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",120,4,26,98,"Esclave Minotaure",3833,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",120,4,26,98,"Maitre Minotaure",3834,1,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",120,4,26,98,"Soldat Gobelin",3824,9,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",120,4,26,98,"Archer Gobelin",3825,10,"EP7_lime3::OnMobDead";
+	
+	areamonster "ars_fild14",44,95,147,146,"Soldat Gobelin",3824,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Archer Gobelin",3825,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Lieutenant Gobelin",3826,1,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Sniper Gobelin",3827,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Panzer Gobelin",3828,2,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Trappeur Gobelin",3828,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Esclave Minotaure",3833,5,"EP7_lime3::OnMobDead";
+	areamonster "ars_fild14",44,95,147,146,"Maitre Minotaure",3834,5,"EP7_lime3::OnMobDead";
+	end;
+
+OnMobDead:
+
+	set $@monster_ep7lime3, $@monster_ep7lime3-1;
+	if($@monster_ep7lime3==0) {
+	mapannounce "ars_fild14","Sénéchal Lin : The Oasis is saved! Come back to the gates of our fortress!",0,0x66CC33;
+		
+	//OUverture
+	enablenpc "#arsfild14b";
+	sleep2 180000;
+	killmonsterall "ars_fild14";
+	mapwarp "ars_fild14","ars_fild14",134,165;
+	sleep2 30000;
+	donpcevent "EP7_lime3::OnInit";
+	end;
+	}
+	end;
+
+}
+
+
+//==================================================================
+ars_fild14,134,150,0	script	#arsfild14b	45,1,1,{
+	
+	if (EP7_LIME <= 6)  goto sub1;
+	if (EP7_LIME == 7)  goto sub2;
+	if (EP7_LIME >= 8)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_fild14",134,165; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You've joined the Oasis of Siwah.";
+		getitem $ep7recompense[11],$ep7recompensenb[11];
+		//âme
+		set EP7_LIME,8;
+		changequest 70256,70257;	
+		warp "ars_fild14",134,165; //instance sortie
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[4],$ep7foodnb[2];
+		getitem $ep7foodid[5],$ep7foodnb[2];
+		getitem $ep7foodid[6],$ep7foodnb[2];
+		warp "ars_fild14",134,165; //instance sortie
+		end;
+	
+}
+
+//_________________________________________________________________
+//________________Désert de Kargha : Terkish ______________________
+//_________________________________________________________________
+
+ars_fild15,231,14,4	script	Lieutenant de Moley#1	106,{
+
+set @name$,"Lieutenant de Moley";
+
+	mes "[" + @name$ + "]"; 
+	mes "Would you go to the Oasis of Siwah? The road is not very long ..."; 
+	next;
+	menu "Yes, I have to go",submenu1,"No, the slaughter begins!",submenu2;
+
+	submenu1:
+
+		warp "ars_fild14",133,181;
+		end;
+
+	submenu2:
+
+		mes "[" + @name$ + "]"; 
+		mes "Don't wait too long, it would be a shame to miss the grand finale!";
+		close;
+}
+//=========================================================================================
+
+ars_fild15,215,13,4	script	Sénéchal Lin#6	416,{
+
+set @name$,"Sénéchal Lin";
+
+if (EP7_LIME <= 7)  goto sub1;
+if (EP7_LIME == 8)  goto sub2;
+if (EP7_LIME >= 9)  goto sub3; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here is war here !"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Here we are, the great final battle, do you know what that means? That soon we'll all be able to return to our household gods!"; 
+	mes "But we still have work to do, and we shall never, alas, hope to bring everyone home safe and sound ..."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Well, lets make it simple frontal assault, violent and fast! The only thing that could slow us down is a harrow.";
+	mes "A strong garrison defends it, he'll have to pull them.";
+	mes "Whereas Terkish Citadel has a good defense system, the goblins are skilled archers, you must be careful and monitor the walls.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The Goblin King is watching his turn, he knew his end was near, let's go Let the final battle begins!";
+	close;
+
+sub3:
+
+	mes "[" + @name$ + "]"; 
+	mes "You will have the right to quote for your great deeds! Don't hesitate to come see us at the barracks of the Knights of Arsinoe.";
+	mes "I bet you the honors will be rendered Well, the war is over, nothing remains of the Gobelins, a long walk is ahead through the desert Kargha, one at Arsinoe rear view, man!";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild15,213,27,1	script	Colonel De Nursie#4	707,{
+
+
+set @name$,"Colonel De Nursie";
+
+	if($@ep7lime3==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now try to take the Citadel Terkish!";
+	close;
+	end;
+	}
+	if($@ep7lime3>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently attempting to take the Citadel Terkish!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Citadel Terkish - Waiting Room",$EP7_InstJoueurs,"EP7_lime4::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild15a";
+	end;
+
+
+}
+
+//==================================================================
+ars_fild15,206,21,0	script	#arsfild15a	45,1,1,{
+	
+	if (EP7_LIME <= 7)  goto sub1;
+	if (EP7_LIME >= 8)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild15",190,29; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_lime4	-1,{
+
+OnInit:
+	setcell "ars_fild15",154,148,162,161,cell_walkable,0; //non walkable : Herse
+	disablenpc "#arsfild15a";
+	disablenpc "#arsfild15b";
+
+	donpcevent "Colonel De Nursie#4::OnBG";
+
+	killmonsterall "ars_fild15";
+
+	set $@ep7lime4, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7lime4 == 0 )
+		donpcevent "EP7_lime4::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7lime4 )
+		end;
+	set .@ep7lime4, getwaitingroomstate(0,"Colonel De Nursie#4");
+	
+	if( .@ep7lime4 < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild15","Instance -- Citadel Terkish : " + .@ep7lime4 + "/" + $EP7_InstJoueurs +"",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7lime4, 1;
+	// warp joueurs
+	donpcevent "Colonel De Nursie#4::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild15","Instance -- Citadel Terkish has just begun!",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Citadel Terkish has just begun!",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Colonel De Nursie#4";
+	end;
+
+OnTimer1000:
+	
+	//fretin : Archers
+	areamonster "ars_fild15",107,22,99,84,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",141,22,136,84,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",144,72,215,81,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",219,108,208,125,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+
+	areamonster "ars_fild15",187,108,161,141,"Archer Gobelin",3825,30,"EP7_lime4::OnMobDead";
+
+	//Gardien de la Herse
+	areamonster "ars_fild15",168,164,221,210,"Archer Gobelin",3825,15,"EP7_lime4::OnMobDead";
+	//Gardien
+	monster "ars_fild15",195,198,"Gardien de la Herse",3831,1,"EP7_lime4::OnBossDead";
+	set $@monster_ep7lime4,1;
+
+	//campement
+	areamonster "ars_fild15",157,108,84,124,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+	end;
+
+	
+
+
+
+OnTimer20000:
+
+	mapannounce "ars_fild15","You have one hour to kill King Terkish!",0,0x66CC33;
+	disablenpc "#arsfild15a";
+	end;
+
+OnTimer25000:
+
+	mapannounce "ars_fild15","Sénéchal Lin : Head to the harrow which blocks access to upper floors!",0,0x66CC33;
+	end;
+
+OnTimer3600000:
+
+	mapannounce "ars_fild15","Roi Terkish : These are my reinforcements! You have no chance!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild15";
+	mapwarp "ars_fild15","ars_fild15",220,17;
+	sleep2 30000;
+	donpcevent "EP7_lime4::OnInit";
+	end;
+
+//=======================================================================
+
+OnMobDead:
+
+	end;
+
+OnBossDead:
+
+	set $@monster_ep7lime4, $@monster_ep7lime4-1;
+	if($@monster_ep7lime4==0) {
+	mapannounce "ars_fild15","Sénéchal Lin : Perfect harrow is open! we go straight to the hills to flush out Terkish King!",0,0x66CC33;
+	setcell "ars_fild15",154,148,162,161,cell_walkable,1; //walkable : Herse
+	//campement : 2 étape
+	areamonster "ars_fild15",151,188,86,108,"Archer Gobelin",3825,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",151,188,86,108,"Soldat Gobelin",3822,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",151,188,86,108,"Maitre Minotaure",3834,6,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",151,188,86,108,"Panzer Gobelin",3828,10,"EP7_lime4::OnMobDead";
+	//Citadelle
+	areamonster "ars_fild15",81,110,24,211,"Archer Gobelin",3825,30,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",81,110,24,211,"Soldat Gobelin",3823,20,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",81,110,24,211,"Maitre Minotaure",3834,6,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",81,110,24,211,"Panzer Gobelin",3828,10,"EP7_lime4::OnMobDead";
+	areamonster "ars_fild15",81,110,24,211,"Trappeur Gobelin",3829,10,"EP7_lime4::OnMobDead";
+	//Boss de Fin
+	monster "ars_fild15",21,175,"Roi Kiasok",3832,1,"EP7_lime4::OnBossDead2";
+	
+	set $@monster_ep7lime4,1;
+	}
+	end;
+	
+
+OnBossDead2:
+
+	set $@monster_ep7lime4, $@monster_ep7lime4-1;
+	if($@monster_ep7lime4==0) {
+	mapannounce "ars_fild15","Sénéchal Lin : The War is over! Congratulations! Take the exit at the Citadel!",0,0x66CC33;
+	//OUverture
+	enablenpc "#arsfild15b";
+	sleep2 180000;
+	killmonsterall "ars_fild15";
+	mapwarp "ars_fild15","ars_fild15",220,17;
+	sleep2 30000;
+	donpcevent "EP7_lime4::OnInit";
+	end;
+	}
+	end;
+
+}
+
+
+//==================================================================
+ars_fild15,25,174,0	script	#arsfild15b	45,1,1,{
+	
+	if (EP7_LIME <= 7)  goto sub1;
+	if (EP7_LIME == 8)  goto sub2;
+	if (EP7_LIME >= 9)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_fild15",220,17; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You have defeat the army of Goblins and their King!";
+		callfunc "arsi_GobTitre";
+		//retour
+		announce "[" + strcharinfo(0) +"] became the [" + $EP7_TGobelin + "] Goblin Slayer !",bc_all,0x33FF00;		
+		getitem $ep7recompense[12],$ep7recompensenb[12];
+		set EP7_LIME,9;	
+		completequest 70257;
+		warp "ars_fild15",220,17; //instance sortie
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[1],$ep7foodnb[3];
+		getitem $ep7foodid[2],$ep7foodnb[3];
+		getitem $ep7foodid[3],$ep7foodnb[3];
+		warp "ars_fild15",220,17; //instance sortie
+		end;
+	
+}

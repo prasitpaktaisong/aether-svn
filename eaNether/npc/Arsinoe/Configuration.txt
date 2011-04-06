@@ -1,0 +1,396 @@
+//_________________________________________________________________
+//___________________Configuration ________________________________
+//_________________________________________________________________
+
+-	script	EP7_Configuration	-1,{
+
+OnInit:
+
+// Note: The maximum number of players for a Waiting Room does not change during a single Reloadscript. You must
+// restart the map-server, or run at least once time the instance. But the change of number of players is effective with
+// a simple reloadscript.
+
+	// Set the number of players required to launch an instance (Quests). [Default: 5]
+	set $EP7_InstJoueurs,3;
+
+	// Set the number of players required for the Arena (MVP mode, and Assault). [Default: 4]
+	set $EP7_AreneJoueurs,3;
+
+	// Set the number of players required for Quests Zombies. [Default: 4]
+	set $EP7_ZombieJoueurs,3;
+
+	//Comment this line to activate the NPC who gives all variables (Alberta 218,35) [Defaut : Uncomment]
+	disablenpc "Testeur#ep7";
+
+	//Instances Announces : 0 = Local / 1 = Server
+	set $EP7Annonce,1;
+
+	//Announce for the coming on the server : 0 = Local / 1 = Server
+	set $EP7DAnnonce,0;
+
+	//For the Introduction, fix your name server :
+	set $EP7ServName$,"Aether";
+
+	//For the Introduction, fix the Capital Server, Nme of the map and coordinates (For come to the capital after the Introduction) :
+	set $EP7CapiName$,"Prontera";
+	set $EP7map$,"prontera"; 
+	set $EP7x,155; 
+	set $EP7y,182; 
+
+	//Global Current of Arsinoé, per default "Silver Coin". You can change it but be careful don't use common items
+	set $ep7_Tcoins,675;
+
+	//Choose the size of Title Board. Don't go upper 127 (Array limit)
+	set $EP7_TitreNbP,30;
+
+
+	//Configure Soulavein's War Horairs. [Defaut : Wednesday 9-11 pm]
+
+		OnClock2100:	
+		OnClock2300:
+			if ((gettime(4)==3) && (gettime(3)>=21 && gettime(3)<23)) {donpcevent "EP7_WoESoulavein::OnStart"; end;}
+			if ((gettime(4)==3) && (gettime(3)==23)) {donpcevent "EP7_WoESoulavein::OnStop"; end;}
+			end;
+}
+	
+//_________________________________________________________________
+//___________________Récompenses Global ___________________________
+//_________________________________________________________________
+//
+//
+-	script	EP7_Recompense	-1,{
+
+OnInit:
+
+//Quest Coppalana : Boitata 
+	setarray $ep7recompense[1],5370; //(Orchid Hairband)
+	setarray $ep7recompensenb[1],1;
+//Quest Coppalana : Day Village 
+	setarray $ep7recompense[2],28364; //(Roi Crabe)
+	setarray $ep7recompensenb[2],1;
+//Quest Kiman Farès : The Revival of the Dead
+	setarray $ep7recompense[3],5398; //(Bone Head et Food + 10)
+	setarray $ep7recompensenb[3],1;
+//Quest Traïana's Lighthouse: The Crystals
+	setarray $ep7recompense[4],28397; //Moghol
+	setarray $ep7recompensenb[4],1;
+	setarray $ep7recompense[5],28349; //Mouton
+	setarray $ep7recompensenb[5],1;
+//Quest Traïana's Lighthouse: Smugglers
+	setarray $ep7recompense[6],28342; //couronne solaire
+	setarray $ep7recompensenb[6],1;
+//Quest Traïana's Lighthouse: Orcs
+	setarray $ep7recompense[7],5417; //Crown Parrots
+	setarray $ep7recompensenb[7],1;
+//Quest Scalps The Bandits
+	setarray $ep7recompense[8],5380; //Fish Head Hat
+	setarray $ep7recompensenb[8],1;
+//Quest Kargha Desert: Torn-Thalas's Lime
+	setarray $ep7recompense[9],5331; //Corsair refine
+	setarray $ep7recompensenb[9],1;
+//Quest Kargha Desert Oasis of Siwah (ext.)
+	setarray $ep7recompense[10],5418; //legionnaire
+	setarray $ep7recompensenb[10],1;
+//Quest Kargha Desert Oasis of Siwah (int.)
+	setarray $ep7recompense[11],5383; //Hunter Cap
+	setarray $ep7recompensenb[11],1;
+//Quest Kargha Desert: Terkish
+	setarray $ep7recompense[12],5801; //ribbon tailled
+	setarray $ep7recompensenb[12],1;
+//Quest Euhéméria : Tarine's cry
+	setarray $ep7recompense[13],20511; //pet dancing dragon
+	setarray $ep7recompensenb[13],1;
+//Quest Kiman Farès: Plant of the Desert
+	setarray $ep7recompense[14],28303; //Bubble Gum
+	setarray $ep7recompensenb[14],1;
+//Quest Harpocrate : The Lord of the Stars
+	setarray $ep7recompense[15],5211; //Ribbon Hat
+	setarray $ep7recompensenb[15],1;
+
+
+
+
+//Quest The Worship of Danifae: Part Two
+	setarray $ep7recompense[16],5417; //Crown Parrots
+	setarray $ep7recompensenb[16],1;
+//Quest Umaya, the Trading Compagny : Bandits's Cave
+	setarray $ep7recompense[17],5302; //Flower lily
+	setarray $ep7recompensenb[17],1;
+//Quest Umaya, the Trading Compagny : Final and Title
+	setarray $ep7recompense[18],5331; //Corsair
+	setarray $ep7recompensenb[18],1;
+//Quest Magicians of Arsinoe: Dragon Gondar
+	setarray $ep7recompense[19],5324; //little angel doll
+	setarray $ep7recompensenb[19],1;
+//Quest Birth of Lalibela
+	setarray $ep7recompense[20],5335; //squatting poring
+	setarray $ep7recompensenb[20],1;
+//Quest Harpocrate Worship: The Academy
+	setarray $ep7recompense[21],5289; //Vanilmirth Hat
+	setarray $ep7recompensenb[21],1;
+//Quest Magicians of Arsinoe: Fight Pavloff
+	setarray $ep7recompense[22],5323; //misstrance Crown
+	setarray $ep7recompensenb[22],1;
+
+
+//Quest Final Fight
+	setarray $ep7recompense[23],5356; //pumpkin
+	setarray $ep7recompensenb[23],1;
+
+
+//Quest Legend of Rana: The Highlands
+	setarray $ep7recompense[24],5417; //Crown Parrots
+	setarray $ep7recompensenb[24],1;
+//Quest Legend of Rana: Dian Bian Fût
+	setarray $ep7recompense[25],5417; //Crown Parrots
+	setarray $ep7recompensenb[25],1;
+//Quest Legend of Rana: Rana, The Goddess 
+	setarray $ep7recompense[26],5417; //Crown Parrots
+	setarray $ep7recompensenb[26],1;
+//Quest Gladiator : Title
+	setarray $ep7recompense[27],5417; //Crown Parrots
+	setarray $ep7recompensenb[27],1;
+//Quest Zombies : The House of Chibi Youma
+	setarray $ep7recompense[28],5417; //Crown Parrots
+	setarray $ep7recompensenb[28],1;
+
+//Quête OmbreTerre : Thunder Fortress
+	setarray $ep7recompense[29],5256; //valk feather
+	setarray $ep7recompensenb[29],1;
+//Quête OmbreTerre : Insurrection de Da'Urdein
+	setarray $ep7recompense[31],5313; //Diadem
+	setarray $ep7recompensenb[31],1;
+//Quête OmbreTerre : Planar Sphere
+	setarray $ep7recompense[32],5404; //Blue Ribbon
+	setarray $ep7recompensenb[32],1;
+
+//Quête Cartographe DeMartonne
+	setarray $ep7recompense[30],5210; //flying angel
+	setarray $ep7recompensenb[30],1;
+
+//Quête Urunesti : Shogunka
+	setarray $ep7recompense[33],5403; //fish
+	setarray $ep7recompensenb[33],1;
+//Quête Urunesti : Temple de Dagon
+	setarray $ep7recompense[34],5442; //dark knight
+	setarray $ep7recompensenb[34],1;
+//Quête Kargah : Temple de Pétosiris
+	setarray $ep7recompense[35],5414; //feu
+	setarray $ep7recompensenb[35],1;
+//Quête Kargah : Temple de Pétosiris 2
+	setarray $ep7recompense[36],5410; //sac papier
+	setarray $ep7recompensenb[36],1;
+
+//Quête Pêcheur : Titre
+	setarray $ep7recompense[37],5404; //Blue Ribbon
+	setarray $ep7recompensenb[37],1;
+//Quête Euhéméria : Dance
+	setarray $ep7recompense[38],5404; //Blue Ribbon
+	setarray $ep7recompensenb[38],1;
+
+//Quête Néraka : Mines
+	setarray $ep7recompense[39],5404; //Blue Ribbon
+	setarray $ep7recompensenb[39],1;
+//Quête Arsinoé : Orchestre
+	setarray $ep7recompense[40],28367; //Blue Ribbon
+	setarray $ep7recompensenb[40],1;
+
+//Quête Final
+	setarray $ep7recompense[41],28367; //Blue Ribbon
+	setarray $ep7recompensenb[41],1;
+
+	//SilverCoins
+	setarray $ep7silvercoinnb[1],400; //Traïana's Lighthouse
+	setarray $ep7silvercoinnb[2],400; //Traïana's Lighthouse: Smugglers
+	setarray $ep7silvercoinnb[3],450; //Magicians of Arsinoe: The Magnus Gaëlle (Part. 1)
+	setarray $ep7silvercoinnb[4],500; //The Worship of Danifae: Part One (Part. 1)
+	setarray $ep7silvercoinnb[5],300; //Birth of Lalibela
+	setarray $ep7silvercoinnb[6],400; //Title of Grand Inquisitor
+	setarray $ep7silvercoinnb[7],30;  //Arèna : MvP Fight
+	setarray $ep7silvercoinnb[8],300; //Sidon : Turtle Soul
+	setarray $ep7silvercoinnb[9],300; //Hylarheim : Sailors
+
+	setarray $ep7silvercoinnb[10],200; //Néraka : Baron Sengir
+	setarray $ep7silvercoinnb[11],200; //Néraka : Livraison de Glace
+	setarray $ep7silvercoinnb[12],200; //Néraka : Comte de Nemours
+	setarray $ep7silvercoinnb[13],200; //Néraka : La Fronde
+
+	// Awards at the second execution of an instance
+
+	setarray $ep7foodnb[1],1; //Quantité
+	setarray $ep7foodnb[2],2; //Quantité
+	setarray $ep7foodnb[3],3; //Quantité
+	setarray $ep7foodnb[4],4; //Quantité
+	setarray $ep7foodnb[5],5; //Quantité
+
+	// Basic Food +10 (3 different per instance)
+	setarray $ep7foodid[1],12075; //Str
+	setarray $ep7foodid[2],12080; //Int
+	setarray $ep7foodid[3],12095; //Dex
+	setarray $ep7foodid[4],12090; //Agi
+	setarray $ep7foodid[5],12085; //Vit
+	setarray $ep7foodid[6],12100; //Luk
+
+	end;
+}
+
+//_________________________________________________________________
+//___________________OnLoginEvent _________________________________
+//_________________________________________________________________
+
+-	script	EP7_login	-1,{
+
+OnPCLoginEvent:
+
+	if ( EP7_MAGE == 5 ) {
+	disguise 800;}
+
+	end;
+
+}
+
+//_________________________________________________________________
+//___________________Apparition Heures ____________________________
+//_________________________________________________________________
+
+-	script	EP7_horaires	-1,{
+
+OnInit:
+
+	disablenpc "Poulet#ep72";
+	disablenpc "Apprenti Finissule#1";
+	disablenpc "Mage Etranger#ep7a";
+	disablenpc "Mage Etranger#ep7b";
+	disablenpc "Mage Etranger#ep7c";
+	disablenpc "Mage Etranger#ep7c";
+	disablenpc "Prêtre Merlay#ep7";
+	end;
+
+OnClock2000:
+OnClock2200:
+OnClock0000:
+OnClock0200:
+
+	enablenpc "Prêtre Merlay#ep7";
+	enablenpc "Mage Etranger#ep7a";
+	enablenpc "Mage Etranger#ep7b";
+	enablenpc "Mage Etranger#ep7c";
+	end;
+
+OnClock0800:
+OnClock1000:
+OnClock1200:
+OnClock1400:
+OnClock1600:
+OnClock1800:
+
+	disablenpc "Prêtre Merlay#ep7";
+	disablenpc "Mage Etranger#ep7a";
+	disablenpc "Mage Etranger#ep7b";
+	disablenpc "Mage Etranger#ep7c";
+	end;
+
+
+}
+
+//_________________________________________________________________
+//___________________Testeur NPC __________________________________
+//_________________________________________________________________
+
+alberta,218,35,1	script	Testeur#ep7	406,{
+
+set @name$,"Testeur";
+
+	mes "[" + @name$ + "]";
+	mes "What did you want ?";
+	next;
+	menu "Validate All",submenu1,"Reset all variables",submenu2,"Cancel",-;
+
+	close;
+
+submenu1:
+	
+	mes "[" + @name$ + "]";
+	mes "You have all variables !";
+	close2;
+	set EP7_GLOBAL,40;
+	set EP7_SOIN,10;    	
+	set EP7_FETE,52;	   	
+	set EP7_PHARE,6;   	
+	set EP7_ORC,3;     	
+	set EP7_CBANDE,3;  	
+	set EP7_BANDIT,203;  	
+	set EP7_LIME,9;    	
+	set EP7_AME,7;     	
+	set EP7_MAGE,13;    	
+	set EP7_PLANTE,5;  	
+	set EP7_DANIFAE,10; 	
+	set EP7_HARPO,11;   	
+	set EP7_RANA,9;    	
+	set EP7_TRAIN,8;      	
+	set EP7_MARCHAND,16;   	
+	set EP7_ARENA,200;      	
+	set EP7_ZOMBIE,6;
+      	set EP7_OMBRET,21;
+      	set EP7_CARTE,21;	
+        set EP7_INTRO,7;	
+	set EP7_URUNESTI,18;	
+	end;
+
+submenu2:
+	
+	mes "[" + @name$ + "]";
+	mes "All variables have been reset !";
+	close2;
+	set EP7_GLOBAL,0;
+	set EP7_SOIN,0;    	
+	set EP7_FETE,0;	   	
+	set EP7_PHARE,0;   	
+	set EP7_ORC,0;     	
+	set EP7_CBANDE,0;  	
+	set EP7_BANDIT,0;  	
+	set EP7_LIME,0;    	
+	set EP7_AME,0;     	
+	set EP7_MAGE,0;    	
+	set EP7_PLANTE,0;  	
+	set EP7_DANIFAE,0; 	
+	set EP7_HARPO,0;   	
+	set EP7_RANA,0;    	
+	set EP7_TRAIN,0;      	
+	set EP7_MARCHAND,0;   	
+	set EP7_ARENA,0;      	
+	set EP7_ZOMBIE,0;
+      	set EP7_OMBRET,0;
+      	set EP7_CARTE,0;
+        set EP7_INTRO,0;	
+	set EP7_URUNESTI,0;	
+	end;
+}
+
+
+//_________________________________________________________________
+//___________________Taille des NPCs ______________________________
+//_________________________________________________________________
+
+
+-	script	EP7_taillenpc	-1,{
+
+OnInit:
+
+//Petit
+setnpcdisplay("Pêcheur#ep71", "Pêcheur", 88, 1);
+setnpcdisplay("Pêcheur#ep72", "Pêcheur", 73, 1);
+setnpcdisplay("Pêcheur#ep73", "Pêcheur", 101, 1);
+setnpcdisplay("Pêcheur#ep74", "Pêcheur", 92, 1);
+setnpcdisplay("Pêcheur#ep75", "Pêcheur", 777, 1);
+setnpcdisplay("Pêcheur#ep76", "Pêcheur", 883, 1);
+setnpcdisplay("Pêcheur#ep77", "Pêcheur", 901, 1);
+
+setnpcdisplay("Shackey Sarinac#ep7", "Shackey Sarinac", 846, 1);
+setnpcdisplay("Marin Hylar#ep7", "Marin Hylar", 928, 1);
+setnpcdisplay("Marin Hylar#ep72", "Marin Hylar", 928, 1);
+
+setnpcdisplay("Marin Hylar#ep7s1", "Marin Hylar", 803, 1);
+setnpcdisplay("Salve Regina#ep7", "Salve Regina", 806, 1);
+
+}

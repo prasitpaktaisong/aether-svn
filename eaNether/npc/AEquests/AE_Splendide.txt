@@ -1,0 +1,186 @@
+//== Aether Script ===========================================
+// • NPCs de Splendide
+//===== Por: =================================================
+// • Haziel
+// • Ciel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Splendide
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Ivayne - Rubor de Batalha (28/07/2010)
+// • 1.0 - Adicionado Herold - Rubor de Batalha (28/07/2010)
+//============================================================
+
+//== • Fada Ivayne - Quest: Rubor de Batalha =================
+spl_in01,124,52,3	script	Ivayne#spl	435,{
+	If (AE_Rubor > 4){
+		mes "^FF9000[Ivayne]^000000";
+		mes "Você realmente é pupilo de ^0000FFLogan^000000";
+		mes "Você encontraria ^0000FFHarold^000000 facilmente, ele está no meio das folhas das grandes àrvores na parte leste da cidade.";
+		mes "Porém, ele não falaria com você.";
+		next;
+		
+		mes "^FF9000[Ivayne]^000000";
+		mes "Leve para ele ^FF0000150 Frutas Espinhosas Escarlates^000000, são suas preferidas";
+		mes "Assim, ele lhe dará atenção. Boa sorte no que procura.";
+		close;
+	}
+	
+	If (AE_Rubor == 4){
+		mes "^FF9000[Ivayne]^000000";
+		mes "Conseguiu os ^0000FF25 Aventais de Alice^000000?	";
+		switch(select("• Sim, aqui estão!","• Ainda não.")){
+			case 1:
+				if (countitem(7047)>=25){
+					next;
+					mes "^FF9000[Ivayne]^000000";
+					mes "Você realmente é pupilo de ^0000FFLogan^000000";
+					delitem 7047,25;
+					mes "Você encontraria ^0000FFHarold^000000 facilmente, ele está no meio das folhas das grandes àrvores na parte leste da cidade.";
+					mes "Porém, ele não falaria com você.";
+					next;
+						
+					mes "^FF9000[Ivayne]^000000";
+					mes "Leve para ele ^FF0000150 Frutas Espinhosas Escarlates^000000, são suas preferidas";
+					mes "Assim, ele lhe dará atenção. Boa sorte no que procura.";
+					set AE_Rubor,5;
+					close;
+				}
+				next;
+				mes "^FF9000[Ivayne]^000000";
+				mes "Nenhum pupilo de ^0000FFMestre Logan^000000 mentiria assim!";
+				close;
+			
+			case 2:
+				close;	
+		}
+	}
+	If (AE_Rubor < 3){
+		mes "^FF9000[Ivayne]^000000";
+		mes "Olá! Por favor, fique a vontade.";
+		close;
+	}
+	mes "^FF9000[Ivayne]^000000";
+	mes "Olá! Por favor, fique a vontade.";
+	switch(select("• Perguntar sobre ^0000FFHarold^000000, o ^FF0000Ent^000000.","• Agradecer a hospitalidade.")){
+		case 1:
+			next;
+			mes "^FF9000[Ivayne]^000000";
+			mes "^0000FFHarold^000000? Onde ouviu falar sobre isso?";
+			mes "A única pessoa que sabe sobre ele, fora de ^37D82FSplendide^000000 é...";
+			switch(select("• ^0000FFLogan^000000, meu Mestre!","• ^0000FFHarold^000000? Quem é ^0000FFHarold^000000?")){
+				case 1:
+					next;
+					mes "^FF9000[Ivayne]^000000";
+					mes "Seu... Mestre?";
+					mes "Hum, isso explica tudo, mas, não posso acreditar assim em você.";
+					next;
+				
+					mes "^FF9000[Ivayne]^000000";
+					mes "Se aprendeu mesmo com ^0000FFLogan^000000, será capaz de me trazer ^0000FF25 Aventais de Alice^000000.";
+					mes "Se é realmente pupilo de ^0000FFMestre Logan^000000, não terá problemas, ficarei te esperando.";
+					set AE_Rubor,4;	
+					close;
+				case 2:
+					close;
+			}		
+		case 2:
+			close;
+	}		
+}
+
+//== • Harold - Quest: Rubor de Batalha ======================
+splendide,281,190,3	script	Harold, O Ent#spl	453,{
+	If (AE_Rubor > 6){
+		mes "^0EC400[Harold]^000000";
+		mes "A aparência do momento do ^FF0000Rubor de Batalha^000000 se assemelha muito com uma gantil ^FF0000Candura^000000.";
+		mes "E, por esse motivo, você deve passar além das aparências.";
+		next;
+	
+		mes "^0EC400[Harold]^000000";
+		mes "Leve ^FF000010 Canduras^000000 para ^A71ADBLyner^000000, o ^0000FFFantasma Sem Face^000000.";
+		mes "Ele saberá quem o mandou e lhe dará uma resposta direta sobre isso.";
+		mes "Procure-o no ^a71adbReino dos Mortos^000000.";
+		mes "Vá em paz.";
+		close;
+	}	
+	If (AE_Rubor == 6){
+		mes "^0EC400[Harold]^000000";
+		mes "Trouxe o que lhe pedi?";
+		mes "São ^0000FF2 Cartas Poring^000000 e ^0000FF2 Cartas Sapo de Thara^000000.";
+	
+		switch(select("• Sim, aqui está.","• Ainda não.")){
+			case 1:
+				if ((countitem(4001)>=2) && (countitem(4058)>=2)){
+					next;
+					mes "^0EC400[Harold]^000000";
+					mes "^0000FF*Com a grande mão de madeira, ele pega as cartas gentilmente*^000000";
+					delitem 4001,2;
+					delitem 4058,2;
+					mes "Você me provou que é capaz, então, te ensinarei o caminho. Porém, só posso te levar mais adiante, ainda não é aqui o fim desse treinamento.";
+					next;
+						
+					mes "^0EC400[Harold]^000000";
+					mes "A aparência do momento do ^FF0000Rubor de Batalha^000000 se assemelha muito com uma gantil ^FF0000Candura^000000.";
+					mes "E, por esse motivo, você deve passar além das aparências.";
+					next;
+					
+					mes "^0EC400[Harold]^000000";
+					mes "Leve ^FF000010 Canduras^000000 para ^a71adbLyner^000000, o ^0000FFEspectro Sem Face^000000";
+					mes "Ele saberá quem o mandou e lhe dará uma resposta direta sobre isso.";
+					mes "Procure-o no ^a71adbReino dos Mortos^000000.";	
+					mes "Vá em paz.";
+					set AE_Rubor,7;
+					close;
+				}
+				next;
+				mes "^0EC400[Harold]^000000";
+				mes "Acho que ainda não...";
+				close;
+			case 2:
+				close;
+		}
+	}		
+	If (AE_Rubor < 5){
+		mes "^0EC400[Harold]^000000";
+		mes ".....";
+		close;	
+	}
+	mes "^0EC400[Harold]^000000";
+	mes "...";
+	if (countitem(587)>=150){
+		switch(select("• Entregar as ^FF0000Frutas Espinhosas Escarlates^000000","• É uma árvore?")){
+			next;
+			mes "^0EC400[Harold]^000000";
+			mes "^FF0000150 Frutas Espinhosas Escarlates^000000!";
+			mes "Agradeço a oferenda! Você deve ter sido mandado por ^FF9000Ivayne^000000!";
+			next;
+	
+			mes "^0EC400[Harold]^000000";
+			delitem 587,150;
+			mes "Eu sou o ^FF0000Ent^000000 que estuda ^FF0000Humanos^000000.";
+			mes "Acredito que me procura por isso, estou certo?";
+	
+			switch(select("• Perguntar sobre o ^FF0000Rubor de Batalha.")){
+				case 1:
+					next;
+					mes "^0EC400[Harold]^000000";
+					mes "^FF0000Rubor de Batalha^000000...";
+					mes "É uma das partes mais curiosas sobre os humanóides.";
+					mes "Para chegar até mim, você já deve saber do que isso é capaz.";
+					next;
+		
+					mes "^0EC400[Harold]^000000";
+					mes "Acredito que, com as ^FF0000Almas^000000 certas, posso tentar despertar isso em você.";
+					mes "Para isso, traga-me ^0000FF2 Cartas Poring^000000 e ^0000FF2 Cartas Sapo de Thara";
+					set AE_Rubor,6;
+					close;
+			}
+		}	
+	}
+	close;
+}
+
+
+

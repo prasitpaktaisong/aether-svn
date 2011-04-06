@@ -1,0 +1,864 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Marchands
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+
+
+// 1 = Umaya, the Trading Compagny
+// 2 = Function: Quest Level
+// 3 = Function: Level Shop
+// 4 = List of Shops
+// 5 = Secondary Characters
+
+//_________________________________________________________________
+//___________________Umaya, the Trading Compagny __________________
+//_________________________________________________________________
+
+
+coppa,261,112,5	script	Rabatteur Harrey#ep7	99,{
+
+set @name$,"Rabatteur Harrey";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Trading Compagny of Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "I would like to buy something",-,"Quest",sub1quete;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	if (EP7_MARCHAND == 1)  goto L_quete1;
+	if (EP7_MARCHAND == 3)  goto L_quete2;
+
+	callfunc "arsi_marchquete";
+	end;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, there you are abroad distant seas! Your arrival in the village has interested me, it's rare to meet people from Midgard.";
+	mes "I wish open a counter at the Tantale Island for increased the business with the Thébaïde.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "So that, I would go there, but I cannot go myself, I must keep my shop!";
+	mes "So if you could, go there on my behalf to discuss with the local chief and see if he will agree to transit in my name, for a fee.";
+	close2;	 
+	changequest 70350,70351;
+	set EP7_MARCHAND,2;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Thanks for your help! This should increase my performance and reach the prestige of our company!";
+	mes "Here, I'll add a point on your membership card, now you have access to new merchandise in our stores!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I think the representative of our Company to Kiman Fares needs help, his affairs are disturbed at this time.";
+	close2;
+	changequest 70352,70353;
+	set EP7_MARCHAND,4;
+	end;
+
+}
+
+//=================================================================
+
+ars_in01,145,43,3	script	Responsable Umaya#ep7	423,4,4,{
+
+set @name$,"Responsable Umaya";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Trading Compagny of Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "I want to buy somthing",-,"Quest",sub1quete;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	if (EP7_MARCHAND == 0)  goto L_quete1;
+	if (EP7_MARCHAND == 10)  goto L_quete2;
+	if (EP7_MARCHAND == 11)  goto L_quete3;
+	if (EP7_MARCHAND == 12)  goto L_quete4;
+	if (EP7_MARCHAND == 13)  goto L_quete5;
+
+	callfunc "arsi_marchquete";
+	end;
+
+
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Well, I see, you're not yet a member of our association.";
+	mes "If you want to become, you need to pay registration revecoir membership card";
+	mes "Registration costs 50,000 zeny, then as a member, you earn points for better services.";
+	next;
+	menu "Become a Member",submenu1,"Cancel",-;
+
+	close;
+
+	submenu1:
+
+		if (zeny<50000) goto L_nozeny;
+		mes "[" + @name$ + "]"; 
+		mes "Welcome to our association, dear member!";
+		mes "You now have access to our services, but if you want progress, you'll have to help our members,";
+		mes "and you will increasingly benefit from the Company of Merchant Umaya.";
+		close2;
+		set zeny,zeny-50000;
+		set EP7_MARCHAND,1;
+		setquest 70350;
+		getitem 29011,1;
+		end;
+
+
+L_quete2:
+		mes "[" + @name$ + "]"; 
+		mes "Ah, you are a distinguished member!";
+		mes "I don't know if you've already spoken to the Mayor of the city, but we had to suffer repeated attacks of bandits!";
+		mes "And that's really bad for our market activities!";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "That is why we must act quickly! We are already losing too much money!";
+		mes "According to our information, their hideout is in the Pass of Octavia, in caves for their low abuse!";
+		mes "He'll have you speak to Lieutenant Van Gothe is based at the barracks of Octavia, it has information that can help you locate the Bandits.";
+		close2;
+		changequest 70359,70360;
+		set EP7_MARCHAND,11;
+		end;
+
+L_quete3:
+		mes "[" + @name$ + "]"; 
+		mes "Ah, you are distinguished member!";
+		mes "I do not know if you've already spoken to the Mayor of the city, but we had to suffer repeated attacks of bandits!";
+		mes "And that's really bad for our market activities!";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "That is why we must act quickly! We are already losing too much money!";
+		mes "According to our information, their hideout is in the Pass of Octavia, in caves for their low abuse!";
+		mes "He'll have you speak to Lieutenant Van Gothe is based at the barracks of Octavia, it has information that can help you locate the Bandits.";
+		close;
+
+L_quete4:
+		mes "[" + @name$ + "]"; 
+		mes "Well, he'll have to investigate the cave to take care of those pesky bandits, killing their leader, they should disperse.";
+		mes "Without organization and without there leader, they are no longer a danger to our Company.";
+		close;
+
+L_quete5:
+		mes "[" + @name$ + "]"; 
+		mes "Thank you for your help! The Company is grateful for your help!";
+		mes "The Headquarter of the Company wants to meet you ! You have made so many services for us!";
+		mes "So, as soon as you can, do not hesitate to visit them !";
+		close2;
+		changequest 70363,70364;
+		set EP7_MARCHAND,14;
+		end;
+
+L_nozeny:
+
+		mes "[" + @name$ + "]"; 
+		mes "Thank you for your help! The Company is grateful for your help!";
+		mes "The Headquarter of the Company wants to meet you ! You have made so many services for us!";
+		mes "So, as soon as you can, do not hesitate to visit them !";
+		close;
+
+OnTouch:
+	if (EP7_MARCHAND == 0) {showevent 1,0;} end;
+}
+
+//=================================================================
+
+ars_fild02,259,193,3	script	Représentant Olcha#ep7	477,{
+
+set @name$,"Représentant Olcha";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Trading Compagny of Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "I would like to buy something",-,"Quest",sub1quete;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	if (EP7_MARCHAND == 4)  goto L_quete1;
+	if (EP7_MARCHAND == 6)  goto L_quete2;
+
+	callfunc "arsi_marchquete";
+	end;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "What a catastrophe! Our beautiful forest is invaded by those horrible Undead ...";
+	mes "Our village is running out of food, there are no more supplies coming from Coppalana or Euhéméria ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll all die of hunger at this rate, since you're a member of our company, you must help us!";
+	mes "We need you to go to the Lighthouse Traiana, at the fishing village, it is full of smugglers.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I know they can send us a caravan as soon as possible, but you must give them the money!";
+	mes "So, they come with food for us to continue our struggle.";
+	mes "Oswald Rijin is my contact there, he is aware of our problems, it will be done quickly.";
+	close2;	 
+	changequest 70353,70354;
+	set EP7_MARCHAND,5;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah Harpocrates be praised! You have been a great help, without you exile would have been our only option!";
+	mes "Well, he'll have pousuivre to our struggle for survival, the Company thanks you!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Congratulations! You get new products on sale!";
+	mes "A rumor of business exploration around Lake Crystalmir exists in the Thébaide, The Compagny is looking for Merchants.";
+	close2;
+	changequest 70355,70356;
+	set EP7_MARCHAND,7;
+	end;
+
+}
+
+//=================================================================
+
+ars_fild18,107,25,4	script	Marchande Jonas#ep7	850,{
+
+set @name$,"Marchande Jonas";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Trading Compagny of Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "Doing Business",-,"Quest",sub1quete;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	if (EP7_MARCHAND == 7)  goto L_quete1;
+	if (EP7_MARCHAND == 8)  goto L_quete2;
+	if (EP7_MARCHAND == 9)  goto L_quete3;
+
+	callfunc "arsi_marchquete";
+	end;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, have you heard of our mission to explore the lake Crystalmir!";
+	mes "We want to open Crystalmir village, one of our franchise, but for that we are looking for adventurers!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Since the construction of the railway, many people uses it, because the trail through the Mount Bacchias is dangerous!";
+	mes "But we still believe in an open there for our export and import equipment tench famous lake, which will find buyers at Arsinoe.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "So if you want, I'll give you this mission, but be careful the road is dangerous.";
+	mes "We'll have to go through Euhéméria, then take the Col de Feymour finally take over the old trade road!";
+	mes "So Retrieves Ghywald Rumsdan there, it will become our exclusive partner for trade!";
+	close2;	 
+	set EP7_MARCHAND,8;
+	changequest 70356,70357;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you hear of our mission to explore the lake Crystalmir!";
+	mes "We want to open Crystalmir village, one of our franchise, but for that we are looking for adventurers!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Since the construction of the railway, many people uses it, because the trail through the Mount Bacchias is dangerous!";
+	mes "But we still believe in an open there for our export and import equipment tench famous lake, which will find buyers at Arsinoe.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "So if you want, I'll give you this mission, but be careful the road is dangerous.";
+	mes "We'll have to go through Euhéméria, then take the Col de Feymour finally take over the old trade road!";
+	mes "So Retrieves Ghywald Rumsdan there, it will become our exclusive partner for trade!";
+	close;
+
+L_quete3:
+
+	mes "[" + @name$ + "]"; 
+	mes "The expedition to the Lake Crystalmir is a success!";
+	mes "Thank you for your help! The tench of the lake will soon get here and all the Arsinoeïan'll enjoy them again.";
+	close2;	 
+	set EP7_MARCHAND,10;
+	changequest 70358,70359;
+	end;
+
+}
+
+//=================================================================
+
+ars_in02,51,298,4	script	Directeur Oljicka#ep7	807,{
+
+set @name$,"Directeur Oljicka";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Trading Compagny of Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "I would like to buy something",-,"Quest",sub1quete;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	if (EP7_MARCHAND == 14)  goto L_quete1;
+	if (EP7_MARCHAND == 15)  goto L_quete2;
+
+	callfunc "arsi_marchquete";
+	end;
+
+L_quete1:
+
+	mes "[" + @name$ + "]";
+	mes "Congratulations! Distinguished Member, you have rendered many services we are proud!";
+	mes "That's why I have one last request to propose to you, nothing complicated, but you'll soon understand its utility!";
+	next;
+	mes "[" + @name$ + "]";
+	mes "The transportation of goods was quite upset right now and our stocks are low enough to the factory!";
+	mes "We want you to collect some things for us, just to restart the machines!";
+	next;
+	mes "[" + @name$ + "]";
+	mes "So that's what it takes for the company, I know that much, but we need it :";
+	mes "- 60 x Marmotte Fur.";
+	mes "- 40 x Bilal's Excretion.";
+	mes "- 50 x Mammouth Bone.";
+	mes "- 300 x Gobelin Fang.";
+	close2;	 
+	changequest 70364,70365;
+	set EP7_MARCHAND,15;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "The transportation of goods was quite upset right now and our stocks are low enough to the factory!";
+	mes "We want you to collect some things for us, just to restart the machines!";
+	next;
+	menu "I have the goods !",subquete1,"I need ?",-;
+
+	mes "[" + @name$ + "]"; 
+	mes "So that's what it takes for the company, I know that much, but we need it :";
+	mes "- 60 x Marmotte Fur.";
+	mes "- 40 x Bilal's Excretion.";
+	mes "- 50 x Mammouth Bone.";
+	mes "- 300 x Gobelin Fang.";
+	close;
+
+subquete1:
+
+	if (countitem(29012) < 60) goto L_insufficient1;
+	if (countitem(29013) < 40) goto L_insufficient1;
+	if (countitem(29014) < 50) goto L_insufficient1;
+	if (countitem(29015) < 300) goto L_insufficient1;
+
+		mes "[" + @name$ + "]"; 
+		mes "Thank you for everything! All our services are available to you now, you get also the title of Magnat Arsinoe!";
+		close2;
+		delitem 29012,60;
+		delitem 29013,40;
+		delitem 29014,50;
+		delitem 29015,300;
+		set EP7_MARCHAND,16;
+		callfunc "arsi_marchTitre";
+		//retour
+		announce "[" + strcharinfo(0) +"] becomes the [" + $EP7_TMarchand + "] Magnat d'Arsinoé !",bc_all,0x33FF00;		
+		getitem $ep7recompense[18],$ep7recompensenb[18];
+		completequest 70365;
+		end;
+
+
+
+L_insufficient1:
+
+	mes "[" + @name$ + "]"; 
+	mes "You do not have all required items!";
+
+	close;
+	
+
+}
+
+//=================================================================
+
+ars_fild26,93,65,1	script	Vendeuse Yuna#ep7	53,{
+
+set @name$,"Vendeuse Yuna";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Society of Merchant Umaya ... Always ready for win new markets!";
+	mes "What can I do for you?";
+	next;
+	menu "Doing Business",-,"Rien",sub1;
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1:
+
+	close;
+
+}
+
+//=================================================================
+
+ars_fild28,142,226,4	script	Commerçant Globe#ep7	731,{
+
+set @name$,"Commerçant Globe";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Society of Merchant Umaya ... I've new supplies for you!";
+	mes "What can I do for you?";
+	next;
+	menu "Doing Business",-,"Rien",sub1;
+
+	close;
+
+sub1:
+	callfunc "arsi_marchshop";
+	end;
+
+
+
+
+
+}
+
+//=================================================================
+
+ars_fild29,66,124,4	script	Responsable Izatis#ep7	783,{
+
+set @name$,"Responsable Izatis";
+
+	mes "[" + @name$ + "]"; 
+	mes "I am a member of the Society of Merchant Umaya ... Always ready for win new markets!";
+	mes "What can I do for you?";
+	next;
+	menu "Doing Business",-,"Rien",sub1;
+
+	close;
+
+sub1:
+	callfunc "arsi_marchshop";
+	end;
+
+
+}
+//_________________________________________________________________
+//___________________Fonction : Niveau Quête ______________________
+//_________________________________________________________________
+
+function	script	arsi_marchquete	{
+
+
+	if (EP7_MARCHAND == 0)  { 
+	mes "[" + @name$ + "]"; 
+	mes "I'm sorry but you do not have your membership card, so you can't use our Merchants Association.";
+	mes "If you want to become a member of the Society of Merchant Umaya, please contact our office at Euhéméria.";
+	close;}
+
+	if (EP7_MARCHAND == 1)  { 
+	mes "[" + @name$ + "]"; 
+	mes "Our member Coppalana, at the latest news, would need a helping hand for its imports.";
+	mes "It's the Rabatteur Harrey, if you are looking for him.";
+	close;}
+
+	if (EP7_MARCHAND == 2)  { 
+	mes "[" + @name$ + "]"; 
+	mes "You must go to the Tantale Island to ask the chief to open a local office.";
+	mes "The Rabatteur Harrey wants to open a franchise to facilitate trade between Coppalana and the Thebaide.";
+	close;}
+
+	if (EP7_MARCHAND == 3)  { 
+	mes "[" + @name$ + "]"; 
+	mes "The Chef Ocrah of Tantale Island has accepted the proposal of Rabatteur Harrey.";
+	mes "You should tell him the news.";
+	close;}
+
+	if (EP7_MARCHAND == 4)  { 
+	mes "[" + @name$ + "]"; 
+	mes "I think the representative of our Company to Kiman Fares needs help, its affairs are disturbed at this time.";
+	close;}
+
+	if (EP7_MARCHAND == 5)  { 
+	mes "[" + @name$ + "]"; 
+	mes "You must bring your aid village Kiman Fares suffering zombies attacks.";
+	mes "You have contact with Oswald Rijin at the Traïana's Lighthouse for the caravan of food is put in place.";
+	close;}
+
+	if (EP7_MARCHAND == 6)  { 
+	mes "[" + @name$ + "]"; 
+	mes "Oswald Rijin agreed to send a caravan of food to Kiman Fares.";
+	mes "You should go see Olcha Representative to tell him the news.";
+	close;}
+
+	if (EP7_MARCHAND == 7)  { 
+	mes "[" + @name$ + "]"; 
+	mes "A rumor of business exploration around Lake Crystalmir exists in the Thébaide, The Compagny is looking for Merchants.";
+	close;}
+	
+	if (EP7_MARCHAND == 8)  { 
+	mes "[" + @name$ + "]"; 
+	mes "You must go to the village of Crystalmir to meet Ghywald Rumsdan to open a franchise of the Company of Merchant Ulawa.";
+	close;}
+
+	if (EP7_MARCHAND == 9)  { 
+	mes "[" + @name$ + "]"; 
+	mes "You can go see the Marchande Jonas in Thebaide to validate the transaction.";
+	close;}
+
+	if (EP7_MARCHAND == 10)  { 
+	mes "[" + @name$ + "]"; 
+	mes "The company had problems with the Bandits in the Bacchias Mountains. Go and see our office Euhéméria to help our cause.";
+	close;}
+
+	if (EP7_MARCHAND == 11)  { 
+	mes "[" + @name$ + "]"; 
+	mes "According to our information, their hideout is in the pass of Octavia, in a cave equipped for their low abuse!";
+	mes "He'll have you speak to Lieutenant Van Gothe is based at the barracks of Octavia, it has information that can help you locate the Bandits.";
+	close;}
+
+	if (EP7_MARCHAND == 12)  { 
+	mes "[" + @name$ + "]"; 
+	mes "You must go north of the Pass of Octavia to clean the camp of bandits.";
+	close;}
+
+	if (EP7_MARCHAND == 13)  { 
+	mes "[" + @name$ + "]"; 
+	mes "Thanks for the service if you wish to receive your prize address Responsable of Umaya at Euhéméria.";
+	close;}
+
+	if (EP7_MARCHAND == 14)  { 
+	mes "[" + @name$ + "]"; 
+	mes "Headquarters of the company wants to meet you, you'd better go and see the them at the Office of Arsinoe.";
+	close;}
+
+	if (EP7_MARCHAND == 15)  { 
+	mes "[" + @name$ + "]"; 
+	mes "So that's what it takes for the company, I know that much, but we need it :";
+	mes "- 60 x Marmotte Fur.";
+	mes "- 40 x Bilal's Excretion.";
+	mes "- 50 x Mammouth Bone.";
+	mes "- 300 x Gobelin Fang.";
+	close;}
+
+	if (EP7_MARCHAND == 16)  { 
+	mes "[" + @name$ + "]"; 
+	mes "The Company of Merchant Umaya has more missions for you! You are now a Magnat, you have access to all our services!";
+	close;}
+
+}
+
+//_________________________________________________________________
+//___________________Fonction : Niveau Shop _______________________
+//_________________________________________________________________
+
+function	script	arsi_marchshop	{
+
+
+	if (EP7_MARCHAND == 0)  { 
+	mes "[" + @name$ + "]"; 
+	mes "I'm sorry but you do not have your membership card, you do not use our Merchants Association.";
+	mes "If you want to become a member of the Society of Merchant Umaya, please contact our office Euhéméria.";
+	close;}
+
+	if (EP7_MARCHAND <= 3)  { callshop "EP7_shop#1",0; end;}
+	if (EP7_MARCHAND <= 6)  { callshop "EP7_shop#2",0; end;}
+	if (EP7_MARCHAND <= 9)  { callshop "EP7_shop#3",0; end;}
+	if (EP7_MARCHAND <= 13)  { callshop "EP7_shop#4",0; end;}
+	if (EP7_MARCHAND >= 14)  { callshop "EP7_shop#5",0; end;}
+}
+
+
+//_________________________________________________________________
+//___________________Liste des Shops ______________________________
+//_________________________________________________________________
+
+
+-	shop	EP7_shop#1	660,12212:-1,601:-1,602:-1,525:-1,1065:-1;
+-	shop	EP7_shop#2	660,12212:-1,601:-1,602:-1,525:-1,1065:-1,645:-1,656:-1,501:-1,502:-1,503:-1,504:-1;
+-	shop	EP7_shop#3	660,12212:-1,601:-1,602:-1,525:-1,1065:-1,645:-1,656:-1,501:-1,502:-1,503:-1,504:-1,610:-1,716:-1,717:-1,713:-1,505:-1,506:-1;
+-	shop	EP7_shop#4	660,12212:-1,601:-1,602:-1,525:-1,1065:-1,645:-1,656:-1,501:-1,502:-1,503:-1,504:-1,610:-1,716:-1,717:-1,713:-1,505:-1,506:-1,715:-1,12149:20000,12150:20000,12151:20000,1766:-1,1763:-1,1760:-1,1757:-1,1762:-1;
+-	shop	EP7_shop#5	660,12212:-1,601:-1,602:-1,525:-1,1065:-1,645:-1,656:-1,501:-1,502:-1,503:-1,504:-1,610:-1,716:-1,717:-1,713:-1,505:-1,506:-1,715:-1,12149:20000,12150:20000,12151:20000,1766:-1,1763:-1,1760:-1,1757:-1,1762:-1,533:-1,952:250,1059:1000;
+
+//_________________________________________________________________
+//___________________Personnages secondaires ______________________
+//_________________________________________________________________
+
+tantale_ile,152,218,3	script	Chef Ocrah#ep7	98,{
+
+set @name$,"Chef Ocrah";
+
+if (EP7_MARCHAND == 2)  goto L_quete1;
+if (EP7_MARCHAND == 3)  goto L_quete2;
+if (EP7_MARCHAND >= 4)  goto L_quete3;
+
+	mes "[" + @name$ + "]"; 
+	mes "Good meeting !";
+	mes "It is rare to see people from your country here, although we are one of the doors of registered in Arsinoe.";
+	Mes "Tantale Island is a nightmare ... I'm deeply disappointed to be here, I would like to return as quickly as possible to Thebaide ...";
+	close;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Good meeting stranger.";
+	mes "Yes, I will grant you audience, it will give me at least a distraction in this dreary day.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, this could enable the Thebaid to increase its returns, the importation of goods through the forest Kiman Fares.";
+	mes "I think that we can serve as a transit hub, the Merchant Company of Umaya has a good reputation Arsinoe.";
+	mes "They have a real monopoly in some areas good returns show Rabatteur Harrey to say that I agree in principle, then we should define the modalities.";
+	close2;
+	set EP7_MARCHAND,3;
+	changequest 70351,70352;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, this could enable the Thebaid to increase its returns, the importation of goods through the forest Kiman Fares.";
+	mes "I think that we can serve as a transit hub, the Merchant Company of Umaya has a good reputation Arsinoe.";
+	mes "They have a real monopoly in some areas good returns show Rabatteur Harrey to say that I agree in principle, then we should define the modalities.";
+	close;
+
+L_quete3:
+
+	mes "[" + @name$ + "]"; 
+	mes "Oh, I'm excited that the first shipment arrives, it will finally occupy our days!";
+	close;
+}
+
+//=================================================================
+
+ars_fild04,126,93,3	script	Oswald Rijin#ep7	776,{
+
+set @name$,"Oswald Rijin";
+
+if (EP7_MARCHAND == 5)  goto L_quete1;
+if (EP7_MARCHAND == 6)  goto L_quete2;
+
+	mes "[" + @name$ + "]"; 
+	mes "Good meeting.";
+	mes "You should not too much around here, we do not like silly people.";
+	close;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Good meeting.";
+	mes "You should not too much around here, we do not like silly people.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, yes. Well, the order is ready, we'll go on.";
+	mes "You can go see Représentante Olga to tell him the news.";
+	close2;
+	set EP7_MARCHAND,6;
+	changequest 70354,70355;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, yes. Well, the order is ready, we'll go on.";
+	mes "You can go see Représentante Olga to tell him the news.";
+	close;
+
+}
+
+//=================================================================
+
+ars_fild20,148,166,3	script	Ghywald Rumsdan#ep7	900,{
+
+set @name$,"Ghywald Rumsdan";
+
+if (EP7_MARCHAND == 8)  goto L_quete1;
+if (EP7_MARCHAND == 9)  goto L_quete2;
+if (EP7_MARCHAND >= 10)  goto L_quete3;
+
+	mes "[" + @name$ + "]"; 
+	mes "Hey, adventurer, it is rare to see here since the opening of the railway.";
+	mes "My tench business is becoming more and more difficult, I will contact the Merchant Company of Ulawa to open an office here.";
+	close;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Hey, adventurer, it is rare to see here since the opening of the railway.";
+	mes "My tench business is becoming more and more difficult, I will contact the Merchant Company of Ulawa to open an office here.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you're a company representative! Great, they were fast.";
+	mes "Well, the conditions have already been seen, my first fishing of tench will descend from Mount Bacchias Thebaid to the Jungle.";
+	mes "This is the road still to travel to the Eupator farm, then supplies'll take train.";
+	close2;
+	set EP7_MARCHAND,9;
+	changequest 70357,70358;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "You can go see the Vendeuse Jonas to validate the market.";
+	mes "Then, I can open my own store here.";
+	close;
+
+L_quete3:
+
+	mes "[" + @name$ + "]";
+	mes "I am a member of the Society of Merchant Umaya ...";
+	mes "What can I do for you?";
+	next;
+	menu "Doing Business",-,"Quest",sub1quete;
+
+
+	callfunc "arsi_marchshop";
+	end;
+
+sub1quete:
+
+	callfunc "arsi_marchquete";
+	end;
+
+}
+
+//=================================================================
+
+ars_fild08,61,88,3	script	Lieutenant Van Gothe#ep7	875,{
+
+set @name$,"Lieutenant Van Gothe";
+
+if (EP7_MARCHAND == 11)  goto L_quete1;
+if (EP7_MARCHAND == 12)  goto L_quete2;
+if (EP7_MARCHAND == 13)  goto L_quete3;
+
+	mes "[" + @name$ + "]"; 
+	mes "We will soon move to the Torn-Thalas's Lime to reinforce troops fighting against the Goblin army.";
+	close;
+
+L_quete1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, here's a merchant in the Merchant Company of Umaya.";
+	mes "So, I guess you're there to solve the problem of bandits who infest our mountains!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We have captured one of their few days ago and after some questions, we obtained information about their secret base.";
+	mes "So they have a cave housed on the north of the pass of Octavia, a cave dug into the ice, but be careful, you should refuel as they damned well defended.";
+	close2;
+	changequest 70361,70362;
+	set EP7_MARCHAND,12;
+	end;
+
+L_quete2:
+
+	mes "[" + @name$ + "]"; 
+	mes "Ah, here's a merchant in the Merchant Company of Umaya.";
+	mes "So, I guess you're there to solve the problem of bandits who infest our mountains!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We have captured one of their few days ago and after some questions, we obtained information about their secret base.";
+	mes "So they have a cave housed on the north of the pass of Octavia, a cave dug into the ice, but be careful, you should refuel as they damned well defended.";
+	close;
+
+L_quete3:
+
+	mes "[" + @name$ + "]"; 
+	mes "Congratulations You have rendered a sacred service to the Company of Merchant Umaya ...";
+	mes "Our mountains will be quieter now that is better for us who have to travel to the Kargha desert to beat goblins, it would have been dangerous to let the bandits masters in the region.";
+	close;
+
+
+
+}
+
+//===============================================================================
+
+-	script	EP7_marchandbandit	-1,{
+
+OnInit:
+	set $@EP7_marchandbandit1,0;
+	monster "ars_dun10",162,44,"Raymond Barre",3856,1,"EP7_marchandbandit::OnBossKill1";
+	end;
+	
+OnBossKill1:
+	
+	mapannounce "ars_dun10","Lieutenant Van Gothe : Take the Portal! Your mission is accomplished!",0,0x66CC33;
+	set $@EP7_marchandbandit1,1;
+	sleep2 180000;	
+	set $@EP7_marchandbandit1,0;
+	monster "ars_dun10",162,44,"Raymond Barre",3856,1,"EP7_marchandbandit::OnBossKill1";
+	end;
+}
+//===============================================================================
+
+ars_fild08,33,163,0	script	#warpep7bandit1	45,1,1,{
+	
+	if (EP7_MARCHAND <= 11)  goto sub1;
+	if (EP7_MARCHAND >= 12)  goto sub2;
+	
+	sub1:		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You see a tunnel but that is too narrow for you.";
+		close;
+		
+	sub2:
+		warp "ars_dun10",83,50;
+		end;
+}
+//===============================================================================
+
+ars_dun10,83,47,0	script	#warpep7bandit2	45,1,1,{
+	
+	if (EP7_MARCHAND <= 11)  goto sub1;
+	if (EP7_MARCHAND == 12)  goto sub2;
+	if (EP7_MARCHAND >= 13)  goto sub3;
+	
+	sub1:		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level to get the reward.";
+		close2;
+		warp "ars_fild08",33,167;
+		end;
+		
+	sub2:
+		if ($@EP7_marchandbandit1 == 1) {
+		getitem $ep7recompense[17],$ep7recompensenb[17];
+		set EP7_MARCHAND,13;
+		changequest 70362,70363;}
+		warp "ars_fild08",33,167;
+		end;
+		
+
+	sub3:		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You've already received your reward.";
+		close2;
+		warp "ars_fild08",33,167;
+		end;
+}
+
+

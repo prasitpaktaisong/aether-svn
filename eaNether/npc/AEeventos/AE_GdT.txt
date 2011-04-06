@@ -1,0 +1,259 @@
+//== Aether Script ========================================
+// • Lyu, Guerra do Tesouro
+//== Autores ==============================================
+// • Qoff e Maluko
+//== Versão ===============================================
+// • 1.0 - Qoff e Maluko
+// • 1.5 - Hyero (Adaptação Aether)
+//== Descrição: ===========================================
+// • Guerra do Tesouro
+//=========================================================
+
+daath,30,257,5	script	Lyu, Guerra do Tesouro#1	459,{
+	set @AFF,getcharid(2);
+	if(getgmlevel()>=90){
+		mes "^0000FF[Lyu]^000000";
+		mes "Olá, Administrador "+strcharinfo(0)+", deseja fazer o que hoje?";
+		menu "• Modificar Tesouros",MM,"• Ver Tesouros",Verificar,"• Cancelar",R_Nops;
+
+	MM:
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Primeiro Drop (1%).";
+		input $Drop0;
+		next;
+
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Segundo Drop (5%).";
+		input $Drop1;
+		next;
+
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Terceiro Drop (14%).";
+		input $Drop2;
+		next;
+
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Quarto Drop (16%).";
+		input $Drop3;
+		next;
+
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Quinto Drop (20%).";
+		input $Drop4;
+		next;
+
+		mes "^0000FF[Lyu]^000000";
+		mes "Insira o ID do Sexto Drop (44%).";
+		input $Drop5;
+		goto Verificar;
+
+Verificar:
+	next;
+	mes "^0000FF[Lyu]^000000";
+	mes "Os Tesouros são:";
+	mes "Drop 1^0000FF: "+getitemname($Drop0)+"^000000";
+	mes "Drop 2^0000FF: "+getitemname($Drop1)+"^000000";
+	mes "Drop 3^0000FF: "+getitemname($Drop2)+"^000000";
+	mes "Drop 4^0000FF: "+getitemname($Drop3)+"^000000";
+	mes "Drop 5^0000FF: "+getitemname($Drop4)+"^000000";
+	mes "Drop 6^0000FF: "+getitemname($Drop5)+"^000000";
+	mes "Deseja modificar algo?";
+	menu "• Não",R_Nops,"• Sim",MM;
+	}
+
+	if(@AFF == 0){
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Desculpe, mas você não possui uma Guilda!";
+		close;
+	}
+
+	if($Evento == 1){
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Olá, "+strcharinfo(0)+", deseja ir para a ^0000FFGuerra do Tesouro^000000?";
+		menu "• Sim",R_Sim,"• Não",R_Nops;
+
+	R_Sim:
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Boa sorte.";
+		warp "gdt02",98,29;
+		close;
+
+	R_Nops:
+		close;
+	}
+
+	if($Evento == 2){
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Desculpe, estamos fechados.";
+		close;
+	}
+}
+
+-	script	WoT	-1,{
+
+
+// --- Inicio às 16H
+OnClock1450:
+OnClock1850:
+OnClock0120:
+	Announce "Os Tesouros da Guerra estão prestes a ressurgir!",8;
+	killmonsterall "gdt02.gat";
+	set $Evento,1;
+	end;
+
+OnHour15:
+OnHour19:
+OnClock0130:
+	Announce "Que a Guerra do Tesouro se inicie!",8;
+	killmonsterall "gdt02.gat";
+	end;
+
+OnClock1505:
+OnClock1905:
+OnClock0135:
+	monster	"gdt02.gat",126,88,	"Tesouro da Guerra",1732,1,"WoT::OnAlguemGanhou";
+	monster	"gdt02.gat",178,88,	"Tesouro da Guerra",1732,1,"WoT::OnAlguemGanhou";
+	end;
+
+
+OnAlguemGanhou:
+	set $Tesouro, $Tesouro + 1;
+	set @GID,getcharid(2);
+	Announce "O guerreiro ["+strcharinfo(0)+"] da Guilda ["+ GetGuildName(@GID) +"] conquistou um Tesouro da Guerra!",8;
+	set @Prize, rand(1,100);
+	if(@Prize == 1) getitem $Drop0,1;
+	if(@Prize > 1 && @Prize < 7) getitem $Drop1,1;
+	if(@Prize > 6 && @Prize < 21) getitem $Drop2,1;
+	if(@Prize > 20 && @Prize < 37) getitem $Drop3,1;
+	if(@Prize > 36 && @Prize < 57) getitem $Drop4,1;
+	if(@Prize > 56) getitem $Drop5,1;
+	set #AE_EvtPt, #AE_EvtPt+10;
+	dispbottom "[Guerra do Tesouro]";
+	dispbottom "- Você adquiriu 10 Pontos de Evento."; 
+	dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+	if($Tesouro == 2){
+		set $Evento,2;
+		set $Tesouro,0;
+	}
+}
+
+prontera,163,190,3	script	Lyu, Guerra do Tesouro#2	459,{
+	set @AFF,getcharid(2);
+	mes "^0000FF[Lyu]^000000";
+	mes "Olá, "+strcharinfo(0)+", o que deseja fazer?";
+	menu "• Ir à Guerra do Tesouro",GO,"• Informações",INFO,"• Cancelar",R_Nops2;
+
+	R_Nops2:
+		close;
+
+	GO:
+	if(@AFF == 0){
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Desculpe, mas você não possui uma ^0000FFGuilda^000000!";
+		close;
+	}
+	if($Evento == 1){
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "Boa sorte!";
+		set @Place, rand(1,6);
+		close2;
+		if(@Place == 1) warp "gdt01",46,87;
+		if(@Place == 2) warp "gdt01",64,129;
+		if(@Place == 3) warp "gdt01",135,129;
+		if(@Place == 4) warp "gdt01",153,87;
+		if(@Place == 5) warp "gdt01",139,50;
+		if(@Place == 6) warp "gdt01",60,50;
+		end;
+	}
+	next;
+	mes "^0000FF[Lyu]^000000";
+	mes "A ^0000FFGuerra do Tesouro^000000 não está ocorrendo agora.";
+	close;
+
+	INFO:
+		next;
+		mes "^0000FF[Lyu]^000000";
+		mes "A Guerra do Tesouro está atualmente acontecendo nos seguintes horários:";
+		mes "• ^FF000014:50hrs^000000";
+		mes "• ^FF000019:50hrs^000000";
+		mes "• ^FF000001:20hrs^000000";
+		close;
+}
+
+gdt01.gat,0,0,0	script	MataMonstro1	-1,{
+
+OnHour15:
+OnClock1505:
+OnHour19:
+OnClock1905:
+OnClock0130:
+OnClock0135:
+	atcommand "@gvgon";
+	end;
+}
+
+gdt02.gat,0,0,0	script	MataMonstro2	-1,{
+
+OnHour15:
+OnClock1515:
+OnHour19:
+OnClock1915:
+OnClock0120:
+OnClock0135:
+	atcommand "@gvgon";
+	end;
+}
+
+gdt01.gat,99,88,0	warp	WoT1	1,1,prontera,150,150
+gdt01.gat,100,25,0	warp	WoT2	2,2,gdt02,98,28
+gdt02.gat,98,31,0	warp	WoT3	2,2,gdt01,100,28
+gdt02.gat,143,13,0	warp	WoT4	2,2,gdt02,177,77
+gdt02.gat,177,74,0	warp	WoT5	2,2,gdt02,139,13
+gdt02.gat,54,13,0	warp	WoT6	2,2,gdt02,125,77
+gdt02.gat,126,74,0	warp	WoT7	2,2,gdt02,57,13
+
+gdt01.gat,76,87,0	warp	GDT1	2,2,gdt01,46,87
+gdt01.gat,49,87,0	warp	GDT2	2,2,gdt01,79,87	
+
+gdt01.gat,84,103,0	warp	GDT3	2,2,gdt01,64,129
+gdt01.gat,64,126,0	warp	GDT4	2,2,gdt01,87,100
+	
+gdt01.gat,115,103,0	warp	GDT5	2,2,gdt01,135,129
+gdt01.gat,135,126,0	warp	GDT6	2,2,gdt01,112,100
+
+gdt01.gat,123,87,0	warp	GDT7	2,2,gdt01,153,87
+gdt01.gat,150,87,0	warp	GDT8	2,2,gdt01,120,87
+
+gdt01.gat,115,72,0	warp	GDT9	2,2,gdt01,139,50
+gdt01.gat,136,53,0	warp	GDT10	2,2,gdt01,112,75
+
+gdt01.gat,84,72,0	warp	GDT11	2,2,gdt01,60,50
+gdt01.gat,63,53,0	warp	GDT12	2,2,gdt01,87,75
+
+gdt02	mapflag	nomemo
+gdt02	mapflag	nowarp
+gdt02	mapflag	nowarpto
+gdt02	mapflag	gvg
+gdt02	mapflag	noicewall
+gdt02	mapflag	nosave	SavePòint
+gdt02	mapflag	noreturn
+gdt02	mapflag	noteleport
+gdt02	mapflag	nopenalty
+
+gdt01	mapflag	nomemo
+gdt01	mapflag	nowarp
+gdt01	mapflag	nowarpto
+gdt01	mapflag	gvg
+gdt01	mapflag	noicewall
+gdt01	mapflag	nosave	SavePòint
+gdt01	mapflag	noreturn
+gdt01	mapflag	noteleport
+gdt01	mapflag	noreturn
+gdt01	mapflag	nopenalty

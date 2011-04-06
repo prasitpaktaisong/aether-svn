@@ -1,0 +1,1832 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Les Abysses
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+
+// 1 = The Abyss: Meeting
+// 2 = The Abyss: Gnoll
+// 3 = The Abyss: Ursula
+// 4 = The Abyss: Part 1
+// 5 = The Abyss: Part 2
+//
+//_________________________________________________________________
+//________________The Abyss: Meeting _________________________
+//_________________________________________________________________
+
+
+ars_in06,97,118,0	script	#arsin06a	45,1,1,{
+	
+	if (EP7_GLOBAL <= 39)  goto sub1;
+	if (EP7_GLOBAL == 40)  goto sub2;
+	if (EP7_GLOBAL >= 41)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close2;
+		warp "ars_fild16",96,48;
+		end;
+
+	sub2:
+
+		dispbottom "The struggle continues, you should go to Urunesti to join the resistance.";
+		setquest 70450;
+		set EP7_GLOBAL,41; //mettre fin
+		set EP7_ABYSSES,1; 
+		warp "ars_fild41",31,54; //retour début
+		end;
+
+	sub3:
+		
+		warp "ars_fild41",31,54; //retour début
+		end;
+	
+}
+//========================================================================================================
+
+ars_in10,33,32,4	script	Joka l'éclairé#aby	493,{
+
+set @name$,"Joka l'éclairé";
+
+if(EP7_ABYSSES > 0) goto sub1;
+
+	mes "[" + @name$ + "]"; 
+	mes "" + strcharinfo(0) + " What a pleasure to see you in our village!";
+	mes "Much has changed in recent times, we must ensure the balance of the Cosmos ...";
+	close;
+
+sub1:
+
+	mes "[" + @name$ + "]";
+	mes "Needless to say, don't waste our time, it's so valuable to our world...";
+	mes "Will you come into the meeting room?";
+	next;
+	if( select("Oui:Non") == 2 )
+		{mes "[" + @name$ + "]";mes "Remember your duty!";close;}
+
+	mes "[" + @name$ + "]";
+	mes "Come...";
+	close2;
+	warp "ars_in10",154,85;
+	end;
+}
+
+
+
+//========================================================================================================
+
+ars_in10,154,57,1	script	Archimage Ornélia#aby	893,{
+
+set @name$,"Archimage Ornélia";
+
+
+	if (EP7_ABYSSES == 1) {
+
+		if($@ep7Anim2 == 2) {
+
+			if(EP7_URUNESTI == 18) {
+
+sub1:
+
+			mes "[" + @name$ + "]"; 
+			mes "Ah, you already know Ursula, good we can move on...";
+			mes "One of our Order of the Magi visited the site to reach Ursula, we need an expert in fire magic...";
+			mes "...And the sad thing is that these specialists are not welcome in our Order...";
+			next;
+			mes "[" + @name$ + "]"; 
+			mes "We understand, their magic is so volatile that our workshops have been destroyed close to these calamities...";
+			mes "I have in mind only one magician that is capable of launching these kind of spells... Dynaheir!";
+			mes "A real pain...";
+			next;
+			mes "[" + @name$ + "]"; 
+			mes "She lives in the mountains of Gondar, if you find her, which I have little doubt you will, try to stay alive!";
+			mes "Remember to come back here, you'll be teleported there in a timely manner.";
+			close2;
+			set EP7_ABYSSES,3;
+			changequest 70450,70451;
+			end;}
+
+			mes "[" + @name$ + "]"; 
+			mes "Well, if you started to help people in Urunesti continue and find Ursula and you must follow it into the desert Kargha!";
+			mes "Once there, find the gate of the Abyss then return back here as soon as you can to make your report!";
+			close2;
+			set EP7_ABYSSES,2;
+			end;
+
+		}
+
+
+		mes "[" + @name$ + "]"; 
+		mes "Ah! You're " + strcharinfo(0) + ", good we can begin our meeting and decide how to proceed.";
+		close2;
+		if($@ep7Anim2 == 0) {donpcevent "EP7_intro::OnEvent9";}
+		end;
+	}
+
+
+//=================
+
+if (EP7_ABYSSES == 2) {
+	
+	if(EP7_URUNESTI == 18) goto sub1;
+
+	mes "[" + @name$ + "]"; 
+	mes "Well, if you started to help people in Urunesti continue and find Ursula and you must follow it into the desert Kargha!";
+	mes "Once there, find the gate of the Abyss then return back here as soon as you can to make your report!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "If you have not started the quest Urunesti, you must meet Spiria to Arsinoe, they will help.";
+	close;}
+			
+//=================
+
+if (EP7_ABYSSES == 3) {
+
+	mes "[" + @name$ + "]"; 
+	mes "We understand, their magic is so volatile that our workshops have been destroyed close to these calamities...";
+	mes "I have in mind only one magician that is capable of launching these kind of spells... Dynaheir!";
+	mes "A real pain...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "She lives in the mountains of Gondar, if you find her, which I have little doubt you will, try to stay alive!";
+	mes "Remember to come back here, you'll be teleported there in a timely manner.";
+	close;}
+
+//=================
+
+if (EP7_ABYSSES == 4) {
+
+	mes "[" + @name$ + "]"; 
+	mes "Perfect, we can go without delay to Petosiris then descend into the Portal...";
+	mes "I summon a portal, take it!";
+	close2;
+	if($@ep7Anim3 == 0) {donpcevent "EP7_intro::OnEvent10";}
+	end;
+	}
+
+
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't disturb her at this time...";
+	close;
+
+
+OnTalk1:
+
+	npctalk "We were unable, despite our efforts to prevent the casting Shandalar...";
+	end;
+
+OnTalk2:
+
+	npctalk "Fenrir, the demon wolf will soon join into our world...";
+	end;
+
+OnTalk3:
+
+	npctalk "A few years ago, we mounted an expedition to the Temple Petosiris...";
+	end;
+
+OnTalk4:
+
+	npctalk "We could not pass the first rooms, lots of the traps are too difficult to be defeated.";
+	end;
+
+OnTalk5:
+
+	npctalk "Daphnis and his friends will be happy to accomplish this mission...";
+	end;
+
+OnTalk6:
+
+	npctalk "Come see me, we will adjust our business.";
+	end;
+
+//============
+
+OnTalk7:
+
+	npctalk "See you in Petosiris!";
+	end;
+
+OnAction1: specialeffect 22; specialeffect 71; sleep2 800;specialeffect 71;specialeffect 62; sleep2 800; specialeffect 92; specialeffect 97; sleep2 800;specialeffect 22; specialeffect 71;end;
+
+}
+//========================================================================================================
+ars_in10,156,59,4	script	Prophète Tanzgue#aby	805,{
+
+set @name$,"Prophète Tanzgue";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Yes, the ancient entrance to the Yggdrasil ... I know one of these portals...";
+	end;
+
+OnTalk2:
+
+	npctalk "The Citadel of Light has been only temporary...";
+	end;
+
+}
+//========================================================================================================
+
+ars_in10,157,62,4	script	Clerc Graivois#aby	752,{
+
+set @name$,"Clerc Graivois";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "You must think about the desert Kargah?";
+	end;
+
+OnTalk2:
+
+	npctalk "But it is no longer available, unless you manage to lift the curse...";
+	end;
+}
+//========================================================================================================
+ars_in10,151,58,4	script	Daphnis#aby	650,{
+
+set @name$,"Daphnis";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+}
+//========================================================================================================
+ars_in10,151,61,1	script	Prêtre Merlay#aby	481,{
+
+set @name$,"Prêtre Merlay";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+}
+
+//========================================================================================================
+
+ars_in10,150,64,1	script	Joka l'éclairé#aby2	493,{
+
+set @name$,"Joka l'éclairé";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "I think I know the person we need! Ursula Hupoi!";
+	end;
+
+OnTalk2:
+
+	npctalk "The name might not tell you anything, but it will surely be our solution.";
+	end;
+
+OnTalk3:
+
+	npctalk "She is a famous explorer, she knows perfectly Nerak, Gondar or even the mysterious kingdom of Sidon.";
+	end;
+
+OnTalk4:
+
+	npctalk "He has character... He will agree to help us, even if the fate of our world depends on it, if we help him in his current quest.";
+	end;
+
+OnTalk5:
+
+	npctalk "At least his is a noble quest this time, he got the idea to save Urunesti chasing the terrible epidemic raging.";
+	end;
+}
+
+//_________________________________________________________________
+//________________The Abyss: Gnoll____________________________
+//_________________________________________________________________
+
+ars_fild56,182,61,3	script	Rosemarick#ep7	416,{
+
+
+set @name$,"Rosemarick";
+
+	if($@ep7gnoll==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the Gnoll Stronghold!";
+	close;
+	end;
+	}
+	if($@ep7gnoll>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently participating in the Gnoll Stronghold!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "The Gnoll Fortress - Waiting Room",$EP7_InstJoueurs,"EP7_gnoll::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild57a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_fild56,176,59,0	script	#arsfild57a	45,1,1,{
+	
+if (EP7_ABYSSES <= 2)  goto sub1;
+if (EP7_ABYSSES >= 3)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild56",164,60; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_gnoll	-1,{
+
+OnInit:
+
+	donpcevent "Rosemarick#ep7::OnBG";
+		
+	disablenpc "#arsfild57a";
+	disablenpc "#arsfild57b";
+
+	killmonsterall "ars_fild56";
+
+	set $@ep7gnoll, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7gnoll == 0 )
+		donpcevent "EP7_gnoll::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7gnoll )
+		end;
+	set .@ep7gnoll, getwaitingroomstate(0,"Rosemarick#ep7");
+	
+	if( .@ep7gnoll < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild57","Instance --  The Gnoll Fortress : " + .@ep7gnoll + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7gnoll, 1;
+	// warp joueurs
+	donpcevent "Rosemarick#ep7::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild56","Instance -- The Gnoll Fortress just started !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- The Gnoll Fortress has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Rosemarick#ep7";
+	end;
+
+OnTimer6000:
+
+	areamonster "ars_fild56",0,200,200,0,"Chasseur Gnoll",3920,20,"EP7_gnoll::OnMobDead";	
+	areamonster "ars_fild56",0,200,200,0,"Gnoll",3921,35,"EP7_gnoll::OnMobDead";
+
+	monster "ars_fild56",118,62,"Rob",3922,1,"EP7_gnoll::OnMobDead";
+	monster "ars_fild56",37,83,"Roy",3923,1,"EP7_gnoll::OnMobDead";
+	monster "ars_fild56",80,136,"Mc Kenzaie",3924,1,"EP7_gnoll::OnBossDead";
+	set $@monster_ep7gnoll1,1;
+	end;
+
+OnTimer40000:
+
+	disablenpc "#arsfild57b";
+	end;
+
+
+OnTimer3600000:
+
+	mapannounce "ars_fild56","Rosemarick : We will need to retreat!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild56";
+	mapwarp "ars_fild56","ars_fild57",83,190;
+	sleep2 30000;
+	donpcevent "EP7_gnoll::OnInit";
+	end;
+
+OnMobDead: end;
+OnBossDead:
+
+	set $@monster_ep7gnoll1, $@monster_ep7gnoll1-1;
+	if($@monster_ep7gnoll1==0) {
+
+	set $@ep7gnoll, 2;
+	mapannounce "ars_fild56","Dynaheir : Come to me! I'm still trapped!",0,0x6CC6666;
+	enablenpc "#arsfild57b";
+	sleep2 120000;
+	killmonsterall "ars_fild56";
+	mapwarp "ars_fild56","ars_fild57",83,190;
+	sleep2 120000;
+	donpcevent "EP7_gnoll::OnInit";
+	end;
+	}
+	end;
+
+}
+//========================================================================================================
+
+ars_fild56,110,83,0	script	#arsfild57b	45,1,1,{
+	
+	if (EP7_ABYSSES <= 2)  goto sub1;
+	if (EP7_ABYSSES == 3)  goto sub2;
+	if (EP7_ABYSSES >= 4)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close2;
+		warp "ars_fild57",83,190; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just release Dynaheir, a great fire magician .";
+		set EP7_ABYSSES,4;
+		changequest 70451,70452;	
+		warp "ars_fild57",83,190; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You just release Dynaheir, a great fire magician.";
+		warp "ars_fild57",83,190; //retour début
+		end;
+	
+}
+
+//========================================================================================================
+ars_fild56,106,79,1	script	Dynaheir#ep7	510,{
+
+set @name$,"Dynaheir";
+
+	if (EP7_ABYSSES <= 2)  goto sub1;
+	if (EP7_ABYSSES == 3)  goto sub2;
+	if (EP7_ABYSSES >= 4)  goto sub3;
+
+	sub1:
+		mes "[" + @name$ + "]"; 
+		mes "Save me damn it! These cursed Gnolls they stink like goat and do not want to let me out of this cage infests !";
+		close;
+
+	sub2:
+		if ($@ep7gnoll <= 1) {
+			mes "[" + @name$ + "]"; 
+			mes "Kill Mc Kenzaie and his henchmen, I can not wait to get out of here!";
+			close;}
+
+		mes "[" + @name$ + "]"; 
+		mes "Thank you for your help! I heard about your quest...";
+		mes "Take this portal, we will meet at the place agreed by Ornélia!";
+		close;
+	sub3:
+
+		mes "[" + @name$ + "]";
+		mes "Finally the region is not so bad with a step back.";
+		close; 
+
+}
+//========================================================================================================
+
+ars_in10,154,62,0	script	#arsin10c	45,1,1,{
+	
+	if (EP7_ABYSSES <= 3)  goto sub1;
+
+		if (EP7_ABYSSES == 4) {changequest 70452,70453;}
+		warp "ars_dun30",123,30; //retour début
+		end;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of quest required to enter this portal.";
+		close;	
+}
+//==================================================================================================
+ars_dun30,129,42,4	script	Ursula Hupoi#petend	850,{
+
+set @name$,"Ursula Hupoi";
+
+	mes "[" + @name$ + "]"; 
+	mes "I didn't think you would have been able to go this far...";
+	mes "It's Like, you can have the head of an retard and still be a notable warrior...";
+	close;
+}
+//_________________________________________________________________
+//________________The Abyss: Ursulla___________________________
+//_________________________________________________________________
+
+ars_dun30,178,64,0	script	#arsin15a	45,1,1,{
+	
+	if (EP7_ABYSSES <= 3)  goto sub1;
+
+		warp "ars_in15",117,15; //retour début
+		end;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of quest required to enter this portal.";
+		close;	
+}
+
+
+//========================================================================================================
+
+ars_in15,109,102,4	script	Archimage Ornélia#aby2	893,{
+
+set @name$,"Archimage Ornélia";
+
+	if (EP7_ABYSSES <= 3)  goto sub1;
+	if (EP7_ABYSSES == 4)  goto sub2;
+	if (EP7_ABYSSES >= 5)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, you should not be here...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Everyone has finally brought our forces we will be able to enter the Abyss to prevent Fenrir from ravaging our world.";
+	mes "Some words, then we will begin the incantation to open the ancient portal!";
+	close2;
+	if($@ep7Anim4 == 0) {donpcevent "EP7_intro::OnEvent11";}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Let the massacre begin !";
+	close;
+
+OnTalk1:
+
+	npctalk "My dear friends here we will play for our future and the world...";
+	end;
+
+OnTalk2:
+
+	npctalk "Ursula Dynahéir and we thank you for your help!";
+	end;
+
+OnTalk3:
+
+	npctalk "Good, but be aware that this decision had been taken to prevent your experiments of fire from destroying our dear Academy!";
+	end;
+
+OnTalk4:
+
+	npctalk "The troops are ready?";
+	end;
+
+OnTalk5:
+
+	npctalk "My Mages will also be there, all that remains of Arsinoe troops will be there aswell!";
+	end;
+
+OnTalk6:
+
+	npctalk "Begin the incantation, Dynahéir, Archosio Ghoji and prepare your spells!";
+	end;
+
+OnTalk7:
+
+	npctalk "Kowaaaa ! Kuuurwaaa Maaaacc !";
+	specialeffect 650;end;
+
+
+OnTalk8:
+
+	npctalk "The Gate is now open! Go ahead we'll meet there!";
+	end;
+}
+//========================================================================================================
+ars_in15,112,107,4	script	Prophète Tanzgue#aby2	805,{
+
+set @name$,"Prophète Tanzgue";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+OnTalk1:
+
+	npctalk "Danifae will walk with us, his children as well...";
+	end;
+}
+//========================================================================================================
+
+ars_in15,115,106,4	script	Clerc Graivois#aby2	752,{
+
+set @name$,"Clerc Graivois";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Our knights are ready because they will enter the Abyss...";
+	end;
+}
+//========================================================================================================
+ars_in15,115,102,4	script	Daphnis#aby2	650,{
+
+set @name$,"Daphnis";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "We have a debt to Arsinoe, we will fight until the death!";
+	end;
+}
+//========================================================================================================
+ars_in15,113,100,4	script	Prêtre Merlay#aby2	481,{
+
+set @name$,"Prêtre Merlay";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+OnTalk1:
+
+	npctalk "You amaze me Daphnis, you are no longer the coward i thought you were!";
+	end;
+}
+//========================================================================================================
+ars_in15,102,102,4	script	Dynaheir#aby2	510,{
+
+set @name$,"Dynaheir";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Rolala that awards pompous! I hope to return to the Magic Academy after...";
+	end;
+
+OnTalk2:
+
+	npctalk "In short, I always feel a little resentment towards you Ornélia, this expulsion was unfair...";
+	end;
+
+OnTalk3:
+	npctalk "Arrristakaaa kirrrlinnoo tiiiktch'kaaa ! Shaaarak !";
+	specialeffect 513; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;end;
+
+OnTalk4:
+	specialeffect 650;end;		
+}
+//========================================================================================================
+ars_in15,99,100,4	script	Ursula Hupoi#aby2	850,{
+
+set @name$,"Ursula Hupoi";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Our interests are met at the right time, nothing more, Archmage!";
+	end;
+
+OnTalk2:
+
+	npctalk "It's all very nice!";
+	end;
+}
+//========================================================================================================
+ars_in15,98,103,4	script	Général Athanase#aby2	404,{
+
+set @name$,"Général Athanase";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "The Second Legion also participated in the final fight.";
+	end;
+
+OnTalk2:
+
+	npctalk "Despite our losses Terkish we arrived as quickly as possible to the portal.";
+	end;
+}
+//========================================================================================================
+ars_in15,102,107,4	script	Archimage Archosio#aby2	64,{
+
+set @name$,"Archimage Archosio";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; end;	
+OnTalk2: npctalk "Bien maître !"; specialeffect 513; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;end;
+OnTalk3:
+	specialeffect 650;end;	
+}
+//========================================================================================================
+ars_in15,109,107,4	script	Mage Ghoji#aby2	754,{
+
+set @name$,"Mage Ghoji";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; end;	
+OnTalk2: npctalk "Oui !"; specialeffect 513; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461;end;
+OnTalk3:
+	specialeffect 650;end;	
+}
+//========================================================================================================
+
+ars_in15,106,111,0	script	#arsin15b	45,1,1,{
+	
+	if (EP7_ABYSSES <= 3)  goto sub1;
+	if (EP7_ABYSSES >= 5)  goto sub2;
+
+		if($@ep7Anim4==2) {
+		set EP7_ABYSSES,5;
+		changequest 70453,70454;
+		warp "ars_fild58",98,20;
+		end;}
+	
+	sub1:		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of quest required to enter this portal.";
+		close;	
+
+	sub2:
+
+		warp "ars_fild58",98,20;
+		end;
+}
+
+//_________________________________________________________________
+//________________The Abyss: Part 1_______________________
+//_________________________________________________________________
+
+-	script	EP7_abysses	-1,{
+
+
+//round1 : 53
+
+OnInit:
+	
+	killmonsterall "ars_fild58";
+	killmonsterall "ars_fild59";
+	killmonsterall "ars_fild60";
+	killmonsterall "ars_fild61";
+	killmonsterall "ars_fild62";
+
+	set $@ep7abysse, 0;
+
+	//Mob Spawn
+	set $@aby_mob,$@aby_mob|1;
+	set $@aby_mob,$@aby_mob|2;
+	set $@aby_mob,$@aby_mob|4;
+	set $@aby_mob,$@aby_mob|8;
+
+	set $@aby_event1,0;
+	set $@aby_event2,0;
+	set $@aby_event3,0;
+	set $@aby_event4,0;
+
+	//Mise en place des conditions
+	donpcevent "EP7_abysses::OnSpawns";
+	//effets de lumière
+	donpcevent "EP7_lightanim::OnLight";
+
+	end;	
+
+
+
+//==================================================
+OnSpawns:
+
+	if ($@aby_mob & 1) {
+	//Conditions
+	disablenpc "#arsfild58a";
+	setcell "ars_fild58",94,103,101,103,cell_walkable,0; //non walkable : 1 salle
+	//Salle 1
+	areamonster "ars_fild58",0,400,400,0,"Yomiel",3934,15,"EP7_abysses::OnMobDead";	
+	areamonster "ars_fild58",0,400,400,0,"Ziquiel",3935,20,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild58",0,400,400,0,"Shemhazai",3936,15,"EP7_abysses::OnMobDead";
+	//Boss
+	monster "ars_fild58",167,177,"Warika",3925,1,"EP7_abysses::OnBossDead";
+	monster "ars_fild58",16,129,"Chikai",3926,1,"EP7_abysses::OnBossDead";
+	set $@monster_ep7abyss1,2;
+	set $@aby_mob,$@aby_mob-1;}
+
+
+	if ($@aby_mob & 2) {
+	//Conditions
+	disablenpc "#arsfild59a";
+	setcell "ars_fild59",98,126,113,126,cell_walkable,0; //non walkable : 1 salle
+
+	//Salle 2
+	areamonster "ars_fild59",32,125,53,50,"Yomiel",3934,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",32,125,53,50,"Ziquiel",3935,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",32,125,53,50,"Shemhazai",3936,10,"EP7_abysses::OnMobDead";
+
+
+	areamonster "ars_fild59",154,127,175,48,"Yomiel",3934,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",154,127,175,48,"Ziquiel",3935,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",154,127,175,48,"Shemhazai",3936,10,"EP7_abysses::OnMobDead";
+
+	//Salle sortie
+	areamonster "ars_fild59",14,190,195,128,"Yomiel",3934,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",14,190,195,128,"Ziquiel",3935,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",14,190,195,128,"Shemhazai",3936,10,"EP7_abysses::OnMobDead";
+
+	//Salle Entrée
+
+	areamonster "ars_fild59",68,78,152,8,"Yomiel",3934,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",68,78,152,8,"Ziquiel",3935,10,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild59",68,78,152,8,"Shemhazai",3936,10,"EP7_abysses::OnMobDead";
+
+	//Boss
+	monster "ars_fild59",167,177,"Palacus",3927,1,"EP7_abysses::OnBossDead3";
+	monster "ars_fild59",16,129,"ChowChow",3928,1,"EP7_abysses::OnBossDead3";
+
+	set $@monster_ep7abyss3,2;
+	set $@aby_mob,$@aby_mob-2;}
+
+
+	if ($@aby_mob & 4) {
+	//Conditions
+	disablenpc "#arsfild61a";
+
+	//Salle 1
+	areamonster "ars_fild61",0,400,400,0,"Yomiel",3934,15,"EP7_abysses::OnBossDead5";	
+	areamonster "ars_fild61",0,400,400,0,"Ziquiel",3935,10,"EP7_abysses::OnBossDead5";
+	areamonster "ars_fild61",0,400,400,0,"Shemhazai",3936,15,"EP7_abysses::OnBossDead5";
+	areamonster "ars_fild61",0,400,400,0,"Matariel",3937,10,"EP7_abysses::OnBossDead5";
+	//Boss
+	monster "ars_fild61",46,90,"Sloth",3930,1,"EP7_abysses::OnBossDead5";
+
+	set $@monster_ep7abyss5,51;
+	set $@aby_mob,$@aby_mob-4;}
+
+
+
+	if ($@aby_mob & 8) {
+	//Conditions
+	disablenpc "#arsfild61a";
+
+	//Salle 1
+	areamonster "ars_fild60",0,400,400,0,"Yomiel",3934,15,"EP7_abysses::OnMobDead";	
+	areamonster "ars_fild60",0,400,400,0,"Ziquiel",3935,20,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild60",0,400,400,0,"Shemhazai",3936,15,"EP7_abysses::OnMobDead";
+	areamonster "ars_fild60",0,400,400,0,"Matariel",3937,20,"EP7_abysses::OnMobDead";
+	
+	//4 Pierres
+	monster "ars_fild60",132,155,"Stèle Gardienne",3940,1,"EP7_abysses::OnBossDead6";
+	monster "ars_fild60",175,78,"Stèle Gardienne",3940,1,"EP7_abysses::OnBossDead6";
+	monster "ars_fild60",30,28,"Stèle Gardienne",3940,1,"EP7_abysses::OnBossDead6";
+	monster "ars_fild60",24,148,"Stèle Gardienne",3940,1,"EP7_abysses::OnBossDead6";
+
+	set $@monster_ep7abyss6,4;
+	set $@aby_mob,$@aby_mob-8;}
+
+
+	end;
+
+//==================================================
+OnMobDead: end;
+
+
+OnBossDead:
+
+	set $@monster_ep7abyss1, $@monster_ep7abyss1-1;
+	if($@monster_ep7abyss1==0) {
+
+	set $@aby_event3,1;
+	mapannounce "ars_fild58","Archimage Ornélia : The first barrier was lifted!",0,0x6CC6666;
+	setcell "ars_fild58",94,103,101,103,cell_walkable,1;
+	sleep2 2000;
+	monster "ars_fild58",167,177,"Palacus",3927,1,"EP7_abysses::OnBossDead2";
+	set $@monster_ep7abyss2,1;
+	}
+	end;
+
+OnBossDead2:
+
+	set $@monster_ep7abyss2, $@monster_ep7abyss2-1;
+	if($@monster_ep7abyss2==0) {
+	donpcevent "EP7_abysses::OnEnd1";}
+	end;
+
+OnBossDead3:
+
+	set $@monster_ep7abyss3, $@monster_ep7abyss3-1;
+	if($@monster_ep7abyss3==0) {
+
+	set $@aby_event4,1;
+	mapannounce "ars_fild59","Archimage Ornélia : The first barrier was lifted!",0,0x6CC6666;
+	setcell "ars_fild59",98,126,113,126,cell_walkable,1; //non walkable : 1 salle
+	sleep2 2000;
+	monster "ars_fild59",104,174,"Atila",3929,1,"EP7_abysses::OnBossDead4";
+	set $@monster_ep7abyss4,1;
+	}
+	end;
+
+OnBossDead4:
+
+	set $@monster_ep7abyss4, $@monster_ep7abyss4-1;
+	if($@monster_ep7abyss4==0) {
+	donpcevent "EP7_abysses::OnEnd2";}
+	end;
+
+OnBossDead5:
+
+	set $@monster_ep7abyss5, $@monster_ep7abyss5-1;
+
+	if($@aby_event1 == 2 && $@monster_ep7abyss5 == 30) {
+	mapannounce "ars_fild61","Dynahéir : I received your call, because you're in a time loop, I'll summon a portal sequence end!",0,0x6CC6666;
+	sleep2 5000;
+	mapannounce "ars_fild61","Archimage Ornélia : Thank you for the quick response! Warriors finish the job this time and hopefully we will not repeat the task!",0,0x6CC6666;
+	end;}	
+
+	if($@monster_ep7abyss5==0) {
+	donpcevent "EP7_abysses::OnEnd3";}
+	end;
+
+
+OnBossDead6:
+
+	set $@monster_ep7abyss6, $@monster_ep7abyss6-1;
+
+	if($@monster_ep7abyss6>0) {
+	mapannounce "ars_fild60","Archimage Ornélia : Encore "+$@monster_ep7abyss6+" Stelae to destroy to open the door Ust Nasha.",0,0x6CC6666;}
+	
+
+	if($@aby_event2 == 1 && $@monster_ep7abyss6==0) {
+	donpcevent "EP7_abysses::OnEnd4";
+	end;}
+	
+
+	if($@monster_ep7abyss6==0) {
+	mapannounce "ars_fild60","Archimage Ornélia : Danifae join the triplets, the devil we Apocalyptica Press!",0,0x6CC6666;
+	donpcevent "EP7_abysses::OnEnd4";}
+	end;
+
+//==================================================
+
+OnEnd1:
+
+	mapannounce "ars_fild58","Archimage Ornélia : We can continue! Forward, join the monks of Harpocrates!",0,0x6CC6666;
+	sleep2 5000;
+	mapannounce "ars_fild58","Archimage Ornélia : Take the Portal and continue! The Hordes Demons can do nothing against our unshakeable faith !",0,0x6CC6666;
+	enablenpc "#arsfild58a";
+
+	sleep2 1200000; //20 Minutes
+	set $@aby_mob,$@aby_mob|1;
+	donpcevent "EP7_abysses::OnSpawns";
+
+	end;
+
+
+
+OnEnd2:
+
+	mapannounce "ars_fild59","Archimage Ornélia : The Seneschal Lin and his troops closer, we will continue to join the assault!",0,0x6CC6666;
+	sleep2 5000;
+	mapannounce "ars_fild59","Archimage Ornélia : Keep Faith comrades, we will cross the Abyss without firing a shot!",0,0x6CC6666;
+	enablenpc "#arsfild59a";
+
+	sleep2 1200000; //20 Minutes
+	set $@aby_mob,$@aby_mob|2;
+	donpcevent "EP7_abysses::OnSpawns";
+
+	end;
+
+OnEnd3:
+	if($@aby_event1==0) {
+		set $@aby_event1,1;
+		sleep2 5000;
+		mapannounce "ars_fild61","Sloth : I welcome you to the Abyss! We leave for a tour!",0,0x6CC6666;
+		sleep2 5000;
+		mapwarp "ars_fild61","ars_fild61",182,89;
+		sleep2 3000;
+		mapannounce "ars_fild58","Archimage Ornélia : Damn! We are in a loop abysmal! Continue to fight with the legionnaires!",0,0x6CC6666;
+		set $@aby_mob,$@aby_mob|4;
+		donpcevent "EP7_abysses::OnSpawns";
+		end;}
+
+	if($@aby_event1==1) {
+		set $@aby_event1,2;
+		sleep2 5000;
+		mapannounce "ars_fild61","Sloth : Je vous souhaite la bienvenue dans les Abysses ! On repart pour un tour !",0,0x6CC6666;
+		sleep2 5000;
+		mapwarp "ars_fild61","ars_fild61",182,89;
+		sleep2 3000;
+		mapannounce "ars_fild58","Archimage Ornélia : Il nous faut absolument Dynahéir, elle pourra invoquer un portail de sortie depuis un autre plan ...",0,0x6CC6666;
+		set $@aby_mob,$@aby_mob|4;
+		donpcevent "EP7_abysses::OnSpawns";
+		end;}
+
+	if($@aby_event1==2) {
+		set $@aby_event1,0;
+		mapannounce "ars_fild61","Archimage Ornélia : Finally! Here is the portal ... The Fourth Legion we are following!",0,0x6CC6666;
+		sleep2 5000;
+		mapannounce "ars_fild61","Archimage Ornélia : Children of Danifae will be there to support us now, never has the Abyss been populated by our people!",0,0x6CC6666;
+		enablenpc "#arsfild61a";
+
+		sleep2 1200000; //20 Minutes
+		set $@aby_mob,$@aby_mob|4;
+		donpcevent "EP7_abysses::OnSpawns";
+		end;}
+
+
+OnEnd4:
+
+	if($@aby_event2 == 0) {
+		set $@aby_event2,1;
+		monster "ars_fild60",98,111,"Apocalyptica",3931,1,"EP7_abysses::OnBossDead6";set $@monster_ep7abyss6,1;end;}
+
+	if($@aby_event2 == 1) {
+		mapannounce "ars_fild60","Archimage Ornélia : Thanks be to Danifae, Thank you for triplets.",0,0x6CC6666;
+		sleep2 5000;
+
+		//ajout des npctalk
+
+		enablenpc "#arsfild60a";
+
+		sleep2 1200000; //20 Minutes
+		set $@aby_event2,0;
+		set $@aby_mob,$@aby_mob|8;
+		donpcevent "EP7_abysses::OnSpawns";
+		end;}
+}
+//========================================================================================================
+
+ars_fild60,108,71,0	script	#arsfild60a	45,1,1,{
+	
+	if (EP7_ABYSSES <= 4)  goto sub1;
+	if (EP7_ABYSSES == 5)  goto sub2;
+	if (EP7_ABYSSES >= 6)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close2;
+		warp "ars_in15",117,15; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just cross the Abyss and reach Ust Nashar, the Heart of the Abyss.";
+		set EP7_ABYSSES,6;
+		changequest 70454,70455;	
+		warp "ars_in16",100,69; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You just cross the Abyss and reach Ust Nashar, the Heart of the Abyss.";
+		warp "ars_in16",100,69; //retour début
+		end;
+	
+}
+//========================================================================================================
+
+-	script	EP7_lightanim	-1,{
+
+OnLight:
+	if ($@aby_event3 == 0) {
+	donpcevent "#ep7effectAby1::OnAction";
+	donpcevent "#ep7effectAby2::OnAction";
+	donpcevent "#ep7effectAby3::OnAction";
+	donpcevent "#ep7effectAby4::OnAction";
+	}
+
+	if ($@aby_event4 == 0) {
+	donpcevent "#ep7effectAby5::OnAction";
+	donpcevent "#ep7effectAby6::OnAction";
+	donpcevent "#ep7effectAby7::OnAction";
+	donpcevent "#ep7effectAby8::OnAction";
+	donpcevent "#ep7effectAby9::OnAction";
+	donpcevent "#ep7effectAby10::OnAction";
+	donpcevent "#ep7effectAby11::OnAction";
+	}
+
+	sleep2 1000;
+	donpcevent "EP7_lightanim::OnLight";
+	end;
+}
+
+ars_fild58,95,103,0	script	#ep7effectAby1	139,{
+OnAction:specialeffect 14;end;
+}
+//Salle 1
+ars_fild58,97,103,4	duplicate(#ep7effectAby1)	#ep7effectAby2	139
+ars_fild58,99,103,4	duplicate(#ep7effectAby1)	#ep7effectAby3	139
+ars_fild58,101,103,4	duplicate(#ep7effectAby1)	#ep7effectAby4	139
+//Salle 2
+ars_fild59,99,126,4	duplicate(#ep7effectAby1)	#ep7effectAby5	139
+ars_fild59,101,126,4	duplicate(#ep7effectAby1)	#ep7effectAby6	139
+ars_fild59,103,126,4	duplicate(#ep7effectAby1)	#ep7effectAby7	139
+ars_fild59,105,126,4	duplicate(#ep7effectAby1)	#ep7effectAby8	139
+ars_fild59,107,126,4	duplicate(#ep7effectAby1)	#ep7effectAby9	139
+ars_fild59,109,126,4	duplicate(#ep7effectAby1)	#ep7effectAby10	139
+ars_fild59,111,126,4	duplicate(#ep7effectAby1)	#ep7effectAby11	139
+
+//========================================================================================================
+
+//Abysses
+ars_fild58,97,174,0	warp	#arsfild58a	1,1,ars_fild59,106,9
+ars_fild59,106,181,0	warp	#arsfild59a	1,1,ars_fild61,182,89
+ars_fild61,40,89,0	warp	#arsfild61a	1,1,ars_fild60,97,8
+
+//========================================================================================================
+
+ars_fild59,102,22,4	script	Ribald#aby1	751,{
+
+set @name$,"Ribald";
+
+	mes "[" + @name$ + "]"; 
+	mes "What a pleasure to see you friend!";
+	mes "Cursed devils, they never cease to come, our best monks are there to fight!";
+	next;
+ 	mes "[" + @name$ + "]"; 
+	mes "The world's destiny is in our hands, the attack of the Academy was just the beginning ... Who would have guessed that Fenrir was behind all this?";
+	close;
+}
+//========================================================================================================
+ars_fild59,103,26,1	script	Moine d'Harpocrate#aby1	746,{
+
+set @name$,"Moine d'Harpocrate";
+
+	mes "[" + @name$ + "]"; 
+	mes "We have never had worse battle to fight!";
+	close;
+}
+
+ars_fild59,108,21,1	duplicate(Moine d'Harpocrate#aby1)	Moine d'Harpocrate#aby2	746
+
+//========================================================================================================
+
+ars_fild61,174,87,4	script	Sénéchal Lin#aby1	416,{
+
+set @name$,"Sénéchal Lin";
+
+	mes "[" + @name$ + "]"; 
+	mes "These demons are tougher than those pesky goblins...";
+	mes "I hope that you will lead the charge as you have guided the lime-Torn Thalas!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We're stuck here for a while, we can not pass those stairs...";
+	close;
+}
+//========================================================================================================
+ars_fild61,171,85,1	script	Colonel De Nursie#aby1	659,{
+
+set @name$,"Sénéchal Lin";
+
+	mes "[" + @name$ + "]"; 
+	mes "What a pleasure to resume the fight with you comrades!";
+	close;
+}
+//========================================================================================================
+ars_fild60,119,157,1	script	Calliope#aby1	802,{
+
+set @name$,"Calliope";
+
+	mes "[" + @name$ + "]"; 
+	mes "Our mother gives you courage!";
+	close;
+}
+//========================================================================================================
+ars_fild60,119,160,1	script	Euterpe#aby1	802,{
+
+set @name$,"Euterpe";
+
+	mes "[" + @name$ + "]"; 
+	mes "Thank you for our souls, thank you for having eliminated our nemesis, Shandalar!";
+	close;
+}
+//========================================================================================================
+ars_fild60,123,160,1	script	Uranie#aby1	802,{
+
+set @name$,"Uranie";
+
+	mes "[" + @name$ + "]"; 
+	mes "You're aware of your power, few mortals can move in limbo!";
+	close;
+}
+//_________________________________________________________________
+//________________Les Abysses : 2eme Partie _______________________
+//_________________________________________________________________
+
+ars_in16,95,94,4	script	Archimage Ornélia#aby3	893,{
+
+set @name$,"Archimage Ornélia";
+
+	mes "[" + @name$ + "]";
+	mes "I have opened a portal here, the missionaries of the Order of Tyre joined us in the fight.";
+	mes "We could make our way to the gates of Ust Nashar.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "Fenrir is before us, with our speed, it has not yet had time to leave the Abyss to bring terror in our world.";
+	mes "Remember, we have no room for error...";
+	close2;
+	if(getmapusers("ars_fild62") == 0 && $@ep7fenris == 2) {donpcevent "EP7_fenris::OnInit";}
+	end;
+}
+//========================================================================================================
+ars_in16,93,90,4	script	Archimage Archosio#aby3	64,{
+
+set @name$,"Archimage Archosio";
+
+	mes "[" + @name$ + "]"; 
+	mes "I still remember our first meeting in Urunesti that way since!";
+	close;
+}
+//========================================================================================================
+ars_in16,95,85,4	script	Mage Ghoji#aby3	754,{
+
+set @name$,"Mage Ghoji";
+
+	mes "[" + @name$ + "]"; 
+	mes "My spellbook is ready, this passage was challenging but we will draw our latest resources...";
+	close;
+}
+//========================================================================================================
+
+ars_in16,100,97,3	script	Joka l'éclairé#aby3	493,{
+
+set @name$,"Joka l'éclairé";
+
+	if($@ep7fenris==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the Battle of Ust Nashar!";
+	close;
+	end;
+	}
+	if($@ep7fenris>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently enthusiasm to participate in Battle of Ust Nashar!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Combat Ust Nashar - Waiting Room",$EP7_InstJoueurs,"EP7_fenris::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsin16a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_in16,98,103,0	script	#arsin16a	45,1,1,{
+	
+if (EP7_ABYSSES <= 5)  goto sub1;
+if (EP7_ABYSSES >= 6)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild62",194,85; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_fenris	-1,{
+
+OnInit:
+
+	donpcevent "Joka l'éclairé#aby3::OnBG";
+		
+	disablenpc "#arsin16a";
+	disablenpc "#arsfild62a1";
+	disablenpc "#arsfild62a2";
+	disablenpc "#arsfild62a3";
+	disablenpc "#arsfild62b1";
+	disablenpc "#arsfild62b2";
+	disablenpc "#arsfild62c1";
+	disablenpc "#arsfild62c2";
+	disablenpc "#arsfild62c3";
+	disablenpc "#arsfild62c4";
+	disablenpc "#arsfild62d1";
+	disablenpc "#arsfild62d4";
+	disablenpc "#arsfild62d5";
+	disablenpc "#arsfild62e2";
+
+	disablenpc "#arsfild62fin";
+
+	disablenpc "Odin#aby";
+	disablenpc "Aerie#aby";
+	disablenpc "Fenrir#aby";
+
+	killmonsterall "ars_fild62";
+
+	set $@ep7fenris, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7fenris == 0 )
+		donpcevent "EP7_fenris::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7fenris )
+		end;
+	set .@ep7fenris, getwaitingroomstate(0,"Joka l'éclairé#aby3");
+	
+	if( .@ep7fenris < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_in16","Instance -- The Battle of Ust Nashar : " + .@ep7fenris + "/" + $EP7_InstJoueurs + "",1,0xFFCC66;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7fenris, 1;
+	// warp joueurs
+	donpcevent "Joka l'éclairé#aby3::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_in16","Combat Final -- Combat Ust Nashar has just begun!",1,0xFFCC66;}
+	if( $EP7Annonce == 1 ) {announce "Combat Final -- Combat Ust Nashar has just begun!",0,0xFFCC66;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Joka l'éclairé#aby3";
+	end;
+
+//=================================================================================
+
+OnTimer1000:
+
+	monster "ars_fild62",136,102,"Tamruan",3932,1,"EP7_fenris::OnBossDead1";
+	set $@monster_ep7fenris1,1;
+	end;
+
+OnTimer40000:
+
+	set $@ep7fenris, 2;
+	disablenpc "#arsin16a";
+	end;
+
+
+//=====================
+
+OnBossDead1:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Dynaheir : This city is a maze! continue!",0,0x99CC33;
+	enablenpc "#arsfild62a1";
+	enablenpc "#arsfild62a2";
+	monster "ars_fild62",67,101,"Ataka",3933,1,"EP7_fenris::OnBossDead2";
+	set $@monster_ep7fenris1,1;
+	}
+	end;
+
+//=====================
+
+OnBossDead2:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Colonel Kadafik : I do not know if you remember me, but know that I, I've not forgotten!",0,0x6CC6666;
+	enablenpc "#arsfild62a3";
+	monster "ars_fild62",194,168,"Colonel Kadafik",3918,1,"EP7_fenris::OnBossDead3";
+	set $@monster_ep7fenris1,1;
+	}
+	end;
+
+//=====================
+
+OnBossDead3:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Archimage Ornélia : At least we have the answer to a fundamental question...",0,0x99CC33;
+	monster "ars_fild62",172,121,"Général Toadinne",3830,1,"EP7_fenris::OnBossDead4";
+	monster "ars_fild62",217,122,"Héros Gobelin",3831,1,"EP7_fenris::OnBossDead4";
+	set $@monster_ep7fenris1,2;
+	enablenpc "#arsfild62b1";
+	sleep2 5000;
+	mapannounce "ars_fild62","Archimage Ornélia : Namely, where eventually the evil beings...",0,0x99CC33;
+	}
+	end;
+
+//=====================
+
+OnBossDead4:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Archimage Ornélia : There must be a logical sense ... We are right in the spirit demon Fenrir!",0,0x99CC33;
+	monster "ars_fild62",110,75,"Protecteur",3898,1,"EP7_fenris::OnBossDead5";
+	enablenpc "#arsfild62b2";
+	set $@monster_ep7fenris1,1;
+
+	}
+	end;
+
+//=====================
+
+OnBossDead5:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Dynahéir : We are approaching, I'll create a new portal to receive donations of Deities!",0,0x99CC33;
+	monster "ars_fild62",40,54,"Ghosuman",3925,1,"EP7_fenris::OnBossDead6";
+	enablenpc "#arsfild62c1";
+	enablenpc "#arsfild62c2";
+	set $@monster_ep7fenris1,1;
+
+	}
+	end;
+
+//=====================
+
+OnBossDead6:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Sénéchal Lin : Demons come to take us back!",0,0x99CC33;
+	monster "ars_fild62",128,172,"Volo Van Deir",3930,1,"EP7_fenris::OnBossDead7";
+	enablenpc "#arsfild62c3";
+	enablenpc "#arsfild62c4";
+	enablenpc "#arsfild62d1";
+	set $@monster_ep7fenris1,1;
+	sleep2 5000;
+	mapannounce "ars_fild62","Sénéchal Lin : The Fourth Legion will establish a defensive line at Gate Ust Nashar!",0,0x99CC33;
+	sleep2 5000;
+	mapannounce "ars_fild62","Sénéchal Lin : You must hurry, we must keep a certain time!",0,0x99CC33;
+	}
+	end;
+
+//=====================
+
+OnBossDead7:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Daphnis : The next time someone asks you for help to go to an unknown continent...",0,0xFFFF00;
+	monster "ars_fild62",40,151,"Ladonnai",3881,1,"EP7_fenris::OnBossDead8";
+	enablenpc "#arsfild62d4";
+	set $@monster_ep7fenris1,1;
+	sleep2 5000;
+	mapannounce "ars_fild62","Daphnis : ... Go on without asking your current remains!",0,0xFFFF00;
+	}
+	end;
+
+//=====================
+
+OnBossDead8:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+
+	mapannounce "ars_fild62","Davaeorn : You have humiliated Nerak! Our powers came from Shandalar ... This time, Fenrir himself gives us strength!",0,0x6CC6666;
+	monster "ars_fild62",241,127,"Hareishan",3914,1,"EP7_fenris::OnBossDead9";
+	monster "ars_fild62",241,149,"Natasha",3915,1,"EP7_fenris::OnBossDead9";
+	monster "ars_fild62",241,190,"Davaeorn",3916,1,"EP7_fenris::OnBossDead9";
+	enablenpc "#arsfild62d5";
+	set $@monster_ep7fenris1,3;
+	sleep2 5000;
+	mapannounce "ars_fild62","Archimage Ornélia : Dynahéir cast is full, we should have the power of gods to continue fighting under their wings!",0,0x99CC33;	
+	}
+	end;
+
+//=====================
+
+OnBossDead9:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+	mapannounce "ars_fild62","Archimage Ornélia : Fenrir is before us ... Failure will take place otherwise...",0,0x99CC33;
+	enablenpc "#arsfild62e2";
+	monster "ars_fild62",248,327,"Fenrir",3938,1,"EP7_fenris::OnBossDead10";
+	set $@monster_ep7fenris1,1;
+	sleep2 5000;
+	mapannounce "ars_fild62","Prophète Tzangue : Come see me, I'll give you the blessing of Danifae!",0,0x99CC33;
+	set $@ep7Anim4,1;	
+	donpcevent "EP7_intro::OnEvent12";
+	}
+	end;
+
+//=====================
+
+OnBossDead10:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {
+	mapannounce "ars_fild62","Archimage Ornélia : It can change shape! We will weaken its powers by our spells!",0,0x99CC33;
+	monster "ars_fild62",248,327,"Fenrir",3939,1,"EP7_fenris::OnBossDead11";
+	set $@monster_ep7fenris1,1;
+	}
+	end;
+
+//=====================
+
+OnBossDead11:
+
+	set $@monster_ep7fenris1, $@monster_ep7fenris1-1;
+	if($@monster_ep7fenris1==0) {donpcevent "EP7_intro::OnEvent13";set $@ep7Anim4,0;}
+	end;
+
+//=====================
+
+OnFinal:
+
+	enablenpc "#arsfild62fin";
+	sleep2 240000;
+	donpcevent "EP7_fenris::OnInit";
+	end;	
+}
+
+//=====================================================================================
+
+ars_fild62,242,325,4	script	Archimage Ornélia#aby4	893,{
+
+set @name$,"Archimage Ornélia";
+
+	mes "[" + @name$ + "]"; 
+	mes "I can't do anymore... Finish the work my friends!";
+	close;
+
+OnTalk1:specialeffect 513; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;end;
+OnTalk2:specialeffect 650;end;	
+
+OnTalk3:
+	npctalk "So ... So much effort, so many mysteries..."; end;
+
+OnTalk4:
+	npctalk "We finally saved Arsinoe, and beat Fenrir..."; end;
+
+OnTalk5:
+	npctalk "Take this portal, and we will return to Coeur d'Arsinoe!"; end;
+}
+
+//========================================================================================================
+ars_fild62,253,325,4	script	Dynaheir#aby3	510,{
+
+set @name$,"Dynaheir";
+
+	mes "[" + @name$ + "]"; 
+	mes "The magic here is pure, I can cast spells of rare power!";
+	close;
+
+
+OnTalk1:specialeffect 513; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;end;
+OnTalk2:specialeffect 650;end;
+
+OnTalk3:
+	npctalk "From what I see, I was not the worst of the Academy of the Magi, cold comfort..."; end;	
+}
+
+//========================================================================================================
+ars_fild62,243,338,4	script	Archimage Archosio#aby4	64,{
+
+set @name$,"Archimage Archosio";
+
+	mes "[" + @name$ + "]"; 
+	mes "Damn! Focus on the fight!";
+	close;
+
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; end;	
+OnTalk2: specialeffect 513; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;end;
+OnTalk3: specialeffect 650;end;	
+}
+//========================================================================================================
+ars_fild62,252,338,4	script	Mage Ghoji#aby4	754,{
+
+set @name$,"Mage Ghoji";
+
+	mes "[" + @name$ + "]"; 
+	mes "Damn! Focus on the fight!";
+	close;
+
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; end;	
+OnTalk2: specialeffect 513; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461;end;
+OnTalk3: specialeffect 650;end;	
+}
+//========================================================================================================
+ars_fild62,251,255,4	script	Prophète Tanzgue#aby3	805,{
+
+set @name$,"Prophète Tanzgue";
+
+	mes "[" + @name$ + "]"; 
+	mes "I'll give you the benefits of Danifae, his strength will allow you to strengthen your will in the combat.";
+	close2;
+	sc_start SC_STRFood,1800000, 10;
+	sc_start SC_AGIFood,1800000, 10;
+	sc_start SC_INTFood,1800000, 10;
+	sc_start SC_DEXFood,1800000, 10;
+ 	sc_start SC_LUKFood,1800000, 10;
+	sc_start SC_VITFood,1800000, 10;
+	end;
+}
+//========================================================================================================
+ars_fild62,247,374,0	script	#arsfild62fin	45,1,1,{
+	
+	if (EP7_ABYSSES <= 5)  goto sub1;
+	if (EP7_ABYSSES == 6)  goto sub2;
+	if (EP7_ABYSSES >= 7)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You do not have the level of search required to participate in this instance.";
+		close2;
+		warp "ars_in15",117,15; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just beat Fenrir, the world is saved.";
+		set EP7_ABYSSES,7;
+		getitem $ep7recompense[41],$ep7recompensenb[41];
+		completequest 70455;	
+		callfunc "arsi_DiviTitre";
+		announce "[" + strcharinfo(0) +"] became the [" + $EP7_TDIVI + "] Divinity of Arsinoe!",bc_all,0x33FF00;			
+		warp "ars_in17",63,103;
+		end;
+
+	sub3:
+		
+		dispbottom "You just beat Fenrir, the world is saved.";
+		warp "ars_in17",63,103;
+		end;
+	
+}
+//========================================================================================================
+
+ars_fild62,245,330,4	script	Aerie#aby	485,{
+
+set @name$,"Aerie";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Shandalar was a powerful mage, we now know who he is, an alumnus of the Academy, one of the founding father of the latter.";
+	end;
+
+OnAction1: specialeffect 60;end;
+}
+//========================================================================================================
+
+ars_fild62,250,330,4	script	Odin#aby	1065,{
+
+set @name$,"Odin";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnTalk1:
+
+	npctalk "Chains forged in ancient times could not keep you Fenrir...";
+	end;
+
+OnTalk2:
+
+	npctalk "This time we'll make sure it does not happen again. Thanks to these heroes we have avoided the worst.";
+	end;
+
+OnTalk3:
+
+	npctalk "Here's a new page to add to the Edda!";
+	end;
+
+OnAction1: specialeffect 60;end;
+OnAction2: specialeffect 650;end;
+}
+//========================================================================================================
+
+ars_fild62,248,324,4	script	Fenrir#aby	1220,{
+
+set @name$,"Fenrir";
+
+	mes "[" + @name$ + "]"; 
+	mes "You should not disturb him yet...";
+	close;
+
+OnAction1: specialeffect 60;end;
+}
+
+//1 arène (1 monstre à tuer puis l'autre)
+ars_fild62,144,101,0	warp	#arsfild62a1	1,1,ars_fild62,127,101
+ars_fild62,95,101,0	warp	#arsfild62a2	1,1,ars_fild62,51,101
+ars_fild62,82,101,0	warp	#arsfild62a3	1,1,ars_fild62,194,86
+
+//puis invocation mob salle 2 (coumoir + 2 côtés)
+
+//2 arène (2 monstres à tuer)
+ars_fild62,194,176,0	warp	#arsfild62b1	1,1,ars_fild62,194,192
+ars_fild62,194,210,0	warp	#arsfild62b2	1,1,ars_fild62,194,86
+
+//3 arène (petite salle pour mob + traversée
+ars_fild62,177,67,0	warp	#arsfild62c1	1,1,ars_fild62,153,52
+ars_fild62,91,52,0	warp	#arsfild62c2	1,1,ars_fild62,85,52
+//boss
+ars_fild62,42,52,0	warp	#arsfild62c3	1,1,ars_fild62,97,75
+//sortie
+ars_fild62,71,22,0	warp	#arsfild62c4	1,1,ars_fild62,195,246
+
+
+//4 arène Pyramide et suite en hauteur
+ars_fild62,156,210,0	warp	#arsfild62d1	1,1,ars_fild62,130,195
+//ouverture avec le boss mort
+ars_fild62,80,172,0	warp	#arsfild62d4	1,1,ars_fild62,48,186
+//ouverture avec le 2 boss mort
+ars_fild62,43,151,0	warp	#arsfild62d5	1,1,ars_fild62,221,95
+
+
+//5 arène : Le couloir (ouverture mort)
+ars_fild62,247,200,0	warp	#arsfild62e2	1,1,ars_fild62,248,225
+
+
+
+//perma
+ars_fild62,129,150,0	warp	#arsfild62d2	1,1,ars_fild62,130,159
+ars_fild62,130,162,0	warp	#arsfild62d3	1,1,ars_fild62,130,147
+ars_fild62,228,95,0	warp	#arsfild62e1	1,1,ars_fild62,248,107
+
+
+
+
+

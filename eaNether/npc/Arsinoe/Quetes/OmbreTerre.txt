@@ -1,0 +1,1588 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Quêtes de l'OmbreTerre
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = OmbreTerre : La Porte Icarie
+// 2 = OmbreTerre : Appel de l'Hylarheim
+// 3 = OmbreTerre : Le Fort Orage
+// 4 = OmbreTerre : La Perle Noire
+// 5 = OmbreTerre : Da'Urdein
+// 6 = OmbreTerre : Insurrection
+// 7 = OmbreTerre : Sphère Planaire
+//
+//_________________________________________________________________
+//___________________OmbreTerre : La Porte Icarie _________________
+//_________________________________________________________________
+
+ars_fild31,89,44,1	script	Icarie#ep7	430,8,8,{
+
+set @name$,"Icarie";
+
+if (EP7_GLOBAL < 20)  goto niveauquete;
+if (EP7_OMBRET == 0)  goto sub1;
+if (EP7_OMBRET == 1)  goto sub2;
+if (EP7_OMBRET >= 2)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Good day adventurer!"; 
+	mes "It's very rare to see people at my door, few people dare to venture into the Underworld."; 
+	mes "And yet, this door is the entrance to this underground world that few adventurers have explored.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "I can't let you through the door, access to Underdark has been closed by order of King of Arsinoe, there is that for years.";
+	mes "On the one hand to prohibit transactions with Hylar who violate our trade laws and to avoid tensions with the Great Priest of Da'Urdein."; 
+	next;
+	mes "[" + @name$ + "]";
+	mes "If I remember correctly ongoing proceedings, you need a permit from the central administration of Arsinoe, but I've rarely seen ...";
+	close2;
+	setquest 70370;
+	set EP7_OMBRET,1;
+	end;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Good day adventurer!"; 
+	mes "It's very rare to see other people at my door, few people dare to venture into the Underworld."; 
+	mes "And yet, this door is the entrance to this underground world that few adventurers have explored.";
+	next;
+	mes "[" + @name$ + "]";
+	mes "I can't let you through the door, access to Underdark has been closed by order of King of Arsinoe, there is that for years.";
+	mes "On the one hand to prohibit transactions with Hylar who violate our trade laws and to avoid tensions with the Great Priest of Da'Urdein."; 
+	next;
+	mes "[" + @name$ + "]";
+	mes "If I remember correctly to proceed, you need a permit from the central administration of Arsinoe, but I've rarely seen ...";
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Well, I gotta let go, but let me warn you all the same risks that you stock in the land ..."; 
+	mes "I've met people and I'll love Da'Urdein not see too often if you want my opinion ... And you'll see for yourself.";
+	close2;
+	if (EP7_OMBRET == 2){
+	set EP7_OMBRET,3;}
+	end;
+
+niveauquete:
+
+	mes "[" + @name$ + "]"; 
+	mes "What a sad life than in the Underworld ..."; 
+	close;
+
+OnTouch:
+	if (EP7_OMBRET == 0) {showevent 1,0;} end;
+}
+
+//=====================================================================
+
+ars_in02,126,141,1	script	Fonctionnaire#ep7a	822,{
+
+set @name$,"Fonctionnaire";
+
+if (EP7_OMBRET == 0)  goto sub1;
+if (EP7_OMBRET == 1)  goto sub2;
+if (EP7_OMBRET == 2)  goto sub3;
+if (EP7_OMBRET >= 3)  goto sub1;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I deal passes to the remote areas of Arsinoe and subjected to a blockade by the federated nations,";
+	mes "as in the UnderWorld, and the Hylar Da'Urdein.";  
+	mes "If one day you need it, you must come see me."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I deal passes to the remote areas of Arsinoe and subjected to a blockade by the federated nations."; 
+	next;
+	mes "[" + @name$ + "]";
+	mes "Hmm, auorisation to the Underworld, yes I can give you one, but I am not sure what to do there ...";
+	mes "Here's authorization, take care of yourself anyway, this is not the most quiet place of Arsinoe ..."; 
+	close2;
+	changequest 70370,70371;
+	set EP7_OMBRET,2;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]";
+	mes "Here's authorization, take care of yourself anyway, this is not the most quiet place of Arsinoe ..."; 
+	close;
+
+}
+//=====================================================================
+
+ars_fild31,90,5,0	script	#arsfild31a	45,1,1,{
+	
+	if (EP7_OMBRET <= 2)  goto sub1;
+	if (EP7_OMBRET >= 3)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have permission to enter the UnderWorld.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild32",111,191;
+		end;
+	
+}
+
+//_________________________________________________________________
+//___________________OmbreTerre : Appel de l'Hylarheim ____________
+//_________________________________________________________________
+
+ars_fild33,139,106,1	script	Shackey Sarinac#ep7	846,{
+
+set @name$,"Shackey Sarinac";
+
+if (EP7_OMBRET <= 2)  goto sub1;
+if (EP7_OMBRET <= 6)  goto sub2;
+if (EP7_OMBRET >= 7)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "People do not stay around, if you want to stay alive.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Many of our sailors were abducted by the liches Da'Urdein. This is the first time they emerge from their underground and it is not a new bone for us."; 
+	next;
+	mes "[" + @name$ + "]";
+	mes "We're isolated in Hylarheim the Arsinoites refuse to trade with our race and no other force can intervene in our favor.";
+	mes "We will have to figure with our own resources we are meager. We are pirates and it is very difficult to make allied tribes."; 
+	mes "Our only ally is the Missionary Order of Tyr, which gives us some equipment, but no military support ...";
+	mes "Go and see Brother Jude, he will explain the situation a bit and how we iader if you want ...";
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Your help and the help of the Order of Tyre has been highly appreciated by my people, we have seaports along the West Coast of Arsinoe.";
+	mes "Now, you'll be welcomed as a brother to me. An embassy is sent to the Fountain of Life for better clarification.";
+	close;
+}
+
+//============================================================================
+//OmbreTerre
+
+ars_fild33,101,121,4	script	Frère Jude#ep7	412,{
+
+set @name$,"Frère Jude";
+
+
+if (EP7_OMBRET <= 2)  goto sub1;
+if (EP7_OMBRET == 3 || EP7_OMBRET == 4 || EP7_OMBRET == 5)  goto sub2;
+if (EP7_OMBRET == 6)  goto sub3;
+if (EP7_OMBRET == 7 || EP7_OMBRET == 8)  goto sub4;
+if (EP7_OMBRET >= 9)  goto sub5;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "The Order of Tyr has been established for some years in Hylarheim, and it is very difficult to make them understand the merits of our approach.";
+	mes "But recent events have brought us together to fight together.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "The Order of Tyr has been established for some years in Hylarheim, and it's very difficult to make them understand the merits of our approach.";
+	mes "But recent events have brought us together to fight together.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Hylar Sailors were surprise attacked and the Thunder Storm fell. It's necessary that this fortress is at sea ...";
+	mes "It's hard to expect an attack from the Da'Urdein who never left their tunnels before ...";
+	mes "They live in the bowels of the earth, eating mushrooms and other plants growing with low light.";
+	mes "Their specificity is the fountain of Long Life, in return for their flesh, they can live longer turning into liches.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "So what are the undead who usually sit in a corner, making cut dees strange experiences in the world.";
+	mes "Although we condemn the practice Pact flesh, turning them into liches, they are not inherently evil.";
+	mes "But this surprise attack has surprised everyone, I sent a messenger to the Father Superior to Malachie in Arsinoe.";
+	mes "No response yet, and I am afraid that my messenger did managed to cross and died in the Underworld.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Could you bring this letter to Father Superior Malachi? history to have a little help in our struggle..";
+	mes "A galley will probably be chartered from Arsinoe by the Order, because it's in our interest to maintain equilibrium in our region.";
+	close2;
+	if (EP7_OMBRET == 3){
+	changequest 70371,70372;
+	set EP7_OMBRET,4;}
+	end;
+	
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Oh thank you! With these reinforcements and a little help from fate, we will be able to resume this fortress!";
+	mes "Good luck for this reconquest!";
+	close2;
+	callfunc "arsi_warp";
+	end;
+
+sub4:
+
+	mes "[" + @name$ + "]"; 
+	mes "What a great victory, the capture of Fort Storm is a success for us all!";
+	mes "It would be good now if you go to the Fountain Long-Life which is the center of Da'Urdie.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "By releasing the Strong Storm, you got a medallion, it allows you to move the force fields liches for venturing farther into their land.";
+	mes "And I'd like to give you another mission to find our brothers of the Order of Tyre who have disappeared in the Underworld ...";
+	mes "We fear something bad happened to them, do your best to get their news!";
+	close2;
+	if (EP7_OMBRET == 7){
+	changequest 70375,70376;
+	setquest 70390;
+	set EP7_OMBRET,9;}
+	callfunc "arsi_warp";
+	end;
+
+sub5:
+	mes "[" + @name$ + "]";
+	mes "Good luck in your mission as an emissary!";
+	close2;
+ 	callfunc "arsi_warp";
+	end;
+}
+
+//============================================================================
+
+ars_fild22,220,256,1	script	Père Malachie#ep7	412,{
+
+set @name$,"Père Malachie";
+
+
+if (EP7_OMBRET <= 3)  goto sub1;
+if (EP7_OMBRET == 4 || EP7_OMBRET == 5)  goto sub2;
+if (EP7_OMBRET >= 6)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I am the Father Superior Malachie, in charge of the mission in Arsinoe.";
+	mes "You've already met our brothers in Arsinoe, they lead a broad mission to bring peace on these lands pagan.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, that is sad, Hylar was about to join us willingly. This is a test that we face!";
+	mes "We can't allow people to faith fragile isolated and unsupported.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "A galley was prepared in the city in case of problems, a small squad of knights Harpocrate and supplies will be sent.";
+	mes "You can visit Yadie sail towards the Hylarheim.";
+	close2;
+	if (EP7_OMBRET == 4){
+	changequest 70372,70373;
+	set EP7_OMBRET,5;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "We'll see how the situation evolves in the Hylarheim, the Order of Tyre will pray for your success.";
+	close;
+	
+}
+
+//============================================================================
+
+ars_fild22,295,96,1	script	Yadie#ep7	951,{
+
+set @name$,"Yadie";
+
+
+if (EP7_OMBRET <= 4)  goto sub1;
+if (EP7_OMBRET == 5)  goto sub2;
+if (EP7_OMBRET >= 6)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Don't stand in place retard! We have work to do!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, that is well sad, Hylar were about to join us willingly. This is a test that we face!";
+	mes "We can not allow people to faith fragile isolated and unsupported.";
+	close2;
+	changequest 70373,70374;
+	set EP7_OMBRET,6;
+	end;
+
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "We'll see how the situation evolves in the Hylarheim, the Order of Tyre will pray for your success.";
+	mes "Voulez-vous embarquer pour l'Hylarheim ?";
+	next;
+	menu "Embedding",submenu1,"Cancel",-;
+
+		close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Cast off !";
+	close2;
+	warp "ars_fild33",114,104;
+	end;
+
+}
+
+//============================================================================
+
+ars_fild33,103,82,1	script	Marin Hylar#ep7	928,{
+
+set @name$,"Marin Hylar";
+
+
+if (EP7_OMBRET <= 5)  goto sub1;
+if (EP7_OMBRET >= 6)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "My brothers are imprisoned in Fort Storm, cursed Liches !";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "The galley of Tyr's brothers are anchored off the Fort, if you want to go to Fort Storm nows the time!";
+	next;
+	menu "Alright",submenu1,"Cancel",-;
+
+	close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Cast off !";
+	close2;
+	warp "ars_fild34",154,143;
+	end;
+	
+}
+//============================================================================
+
+ars_fild34,150,143,4	script	Marin Hylar#ep72	928,{
+
+set @name$,"Marin Hylar";
+
+
+if (EP7_OMBRET <= 5)  goto sub1;
+if (EP7_OMBRET >= 6)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "My brothers are imprisoned in Fort Storm, cursed Liche!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Will you retire to our main port to Hylarheim?";
+	next;
+	menu "Agreed",submenu1,"Quit",-;
+
+	close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Cast off !";
+	close2;
+	warp "ars_fild33",105,86;
+	end;
+	
+}
+
+//_________________________________________________________________
+//___________________OmbreTerre : Le Fort Orage ___________________
+//_________________________________________________________________
+
+ars_fild34,156,134,1	script	Yadie#ep71	951,{
+
+
+set @name$,"Yadie";
+
+	if($@ep7orage==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the assault of the Thunder Fortress!";
+	close;
+	end;
+	}
+	if($@ep7orage>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently participating in the assault of the Thunder Fortress!";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Thunder Fortress - Waiting Room",$EP7_InstJoueurs,"EP7_orage::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsfild34a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_fild34,161,134,0	script	#arsfild34a	45,1,1,{
+	
+if (EP7_OMBRET <= 5)  goto sub1;
+if (EP7_OMBRET >= 6)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of search required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild34",176,112; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_orage	-1,{
+
+OnInit:
+
+	donpcevent "Yadie#ep71::OnBG";
+		
+	disablenpc "#arsfild34a";
+	disablenpc "#arsfild34b";
+
+	killmonsterall "ars_fild34";
+
+	set $@ep7orage, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7orage == 0 )
+		donpcevent "EP7_orage::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7orage )
+		end;
+	set .@ep7orage, getwaitingroomstate(0,"Yadie#ep71");
+	
+	if( .@ep7orage < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_fild34","Instance -- Thunder Fortress : " + .@ep7orage + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7orage, 1;
+	// warp joueurs
+	donpcevent "Yadie#ep71::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_fild34","Instance -- Thunder Fortress has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Thunder Fortress has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Yadie#ep71";
+	end;
+
+OnTimer6000:
+	
+	mapannounce "ars_fild34","Yadie : We will have to make the way, break the force field by killing Lich incantations.",1,0x00CCFF;
+	monster "ars_fild34",127,101,"Incantateur Liche",3878,1,"EP7_orage::OnKillLiche";
+	monster "ars_fild34",95,170,"Incantateur Liche",3878,1,"EP7_orage::OnKillLiche";
+	monster "ars_fild34",63,102,"Incantateur Liche",3878,1,"EP7_orage::OnKillLiche";
+	monster "ars_fild34",63,37,"Incantateur Liche",3878,1,"EP7_orage::OnKillLiche";
+	monster "ars_fild34",128,38,"Incantateur Liche",3878,1,"EP7_orage::OnKillLiche";
+	//fretin
+	areamonster "ars_fild34",0,200,200,0,"Moine Liche",3880,15,"EP7_orage::OnMyMobDead";
+	areamonster "ars_fild34",0,200,200,0,"Soldat Da Urdein",3876,40,"EP7_orage::OnMyMobDead";
+	areamonster "ars_fild34",0,200,200,0,"Capitaine Da Urdein",3877,10,"EP7_orage::OnMyMobDead";
+	set $@monster_ep7orage,5;
+	end;
+
+OnTimer40000:
+
+	disablenpc "#arsfild34a";
+	end;
+
+
+OnTimer3600000:
+
+	mapannounce "ars_fild34","Yadie : We can not longer hold the bridgehead! Let us retire!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_fild34";
+	mapwarp "ars_fild34","ars_fild33",105,107;
+	sleep2 30000;
+	donpcevent "EP7_orage::OnInit";
+	end;
+
+//=======================================================================
+
+OnMyMobDead:
+
+	end;
+
+OnKillLiche:
+
+	set $@monster_ep7orage, $@monster_ep7orage-1;
+	if($@monster_ep7orage==0) {
+	
+	mapannounce "ars_fild34","Yadie : The Force Field is down! The head of the garrison, Koverich Orlie is ready to fight us!",0,0x6CC6666;
+	monster "ars_fild34",100,67,"Koverich Orlie",3879,1,"EP7_orage::OnKillBoss";
+	//fretin
+	areamonster "ars_fild34",0,200,200,0,"Moine Liche",3880,10,"EP7_orage::OnMyMobDead";
+	areamonster "ars_fild34",0,200,200,0,"Soldat Da Urdein",3876,30,"EP7_orage::OnMyMobDead";
+	set $@monster_ep7orage,1;
+	}
+	end;
+
+OnKillBoss:
+
+	set $@monster_ep7orage, $@monster_ep7orage-1;
+	if($@monster_ep7orage==0) {
+	mapannounce "ars_fild34","Yadie : Go back to the dock, we have defeated the troops of Koverch Orlie!",0,0x6CC6666;
+	enablenpc "#arsfild34b";
+	sleep2 120000;
+	killmonsterall "ars_fild34";
+	mapwarp "ars_fild34","ars_fild33",105,107;
+	sleep2 30000;
+	donpcevent "EP7_orage::OnInit";
+	end;
+	}
+	end;
+
+}
+//========================================================================================================
+
+ars_fild34,176,112,0	script	#arsfild34b	45,1,1,{
+	
+	if (EP7_OMBRET <= 5)  goto sub1;
+	if (EP7_OMBRET == 6)  goto sub2;
+	if (EP7_OMBRET >= 7)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of search required to participate in this instance.";
+		close2;
+		warp "ars_fild33",105,107; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just get a medallion that allows you to cross the force field of UnderWorld.";
+		getitem $ep7recompense[29],$ep7recompensenb[29];
+		set EP7_OMBRET,7;
+		changequest 70374,70375;	
+		warp "ars_fild33",105,107; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_fild33",105,107; //retour début
+		end;
+	
+}
+
+//_________________________________________________________________
+//___________________OmbreTerre : La Perle Noire __________________
+//_________________________________________________________________
+
+ars_fild35,91,72,5	script	#ep7bar35	-1,0,15,{
+
+OnTouch:
+
+if (EP7_OMBRET <= 8) {
+		dispbottom "A Force Field prevents you from crossing that bridge.";
+		warp "ars_fild35.gat",83,68;
+		end;}
+}
+//========================================================================================================
+
+ars_fild39,88,77,3	script	Passeur du Léthé#ep7	970,{
+
+set @name$,"Passeur du Léthé";
+
+
+if (EP7_OMBRET <= 8)  goto sub1;
+if (EP7_OMBRET == 9 || EP7_OMBRET == 10)  goto sub2;
+if (EP7_OMBRET == 11)  goto sub3;
+if (EP7_OMBRET >= 12)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Lethe is the principal river of the Underworld, a good part of transport was along its course.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Happy Encounter stranger!";
+	mes "I suppose you want to access our city Do'Urdein?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately for you, This is the only passage in the region, and I do not want to let you pass ...";
+	mes "Difficult, Eh?";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "So, I'll offer a prize, no money, it has no value against our lives forever.";
+	mes "I'd like to have a pearl but not just any I want one from the Black Pearl Mermaid!";
+	mes "She was mine before and weakness, I lost it by giving it to LaDonna. Since then, shes taunting me, I can't take any more!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Go and see, and demand my item! Then I'll surely be more willing to transport you in our city.";
+	mes "Continue to Morloc'h whispers, you'll find her in her cave!";
+	close2;
+	if (EP7_OMBRET == 9){
+	changequest 70376,70377;
+	set EP7_OMBRET,10;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "My pearl, my pearl so beautiful, you've finally returned my darling!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "... I guess I'll have to keep my word, there I am willing to help you make the crossing ...";
+	mes "Ah yes, I remember now, in the cave behind me, walking a few minutes, you ought to find some people like you.";
+	mes "Missionaries, or something in the cave ...";
+	close2;
+	changequest 70378,70379;
+	changequest 70390,70391;
+	set EP7_OMBRET,12;
+	end;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Where would you want to go?";
+	next;
+	menu "To Da'Urdein",submenu1,"To Léthé",submenu2;
+
+	submenu1:
+
+		mes "[" + @name$ + "]"; 
+		mes "Let's go";
+		close2;
+		warp "ars_fild40",252,110;
+		end;
+
+	submenu2:
+
+		mes "[" + @name$ + "]"; 
+		mes "Let's go";
+		close2;
+		warp "ars_fild39",83,75;
+		end;
+}
+ars_fild40,252,115,4	duplicate(Passeur du Léthé#ep7)	Passeur du Léthé#ep71	970
+
+//========================================================================================================
+
+ars_fild38,91,34,3	script	Ladonnai#ep7	3881,{
+
+set @name$,"Ladonnaï";
+
+if ($@EP7_sirene == 2)  goto subfin;
+if (EP7_OMBRET <= 9)  goto sub1;
+if (EP7_OMBRET == 10)  goto sub2;
+if (EP7_OMBRET >= 11)  goto sub3;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Don't stay in the corner and do not touch my treasures or I kill you!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Don't stay in the corner and do not touch my treasures or I kill you!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Still cursed Ferryman! He has a long memory!"; 
+	mes "This is now my pearl and you have no right over! So come challenge me!"; 	
+	close2;
+	if($@EP7_sirene==0) {
+	donpcevent "EP7_sirene::OnMonsterSpawn";}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "You have my Black Pearl, so stop taunting me!"; 
+	close;
+
+subfin:
+
+	mes "[" + @name$ + "]"; 
+	mes "I am humbled, take the pearl, but know that I will take it one day!"; 
+	close2;
+	if(EP7_OMBRET==10) {
+	changequest 70377,70378;
+	set EP7_OMBRET,11;}
+	end;
+
+}
+
+//=========================================================================================
+
+-	script	EP7_sirene	-1,{
+
+OnInit:
+	enablenpc "Ladonnai#ep7";
+	set $@EP7_sirene,0;
+	end;
+	
+OnMonsterSpawn:
+	
+	if($@EP7_sirene==1) {end;}
+	//Npc hide
+	disablenpc "Ladonnai#ep7";
+	//variable event
+	set $@EP7_sirene,1;
+	//Boss
+	monster "ars_fild38",91,34,"Ladonnai",3881,1,"EP7_sirene::OnMonsterKill";
+	set $@monster_sirene,1;
+	sleep2 1200000; //20 minutes reset
+	if($@EP7_sirene==1) {killmonster "ars_fild38", "EP7_sirene::OnMonsterKill"; donpcevent "EP7_sirene::OnInit";}
+	end;
+
+OnMonsterKill:
+
+	set $@monster_sirene, $@monster_sirene-1;
+	if($@monster_sirene==0) {
+		mapannounce "ars_fild38","Sirène Ladonnaï : Damn, I'll go, I don't support it ...",0,0x66CC33;
+		set $@EP7_sirene,2;	
+		enablenpc "Ladonnai#ep7";
+		sleep2 120000;
+		donpcevent "EP7_sirene::OnInit";
+		}
+	end;
+}
+
+//===================================================================================
+
+ars_fild39,111,106,0	script	#arsfild39a	45,1,1,{
+	
+if (EP7_OMBRET <= 11)  goto sub1;
+if (EP7_OMBRET >= 12)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You come to distinguish a narrow passage, but it seems it doesn't lead very far.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild38",80,155; //instance
+		end;
+	
+}
+//===================================================================================
+
+ars_fild38,125,145,4	script	Frère Osée#ep7	412,{
+
+set @name$,"Frère Osée";
+
+
+if (EP7_OMBRET <= 11)  goto sub1;
+if (EP7_OMBRET >= 12)  goto sub2;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You have nothing to do here ...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Oh thank you! With these reinforcements and little help from fate, we will be able to resume this fortress!";
+	mes "Good luck for this reconquest!";
+	close2;
+	completequest 70391;
+	callfunc "arsi_warp";
+	end;	
+}
+//_________________________________________________________________
+//___________________OmbreTerre : Da'Urdein _______________________
+//_________________________________________________________________
+
+ars_fild40,116,195,4	script	Garde de la Sphère#ep7	1140,{
+
+set @name$,"Garde de la Sphère";
+
+
+if (EP7_OMBRET <= 11)  goto sub1;
+if (EP7_OMBRET == 12)  goto sub2;
+if (EP7_OMBRET >= 13)  goto sub1;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "No one can enter in the Sphere,order of Rupoldic'h, the High Priest.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "No one can enter in the Sphere,order of Rupoldic'h, the High Priest.";
+	close2;
+	set EP7_OMBRET,13;
+	changequest 70379,70380;
+	end;	
+}
+ars_fild40,182,122,4	duplicate(Garde de la Sphère#ep7)	Garde de la Sphère#ep71	970
+
+//===================================================================================
+
+ars_fild40,167,55,1	script	Iravie Cofic#ep7	456,8,8,{
+
+set @name$,"Iravie Cofic";
+
+
+if (EP7_OMBRET <= 12)  goto sub1;
+if (EP7_OMBRET == 13 || EP7_OMBRET == 14 || EP7_OMBRET == 15)  goto sub2;
+if (EP7_OMBRET == 16)  goto sub3;
+if (EP7_OMBRET >= 17)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Times are tough in UnderWorld, great changes are underway ...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Times are tough in UnderWorld, great changes are underway ...";
+	mes "The High Priest acting strangely recently. This causes some suspicions in our city.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I saw you request a hearing by the High Priest, know that few people could see him for weeks.";
+	mes "We care a bit about the current situation, especially since the expedition in Hylarheim ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I have a friend who is outside of the Underdark in the Red Forest of Gondar, could you find him?";
+	mes "Tell him to return as soon as things are about to change here.";
+	mes "It shouldn't be too hard to find him, he is a lich Da'Urdein like all the people.";
+	close2;
+	if(EP7_OMBRET==13) {
+	set EP7_OMBRET,14;
+	changequest 70380,70381;}
+	end;	
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "We get into the secret room of the Manor, it lies behind the curtains.";
+	mes "The hour of liberation approachs.";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Nice Victory! We will have to take back control of the Planar Sphere!";
+	close;
+
+OnTouch:
+	if (EP7_OMBRET == 13) {showevent 1,0;} end;
+}
+
+//===================================================================================
+
+ars_fild23,153,174,3	script	Svankmajer#ep7	998,{
+
+set @name$,"Svankmajer";
+
+
+if (EP7_OMBRET <= 13)  goto sub1;
+if (EP7_OMBRET == 14 || EP7_OMBRET == 15)  goto sub2;
+if (EP7_OMBRET >= 16)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I see your is face broken, then is my body broken!";
+	mes "Svankmajer, Lich of UnderWorld! Needless to state why you feel me so!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I see your is face broken, then is my body broken!";
+	mes "Svankmajer, Lich of UnderWorld! Needless to state why you feel me so!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I'm looking for a substitute to the Fountain of Long Life, and my findings are meager.";
+	mes "Ah, news from Iravie, it must be important, otherwise he would not risk giving my position to a stranger ...";
+	mes "For verily I say unto to you, I am banished from my kingdom by the High Priest for criticizing him in public!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We are resistant to his order, the attack on the Hylarheim shows us just how much madness has taken over from his rare moments of lucidity!";
+	mes " I'm back in my Ctee, it will not splinter free! Every prince I am, triumphal entry, I will..";
+	mes "Contacting Rybzinsky for me, he is hiding with some of my men in Morloc'h of Sighs, I'll join too and we will set up a battle plan.";	
+	close2;
+	if(EP7_OMBRET==14) {
+	set EP7_OMBRET,15;
+	changequest 70381,70382;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I have to do Da'Urdein!";
+	close;
+}
+
+//===================================================================================
+
+ars_fild37,101,69,2	script	Rybzinsky#ep7	969,{
+
+set @name$,"Rybzinsky";
+
+
+if (EP7_OMBRET <= 14)  goto sub1;
+if (EP7_OMBRET == 15 || EP7_OMBRET == 16)  goto sub2;
+if (EP7_OMBRET >= 17)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Beware these tunnels are dangerous for the inhabitants of the upper area!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I received the latest news, Svankmajer has happened, our troops are ready!";
+	mes "You'll have to contact the resistance of the Interior to coordinate our attack. The troops of the High Priest do you ask of each other as a foreigner.";
+	close2;
+	if(EP7_OMBRET==15) {
+	set EP7_OMBRET,16;
+	changequest 70382,70383;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Nice Victory! We will have to take back control of the Planar Sphere!";
+	close;
+}
+
+
+//===================================================================================
+
+ars_in09,163,96,4	script	Iravie Cofic#ep71	456,{
+
+set @name$,"Iravie Cofic";
+
+
+if (EP7_OMBRET <= 15)  goto sub1;
+if (EP7_OMBRET == 16)  goto sub2;
+if (EP7_OMBRET >= 17)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "This room is private, please leave ...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "The troops are ready to attack ...";
+	mes "We must regain control of the city and the Fountain of Long Life.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We will die slowly without the fountain, the High Priest has gone mad and we'll have to settle accounts once and for all.";
+	mes "If you're ready to lead the assault on the city, tell me.";
+	next;
+	menu "Let's go!",submenu1,"I still prepare myself !",-;
+
+	close;
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "We control the city! But the High Priest remains entrenched in the Planar Sphere, we will have to dislodge him and return to peace to our land.";
+	mes "Would you participate again in the assault on the city?";
+	next;
+	menu "Let's go!",submenu1,"I still prepare myself !",-;
+
+	close;
+
+submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Strength and Courage!";
+	close2;	
+	warp "ars_dun20",222,165;
+	end;
+}
+//===================================================================================
+
+ars_fild40,118,200,0	script	#arsfild40a	45,1,1,{
+	
+if (EP7_OMBRET <= 16)  goto sub1;
+if (EP7_OMBRET >= 17)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "The guards didn't want to let you go.";
+		close;
+
+	sub2:
+		
+		warp "ars_dun17",179,9; //instance
+		end;
+	
+}
+
+//_________________________________________________________________
+//___________________OmbreTerre : Insurrection ____________________
+//_________________________________________________________________
+
+ars_dun20,219,158,1	script	Iravie Cofic#ep72	456,{
+
+
+set @name$,"Iravie Cofic";
+
+	if($@ep7urdein==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the Uprising of Da'Urdein !";
+	close;
+	end;
+	}
+	if($@ep7urdein>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "A team is currently participating in the Uprising of Da'Urdein !";
+	close;
+	end;
+	}
+
+OnBG:
+	waitingroom "Insurrection - Salle d'Attente",$EP7_InstJoueurs,"EP7_urdein::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsdun20a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_dun20,212,149,0	script	#arsdun20a	45,1,1,{
+	
+if (EP7_OMBRET <= 15)  goto sub1;
+if (EP7_OMBRET >= 16)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+		
+		warp "ars_dun20",128,54; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_urdein	-1,{
+
+OnInit:
+
+	donpcevent "Iravie Cofic#ep72::OnBG";
+		
+	disablenpc "#arsdun20a";
+	disablenpc "#arsdun20b";
+
+	killmonsterall "ars_dun20";
+
+	set $@ep7urdein, 0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7urdein == 0 )
+		donpcevent "EP7_urdein::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7urdein )
+		end;
+	set .@ep7urdein, getwaitingroomstate(0,"Iravie Cofic#ep72");
+	
+	if( .@ep7urdein < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_dun20","Instance -- Uprising of Da'Urdein : " + .@ep7urdein + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7urdein, 1;
+	// warp joueurs
+	donpcevent "Iravie Cofic#ep72::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_dun20","Instance -- Uprising of Da'Urdein has just begun !",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Uprising of Da'Urdein has just begun !",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Iravie Cofic#ep72";
+	end;
+
+OnTimer6000:
+	
+	mapannounce "ars_dun20","Svankmajer : We must clean up the city! Eliminate Brigadiers then meet us in the Planar Sphere!",1,0x00CCFF;
+	//fretin
+	monster "ars_dun20",118,146,"Brigadier Da Urdein",3886,1,"EP7_urdein::OnKillLiche";
+	monster "ars_dun20",152,68,"Brigadier Da Urdein",3886,1,"EP7_urdein::OnKillLiche";
+	monster "ars_dun20",220,76,"Brigadier Da Urdein",3886,1,"EP7_urdein::OnKillLiche";
+	monster "ars_dun20",299,62,"Brigadier Da Urdein",3886,1,"EP7_urdein::OnKillLiche";
+	monster "ars_dun20",275,116,"Brigadier Da Urdein",3886,1,"EP7_urdein::OnKillLiche";
+
+	areamonster "ars_dun20",0,200,200,0,"Moine Liche",3880,15,"EP7_urdein::OnMyMobDead";
+	areamonster "ars_dun20",0,200,200,0,"Soldat Da Urdein",3876,40,"EP7_urdein::OnMyMobDead";
+	areamonster "ars_dun20",0,200,200,0,"Garde de la Sphère",3885,10,"EP7_urdein::OnMyMobDead";
+	set $@monster_ep7urdein,5;
+	end;
+
+OnTimer40000:
+
+	disablenpc "#arsdun20a";
+	end;
+
+
+OnTimer3600000:
+
+	mapannounce "ars_fild34","Svankmajer : Too late, the insurgency has failed we must withdraw!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_dun20";
+	mapwarp "ars_dun20","ars_in09",170,81;
+	sleep2 30000;
+	donpcevent "EP7_urdein::OnInit";
+	end;
+
+//=======================================================================
+
+OnMyMobDead:
+
+	end;
+
+OnKillLiche:
+
+	set $@monster_ep7urdein, $@monster_ep7urdein-1;
+	if($@monster_ep7urdein==0) {
+
+	mapannounce "ars_dun20","Svankmajer : The Gate of the Planar Sphere is open Come, quick!",0,0x6CC6666;
+	enablenpc "#arsdun20b";
+	sleep2 120000;
+	killmonsterall "ars_dun20";
+	mapwarp "ars_dun20","ars_in09",170,81;
+	sleep2 30000;
+	donpcevent "EP7_urdein::OnInit";
+	end;
+	}
+	end;
+
+}
+//========================================================================================================
+
+ars_dun20,117,199,0	script	#arsdun20b	45,1,1,{
+	
+	if (EP7_OMBRET <= 15)  goto sub1;
+	if (EP7_OMBRET == 16)  goto sub2;
+	if (EP7_OMBRET >= 17)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_in09",170,81; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "You just take control of the city with troops Da'Urdein Svankmajer.";
+		getitem $ep7recompense[31],$ep7recompensenb[31];
+		set EP7_OMBRET,17;
+		changequest 70383,70384;	
+		warp "ars_dun17",179,87; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get food.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_dun17",179,87; //retour début
+		end;
+	
+}
+
+//_________________________________________________________________
+//___________________OmbreTerre : Sphère Planaire _________________
+//_________________________________________________________________
+
+ars_dun17,175,92,4	script	Svankmajer#ep71	998,{
+
+set @name$,"Svankmajer";
+
+
+if (EP7_OMBRET <= 16)  goto sub1;
+if (EP7_OMBRET == 17 || EP7_OMBRET == 18 || EP7_OMBRET == 19)  goto sub2;
+if (EP7_OMBRET == 20)  goto sub3;
+if (EP7_OMBRET == 21)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Hmm ?";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "The High Priest finds himself in a corner, he'll have to defy the plans through the Planar Sphere.";
+	mes "To be simple: Good luck!";
+	close2;
+	if(EP7_OMBRET==17) {
+	set EP7_OMBRET,18;
+	changequest 70384,70385;}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "We are masters of the city and now thanks for your help!";
+	mes "The Madness of Rupoldic'h was destructive, we sent an embassy to Hylar to apologize and explain our situation.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We will award you a title, a top title in our regions, the Champion of Da'Urdein!";
+	close2;
+	callfunc "arsi_urdeTitre";
+	announce "[" + strcharinfo(0) +"] became the [" + $EP7_TURD + "] Champion of Da'Urdein !",bc_all,0x33FF00;			
+	completequest 70385;
+	getitem $ep7recompense[32],$ep7recompensenb[32];
+	set EP7_OMBRET,21;
+	end;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "We are masters of the city and now thanks to your help!";
+	mes "The Madness of Rupoldic'h was destructive, we sent an embassy to Hylar to apologize and explain our situation.";
+	close;
+}
+//========================================================================================================
+
+ars_dun17,179,99,0	script	#arsdun17a	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close;
+
+	sub2:
+		
+		warp "ars_dun17",179,159; //instance
+		end;
+	
+}
+
+//========================================================================================================
+
+ars_dun17,119,188,0	script	#arsdun17b	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close;
+
+	sub2:
+		warp "ars_dun18",336,273; //instance
+		end;
+	
+}
+//==================================
+ars_dun17,168,236,0	script	#arsdun17c	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close;
+
+	sub2:
+		
+		warp "ars_dun18",51,272; //instance
+		end;
+	
+}
+//==================================
+ars_dun17,213,239,0	script	#arsdun17d	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close;
+
+	sub2:
+		warp "ars_dun18",293,29; //instance
+		end;
+	
+}
+//==================================
+ars_dun17,253,198,0	script	#arsdun17e	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close;
+
+	sub2:
+		warp "ars_dun18",84,16; //instance
+		end;
+	
+}
+//========================================================================================================
+
+-	script	EP7_urdein2	-1,{
+
+OnInit:
+
+	set $@monster_ep7urd1,0;
+	set $@monster_ep7urd2,0;
+	set $@monster_ep7urd3,0;
+	set $@monster_ep7urd4,0;
+	monster "ars_dun18",291,150,"Thanatos",1708,1,"EP7_urdein2::OnBossKill1"; //sombre
+	monster "ars_dun18",81,197,"Roi Kiasok",3832,1,"EP7_urdein2::OnBossKill2";//foret
+	monster "ars_dun18",252,30,"NachtStern",3850,1,"EP7_urdein2::OnBossKill3"; //poison
+	monster "ars_dun18",25,25,"Ktullanux",1779,1,"EP7_urdein2::OnBossKill4"; //glace
+	end;
+
+OnBosskill1:
+
+	set $@monster_ep7urd1,1;
+	mapannounce "ars_dun18","You have defeated Thanatos. You can exit.",1,0xFF6600;
+	sleep2 180000;
+	set $@monster_ep7urd1,0;
+	monster "ars_dun18",291,150,"Thanatos",1708,1,"EP7_urdein2::OnBossKill1"; //sombre
+	end;
+
+OnBosskill2:
+
+	set $@monster_ep7urd2,1;
+	mapannounce "ars_dun18","You have defeated the King Kiasok. You can exit.",1,0xFF6600;
+	sleep2 180000;
+	set $@monster_ep7urd2,0;
+	monster "ars_dun18",81,197,"Roi Kiasok",3832,1,"EP7_urdein2::OnBossKill2";//foret
+	end;
+
+OnBosskill3:
+
+	set $@monster_ep7urd3,1;
+	mapannounce "ars_dun18","You have defeated NachtStern. You can exit.",1,0xFF6600;
+	sleep2 180000;
+	set $@monster_ep7urd3,0;
+	monster "ars_dun18",252,30,"NachtStern",3850,1,"EP7_urdein2::OnBossKill3"; //poison
+	end;
+
+OnBosskill4:
+
+	set $@monster_ep7urd4,1;
+	mapannounce "ars_dun18","You have defeated Ktullanux. You can exit.",1,0xFF6600;
+	sleep2 180000;
+	set $@monster_ep7urd4,0;
+	monster "ars_dun18",25,25,"Ktullanux",1779,1,"EP7_urdein2::OnBossKill4"; //glace
+	end;
+}
+//========================================================================================================
+
+ars_dun18,337,277,0	script	#arsdun18a	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close2;
+		warp "ars_dun17",127,187;
+		end;
+
+	sub2:
+		if ($@monster_ep7urd1 == 1 && EP7_OMBRET == 18 && (countitem(29037) == 0))  {getitem 29037,1; dispbottom "You just get the Red Gem.";}
+		warp "ars_dun17",127,187;
+		end;	
+}
+//========================================================================================================
+ars_dun18,50,277,0	script	#arsdun18b	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close2;
+		warp "ars_dun17",169,231;
+		end;
+
+	sub2:
+		if ($@monster_ep7urd2 == 1 && EP7_OMBRET == 18 && (countitem(29038) == 0))  {getitem 29038,1;dispbottom "You just get the Green Gem.";}
+		warp "ars_dun17",169,231;
+		end;	
+}
+//========================================================================================================
+ars_dun18,297,29,0	script	#arsdun18c	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close2;
+		warp "ars_dun17",213,235;
+		end;
+
+	sub2:
+		if ($@monster_ep7urd3 == 1 && EP7_OMBRET == 18 && (countitem(29039) == 0))  {getitem 29039,1;dispbottom "You just get the Yellow Gem.";}
+		warp "ars_dun17",213,235;
+		end;	
+}
+//========================================================================================================
+ars_dun18,84,12,0	script	#arsdun18d	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET >= 18)  goto sub2;
+
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter.";
+		close2;
+		warp "ars_dun17",250,198;
+		end;
+
+	sub2:
+		if ($@monster_ep7urd4 == 1 && EP7_OMBRET == 18 && (countitem(29040) == 0))  {getitem 29040,1;dispbottom "You just get the Blue Gem.";}
+		warp "ars_dun17",250,198;
+		end;	
+}
+//========================================================================================================
+
+ars_dun17,179,174,0	script	#arsdun17f	45,1,1,{
+	
+if (EP7_OMBRET <= 17)  goto sub1;
+if (EP7_OMBRET == 18)  goto sub2;
+if (EP7_OMBRET >= 19)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter. You need to gather four stones before you face Rupoldic'h.";
+		close;
+
+	sub2:
+		if ((countitem(29037)) && (countitem(29038)) && (countitem(29039)) && (countitem(29040))) {
+		delitem 29037,1;
+		delitem 29038,1;
+		delitem 29039,1;
+		delitem 29040,1;
+		set EP7_OMBRET,19;
+		warp "ars_dun19",103,39;
+		dispbottom "You have activate the gems, the entrance to the last sphere is open!"; end;}
+
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't use this teleporter. You need to gather four stones before you face Rupoldic'h.";
+		close;
+
+	sub3:
+		warp "ars_dun19",103,39;
+		end;	
+}
+//========================================================================================================
+
+ars_dun19,103,33,0	script	#arsdun19a	45,1,1,{
+	
+if (EP7_OMBRET <= 18)  goto sub1;
+if (EP7_OMBRET == 19)  goto sub2;
+if (EP7_OMBRET >= 20)  goto sub3;
+
+
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You can't get a reward, you don't have the required level of quest.";
+		close2;
+		warp "ars_dun17",180,166;
+		end;
+
+	sub2:
+		if ($@monster_ep7urd5 == 1 )  {set EP7_OMBRET,20; dispbottom "You just beat Rupoldic'h. You can go see Svankmajer.";}
+		warp "ars_dun17",180,166;
+		end;
+
+	sub3:	
+		
+		warp "ars_dun17",180,166;
+		end;
+
+}
+//========================================================================================================
+
+-	script	EP7_urdein3	-1,{
+
+OnInit:
+
+	set $@monster_ep7urd5,0;
+	monster "ars_dun19",104,91,"Rupoldic'h",3887,1,"EP7_urdein3::OnBossKill";
+	end;
+
+OnBosskill:
+
+	set $@monster_ep7urd5,1;
+	mapannounce "ars_dun19","Rupoldic'h just died! You can come out of the room.",1,0xFF6600;
+	sleep2 240000;
+	set $@monster_ep7urd5,0;
+	monster "ars_dun19",104,91,"Rupoldic'h",3887,1,"EP7_urdein3::OnBossKill";
+	end;
+}

@@ -1,0 +1,324 @@
+alberta,28,229,8	script	Fleur#Alberta	894,{
+	callfunc "FuncFleur","Fleur","alberta",31,231;
+}
+alberta,113,60,5	script	Fleur#Alber-2	894,{
+	callfunc "FuncFleur","Fleur","alberta",116,57;
+}
+aldeba_in,96,181,4	script	Fleur#AlDeBaran	894,{
+	callfunc "FuncFleur","Fleur","aldeba_in",96,179;
+}
+aldebaran,143,119,4	script	Fleur#AlDe-2	894,{
+	callfunc "FuncFleur","Fleur","aldebaran",139,131;
+}
+amatsu,102,149,4	script	Fleur#Amatsu	894,{
+	callfunc "FuncFleur","Fleur","amatsu",197,81;
+}
+ayothaya,212,169,5	script	Fleur#Ayothaya	894,{
+	callfunc "FuncFleur","Fleur","ayothaya",194,173;
+}
+brasilis,193,223,5	script	Fleur#Brasilis	894,{
+	callfunc "FuncFleur","Fleur","brasilis",195,220;
+}
+comodo,200,148,4	script	Fleur#Comodo	894,{
+	callfunc "FuncFleur","Fleur","comodo",209,143;
+}
+cmd_fild07,135,134,4	script	Fleur#Cmd-2	894,{
+	callfunc "FuncFleur","Fleur","comodo",189,166;
+}
+geffen,120,62,8	script	Fleur#Geffen	894,{
+	callfunc "FuncFleur","Fleur","geffen",119,40;
+}
+geffen,203,123,3	script	Fleur#Gef-2	894,{
+	callfunc "FuncFleur","Fleur","geffen",200,124;
+}
+geffen,116,202,3	script	Fleur#Gef-3	894,{
+	callfunc "FuncFleur","Fleur","geffen",110,199;
+}
+geffen,37,116,6	script	Fleur#Gef-4	894,{
+	callfunc "FuncFleur","Fleur","geffen",43,108;
+}
+gonryun,159,122,4	script	Fleur#GonRyun	894,{
+	callfunc "FuncFleur","Fleur","gonryun",168,199;
+}
+einbech,181,131,5	script	Fleur#Einbech	894,{
+	callfunc "FuncFleur","Fleur","einbech",157,250;
+}
+einbroch,70,207,4	script	Fleur#Einbroch	894,{
+	callfunc "FuncFleur","Fleur","einbroch",64,184;
+}
+hugel,101,116,1	script	Fleur#Hugel	894,{
+	callfunc "FuncFleur","Fleur","hugel",102,109;
+}
+izlude,134,87,3	script	Fleur#Izlude	894,{
+	callfunc "FuncFleur","Fleur","izlude",147,99;
+}
+jawaii,208,217,7	script	Fleur#Jawaii	894,{
+	callfunc "FuncFleur","Fleur","jawaii",213,209;
+}
+lighthalzen,145,93,6	script	Fleur#Light	894,{
+	callfunc "FuncFleur","Fleur","lighthalzen",152,106;
+}
+lhz_in02,237,284,4	script	Fleur#Lh-2	894,{
+	callfunc "FuncFleur","Fleur","lhz_in02",278,215;
+}
+louyang,210,104,5	script	Fleur#LouYang	894,{
+	callfunc "FuncFleur","Fleur","louyang",221,128;
+}
+xmas,152,123,4	script	Fleur#Lutie	894,{
+	callfunc "FuncFleur","Fleur","xmas",149,117;
+}
+morocc,156,97,4	script	Fleur#Morocc	894,{
+	callfunc "FuncFleur","Fleur","morocc",156,91;
+}
+morocc,162,271,4	script	Fleur#Moc-2	894,{
+	callfunc "FuncFleur","Fleur","morocc",157,272;
+}
+morocc,28,167,6	script	Fleur#Moc-3	894,{
+	callfunc "FuncFleur","Fleur","morocc",31,164;
+}
+morocc,292,211,4	script	Fleur#Moc-4	894,{
+	callfunc "FuncFleur","Fleur","morocc",294,207;
+}
+niflheim,196,192,3	script	Fleur#Niflheim	894,{
+	callfunc "FuncFleur","Fleur","niflheim",194,182;
+}
+payon,181,104,4	script	Fleur#Payon	894,{
+	callfunc "FuncFleur","Fleur","payon",162,182;
+}
+prontera,150,192,5	script	Fleur#Prontera	894,{
+	callfunc "FuncFleur","Fleur","prontera",156,195;
+}
+rachel,124,146,4	script	Fleur#Rachel	894,{
+	callfunc "FuncFleur","Fleur","rachel",128,146;
+}
+umbala,128,133,4	script	Fleur#Umbala	894,{
+	callfunc "FuncFleur","Fleur","umbala",126,131;
+}
+yuno,153,187,6	script	Fleur#Yuno	894,{
+	callfunc "FuncFleur","Fleur","yuno",332,107;
+}
+yuno,328,108,6	script	Fleur#Yu-2	894,{
+	callfunc "FuncFleur","Fleur","yuno",332,107;
+}
+yuno,278,221,6	script	Fleur#Yu-3	894,{
+	callfunc "FuncFleur","Fleur","yuno",332,107;
+}
+veins,216,121,5	script	Fleur#Veins	894,{
+	callfunc "FuncFleur","Fleur","veins",216,123;
+}
+nameless_i,218,188,4	script	Fleur#Nameless	894,{
+	callfunc "FuncFleur","Fleur","nameless_i",217,185;
+}
+moscovia,221,230,5	script	Fleur#moscovia	894,{
+	callfunc "FuncFleur","Fleur","moscovia",221,225;
+}
+
+//== • Calabouços
+hu_fild05,170,305,7	script	Fleur#D_Abyss	894,{
+	callfunc "FuncFleur","Fleur","hu_fild05",160,302;
+}
+ama_in02,116,184,6	script	Fleur#D_Amatsu	894,{
+	callfunc "FuncFleur","Fleur","ama_in02",118,184;
+}
+ama_dun01,233,15,4	script	Fleur#D_Amatsu2	894,{
+	callfunc "FuncFleur","Fleur","ama_in02",118,184;
+}
+//AntHell North
+cmd_fild08,329,358,1	script	Fleur#D_Anthell1	894,{
+	callfunc "FuncFleur","Fleur","moc_fild20",148,144;
+}
+//AntHell South
+cmd_fild08,341,86,3	script	Fleur#D_Anthell2	894,{
+	callfunc "FuncFleur","Fleur","moc_fild20",148,144;
+}
+//Ayothaya Dungeon
+ayo_fild02,289,144,3	script	Fleur#D_Ayothaya	894,{
+	callfunc "FuncFleur","Fleur","ayo_fild02",289,155;
+}
+//Brasilis
+bra_fild01,78,36,4	script	Fleur#D_Brasilis	894,{
+	callfunc "FuncFleur","Fleur","bra_fild01",75,32;
+}
+//Byalan Island
+izlu2dun,101,82,7	script	Fleur#D_Byalan	894,{
+	callfunc "FuncFleur","Fleur","izlu2dun",112,84;
+}
+//Comodo East Cave
+cmd_fild01,33,321,4	script	Fleur#D_ComodoE	894,{
+	callfunc "FuncFleur","Fleur","cmd_fild01",34,325;
+}
+//Comodo West Cave
+comodo,31,218,4	script	Fleur#D_ComodoW	894,{
+	callfunc "FuncFleur","Fleur","comodo",32,209;
+}
+//Comodo North Cave
+comodo,182,347,2	script	Fleur#D_ComodoN	894,{
+	callfunc "FuncFleur","Fleur","comodo",180,352;
+}
+//Coal Mines
+mjolnir_02,83,364,4	script	Fleur#D_Coal	894,{
+	callfunc "FuncFleur","Fleur","mjolnir_02",89,358;
+}
+//Culvert
+prt_fild05,275,219,5	script	Fleur#D_Culvert	894,{
+	callfunc "FuncFleur","Fleur","prt_fild05",274,208;
+}
+//Gefenia
+gefenia01,56,171,6	script	Fleur#D_Gefenia1	894,{
+	callfunc "FuncFleur","Fleur","geffen",200,124;
+}
+//Geffen Dungeon
+gef_tower,156,33,3	script	Fleur#D_Geffen	894,{
+	callfunc "FuncFleur","Fleur","gef_tower",147,35;
+}
+//GH: Church
+glast_01,193,136,5	script	Fleur#D_GHChurch	894,{
+	callfunc "FuncFleur","Fleur","glast_01",206,136;
+}
+//GH: Castle
+glast_01,200,350,4	script	Fleur#D_GHCastle	894,{
+	callfunc "FuncFleur","Fleur","glast_01",200,347;
+}
+//GH: Staircase
+glast_01,58,103,7	script	Fleur#D_GHStair	894,{
+	callfunc "FuncFleur","Fleur","glast_01",62,107;
+}
+//GH: Chivalry
+glast_01,62,198,6	script	Fleur#D_GHChiv	894,{
+	callfunc "FuncFleur","Fleur","glast_01",69,193;
+}
+//Ice Dungeon
+ra_fild01,225,324,5	script	Fleur#D_IceDun	894,{
+	callfunc "FuncFleur","Fleur","ra_fild01",244,326;
+}
+//Kiehl Machine Doll Factory
+yuno_fild08,72,184,4	script	Fleur#D_Khiel	894,{
+	callfunc "FuncFleur","Fleur","yuno_fild08",67,182;
+}
+//LightHalzen Rekkenber (Sewer Entrance)
+lighthalzen,311,293,17	script	Fleur#D_Lhz	894,{
+	callfunc "FuncFleur","Fleur","lighthalzen",301,286;
+}
+//LightHalzen Rekkenber (Rekkenber Entrance)(
+lighthalzen,69,57,7	script	Fleur#D_Lhz2	894,{
+	callfunc "FuncFleur","Fleur","lighthalzen",78,57;
+}
+//Juperos
+jupe_cave,45,55,5	script	Fleur#D_Juperos	894,{
+	callfunc "FuncFleur","Fleur","jupe_cave",45,48;
+}
+//Laberynth
+prt_fild01,143,365,3	script	Fleur#D_Maze	894,{
+	callfunc "FuncFleur","Fleur","prt_fild01",136,361;
+}
+//LouYang D
+louyang,35,276,6	script	Fleur#D_Louyang	894,{
+	callfunc "FuncFleur","Fleur","louyang",41,267;
+}
+//Magma D
+yuno_fild03,34,143,5	script	Fleur#D_Magma	894,{
+	callfunc "FuncFleur","Fleur","yuno_fild03",35,135;
+}
+//Odin Temple
+odin_tem01,100,149,2	script	Fleur#D_Odin	894,{
+	callfunc "FuncFleur","Fleur","odin_tem01",100,142;
+}
+//Orc D North
+in_orcs01,24,165,5	script	Fleur#D_OrcsN	894,{
+	callfunc "FuncFleur","Fleur","in_orcs01",34,165;
+}
+//Orc D South
+in_orcs01,103,99,5	script	Fleur#D_OrcsS	894,{
+	callfunc "FuncFleur","Fleur","in_orcs01",112,99;
+}
+//Payon D 
+pay_arche,55,123,3	script	Fleur#D_Payon	894,{
+	callfunc "FuncFleur","Fleur","pay_arche",49,144;
+}
+//Pyramids D 
+moc_ruins,60,166,5	script	Fleur#D_Pyramid	894,{
+	callfunc "FuncFleur","Fleur","moc_ruins",62,162;
+}
+//Rachel Temple
+ra_san01,144,17,3	script	Fleur#D_Rachel	894,{
+	callfunc "FuncFleur","Fleur","ra_san01",139,19;
+}
+//Sphinx D
+moc_fild19,106,97,8	script	Fleur#D_Sphinx	894,{
+	callfunc "FuncFleur","Fleur","moc_fild19",107,100;
+}
+//Sunken Ship
+alb2trea,75,101,5	script	Fleur#D_Sunken	894,{
+	callfunc "FuncFleur","Fleur","alb2trea",87,103;
+}
+//Thanatos Tower
+tha_scene01,139,194,0	script	Fleur#D_Thanatos	894,{
+	callfunc "FuncFleur","Fleur","tha_scene01",132,220;
+}
+//Toy Factory
+xmas,138,307,6	script	Fleur#D_Toy	894,{
+	callfunc "FuncFleur","Fleur","xmas",144,306;
+}
+//Turtle Cave Entrance
+tur_dun01,147,237,6	script	Fleur#D_TCave	894,{
+	callfunc "FuncFleur","Fleur","tur_dun01",155,234;
+}
+//Turtle Island Entrance
+tur_dun01,148,54,6	script	Fleur#D_TIsland	894,{
+	callfunc "FuncFleur","Fleur","tur_dun01",153,47;
+}
+//Umbala D
+umbala,120,284,3	script	Fleur#D_Umbala	894,{
+	callfunc "FuncFleur","Fleur","umbala",113,282;
+}
+//Moscovia D
+mosk_fild02,194,252,3	script	Fleur#D_moscovia	894,{
+	callfunc "FuncFleur","Fleur","mosk_fild02",193,253;
+}
+//Abbey D
+abbey01,56,15,3	script	Fleur#D_abbey	894,{
+	callfunc "FuncFleur","Fleur","abbey01",51,13;
+}
+//Veins D
+ve_fild03,164,238,5	script	Fleur#D_veins	894,{
+	callfunc "FuncFleur","Fleur","ve_fild03",168,237;
+}
+//Guild War Kafras: Disabled by Default!
+//Al De Baran Guild Grounds
+alde_gld,156,165,3	script	Fleur#G_ADB	894,{
+	callfunc "FuncFleur","Fleur","alde_gld",156,157;
+}
+//Geffen Guild Grounds
+gef_fild13,237,182,6	script	Fleur#G_Geffen	894,{
+	callfunc "FuncFleur","Fleur","gef_fild13",231,181;
+}
+//Payon Guild Grounds
+pay_gld,243,172,6	script	Fleur#G_Payon	894,{
+	callfunc "FuncFleur","Fleur","pay_gld",243,178;
+}
+//Prontera Guild Grounds
+prt_gld,127,163,5	script	Fleur#G_Prontera	894,{
+	callfunc "FuncFleur","Fleur","prt_gld",129,170;
+}
+//Rachel Guild Grounds
+aru_gld,211,235,6	script	Fleur#G_Rachel	894,{
+	callfunc "FuncFleur","Fleur","aru_gld",212,233;
+}
+//Yuno Guild Grounds
+sch_gld,91,63,5	script	Fleur#G_Yuno	894,{
+	callfunc "FuncFleur","Fleur","sch_gld",92,59;
+}
+//VIP
+vip,27,16,5	script	Fleur#vip	894,{
+	callfunc "FuncFleur","Fleur","prontera",150,150;
+}
+
+//Zorya
+zorya,193,180,3	script	Fleur#zor	894,{
+	callfunc "FuncFleur","Fleur","prontera",150,150;
+}
+
+//Battlegrounds
+bat_room,148,147,4	script	Fleur#bat	894,{
+	callfunc "FuncFleur","Fleur","prontera",150,150;
+}

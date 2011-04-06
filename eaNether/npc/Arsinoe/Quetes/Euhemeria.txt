@@ -1,0 +1,867 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Quêtes d'Euhéméria
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+
+// 1 = Euhéméria : Les Scalps des Bandits (Quête Bourgmestre) [cf. Index : Monstres]
+// 2 = Le Phare de Traïana : Les Cristaux (Quête Bourgmestre)
+// 3 = Le Phare de Traïana : Contrebande (Quête Bourgmestre)
+// 4 = Le Phare de Traïana : Les Orcs
+
+//_________________________________________________________________
+//___________________Euhéméria : Le Bourgmestre d'Euhéméria _______
+//_________________________________________________________________
+
+
+ars_fild05,195,194,4	script	Bourgmestre Euhéméria#1	110,8,8,{
+
+set @name$,"Bourgmestre Euhéméria";
+
+if (EP7_GLOBAL <= 9)  goto sub1;
+if (EP7_GLOBAL >= 10)  goto sub2;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Caution stranger, I've been watching you, we don't want any trouble here!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Greetings " + strcharinfo(0) + ", I am the Mayor of Euhéméria. I have work for you if you wish."; 
+	mes "We still need soldiers to keep the balance of forces in Arsinoïte.";
+	next;
+	menu "Lighthouse Traiana",submenu1,"The Smugglers",submenu2,"The Bandits Bacchias",submenu3;
+
+	submenu1:
+
+
+		if (EP7_PHARE == 0)  goto submenu1a;
+		if (EP7_PHARE <= 5)  goto submenu1b;
+		if (EP7_PHARE == 6)  goto submenu1c;
+		if (EP7_PHARE >= 7)  goto submenu1d;
+
+			submenu1a:
+
+				mes "[" + @name$ + "]"; 
+				mes "We have a problem, I don't know if you know the Lighthouse Traiana, one of the finest work of our continent, if you ask me."; 
+				mes "The Lighthouse will guide more ships, it was suddenly extinguished long ago. I sent Garric and his squad to make some checks."; 
+				mes "Unfortunately no news since a few days, their final report describes an invasion of orcs there ..."; 
+				next;
+				mes "[" + @name$ + "]"; 
+				mes "I don't think it is them that is the problem, finally anyway, if you could find Garric and in the wake of Traian reactivate the Lighthouse."; 
+				mes "The Lighthouse is located in South-East Forest Kiman-Fares, watch the road became more difficult in the latest news."; 
+				close2;
+				setquest 70290;
+				set EP7_PHARE,1;
+				end;
+
+			submenu1b:
+
+				mes "[" + @name$ + "]"; 
+				mes "We have a problem, I don't know if you know the Lighthouse Traiana, one of the finest work of our continent, if you ask me."; 
+				mes "The Lighthouse will guide more ships, it was suddenly extinguished long ago. I sent Garric and his squad to make some checks."; 
+				mes "Unfortunately no news since a few days, their final report describes an invasion of orcs there ..."; 
+				next;
+				mes "[" + @name$ + "]"; 
+				mes "I don't think it is them that is the problem, finally anyway, if you could find Garric and in the wake of Traian reactivate the Lighthouse."; 
+				mes "The Lighthouse is located in South-East Forest Kiman-Fares, watch the road became more difficult in the latest news."; 
+				close;
+
+			submenu1c:
+
+				mes "[" + @name$ + "]"; 
+				mes "Thank you very much for your help! All merchants welcome you to the city, and the sailors who now"; 
+				mes "an navigate safely! Loss Crystal Arsinoe, donated Aerie and strange, I will"; 
+				mes "report to the authorities competances our capital so they can act, they may have other information."; 
+				next;
+				mes "[" + @name$ + "]"; 
+				mes "I don't think it is them that is the problem, finally anyway, if you could find Garric and in the wake of Traian reactivate the Lighthouse."; 
+				mes "The Lighthouse is located in South-East Forest Kiman-Fares, watch the road became more difficult in the latest news."; 
+				close2;
+				set EP7_PHARE,7;
+				completequest 70296;
+				getitem $ep7recompense[5],$ep7recompensenb[5];
+				getitem $ep7_Tcoins,$ep7silvercoinnb[1];
+				end;
+
+			submenu1d:
+
+				mes "[" + @name$ + "]"; 
+				mes "Thank you very much for your help! All merchants welcome you to the city, and the sailors who now"; 
+				mes "navigate safely! Loss Crystal Arsinoe, donated Aerie and strange, I will"; 
+				mes "report to the authorities competances our capital so they can act, they may have other information."; 
+				close;
+
+	submenu2:
+		
+		if (EP7_CBANDE == 0)  goto submenu2a;
+		if (EP7_CBANDE == 1)  goto submenu2b;
+		if (EP7_CBANDE == 2)  goto submenu2c;
+		if (EP7_CBANDE == 3)  goto submenu2d;
+
+			submenu2a:
+
+				mes "[" + @name$ + "]"; 
+				mes "Ah " + strcharinfo(0) + ", merchants of Euhéméria working with the South-East Arsinoïte ..."; 
+				mes "They complain about the smuggling, appears in a small port south of Kimani-Fares used for transit"; 
+				mes "illegal goods, I mean friend, until the goods arrive without paying customs taxes."; 
+				next;
+				mes "[" + @name$ + "]"; 
+				mes "We are looking for mercenaries to neutralize smugglers and dismantle the illegal trade!"; 
+				mes "Knights of Arsinoe can intervene as far from their base without delays ridiculously long ...";				
+				close2;
+				setquest 70300;
+				set EP7_CBANDE,1;
+				end;
+
+			submenu2b:
+
+				mes "[" + @name$ + "]"; 
+				mes "Ah " + strcharinfo(0) + ", merchants of Euhéméria working with the South-East Arsinoïte ..."; 
+				mes "They complain about the smuggling, appears in a small port south of Kimani-Fares used for transit"; 
+				mes "illegal goods, I mean friend, until the goods arrive without paying customs taxes."; 
+				next;
+				mes "[" + @name$ + "]"; 
+				mes "We are looking for mercenaries to neutralize smugglers and dismantle the illegal trade!"; 
+				mes "Knights of Arsinoe can intervene as far from their base without delays ridiculously long ...";				
+				close;
+
+			submenu2c:
+
+				mes "[" + @name$ + "]"; 
+				mes "That cursed Jorbert Surcouf, the stigmatization Than Air five! Finally, given that he is dead we will not have a problem!"; 
+				mes "You have removed a great danger to our valuable business ... Thanks again for your help!"; 
+				close2;
+				set EP7_CBANDE,3;
+				completequest 70301;
+				getitem $ep7recompense[6],$ep7recompensenb[6];
+				getitem $ep7_Tcoins,$ep7silvercoinnb[2];
+				end;
+
+			submenu2d:
+
+				mes "[" + @name$ + "]"; 
+				mes "That cursed Jorbert Surcouf, the stigmatization Than Air five! Finally, given that he is dead we will not have a problem!"; 
+				mes "You have removed a great danger to our valuable business ... Thanks again for your help!"; 
+				close;
+				
+
+	submenu3:
+
+		
+		if (EP7_BANDIT == 0)  goto submenu3a;
+		if (EP7_BANDIT <= 199)  goto submenu3b;
+		if (EP7_BANDIT >= 200)  goto submenu3c;
+	
+			submenu3a:
+
+				mes "[" + @name$ + "]"; 
+				mes "The road leading to Mount Bacchias is infested with bandits, we suffer their attacks for far too long!"; 
+				mes "The authorities of Euhéméria head bandits price! We pay you two "+getitemname($ep7_Tcoins)+" per head!";
+				close2;
+				setquest 70302;
+				set EP7_BANDIT,1;
+				end;
+
+			submenu3b:
+
+				mes "[" + @name$ + "]"; 
+				mes "So you want to echange sclaps bandits for money?"; 
+				next;
+				menu "Yes !",subsubmenu1,"No ...",subsubmenu2;
+
+				
+				subsubmenu1:
+
+					mes "[" + @name$ + "]"; 
+					mes "So what did you have for me today?"; 
+					next;
+					input @input;
+					if (29000<@input)  goto L_NOSCALP;
+					delitem 29000,@input;
+					getitem $ep7_Tcoins,@input*2;
+					set EP7_BANDIT,EP7_BANDIT + @input;
+					if (EP7_BANDIT >= 200)  goto L_MAX;
+					mes "[" + @name$ + "]"; 
+					mes "Here ! " + @input*2 + " "+getitemname($ep7_Tcoins)+" for " + @input + " bandits scalps."; 
+					close2;
+					
+					end;
+
+
+				subsubmenu2:
+											
+					mes "[" + @name$ + "]"; 
+					mes "Remember, with an arm such as yours, it's easy to make money!"; 
+					close;
+
+			
+			submenu3c:
+
+				mes "[" + @name$ + "]"; 
+				mes "A problem solved thanks to you!"; 
+				close;
+				
+								
+
+L_NOSCALP:
+
+	mes "[" + @name$ + "]"; 
+	mes "You do not have enough scalps, friend!"; 
+	close;	
+
+L_MAX:
+
+	mes "[" + @name$ + "]"; 
+	mes "Here's your money, and thank you again for your precious help! The bandits have almost all disappeared thanks to you!"; 
+	mes "Here on behalf of the city authorities:";
+	close2;	
+	getitem $ep7recompense[8],$ep7recompensenb[8];				
+	set EP7_BANDIT,200;
+	completequest 70302;
+	end;
+
+OnTouch:
+	if (EP7_BANDIT == 0 || EP7_CBANDE == 0 || EP7_PHARE == 0) {showevent 1,0;} end;
+}
+
+//_________________________________________________________________
+//___________________Le Phare de Traïana : Les Cristaux ___________
+//_________________________________________________________________
+
+ars_fild04,205,149,4	script	Garric Frash#1	414,{
+
+set @name$,"Garric Frash";
+
+if (EP7_PHARE == 0)  goto sub1;
+if (EP7_PHARE == 1)  goto sub2;
+if (EP7_PHARE <= 5)  goto sub3;
+if (EP7_PHARE >= 6)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Damn, those pesky orcs nearly cut us to pieces. I don't know what fly has bitten them but they are in a very dangerous raging madness  ..."; 
+	mes "We are the messengers of the Mayor of Euhéméria to investigate the failure of Lighthouse Traiana.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Damn, those pesky orcs nearly cut us to pieces. I don't know what fly has bitten them but they are in a very dangerous raging madness  ..."; 
+	mes "We are the messengers of the Mayor of Euhéméria to investigate the failure of Lighthouse Traiana.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately we can not even pass the inner rooms, they are invaded by monsters, the keeper of the Lighthouse is not found ..."; 
+	mes "I don't know how we're going to get out of this mess unscathed. Well, you show us the way, here is the key to the door."; 	
+	mes "See you at the top to restore the light, otherwise try to find the lighthouse keeper, he should be able to explain what is happening here!";
+	close2;
+	changequest 70290,70291;
+	set EP7_PHARE,2;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Damn, those pesky orcs nearly cut us to pieces. I don't know what fly has bitten them but they are in a very dangerous raging madness  ...";
+	mes "We are the messengers of the Mayor of Euhéméria to investigate the failure of Lighthouse Traiana.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Unfortunately we can not even pass the inner rooms, they are invaded by monsters, the keeper of the Lighthouse is not found ..."; 
+	mes "I don't know how we're going to get out of this mess unscaratched. Well, you show us the way, here is the key to the door."; 	
+	mes "See you at the top to restore the light, otherwise try to find the lighthouse keeper, he should be able to explain what is happening here!";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "A big thank you for your help pal! Without you, we would still be here to rail against that damned Lighthouse! ..."; 
+	mes "Well, we will not stay here too, time to do some checking of practice!";
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild04,214,141,4	script	Milicien d'Euhéméria#1	413,{
+
+set @name$,"Milicien d'Euhéméria";
+
+	mes "[" + @name$ + "]"; 
+	mes "We are caught between two fires! Orcs and the evil spirits of the Lighthouse ... A retreat is impossible!"; 
+	close;
+}
+
+//=========================================================================================
+
+ars_fild04,198,131,4	script	Milicien d'Euhéméria#2	413,{
+
+set @name$,"Milicien d'Euhéméria";
+
+	mes "[" + @name$ + "]"; 
+	mes "Damn! We should have come here in an army, just our squad and too thin to support the continuing attacks."; 
+	close;
+}
+
+//=========================================================================================
+
+ars_fild04,203,128,0	script	#warpars04a	45,1,1,{
+	
+	if (EP7_PHARE <= 1)  goto sub1;
+	if (EP7_PHARE >= 2)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "The door of the Lighthouse is closed heavily, you will be able to pick it, you definitely need the key.";
+		close;
+
+	sub2:
+		
+		warp "ars_phare",150,131;
+		end;
+	
+}
+
+//=========================================================================================
+
+ars_phare,226,162,0	script	#warpars04b	45,1,1,{
+	
+	if (EP7_PHARE <= 4)  goto sub1;
+	if (EP7_PHARE >= 5)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "This door leads to the top of the lighthouse, only the master of the house has the key.";
+		close;
+
+	sub2:
+		
+		warp "ars_fild04",203,96;
+		end;
+	
+}
+
+//=========================================================================================
+
+ars_phare,79,196,4	script	Gardien du Phare#1	897,{
+
+set @name$,"Gardien du Phare";
+
+if (EP7_PHARE <= 1)  goto sub1;
+if (EP7_PHARE == 2)  goto sub2;
+if (EP7_PHARE == 3)  goto sub3;
+if (EP7_PHARE == 4)  goto sub4;
+if (EP7_PHARE == 5)  goto sub5;
+if (EP7_PHARE >= 6)  goto sub6; //Fin
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "It's a disaster! My Lighthouse! My beautiful lighthouse!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "It's a disaster! My Lighthouse! My beautiful lighthouse!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "What happened? After I ate my meal, I heard a noise at the top of the Lighthouse, I went up very quickly,"; 
+	mes "As you know, I live alone in the lighthouse and any suspicious noise can only scare me!"; 
+	mes "Coming on top of the tower, I saw a hooded man, he had just seized the Crystal of the Crystal Mountain Bacchias, that we"; 	
+	mes "draw the energy used to power the lights. As soon as this man saw me, he saist Crystal and jumped from the tower disappearing into the waters at the foot of the Lighthouse."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "This loss is catastrophic, the crystal was not only a crystal Mount Bacchias, but it was blessed by our Goddess, it could"; 
+	mes "shine for eternity without ever losing its aura. It is imperative that you go to see Mount Bacchias Gardulf Grisaire is a magician,"; 
+	mes "the leading manufacturer of these crystals in Arsinoe, being in the service of King of Arsinoe, he will not ask you for money, this being a Kingdom Dependent case.";	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Bring me the crystal that we can access the top of the lighthouse to activate it, I had to take refuge on the lower floors, a terrifying monster"; 
+	mes "keeps us from top to activate the lights. These monsters appeared the first night after the incident, they are composed of Shadows Lighthouse,"; 	
+	mes "the lighthouse is not only present to guide vessels but also to prevent the darkness back to haunt this land again!"; 	
+	close2;
+	changequest 70291,70292;
+	set EP7_PHARE,3;
+	end;
+
+sub3:
+		mes "[" + @name$ + "]"; 
+	mes "It's a disaster! My Lighthouse! My beautiful lighthouse!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "What happened? After I ate my meal, I heard a noise at the top of the Lighthouse, I went up very quickly,"; 
+	mes "As you know, I live alone in the lighthouse and any suspicious noise can only scare me!"; 
+	mes "Coming on top of the tower, I saw a hooded man, he had just seized the Crystal of the Crystal Mountain Bacchias, that we"; 	
+	mes "draw the energy used to power the lights. As soon as this man saw me, he saist Crystal and jumped from the tower disappearing into the waters at the foot of the Lighthouse."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "This loss is catastrophic, the crystal was not only a crystal Mount Bacchias, but he had been blessed by our Goddess, he could"; 
+	mes "shine for eternity without ever losing its aura. It is imperative that you go to see Mount Bacchias Gardulf Grisaire is a magician,"; 
+	mes "the leading manufacturer of these crystals in Arsinoe, being in the service of King of Arsinoe, he will not ask you for money, this being a Kingdom Dependent case.";	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Bring me the crystal that we can access the top of the lighthouse to activate it, I had to take refuge on the lower floors, a terrifying monster"; 
+	mes "keeps us from top to activate the lights. These monsters appeared the first night after the incident, they are composed of Shadows Lighthouse,"; 	
+	mes "the lighthouse is not only present to guide vessels but also to prevent the darkness back to haunt this land again!"; 
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Ah, the Crystal Mount Bacchias! Perfect! Look, here's the key, we are finally going to turn the lights! Come on, time is running out!"; 
+	close2;
+	changequest 70294,70295;
+	set EP7_PHARE,5;
+	end;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "Ah, the Crystal Mount Bacchias! Perfect! Look, here's the key, we are finally going to turn the lights! Come on, time is running out!"; 
+	close;
+
+sub6:
+	mes "[" + @name$ + "]"; 
+	mes "Thank you for your help " + strcharinfo(0) + ", we can now resume our activities and continue to guide ships along the coast safely."; 
+	close;
+}
+//=========================================================================================
+
+-	script	EP7_Phare	-1,{
+
+OnInit:
+
+	disablenpc "Gardien du Phare#2"; //récompense
+	sleep2 120000;
+	donpcevent "EP7_Phare::OnMonsterSpawn";
+	end;
+	
+OnMonsterSpawn:
+	
+	//Fretin
+	areamonster "ars_fild04",184,64,223,107,"Prophète du Malheur",3816,20,"EP7_Phare::OnMonsterKill";
+	
+	//Boss
+	monster "ars_fild04",204,68,"Seigneurs des Ombres",3818,1,"EP7_Phare::OnBossKill";
+	set $@monster_ep7Ombres, 1;
+	end;
+
+OnBosskill:
+
+	set $@monster_ep7Ombres, $@monster_ep7Ombres-1;
+	if($@monster_ep7Ombres==0) {
+		mapannounce "ars_fild04","Gardien du Phare : Thank you the Lord of the Shadows has left this plane Come see me!",0,0x66CC33;
+		enablenpc "Gardien du Phare#2";
+		sleep2 120000;
+		donpcevent "EP7_Phare::OnInit";
+		}
+	end;
+
+OnMonsterKill:
+
+	end;
+
+
+}
+
+//=========================================================================================
+
+ars_fild04,206,96,4	script	Gardien du Phare#2	897,{
+
+set @name$,"Gardien du Phare";
+
+if (EP7_PHARE <= 4)  goto sub1;
+if (EP7_PHARE == 5)  goto sub2;
+if (EP7_PHARE >= 6)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You don't have the required level of quest."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I had time to question the spirit of King of Gomorrhe, their sleep was disturbed by grave robbers."; 
+	mes "They are actively seeking the King's Scepter, a remembrance of the benefits of the Goddess, the goddess of Arsonoïte, Aerie."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "But their curse prevented them from leaving the forest Kiman Fares. Clearly this gem was swept away ..."; 
+	mes "They can return in peace without this artifact, it will become a priority in the village so that we can restore life in this country."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Or by searching the room I found a few items for you!"; 
+	close2;
+	set EP7_PHARE,6;
+	changequest 70295,70296;
+	getitem $ep7recompense[4],$ep7recompensenb[4];
+	//Conso +10
+	getitem $ep7foodid[1],$ep7foodnb[1];
+	getitem $ep7foodid[2],$ep7foodnb[1];
+	getitem $ep7foodid[3],$ep7foodnb[1];
+	warp "ars_fild04",203,133;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I had time to question the spirit of King of Gomorrhe, their sleep was disturbed by grave robbers."; 
+	mes "They are actively seeking the King's Scepter, a remembrance of the benefits of the Goddess, the goddess of Arsonoïte, Aerie."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "But their curse prevented them from leaving the forest Kiman Fares. Clearly this gem was swept away ..."; 
+	mes "They can return in peace without this artifact, it will become a priority in the village so that we can restore life in this country."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Or by searching the room I found a few items for you!"; 
+	close2;
+	//Conso +10
+	getitem $ep7foodid[1],$ep7foodnb[1];
+	getitem $ep7foodid[2],$ep7foodnb[1];
+	getitem $ep7foodid[3],$ep7foodnb[1];
+	warp "ars_fild04",203,133;
+	end;
+
+}
+//=========================================================================================
+
+ars_fild05,275,258,4	script	Gardulf Grisaire#1	900,{
+
+set @name$,"Gardulf Grisaire";
+
+if (EP7_PHARE <= 2)  goto sub1;
+if (EP7_PHARE == 3)  goto sub2;
+if (EP7_PHARE == 4)  goto sub3;
+if (EP7_PHARE >= 5)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Although the morning, the Adventurer, it is very rare to see foreigners other than merchants crossing the bridge Grisaire. This bridge was built"; 
+	mes "by me after an earthquake that took with him the old bridge. And yes, as your eye of a shrewd remark, I am a Mage."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I would say even a future Archmage, as my talents are matched only by the limits of the arcane. Anyway, for now I have to stick"; 
+	mes "to something more prosaic, hmm, I'm making, to support my research, energy crystals, the crystals of the famous Mont Bacchias."; 	
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Although the morning, the Adventurer, it is very rare to see foreigners other than merchants crossing the bridge Grisaire. This bridge was built"; 
+	mes "by me after an earthquake that took with him the old bridge. And yes, as your eye of a shrewd remark, I am a Mage."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I would say even a future Archmage, as my talents are matched only by the limits of the arcane. Anyway, for now I have to stick"; 
+	mes "to something more prosaic, hmm, I'm making, to support my research, energy crystals, the crystals of the famous Mont Bacchias."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Oh, oh, great customers! Well, I do not want to sound vain, a customer is rare enough for a warm welcome does"; 
+	mes "in my favor, bending the side of the balance!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Wh-What! Roh! bag at **** ... A royal commission, what bad luck ... As if it was fun to work at the Eye ..."; 
+	mes "An order for the Lighthouse Keeper? How is it he is not supposed to possess the Crystal eternal gift of our Goddess?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, this does not bode well ... But here is the crystal, be careful it has a limited life ... I feel that I'm going"; 
+	mes "furnish a weekly ... One day, yes, one day, I enough money to get out of that hole and continue my research!"; 
+	close2;
+	changequest 70292,70293;
+	set EP7_PHARE,4;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Although the morning, the Adventurer, it is very rare to see foreigners other than merchants crossing the bridge Grisaire. This bridge was built"; 
+	mes "by me after an earthquake that took with him the old bridge. And yes, as your eye of a shrewd remark, I am a Mage."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I would say even a future Archmage, as my talents are matched only by the limits of the arcane. Anyway, for now I have to stick"; 
+	mes "to something more prosaic, hmm, I'm making, to support my research, energy crystals, the crystals of the famous Mont Bacchias."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Oh, oh, great customers! Well, I don't want to sound vain, a customer is rare enough for a warm welcome does"; 
+	mes "in my favor, bending the side of the balance!"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Wh-What! Roh! bag at **** ... A royal commission, what bad luck ... As if it was fun to work at the Eye ..."; 
+	mes "An order for the Lighthouse Keeper? How is it he is not supposed to possess the Crystal eternal gift of our Goddess?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Hmm, this doesn't seem well ... But here is the crystal, be careful it has a limited life ... I feel that I'm going"; 
+	mes "furnish a weekly ... One day, yes, one day, I enough money to get out of that hole and continue my research!"; 
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "What ruined! Cursed Lighthouse! But I found a new way to make my school ... I just installed a toll on"; 
+	mes "my bridge, now the business is beginning to leave!"; 
+	close;
+}
+
+
+
+
+//_________________________________________________________________
+//___________________Le Phare de Traïana : Contrebande ____________
+//_________________________________________________________________
+
+
+ars_fild04,91,114,4	script	Jorbert Surcouf#1	3809,{
+
+set @name$,"Jorbert Surcouf";
+
+if ($@EP7_Contrebande == 2)  goto subfin;
+if (EP7_CBANDE == 0)  goto sub1;
+if (EP7_CBANDE == 1)  goto sub2;
+if (EP7_CBANDE >= 2)  goto sub3;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't look too closely into the corner, we don't like too troublemakers in our port."; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't look too closely into the corner, we don't like too troublemakers in our port."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Hey retard, you don't seem to understand what I told you!"; 
+	mes "Hey guys, come, I think there's another retard who wants to get hit by the retard stick!"; 	
+	close2;
+	if($@EP7_Contrebande==0) {
+	donpcevent "EP7_Contrebande::OnMonsterSpawn";}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "This is the body of Jorbert Surcouf, the smuggler whose head is wanted by the Mayor of Euhéméria."; 
+	close;
+
+subfin:
+
+	mes "[" + @name$ + "]"; 
+	mes "I am humbled, I am mortally wounded, but know that you can adjust in any case the problem of smuggling,"; 
+	mes "my superiors will return in force!"; 
+	close2;
+	if(EP7_CBANDE==1) {
+	changequest 70300,70301;
+	set EP7_CBANDE,2;}
+	end;
+
+}
+
+//=========================================================================================
+
+-	script	EP7_Contrebande	-1,{
+
+OnInit:
+	enablenpc "Jorbert Surcouf#1";
+	set $@EP7_Contrebande,0;
+	end;
+	
+OnMonsterSpawn:
+	
+	//Npc hide
+	disablenpc "Jorbert Surcouf#1";
+	//variable event
+	set $@EP7_Contrebande,1;
+	//Boss
+	monster "ars_fild04",91,114,"Jorbert Surcouf",3809,1,"EP7_Contrebande::OnMonsterKill";
+	//Contrebandier
+	monster "ars_fild04",101,120,"Contrebandier",3808,4,"EP7_Contrebande::OnMonsterKill";
+	monster "ars_fild04",104,98,"Contrebandier",3808,4,"EP7_Contrebande::OnMonsterKill";
+	set $@monster_Contrebande,1;
+	sleep2 1200000; //20 minutes reset
+	if($@EP7_Contrebande==1) {killmonster "ars_fild04", "EP7_Contrebande::OnMonsterKill"; donpcevent "EP7_Contrebande::OnInit";}
+	end;
+
+OnMonsterKill:
+
+	set $@monster_Contrebande, $@monster_Contrebande-1;
+	if($@monster_Contrebande==0) {
+		mapannounce "ars_fild04","Jorbert Surcouf : Come see me, you won!",0,0x66CC33;
+		set $@EP7_Contrebande,2;	
+		enablenpc "Jorbert Surcouf#1";
+		sleep2 120000;
+		donpcevent "EP7_Contrebande::OnInit";
+		}
+	end;
+}
+
+//_________________________________________________________________
+//___________________Le Phare de Traïana : Les Orcs _______________
+//_________________________________________________________________
+
+ars_fild03,178,30,4	script	Gerwan Frigent#1	475,{
+
+set @name$,"Gerwan Frigent";
+
+if (EP7_ORC == 0)  goto sub1;
+if (EP7_ORC == 1)  goto sub2;
+if (EP7_ORC == 2)  goto sub3;
+if (EP7_ORC >= 3)  goto sub4;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "hello adventurer! How are you? I know we aren't damsels in distress, but will you listen to our plea?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I guess the best thing is to calmly present our problem, I prepared myself without delay!"; 
+	mes "You see the orcs recently have become more encroaching, if not hostile!"; 	
+	mes "We live in relative harmony for years, their village is located in South Soknobeus, we have even a small trade between our two communities."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The last time a tribal conflict between two waring factions took place, we are looking for an adventurer, ready to sneak into one of the factions."; 
+	mes "The bellicist faction of preference should be eliminated, we hope that you kill Gerwioke, their leader and free Anawarroj, the former chief of the tribe rejected by the opposing faction."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "This should bring some calm in our region, calm undermined for some time ..."; 
+	close2;
+	setquest 70303;
+	set EP7_ORC,1;
+	end;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Hello adventurer! How are you? I know we are not damsels in distress, but will it please you to hear our plea?"; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I guess the best thing is to calmly present our problem, I prepared myself without delay!"; 
+	mes "You see the orcs recently have become more encroaching, if not hostile!"; 	
+	mes "We live in relative harmony for years, their village is located in South Soknobeus, we have even a small trade between our two communities."; 
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "The last time a tribal conflict between two waring factions took place, we are looking for an adventurer, ready to sneak into one of the factions."; 
+	mes "The bellicist faction of preference should be eliminated, we hope that you kill Gerwioke, their leader and free Anawarroj, the former chief of the tribe rejected by the opposing faction."; 	
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "This should bring some calm in our region, calm undermined for some time ..."; 
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "The situation should return to normal, we will send our emissaries to Anawarroj order to establish a new peace treaty."; 
+	close2;
+	getitem $ep7recompense[7],$ep7recompensenb[7];
+	set EP7_ORC,3;
+	completequest 70304;
+	end;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "The situation should return to normal, we will send our emissaries to Anawarroj order to establish a new peace treaty."; 
+	close;
+
+}
+
+//=========================================================================================
+
+ars_fild04,74,348,4	script	Gerwioke#1	3813,{
+
+set @name$,"Gerwioke";
+
+
+if (EP7_ORC == 0)  goto sub1;
+if (EP7_ORC == 1)  goto sub2;
+if (EP7_ORC >= 2)  goto sub3;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "People, people like you are not welcome in our village, in our land!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "A stubborn! Your time has come miserable human, nothing will stop me from our tribes together under my umbrella!"; 
+	close2;
+	if($@EP7_Orc==0) {
+	donpcevent "EP7_Orc::OnMonsterSpawn";}
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "This is the body of Gerwioke, the rebel Orc Village."; 
+	close;
+
+
+}
+
+//=========================================================================================
+
+-	script	EP7_Orc	-1,{
+
+OnInit:
+	disablenpc "Anawarroj#1";
+	enablenpc "Gerwioke#1";
+	set $@EP7_Orc,0;
+	end;
+	
+OnMonsterSpawn:
+	
+	//Npc hide
+	disablenpc "Gerwioke#1";
+	//variable event
+	set $@EP7_Orc,1;
+	//Boss
+	monster "ars_fild04",74,348,"Gerwioke",3813,1,"EP7_Orc::OnBossKill";
+	//soldats
+	monster "ars_fild04",88,349,"Traqueur Orc",3812,1,"EP7_Orc::OnMonsterKill";
+	monster "ars_fild04",52,332,"Traqueur Orc",3812,1,"EP7_Orc::OnMonsterKill";
+	set $@monster_orcep7,1;
+	sleep2 1200000; //20 minutes reset
+	if($@EP7_Orc==1) {killmonster "ars_fild04", "EP7_Orc::OnMonsterKill"; killmonster "ars_fild04", "EP7_Orc::OnBossKill";}
+	end;
+
+OnMonsterKill:
+
+	end;
+
+OnBossKill:
+
+	set $@monster_orcep7, $@monster_orcep7-1;
+	if($@monster_orcep7==0) {
+		mapannounce "ars_fild04","Anawarroj : Thank you liberated!",0,0x66CC33;
+		enablenpc "Anawarroj#1";
+		sleep2 120000;
+		donpcevent "EP7_Orc::OnInit";
+		}
+	end;
+}
+
+//=========================================================================================
+
+ars_fild04,89,346,1	script	Anawarroj#1	3812,{
+
+set @name$,"Anawarroj";
+
+
+if (EP7_ORC == 0)  goto sub1;
+if (EP7_ORC == 1)  goto sub2;
+if (EP7_ORC >= 2)  goto sub3;
+
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Cursed Gerwioke! A plague will take him!"; 
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "I took control of our tribe thank you again for your help, we must stop the warmongers from coming to power!"; 
+	close2;
+	changequest 70303,70304;
+	set EP7_ORC,2;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I took control of our tribe thank you again for your help, we must stop the warmongers from coming to power!"; 
+	close;
+
+
+	
+
+}
+

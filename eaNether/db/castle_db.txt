@@ -1,0 +1,48 @@
+// _________                                    
+// \_   ___ \_______  ____   ____  __ __  ______
+// /    \  \/\_  __ \/  _ \ /    \|  |  \/  ___/
+// \     \____|  | \(  <_> )   |  \  |  /\___ \ 
+//  \______  /|__|   \____/|___|  /____//____  >
+//         \/                   \/           \/  
+//
+// * Traduzido por Cronus Devel Team
+// Banco de Dados dos Castelo da Guild
+//
+// Estrutura de banco de dados:
+// CastleID,MapName,CastleName,OnGuildBreakEventName(abandonar castelos capturados),Flag(reservado)
+0,aldeg_cas01,Sirius,Agit#aldeg_cas01,1		// bRO : Sirius
+1,aldeg_cas02,Astrum,Agit#aldeg_cas02,1		// bRO : Astrum
+2,aldeg_cas03,Canopus,Agit#aldeg_cas03,1			// bRo : Canopus
+3,aldeg_cas04,Rigel,Agit#aldeg_cas04,1			// bRo : Rigel
+4,aldeg_cas05,Acrux,Agit#aldeg_cas05,1		// bRo : Acrux
+5,gefg_cas01,Arsulf,Agit#gefg_cas01,1			// bRo : Arsulf
+6,gefg_cas02,Trapesac,Agit#gefg_cas02,1		// bRo : Trapesac
+7,gefg_cas03,Ruaden,Agit#gefg_cas03,1			// bRo : Ruaden
+8,gefg_cas04,Saffran,Agit#gefg_cas04,1			// bRo : Saffran
+9,gefg_cas05,Arima,Agit#gefg_cas05,1		// bRo : Arima
+10,payg_cas01,Palácio do Sol,Agit#payg_cas01,1		// bRo : Palácio do Sol
+11,payg_cas02,Palácio do Lago Sagrado,Agit#payg_cas02,1		// bRo : Palácio do Lago Sagrado
+12,payg_cas03,Palácio da Sombra,Agit#payg_cas03,1		// bRo : Palácio da Sombra
+13,payg_cas04,Palácio Escarlate,Agit#payg_cas04,1		// bRo : Palácio Escarlate
+14,payg_cas05,Palácio da Colina,Agit#payg_cas05,1		// bRo : Palácio da Colina
+15,prtg_cas01,Kriemhild,Agit#prtg_cas01,1			// bRo : Kriemhild
+16,prtg_cas02,Hrist,Agit#prtg_cas02,1			// bRo : Hrist
+17,prtg_cas03,Brynhildr,Agit#prtg_cas03,1			// bRo : Brynhildr
+18,prtg_cas04,Skoegul,Agit#prtg_cas04,1			// bRo : Skoegul
+19,prtg_cas05,Gondul,Agit#prtg_cas05,1			// bRo : Gondul
+//Nguild
+20,nguild_alde,Earth,Agit_N01,2
+21,nguild_gef,Air,Agit_N02,2
+22,nguild_pay,Water,Agit_N03,2
+23,nguild_prt,Fire,Agit_N04,2
+//WOE 2
+24,schg_cas01,Himinn,Agit_Sc01,1			// bRo : Himinn
+25,schg_cas02,Andlangr,Agit_Sc02,1			// bRo : Andlangr
+26,schg_cas03,Viblainn,Agit_Sc03,1			// bRo : Viblainn
+27,schg_cas04,Hljod,Agit_Sc04,1			// bRo : Hljod
+28,schg_cas05,Skidbladnir,Agit_Sc05,1			// bRo : Skatyrnir
+29,arug_cas01,Mardol,Agit_Ar01,1			// bRo : Mardol
+30,arug_cas02,Cyr,Agit_Ar02,1			// bRo : Cyr
+31,arug_cas03,Horn,Agit_Ar03,1			// bRo : Horn
+32,arug_cas04,Gefn,Agit_Ar04,1			// bRo : Gefn
+33,arug_cas05,Bandis,Agit_Ar05,1			// bRo : Vanadis

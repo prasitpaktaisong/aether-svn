@@ -1,0 +1,73 @@
+//== Aether Script ========================================
+// • Administradora VIP
+//== Autores ==============================================
+// • Rafael Perella (Cronus Emulator)
+//== Versão ===============================================
+// • 1.0 - Rafael Perella (Criação)
+// • 1.5 - Hyero (Adaptação Aether)
+//== Descrição: ===========================================
+// • Administradora de Contas VIP.
+//=========================================================
+
+daath,30,260,5	script	Camille#vipadmin	906,{
+
+Mes "^FF0000[Camille]^000000";
+Mes "Olá ^FF8000"+ StrCharInfo (0) +"^000000!";
+If (GetGmLevel () >= 99)
+{
+	Mes "O que deseja?";
+	Set .@MainMenu, Select ("• Adicionar VIP", "• Remover VIP", "• Alterar VIP", "• Ver VIP") -1;
+	Mes "Digite usuário.";
+	Input .@user$;
+	Next;
+	Mes "^FF0000[Camille]^000000";
+	If (! Set (.@aid, CallFunc ("user2aid", .@user$)))
+	{
+		Mes "Usuário inexistente.";
+		Close;
+	}
+	If (.@MainMenu != 3)
+	{
+		Mes "Como prefere digitar o tempo?";
+		Select ("• Tempo em Meses (30 dias)", "• Tempo em Dias", "• Tempo em Horas");
+		SetArray .@mult[1], 720, 24, 1;
+		Mes "Digite o tempo vip.";
+		Input .@vip;
+		Set .@vip, .@vip * .@mult[@menu];
+		If (.@MainMenu == 2) Set .@vip, CallFunc ("now") + .@vip * 3600;
+		SetArray .@_func$, "addVip", "removeVip", "setVip";
+		CallFunc (.@_func$[.@MainMenu], .@aid, .@vip);
+	}
+} Else
+	Set .@aid, GetCharID (3);
+If (Set (.@vip, CallFunc ("getVip", .@aid)))
+{
+	CallFunc ("sec2date", .@vip - CallFunc ("now"));
+	Mes "Tempo VIP: "+ (@year-2000) +" anos, "+ @month +" meses, "+ @day +" dias, "+ @hour +" horas, "+ @minute +" minutos e "+ @second +" segundos.";
+} Else
+	Mes "A conta não é VIP.";
+Close2;
+If (IsLoggedIn (.@aid))
+{
+	AttachRID .@aid;
+	CallSub OnCheckVip;
+}
+End;
+
+OnPCLoginEvent: 
+OnCheckVip:
+	If (GetGmLevel () > 10) End;
+	DelTimer StrNPCInfo (0) +"::OnCheckVip";
+	CallFunc ("activateVip", StrCharInfo (0), 1);
+	Set .@time, CallFunc ("getVip", GetCharID (3)) - CallFunc ("now");
+	If (.@time >= 0) AddTimer ((.@time > 3600) ? 3600 : .@time) * 1000 + 1000, StrNPCInfo (0) +"::OnCheckVip";
+	End;
+
+Fim:
+	end;
+}
+
+//prontera,145,172,5	duplicate(#vipadmin)	Administradora VIP#1	864
+
+// Manter compatibilidade com plugins da v1.0b:
+//-	duplicate(#vipadmin)	Administrador VIP	-1

@@ -1,0 +1,1172 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Culte d'Harpocrate
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+
+// 1 = Le Culte d'Harpocrate : Le Seigneur des Etoiles
+// 2 = Le Culte d'Harpocrate : L'Académie
+
+//_________________________________________________________________
+//___________________Harpocrate : Le Seigneur des Etoiles__________
+//_________________________________________________________________
+
+ars_fild06,56,50,4	script	Clerc Graivois#ep7	752,8,8,{
+
+set @name$,"Clerc Graivois";
+
+if (EP7_GLOBAL < 10)  goto niveauquete;
+
+if (EP7_HARPO == 0)  goto sub1;
+if (EP7_HARPO == 1)  goto sub2;
+if (EP7_HARPO == 2)  goto sub3;
+if (EP7_HARPO == 3)  goto sub4;
+if (EP7_HARPO <= 9)  goto sub5;
+if (EP7_HARPO == 10)  goto sub6;
+if (EP7_HARPO >= 11)  goto sub7;
+
+sub1:
+		mes "[" + @name$ + "]"; 
+		mes "Clerc Graivois, I'm one of Religious Leaders of Knights of Arsinoe.";
+		mes "Our Order is an Order of Chivalry, but is also a religious order, we are all following Harpocrates, the God Warrior of Arsinoe.";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "We strive to maintain the cosmic order on our continent, we do what must be done this way.";
+		mes "Unfortunately we have observed disruption in the balance, evil forces are doing their appartion across the Arsinoe threatening the balance of the forces.";
+		next;
+		mes "[" + @name$ + "]";
+		mes "We are struggling, I must confess, to cope on all fronts, goblins occupying most of our troops on the front lines of the Torn-Thalas.";
+		mes "The Undead that have emerged Kiman Fares are also weird, but our four Legions can not be everywhere ...";
+		next;
+		mes "[" + @name$ + "]";
+		mes "We heard about you and your friend Daphnis, you should not be surprised, we have a very good surveillance system in our region.";
+		mes "I want to talk with you a little, you know our forces reach their limit action, no point in rehashing the why, I'll give you a little note that you can use if you are interested in helping us.";
+		next;
+		mes "[" + @name$ + "]";
+		mes "I can't give you more information without taking the first step towards our Order.";
+		mes "If you want to be associated with our Order, Present yourself to Ribald in the Library of Euhéméria giving him the letter and he will give you more information ...";
+		close2;
+		setquest 70330;
+		set EP7_HARPO,1;
+		end;
+
+sub2:
+		mes "[" + @name$ + "]"; 
+		mes "Clerc Graivois, I'm one of Religious Leaders of Knights of Arsinoe.";
+		mes "Our Order is an Order of Chivalry, but is also a religious order, we are all following Harpocrates, the God Warrior of Arsinoe.";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "We strive to maintain the cosmic order on our continent, we do what must be done this way.";
+		mes "Unfortunately we have observed for some disruption in the balance, evil forces are doing their appartion across the Arsinoe threatening the balance of forces.";
+		next;
+		mes "[" + @name$ + "]";
+		mes "We are struggling, I must confess, to cope on all fronts, goblins occupying most of our troops on the front lines of the Torn-Thalas.";
+		mes "The Undead that have emerged Kiman Fares are also weird, but our four Legions can not be everywhere ...";
+		next;
+		mes "[" + @name$ + "]";
+		mes "We heard about you and your friend Daphnis, you should not be surprised, we have a very good surveillance system in our region.";
+		mes "I want to talk with you a little, you know our forces reach their limit action, no point in rehashing the why, I'll give you a little note that you can use if you are interested in helping us.";
+		next;
+		mes "[" + @name$ + "]";
+		mes "I can't give you more information without taking the first step towards our Order.";
+		mes "If you want to be associated with our Order, Present yourself to Ribald in the Library of Euhéméria giving him the letter and he will give you more information ...";
+		close;
+
+sub3:
+
+		mes "[" + @name$ + "]"; 
+		mes "Good luck against the Nachtstern, the battle in his Tower of Stars will be tough, though, believe me!";
+		close;
+		
+sub4:
+
+		mes "[" + @name$ + "]"; 
+		mes "Thank you, I received the report on the expedition Ribald in the Tower of Stars, and believe me, I stayed quiet ...";
+		mes "The report suggests that the Academy would have voluntarily sent combat Nachtstern knowing he had nothing to do ...";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "Although Nachtstern has chosen another path, it was a monk Harpocrate ago and as such we must still give him the benefit of the doubt.";
+		mes "I didn't warn the Knights of Arsinoe, this story is not their responsibility, and without certainties need to rush into the trap.";
+		next;
+	 	mes "[" + @name$ + "]"; 
+		mes "I'll give you a written authorization for you to conduct your investigation at the Academy, I asked Ribald to go too.";
+		mes "Once there, watch, and just give me a report before you do anything!";
+		close2;
+		changequest 70332,70333;
+		getitem 29006,1;
+		set EP7_HARPO,4;
+		end;
+
+sub5:
+
+		mes "[" + @name$ + "]"; 
+		mes "Thank you, I received the report on the expedition Ribald in the Tower of Stars, and believe me, I stayed quiet ...";
+		mes "The report suggests that the Academy would have voluntarily sent combat Nachtstern knowing he had nothing to do ...";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "Although Nachtstern has chosen another path, it was a monk Harpocrate ago and as such we must still give him the benefit of the doubt.";
+		mes "I didn't warn the Knights of Arsinoe, this story is not their responsibility, and without certainties need to rush into the trap.";
+		next;
+	 	mes "[" + @name$ + "]"; 
+		mes "I'll give you a written authorization for you to conduct your investigation at the Academy, I asked Ribald to go too.";
+		mes "Once there, watch, and just give me a report before you do anything!";
+		close;
+
+sub6:
+
+		mes "[" + @name$ + "]"; 
+		mes "Unbelievable, our most sacred place! Infiltrated by Doppelgangers! I wonder who could afford the services of these creatures ...";
+		mes "They are mercenaries very powerful but terribly expensive ... This does not seem well for us.";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "Whatever their purpose was indeed to keep us out of the current conflict shaking the Arsinoe ...";
+		mes "I will thank him for his help, Nachtstern ... Well we are still at the same point, the glorious Helm has still not been found ...";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "A service has been introduced in the administrative section of the castle to connect all the problems facing the cults of Arsinoe ...";
+		mes "Agathon Paraclet must need you, I think we can find an answer to our problems there ...";
+		close2;
+		changequest 70337,70338;
+		set EP7_HARPO,11;
+		end;
+
+sub7:
+
+		mes "[" + @name$ + "]"; 
+				mes "Unbelievable, our most sacred place! Infiltrated by Doppelgangers! I wonder who could afford the services of these creatures ...";
+		mes "They are mercenaries very powerful but terribly expensive ... This does not seem well for us.";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "Whatever their purpose was indeed to keep us out of the current conflict shaking the Arsinoe ...";
+		mes "I will thank for his help, Nachtstern ... Well we are still at the same point, the glorious Helm has still not been found ...";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "A service has been introduced in the administrative section of the castle to connect all the problems facing the cults of Arsinoe ...";
+		mes "Agathon Paraclet must need you, I think we can find an answer to our problems there ...";
+		close;
+
+niveauquete:
+		mes "[" + @name$ + "]"; 
+		mes "Clerc Graivois, I'm one of Religious Leaders of Knights of Arsinoe.";
+		mes "Our Order is an Order of Chivalry, but is also a religious order, we are all following Harpocrates, the God Warrior of Arsinoe.";
+		next;
+		mes "[" + @name$ + "]"; 
+		mes "We strive to maintain the cosmic order on our continent, we do what must be done this way.";
+		mes "Unfortunately we have observed disruption in the balance, evil forces are doing their appartion across the Arsinoe threatening the balance of the forces.";
+		next;
+		mes "[" + @name$ + "]";
+		mes "We are struggling, I must confess, to cope on all fronts, goblins occupying most of our troops on the front lines of the Torn-Thalas.";
+		mes "The Undead that have emerged Kiman Fares are also weird, but our four Legions can not be everywhere ...";
+		close;
+OnTouch:
+	if (EP7_HARPO == 0) {showevent 1,0;} end;
+}
+
+//========================================================================================================
+
+ars_in01,150,143,4	script	Ribald#ep7	751,{
+
+set @name$,"Ribald";
+
+if (EP7_HARPO == 0)  goto sub1;
+if (EP7_HARPO == 1)  goto sub2;
+if (EP7_HARPO == 2)  goto sub3;
+if (EP7_HARPO == 3)  goto sub4;
+if (EP7_HARPO >= 4)  goto sub5;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Yes, yes, I'm a monk, and as you should know I should never be disturbed a while studying!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "What do you want dammit!?";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "Good, good, let me see the letter ...";
+	mes "In appreciation, the Clerc Graivois has given you the title of squire of the Knights of Arsinoe, we bet you'll realize the huge honor it represents.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I'm the responsible of the warrior monks of Kiman Fares, you must understand by this, monks used Harpocrates.";
+	mes "We're fighting to close the Knights of Arsinoe, but we have our own rules and techniques of fighting.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "None of the Legions of Arsinoe not devoted full time to the region Kimani Fares, this area is normally quiet.";
+	mes "People of Coppalana and surrounding villages are our longtime allies.";
+	mes "But there is a region, of the Tower of Stars, we don't control, it's at hand Nachtstern He lived in seclusion for decades in his Tower of the Stars.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "He had no aggressivity for a while now, he is content to remain in his fortress without causing us more problems ...";
+	mes "But unfortunately we have just learned of the high dignitaries of the Academy of Harpocrates to Arsinoe, the most virtuous monks of our order, the Nachtstern had resumed activity.";
+	mes "He dared to go in our Holy Temple of Arsinoe to steal, steal ... The Helm Glorious Harpocrate, which was bestowed by the god himself Abitelle, the founder of the Knights of Arsinoe!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I will mount an expedition with some brothers to get to the Tower of Stars to retrieve this artifact, and that's where you come in support us with your support!";
+	mes "Well, we joined him there, just to make you Soknobeus then follow the path that goes to the Southeast.";
+	close2;
+	set EP7_HARPO,2;
+	changequest 70330,70331;
+	end;
+	
+sub3:	
+	mes "[" + @name$ + "]"; 
+	mes "I'm the responsible of the warrior monks of Kiman Fares, you must understand by this, monks used Harpocrates.";
+	mes "We're fighting to close the Knights of Arsinoe, but we have our own rules and techniques of fighting.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "None of the Legions of Arsinoe not devoted full time to the region Kimani Fares, this area is normally quiet.";
+	mes "People of Coppalana and surrounding villages are our longtime allies.";
+	mes "But there is a region, that of the Tower of Stars, we do not control, it is at hand Nachtstern He lived in seclusion for decades in his Tower of the Stars.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "He had no aggressivity for a while now, he is content to remain in his fortress without causing us more problems ...";
+	mes "But unfortunately we have just learned of the high dignitaries of the Academy of Harpocrates to Arsinoe, the most virtuous monks of our order, the Nachtstern had resumed activity.";
+	mes "He dared to go in our Holy Temple of Arsinoe to steal, steal ... The Helm Glorious Harpocrate, which was bestowed by the god himself Abitelle, the founder of the Knights of Arsinoe!";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I will mount an expedition with some brothers to get to the Tower of Stars to retrieve this artifact, and that's where you come to support us with your weapons!";
+	mes "Well, we joined him there, just to make you Soknobeus then follow the path that goes to the Southeast.";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Thanks for your help! Your help was invaluable in that tower and thanks to you we have learned more about this sad story, alas, alas ... And yes, we could not retrieve the Helm Glorious ...";
+	mes "Return to Graivois see Clerc, he will probably give you permission to go to the Academy of Arsinoe Harpocrates and tell our epic Moines superiors."; 
+	close;
+
+sub5:
+	mes "[" + @name$ + "]"; 
+	mes "I'll See you at the Academy, alas, I have no passage for you, the borders are closed and the knights are not aware of this, you'll have to find a path through your own means.";
+	close;
+}
+
+//========================================================================================================
+
+ars_fild17,102,57,2	script	Ribald#ep72	751,{
+
+set @name$,"Ribald";
+
+if (EP7_HARPO <= 1)  goto sub1;
+if (EP7_HARPO == 2)  goto sub2;
+if (EP7_HARPO >= 3)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "We're Moines Harpocrate, this part of the Arsinoe is somewhat sensitive, you should not stay too long here, if you want to die of old age.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Here we are, at the Tower of Stars Nachtstern, remember our goal is to reach the summit, and that as soon as possible, speed is the key to our success!";
+	close;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Thanks for your help! Your help was invaluable in that tower and thanks to you we have learned more about this sad story, alas, alas ... And yes, we could not retrieve the Helm Glorious ...";
+	mes "Returns see Clerc Graivois, he will probably give you permission to go to the Academy of Arsinoe Harpocrates to tell our epic Moines superiors."; 
+	close;
+}
+
+//========================================================================================================
+
+ars_fild17,108,52,1	script	Moine d'Harpocrate#1	746,{
+
+set @name$,"Moine d'Harpocrate";
+
+	mes "[" + @name$ + "]"; 
+	mes "Our mental control is the key to our success, prayer and meditation are the only way to achieve perfect control of body.";
+	close;
+}
+
+ars_fild17,103,49,1	duplicate(Moine d'Harpocrate#1)	Moine d'Harpocrate#2	746
+
+//========================================================================================================
+ars_fild17,112,55,0	script	#arsfild17a	45,1,1,{
+	
+	if (EP7_HARPO <= 1)  goto sub1;
+	if (EP7_HARPO >= 2)  goto sub2;
+
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "The Gate of the Tower of Stars is too heavy for you, you can not open it.";
+		close;
+
+	sub2:
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You have to push the heavy door with the help of the monks.";
+		close2;
+		warp "ars_dun04",52,16; //Tour des étoiles
+		end;	
+}
+
+//========================================================================================================
+
+ars_dun04,52,13,0	warp	EP7wTdE0	1,1,ars_fild17,109,55 //Sortie
+ars_dun04,52,62,0	warp	EP7wTdE1	1,1,ars_dun04,31,93 //Sortie salle 1
+ars_dun04,42,146,0	warp	EP7wTdE2	1,1,ars_dun04,19,184 //Sortie salle 2
+ars_dun04,32,250,0	warp	EP7wTdE3	1,1,ars_dun04,99,235 //Sortie salle 3
+ars_dun04,262,219,0	warp	EP7wTdE4	1,1,ars_dun04,261,181 //Sortie salle 4
+ars_dun04,214,102,0	warp	EP7wTdE5	1,1,ars_dun05,93,17 //Sortie salle 5
+
+//========================================================================================================
+
+-	script	EP7_TdE	-1,{
+
+OnInit:
+	disablenpc "Ribald#ep73";
+	disablenpc "NachtStern#ep7";
+	disablenpc "#arsdun05";
+	disablenpc "EP7wTdE1";
+	disablenpc "EP7wTdE2";
+	disablenpc "EP7wTdE3";
+	disablenpc "EP7wTdE4";
+	disablenpc "EP7wTdE5";
+	disablenpc "EP7wTdE6";
+
+	killmonsterall "ars_dun04";
+	
+
+	set $@EP7_TdE,0;
+	set $@monster_ep7TdE1,27;
+	set $@monster_ep7TdE2,44;
+	set $@monster_ep7TdE3,32;
+	set $@monster_ep7TdE4,50;
+	set $@monster_ep7TdE5,100;
+	donpcevent "EP7_TdE::OnSpawnMobFloor";
+	end;
+
+
+OnSpawnMobFloor:
+
+
+
+	//Salle 1
+	areamonster "ars_dun04",18,62,78,18,"Guerrier des Etoiles",3848,15,"EP7_TdE::OnMyMobDead1";
+	areamonster "ars_dun04",18,62,78,18,"Hacheur",3847,2,"EP7_TdE::OnMyMobDead1";
+	areamonster "ars_dun04",18,62,78,18,"Saigneur",3846,10,"EP7_TdE::OnMyMobDead1";
+	//Salle 2
+	areamonster "ars_dun04",123,94,28,133,"Archer des Etoiles",3849,25,"EP7_TdE::OnMyMobDead2";
+	areamonster "ars_dun04",123,94,28,133,"Guerrier des Etoiles",3848,15,"EP7_TdE::OnMyMobDead2";
+	areamonster "ars_dun04",123,94,28,133,"Hacheur",3847,4,"EP7_TdE::OnMyMobDead2";
+	//Salle 3
+	areamonster "ars_dun04",18,178,65,255,"Guerrier des Etoiles",3848,20,"EP7_TdE::OnMyMobDead3";
+	areamonster "ars_dun04",18,178,65,255,"Hacheur",3847,2,"EP7_TdE::OnMyMobDead3";
+	areamonster "ars_dun04",18,178,65,255,"Saigneur",3846,10,"EP7_TdE::OnMyMobDead3";
+	//Salle 4
+	areamonster "ars_dun04",103,242,252,231,"Hacheur",3847,10,"EP7_TdE::OnMyMobDead4";
+	//Salle 4 - Archer
+	areamonster "ars_dun04",254,246,99,249,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead4";
+	areamonster "ars_dun04",253,226,99,228,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead4";
+	//Salle 5
+	areamonster "ars_dun04",269,180,158,43,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead5";
+	areamonster "ars_dun04",269,180,158,43,"Guerrier des Etoiles",3848,25,"EP7_TdE::OnMyMobDead5";
+	areamonster "ars_dun04",269,180,158,43,"Hacheur",3847,15,"EP7_TdE::OnMyMobDead5";
+	areamonster "ars_dun04",269,180,158,43,"Saigneur",3846,40,"EP7_TdE::OnMyMobDead5";
+	end;
+
+//=============================================================
+
+OnMyMobDead1:
+
+	set $@monster_ep7TdE1, $@monster_ep7TdE1-1;
+	if($@monster_ep7TdE1==0) {
+
+		mapannounce "ars_dun04","Ribald : We can go to the second floor!",0,0x6CC6666;
+		enablenpc "EP7wTdE1";
+		sleep2 120000;
+		disablenpc "EP7wTdE1";
+		//Salle 1
+		areamonster "ars_dun04",18,62,78,18,"Guerrier des Etoiles",3848,15,"EP7_TdE::OnMyMobDead1";
+		areamonster "ars_dun04",18,62,78,18,"Hacheur",3847,2,"EP7_TdE::OnMyMobDead1";
+		areamonster "ars_dun04",18,62,78,18,"Saigneur",3846,10,"EP7_TdE::OnMyMobDead1";
+		set $@monster_ep7TdE1,27;
+		end;
+		}
+	end;
+
+//=============================================================
+
+OnMyMobDead2:
+
+	set $@monster_ep7TdE2, $@monster_ep7TdE2-1;
+	if($@monster_ep7TdE2==0) {
+
+		mapannounce "ars_dun04","Ribald : We can go to the third floor!",0,0x6CC6666;
+		enablenpc "EP7wTdE2";
+		sleep2 120000;
+		disablenpc "EP7wTdE2";
+		//Salle 2
+		areamonster "ars_dun04",123,94,28,133,"Archer des Etoiles",3849,25,"EP7_TdE::OnMyMobDead2";
+		areamonster "ars_dun04",123,94,28,133,"Guerrier des Etoiles",3848,15,"EP7_TdE::OnMyMobDead2";
+		areamonster "ars_dun04",123,94,28,133,"Hacheur",3847,4,"EP7_TdE::OnMyMobDead2";
+		set $@monster_ep7TdE2,44;
+		end;
+		}
+	end;
+
+//=============================================================
+
+OnMyMobDead3:
+
+	set $@monster_ep7TdE3, $@monster_ep7TdE3-1;
+	if($@monster_ep7TdE3==0) {
+
+		mapannounce "ars_dun04","Ribald : We can go to the fourth floor!",0,0x6CC6666;
+		enablenpc "EP7wTdE3";
+		sleep2 120000;
+		disablenpc "EP7wTdE3";
+		//Salle 3
+		areamonster "ars_dun04",18,178,65,255,"Guerrier des Etoiles",3848,20,"EP7_TdE::OnMyMobDead3";
+		areamonster "ars_dun04",18,178,65,255,"Hacheur",3847,2,"EP7_TdE::OnMyMobDead3";
+		areamonster "ars_dun04",18,178,65,255,"Saigneur",3846,10,"EP7_TdE::OnMyMobDead3";
+		set $@monster_ep7TdE3,32;
+		end;
+		}
+	end;
+//=============================================================
+
+OnMyMobDead4:
+
+	set $@monster_ep7TdE4, $@monster_ep7TdE4-1;
+	if($@monster_ep7TdE4==0) {
+
+		mapannounce "ars_dun04","Ribald : We can go to the fifth floor!",0,0x6CC6666;
+		enablenpc "EP7wTdE4";
+		sleep2 120000;
+		disablenpc "EP7wTdE4";
+		//Salle 4
+		areamonster "ars_dun04",103,242,252,231,"Hacheur",3847,10,"EP7_TdE::OnMyMobDead4";
+		//Salle 4 - Archer
+		areamonster "ars_dun04",254,246,99,249,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead4";
+		areamonster "ars_dun04",253,226,99,228,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead4";
+		set $@monster_ep7TdE4,50;
+		end;
+		}
+	end;
+//=============================================================
+
+OnMyMobDead5:
+
+	set $@monster_ep7TdE5, $@monster_ep7TdE5-1;
+	if($@monster_ep7TdE5==0) {
+
+		mapannounce "ars_dun04","Ribald : We can go to the top of the Tower of Stars!",0,0x6CC6666;
+		enablenpc "EP7wTdE5";
+		if($@EP7_TdE==0) {
+		monster "ars_dun05",80,123,"NachtStern",3850,1,"EP7_TdE::OnBossDead1";
+		set $@EP7_TdE,1;}
+		sleep2 120000;
+		disablenpc "EP7wTdE5";
+		//Salle 5
+		areamonster "ars_dun04",269,180,158,43,"Archer des Etoiles",3849,20,"EP7_TdE::OnMyMobDead5";
+		areamonster "ars_dun04",269,180,158,43,"Guerrier des Etoiles",3848,25,"EP7_TdE::OnMyMobDead5";
+		areamonster "ars_dun04",269,180,158,43,"Hacheur",3847,15,"EP7_TdE::OnMyMobDead5";
+		areamonster "ars_dun04",269,180,158,43,"Saigneur",3846,40,"EP7_TdE::OnMyMobDead5";
+		set $@monster_ep7TdE5,100;
+		end;
+		}
+	end;
+
+
+//=============================================================
+
+OnBossDead1:
+
+	set $@EP7_TdE, $@EP7_TdE-1;
+	if($@EP7_TdE==0) {
+
+	mapannounce "ars_dun05","Ribald : You are finally willing to talk Nachtstern!",0,0x6CC6666;
+
+	//cinématique
+	sleep2 3000;
+	enablenpc "Ribald#ep73";
+	enablenpc "NachtStern#ep7";
+	sleep2 2000;
+	donpcevent "Ribald#ep73::OnTalk1";
+	sleep2 3000;	
+	donpcevent "NachtStern#ep7::OnTalk1";
+	sleep2 3000;
+	donpcevent "Ribald#ep73::OnTalk2";
+	sleep2 4000;
+	donpcevent "NachtStern#ep7::OnTalk2";
+	sleep2 4000;
+	donpcevent "Ribald#ep73::OnTalk3";
+	sleep2 4000;
+	donpcevent "NachtStern#ep7::OnTalk3";
+	sleep2 5000;
+	donpcevent "NachtStern#ep7::OnTalk4";
+	sleep2 5000;
+	donpcevent "NachtStern#ep7::OnTalk5";
+	sleep2 5000;
+	donpcevent "NachtStern#ep7::OnTalk6";
+	sleep2 5000;
+	donpcevent "NachtStern#ep7::OnTalk7";
+	sleep2 5000;
+	donpcevent "Ribald#ep73::OnTalk4";
+	sleep2 4000;
+	donpcevent "NachtStern#ep7::OnTalk8";
+	sleep2 5000;
+
+
+	enablenpc "#arsdun05";
+	mapannounce "ars_dun05","Ribald : We've finished here, take the gate and meet us down.",0,0x6CC6666;
+	sleep2 60000;
+	set $@EP7_TdE,0;
+	disablenpc "Ribald#ep73";
+	disablenpc "NachtStern#ep7";
+	mapwarp "ars_dun05","ars_fild17",109,55;
+	end;
+	}
+
+	end;
+
+
+}
+//========================================================================================================
+
+ars_dun05,84,108,4	script	Ribald#ep73	751,{
+
+set @name$,"Ribald";
+
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't disturb him yet ...";
+	close;
+
+OnTalk1:
+
+	npctalk "It was a long time that we were not seen Nachtstern ...";
+	end;
+
+OnTalk2:
+
+	npctalk "We had one indeed, but you have prized by attacking Academy Harpocrate! How could you believe that we t'aurions left to do!";
+	end;
+
+OnTalk3:
+
+	npctalk "Warning NachtStern! You am questioning the words of the Academy, I can not let you say such things!";
+	end;
+
+//reprise
+
+OnTalk4:
+
+	npctalk "From? The medallion? Oh yes, I feel nothing ... No presence of Harpocrates ...";
+	end;
+
+}
+//========================================================================================================
+
+ars_dun05,79,110,4	script	NachtStern#ep7	3850,{
+
+set @name$,"NachtStern";
+
+	mes "[" + @name$ + "]"; 
+	mes "You shouldn't disturb him yet ...";
+	close;
+
+OnTalk1:
+
+	npctalk "In fact, brother, why are you here? I thought we had an agreement! ";
+	end;
+
+OnTalk2:
+
+	npctalk "I know about the Helm of Glory, but you're wrong enemy, I do not know who gave you my name, but this has been done to t'induire failed!";
+	end;
+
+//Discours
+
+OnTalk3:
+
+	npctalk "Think a little, what would my interest? We live in harmony for a long enough!";
+	end;
+
+OnTalk4:
+
+	npctalk "I was indeed approached by the Magi, but mages are not High Council of the Wise Men of Arsinoe.";
+	end;
+OnTalk5:
+
+	npctalk "They asked me to help them recover the divine artifacts, but I refused feeling that they did not tell me everything.";
+	end;
+
+OnTalk6:
+
+	npctalk "They asked me to help them recover the divine artifacts, but I refused feeling that they did not tell me everything.";
+	end;
+
+OnTalk7:
+
+	npctalk "You should go back to the Academy, the dirty laundry is washed in family. Oh, and yes, use your head a bit or your medallion ...";
+	end;
+
+OnTalk8:
+
+	npctalk "Now you know I don't have the Helm, otherwise you would have felt the divine presence, you'll have to look for answers elsewhere ...";
+	end;
+}
+
+//===============================================================================
+
+ars_dun05,79,104,0	script	#arsdun05	45,1,1,{
+	
+	if (EP7_HARPO <= 1)  goto sub1;
+	if (EP7_HARPO == 2)  goto sub2;
+	if (EP7_HARPO >= 3)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the required level of quest.";
+		close2;
+		warp "ars_fild17",109,55;
+		end;
+
+
+	sub2:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You just got the reward of the Tower of Stars.";
+		close2;
+		set EP7_HARPO,3;
+		changequest 70331,70332;
+		getitem $ep7recompense[15],$ep7recompensenb[15];
+		warp "ars_fild17",109,55;
+		end;
+
+	sub3:
+
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You get meals.";
+		close2;
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		getitem $ep7foodid[4],$ep7foodnb[1];
+		getitem $ep7foodid[5],$ep7foodnb[1];
+		getitem $ep7foodid[6],$ep7foodnb[1];
+		warp "ars_fild17",109,55;
+		end;
+}
+
+//_________________________________________________________________
+//___________________Harpocrate : L'Académie ______________________
+//_________________________________________________________________
+//Enquête avec ribald / dun / puis report à grivois : fin
+
+ars_fild22,287,162,0	script	#arsin04a	45,1,1,{
+	
+	if (EP7_HARPO <= 3)  goto sub1;
+	if (EP7_HARPO >= 4)  goto sub2;
+	
+	sub1:
+		
+		mes "[Portier]"; 
+		mes "You can't enter in the Academy of Harpocrate without permission.";
+		close;
+
+	sub2:
+
+		warp "ars_in04",95,10;
+		end;
+}
+
+//===============================================================================
+
+ars_in04,90,24,4	script	Ribald#ep71	751,{
+
+set @name$,"Ribald";
+
+if (EP7_HARPO <= 3)  goto sub1;
+if (EP7_HARPO == 4)  goto sub2;
+if (EP7_HARPO <= 9)  goto sub3;
+if (EP7_HARPO >= 10)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Don't bother me.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Hey, I'm here my friend!";
+	mes "Well here we are in the Academy of Harpocrate, much more opulent than the Tower of Stars, you tell me!";
+	next;
+	mes "[" + @name$ + "]"; 	
+	mes "We will act without coverage where all this goes wrong ...";
+	mes "We need to understand why the Glorious Helm has disappeared and the Abbot Rosalita, sent us to the Nachtstern.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have dig into a little Academy history to find evidence before acting, when you have a clue, come see me before acting.";
+	mes "Clerc Graivois must be notified before any action challenging the Order."; 
+	close2; 
+	set EP7_HARPO,5;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+		mes "Hey, I'm here my friend!";
+	mes "Well here we are in the Academy of Harpocrate, much more opulent than the Tower of Stars, you tell me!";
+	next;
+	mes "[" + @name$ + "]"; 	
+	mes "We will act without coverage where all this goes wrong ...";
+	mes "We need to understand why the Glorious Helm has disappeared and the Abbot Rosalita, sent us to the Nachtstern.";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "We'll have dig into a little Academy history to find evidence before acting, when you have a clue, come see me before acting.";
+	mes "Clerc Graivois must be notified before any action challenging the Order."; 
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "Did I imagine such a thing! It's dramatic! We will check each member to see if any Doppelganger has escaped.";
+	mes "You just have to make your report to Clerc Graivois";
+	close;
+}
+
+//===============================================================================
+
+ars_in04,91,170,4	script	Abbé Rosalite#ep7	932,{
+
+set @name$,"Abbé Rosalite";
+
+if (EP7_HARPO <= 4)  goto sub1;
+if (EP7_HARPO == 5)  goto sub2;
+if (EP7_HARPO <= 9)  goto sub3;
+if (EP7_HARPO >= 10)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "Please don't disturb me during my meditation ...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Ah, you're one of those champions who rejected the vile intentions of Nachtstern!";
+	mes "So do you have the Glorious Helm of Harpocrate?";
+	next;
+	mes "[" + @name$ + "]"; 	
+	mes "No? How is it possible? Tonsuret? Why didn't they have the Helm?";
+	mes "You had been told beforehand that this was once the Lord of the Tower of Stars ...";
+	next;
+	mes "[Tonsuret]"; 
+	mes "They lied to my dear Father, they demanded action they could not do!";
+	mes "How could such fools defy Nachtstern!? Damn liars! We should beat them and deport them! They are an insult to our order!"; 
+	next;
+	mes "[" + @name$ + "]"; 	
+	mes "Ah ... We need to find this at all costs Helm, I feel the wrath of Harpocrates up!";
+	mes "We are unworthy to serve! Tonsuret, do the best for these liars ... I'm resting, I'm so tired ...";
+	next;
+	mes "[Tonsuret]"; 
+	mes "Raiders please leave the Academy of Harpocrate, you have no place here.";
+	close2; 
+	set EP7_HARPO,6;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "If you need anything, please talk to my second, Tonsuret ...";
+	close;
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "I was abused by these monsters! Many people died because my weakness ...";
+	close;
+}
+
+//===============================================================================
+
+ars_in04,93,166,4	script	Tonsuret#ep7	806,{
+
+set @name$,"Tonsuret";
+
+if (EP7_HARPO <= 5)  goto sub1;
+if (EP7_HARPO <= 9)  goto sub2;
+if (EP7_HARPO >= 10)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "I'm only the second in the Rosalite Father ...";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Raiders please leave the Academy of Harpocrate, you have no place here.";
+	close; 
+
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "I'm disappointed, we are all duped, I don't know if I'll get over it one day!";
+	close;
+
+}
+
+//===============================================================================
+
+ars_in04,24,152,4	script	Darimathie#ep7	923,{
+
+set @name$,"Darimathie";
+
+if (EP7_HARPO <= 5)  goto sub1;
+if (EP7_HARPO == 6)  goto sub2;
+if (EP7_HARPO <= 8)  goto sub3;
+if (EP7_HARPO >= 9)  goto sub4;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "People change so quickly? Or is-it me?";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "People change so quickly? Or is-it me?";
+	mes "I think there is a strange atmosphere, my friends seem more distant ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I am afraide that something is happening here, since the disappearance of Glorious Helm, everything is so different.";
+	mes "Tonsuret seem to have a bad influence on the abbot who is ageing ...";
+	mes "There are strange noises coming from the prison, which is adjacent to the dorm ... but I have not yet managed to get my hands on the key ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I'll try to find to begin my inquiry ...";
+	close2; 
+	set EP7_HARPO,7;
+	changequest 70333,70334;
+	end;
+
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "People change so quickly? Or is-it me?";
+	mes "I think there is a strange atmosphere, my friends seem more distant ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I am afraid that something is happening here, since the disappearance of Glorious Helm, everything is so different.";
+	mes "Tonsuret seem to have a bad influence on the abbot who is aging ...";
+	mes "There are strange noises coming from the prison, which is adjacent to the dorm ... but I have not yet managed to get my hands on the key ...";
+	next;
+	mes "[" + @name$ + "]"; 
+	mes "I'll try to find to begin my inquiry ...";
+	close; 
+
+sub4:
+	mes "[" + @name$ + "]"; 
+	mes "The Doppelgangers! Damn, now I understand!";
+	close;
+
+}
+
+//===============================================================================
+ars_in04,157,69,4	script	#actionep7in04a	111,{
+
+set @name$,"Action : Prendre";
+
+if (EP7_HARPO <= 6)  goto sub1;
+if (EP7_HARPO == 7)  goto sub2;
+if (EP7_HARPO >= 8)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "There is nothing you find interesting in this drawer.";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "You just got the key to the prison of the Academy of Harpocrates.";
+	close2; 
+	set EP7_HARPO,8;
+	changequest 70334,70335;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "You've already taken the key to the prison.";
+	close; 
+
+}
+
+//===============================================================================
+ars_in04,12,100,0	script	#arsin04b	45,1,1,{
+	
+	if (EP7_HARPO <= 7)  goto sub1;
+	if (EP7_HARPO >= 8)  goto sub2;
+	
+	sub1:
+		
+		mes "[Porte]"; 
+		mes "You can't enter in the prison of the Academy of Harpocrates without the key.";
+		close;
+
+	sub2:
+
+		warp "ars_in04",167,151;
+		end;
+}
+
+//===============================================================================
+
+ars_in04,162,145,4	script	Tonsuret#ep71	806,{
+
+set @name$,"Tonsuret";
+
+if (EP7_HARPO <= 7)  goto sub1;
+if (EP7_HARPO == 8)  goto sub2;
+if (EP7_HARPO >= 9)  goto sub3;
+
+sub1:
+	mes "[" + @name$ + "]"; 
+	mes "This prison is not my place!";
+	close;
+
+sub2:
+	mes "[" + @name$ + "]"; 
+	mes "Cursed Dopplegangers! I hate you with all my heart!";
+	next;
+ 	mes "[" + @name$ + "]"; 
+	mes "What you're not Doppelgangers! Damn! Free us then!";
+	mes "We'll have to kill their leader, Ismail Deceiver, it's the only who will have the key, get ready to fight!";
+	mes "Come back if you want to launch the attack!";
+	close2; 
+	set EP7_HARPO,9;
+	changequest 70335,70336;
+	end;
+
+sub3:
+	mes "[" + @name$ + "]"; 
+	mes "Ready to launch the attack?";
+	next;
+	menu "Start the attack",submenu1,"No, I must prepare",-;
+	
+	close;
+
+submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Let's go!";
+	close2;
+	warp "ars_dun12",167,140;
+	end;
+
+}
+
+//===============================================================================
+
+ars_dun12,162,145,1	script	Tonsuret#ep72	806,{
+
+
+set @name$,"Tonsuret";
+
+	if($@ep7mage3==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate in the Academy Assault !";
+	next;
+	menu "Restart",submenu1,"Stay",-;
+	
+	close;
+
+	submenu1:
+
+	mes "[" + @name$ + "]"; 
+	mes "Allons-y !";
+	close2;
+	warp "ars_in04",167,140;
+	end;
+
+	}
+	if($@ep7mage3>=1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can now participate at the Assault on the Academy!";
+	next;
+	menu "Restart",submenu1,"Stay",-;
+	
+	close;
+	}
+
+OnBG:
+	waitingroom "Assault on the Academy - Wainting Room",$EP7_InstJoueurs,"EP7_harpo2::OnBGJoin",1;
+	end;
+
+OnEnterBG:
+
+	
+	enablenpc "#arsdun12a";
+	end;
+
+
+}
+
+//===================================================================================
+
+ars_dun12,167,154,0	script	#arsdun12a	45,1,1,{
+	
+if (EP7_HARPO <= 8)  goto sub1;
+if (EP7_HARPO >= 9)  goto sub2;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close;
+
+	sub2:
+
+		warp "ars_dun12",12,101; //instance
+		end;
+	
+}
+
+//=====================================================================================
+
+-	script	EP7_harpo2	-1,{
+
+OnInit:
+
+	donpcevent "Tonsuret#ep72::OnBG";
+		
+	disablenpc "#arsdun12a";
+	disablenpc "#arsdun12b";
+
+	killmonsterall "ars_dun12";
+
+	set $EP7_HarpoClone,0;
+	set $@ep7harpo2, 0;
+	set $@ep7clone,0;
+
+	setnpctimer 0;
+	stopnpctimer;
+	end;	
+
+
+OnBGJoin:
+	if( $@ep7harpo2 == 0 )
+		donpcevent "EP7_harpo2::OnReadyCheck";
+	end;
+
+OnReadyCheck:
+	if( $@ep7harpo2 )
+		end;
+	set .@ep7harpo2, getwaitingroomstate(0,"Tonsuret#ep72");
+	
+	if( .@ep7harpo2 < $EP7_InstJoueurs )
+	{
+		mapannounce "ars_dun12","Instance -- Assault on the Academy : " + .@ep7harpo2 + "/" + $EP7_InstJoueurs + "",1,0xFF6600;
+		end;
+	}
+
+	// BG Variables
+	set $@ep7harpo2, 1;
+	// warp joueurs
+	donpcevent "Tonsuret#ep72::OnEnterBG";
+	if( $EP7Annonce == 0 ) {mapannounce "ars_dun12","Instance -- Assault on the Academy has just begun!",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "Instance -- Assault on the Academy has just begun!",0,0xFF6600;}
+	// Start Match!!
+	initnpctimer;
+	// npcs les fenetres
+	delwaitingroom "Tonsuret#ep72";
+	end;
+
+OnTimer10000:
+	
+
+	mapannounce "ars_dun12","Tonsuret : Find Ismail the deceiver, he has the key to our prison!",1,0x00CCFF;
+	monster "ars_dun12",91,104,"Ismail le Fourbe",3860,1,"EP7_harpo2::OnKillBoss";
+	set $@monster_ep7harpo2,1;
+	end;
+	
+OnTimer15000:
+
+	mapannounce "ars_dun12","Tonsuret : Beware the Doppelgangers will change their appearance !",1,0x00CCFF;
+	callfunc "EP7_Clone";
+	disablenpc "#arsdun12a";
+	end;
+
+
+
+OnTimer3600000:
+
+	mapannounce "ars_dun12","Ismail the Deceiver : There will be no next time!",0,0x6CC6666;
+	sleep2 5000;
+	killmonsterall "ars_dun12";
+	mapwarp "ars_dun12","ars_in04",82,86;
+	sleep2 30000;
+	donpcevent "EP7_harpo2::OnInit";
+	end;
+
+//=======================================================================
+
+OnClone:
+
+	end;
+
+OnKillBoss:
+
+	set $@monster_ep7harpo2, $@monster_ep7harpo2-1;
+	if($@monster_ep7harpo2==0) {
+	
+	//Ouverture - Cinématique	
+	mapannounce "ars_dun12","Tonsuret : I just opened a portal in the throne room, take it!",0,0x6CC6666;
+	sleep2 3000;
+
+	enablenpc "#arsdun12b";
+
+	sleep2 120000;
+	killmonsterall "ars_dun12";
+	mapwarp "ars_dun12","ars_in04",82,86;
+	sleep2 30000;
+	donpcevent "EP7_harpo2::OnInit";
+	end;
+	}
+	end;
+
+}
+
+//========================================================================================================
+
+ars_dun12,92,158,0	script	#arsdun12b	45,1,1,{
+	
+	if (EP7_HARPO <= 8)  goto sub1;
+	if (EP7_HARPO == 9)  goto sub2;
+	if (EP7_HARPO >= 10)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + strcharinfo(0) + "]"; 
+		mes "You don't have the level of quest required to participate in this instance.";
+		close2;
+		warp "ars_in04",96,17; //retour début
+		end;
+
+	sub2:
+
+		dispbottom "Have you forgotten you collect items from monsters.";
+		getitem $ep7recompense[21],$ep7recompensenb[21];
+		set EP7_HARPO,10;
+		changequest 70336,70337;	
+		warp "ars_in04",96,17; //retour début
+		end;
+
+	sub3:
+		
+		dispbottom "You already got your reward, but you get foods.";
+		getitem $ep7foodid[1],$ep7foodnb[1];
+		getitem $ep7foodid[2],$ep7foodnb[1];
+		getitem $ep7foodid[3],$ep7foodnb[1];
+		warp "ars_in04",96,17; //retour début
+		end;
+	
+}
+
+
+
+

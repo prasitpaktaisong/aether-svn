@@ -1,0 +1,20 @@
+-	script	DelayMatilde	-1,{
+
+OnPCLoginEvent:
+	if(#AE_DelayMatilde > 0){
+		attachnpctimer strcharinfo(0);
+		initnpctimer DelayMatilde;
+	}
+	end;
+
+OnTimer1000:
+	set #AE_DelayMatilde, #AE_DelayMatilde - 1;
+	if(#AE_DelayMatilde == 0){
+		stopnpctimer DelayMatilde;
+		end;
+	}
+	stopnpctimer DelayMatilde;
+	initnpctimer DelayMatilde;
+	end;
+}
+

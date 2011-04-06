@@ -1,0 +1,1021 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Quêtes de l'Introduction
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = Introduction : Arrivée 
+// 2 = Le Rêve : La Liche
+// 3 = Le Rêve : Le Château
+// 4 = Introduction : Le Portail
+// 5 = Introduction : Personnages
+// 6 = Introduction : Animations
+//
+//_________________________________________________________________
+//___________________Introduction : Arrivée _______________________
+//_________________________________________________________________
+
+ars_fild41,41,54,0	script	#eventintro1	-1,0,8,{
+
+OnTouch:
+	
+	set $@player$,strcharinfo(0);
+	//if (EP7_GLOBAL > 0)  goto sub2;
+	if (EP7_INTRO == 0)  goto sub1;
+	if (EP7_INTRO >= 1)  goto sub2;
+	
+	sub1:	
+		if( $EP7DAnnonce == 0 ) {announce strcharinfo(0)+", "+((Sex)?"o mais novo":"a mais nova")+" jovem de Urunesti.",0,0xFF9966;}
+		if( $EP7DAnnonce == 1 ) {mapannounce "ars_fild41",strcharinfo(0)+", "+((Sex)?"o mais novo":"a mais nova")+" jovem de Urunesti.",0,0xFF9966|bc_self;}
+		set EP7_INTRO,1;
+		setquest 70400;
+		sleep 5000;
+		mapannounce "ars_fild41","Mamãe: " + $@player$ + ", venha para casa. Eu fiz algumas compras.",0,0xFF9966|bc_self;
+		end;
+	sub2:
+		end;
+}
+		
+//===================================================================
+
+ars_fild41,41,48,3	script	Aether#ep7intropan	858,{
+	end;
+}
+
+//===================================================================
+ars_fild41,49,69,4	script	Spiria Symphonia#ep7	62,{
+
+set $@player$,strcharinfo(0);
+	if (EP7_INTRO == 0)  goto sub2;
+	if (EP7_INTRO == 1)  goto sub1;
+	if (EP7_INTRO >= 2)  goto sub2;
+
+sub2:
+	mes "^FF0000[Spiria Symphonia]^000000"; 
+	mes "Me diga, quando você vai voltar para brincar, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000?"; 
+	close;
+
+sub1:
+	if ($@ep7intro1 == 0) {
+	donpcevent "EP7_intro::OnEvent1";
+	}
+	mes "^FF0000[Spiria Symphonia]^000000"; 
+	mes "Oh, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000! Que dia lindo!"; 
+	close;
+
+	OnTalk1:
+		npctalk ""+$@player$+"! Faz bastante tempo que não te vemos aqui em Urunesti!";
+		end;
+
+	OnTalk2:
+		npctalk "Bom, sei que você fez a escolha certa vindo para o mundo de "+$EP7ServName$ +"!";
+		end;
+
+	OnTalk3:
+		npctalk "É o começo de suas novas aventuras, "+$@player$ +"!";
+		end;
+
+	OnTalk4:
+		npctalk "Não vamos mais te atrapalhar. Sua mãe estava te procurando. Seria bom ir falar com ela.";
+		end;
+
+	OnTalk5:
+		npctalk "Manobra de Dispersão!";
+		end;
+
+	OnMove1: npcwalkto 49,45; end;
+	OnMove2: npcwalkto 62,36; end;
+	OnMove3: npcwalkto 49,45; end;
+	OnMove4: npcwalkto 49,69; end;
+}
+
+//===================================================================
+
+ars_fild41,44,73,4	script	Mara Alune#ep7	96,{
+
+	mes "^FF0000[Mara Alune]^000000";
+	mes "Logo terei de ir pra casa para dar ração aos meus gatos."; 
+	close;
+
+	OnTalk1:
+		npctalk "Como foi a viagem para Torn-Thalas?";
+		end;
+
+	OnTalk2:
+		npctalk "Nós não conhecemos tudo exatamente, mas há uma história ancestral por trás de tudo!";
+		end;
+
+	OnTalk3:
+		npctalk "Manobra de Dispersão!";
+		end;
+
+	OnMove1: npcwalkto 63,76; end;
+	OnMove2: npcwalkto 67,95; end;
+	OnMove3: npcwalkto 63,76; end;
+	OnMove4: npcwalkto 44,73; end;
+
+}
+//===================================================================
+
+ars_fild41,48,75,4	script	Ryu Zandermil#ep7	706,{
+
+	mes "^0000FF[Ryu Zandermil]^000000"; 
+	mes "Quando eu crescer, quero navegar por esses mares!"; 
+	close;
+
+	OnTalk1:
+		npctalk "Mas isso não é importante, é bom ter você conosco.";
+		end;
+
+	OnTalk2:
+		npctalk "Agora é apenas seguir em frente.";
+		end;
+
+	OnTalk3:
+		npctalk "Manobra de Dispersão!";
+		end;
+
+	OnMove1: npcwalkto 63,78; end;
+	OnMove2: npcwalkto 84,65; end;
+	OnMove3: npcwalkto 63,78; end;
+	OnMove4: npcwalkto 48,75; end;
+
+}
+//===================================================================
+
+ars_in10,23,101,4	script	Mamãe#ep7	91,6,6,{
+
+if (EP7_INTRO == 1 || EP7_INTRO == 2)  goto sub1;
+if (EP7_INTRO == 3 || EP7_INTRO == 4)  goto sub2;
+
+	mes "^FF0000[Mamãe]^000000"; 
+	mes "Há muito o que ser feito agora."; 
+	close;
+
+sub1:
+	mes "^FF0000[Mamãe]^000000"; 
+	mes ""+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000, já está tarde!";
+	mes "Eu estava te esperando. Vá pegar um pouco de leite na fazendo.";
+	mes "É a Aventura de fazer o jantar hoje.";
+	next;
+
+	mes "^FF0000[Mamãe]^000000"; 
+	mes "A Fazenda fica ao Norte, vá pela ponte e você verá Fernandel, ele pode ficar preocupado.";
+	mes "E não se perca na estrada dessa vez."; 
+	close2;
+	if (EP7_INTRO == 1) {set EP7_INTRO,2;changequest 70400,70401;}
+	end;
+
+sub2:
+	mes "^FF0000[Mamãe]^000000"; 
+	mes "Perfeito, vou fazer o jantar.";
+	mes "Suba para o seu quarto e descanse um pouco!";
+	mes "Sua irmã já está lá.";
+	close2;
+	if (EP7_INTRO == 3) {set EP7_INTRO,4;changequest 70402,70403;}
+	end;
+
+OnTouch:
+	if (EP7_INTRO == 1 || EP7_INTRO == 3) {showevent 1,0;} end;
+}
+
+//===================================================================
+
+ars_fild42,137,70,1	script	Fernandel#ep7	929,{
+
+if (EP7_INTRO == 2)  goto sub1;
+
+	mes "^0000FF[Fernandel]^000000"; 
+	mes "A ajuda vinda de Arsinoe, nossa cidade Capital, nunca chega rapidamente, eu estou perdendo dinheiro produzindo todo esse leite!"; 
+	close;
+
+sub1:
+	mes "^0000FF[Fernandel]^000000"; 
+	mes "Sua mãe me avisou, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	mes "Você pode ordenhar Margareth se precisar de leite.";
+	close;
+}
+//===================================================================
+
+ars_fild42,141,74,1	script	Margareth#ep7	889,5,5,{
+
+	if (EP7_INTRO == 2)  goto sub1;
+	
+	mes "^FF0000[Margareth]^000000"; 
+	mes "O pobre Fernandel pensa que seu bichinho de estimação é uma vaca leiteira...";
+	mes "Melhor nem perguntar como ele consegue o leite..."; 
+	close;
+
+sub1:
+	switch(rand(3)){
+
+	case 0:
+		mes "^FF0000[Margareth]^000000";
+		mes "Você ordenhou com sucesso.";
+		mes "Parabéns, mas creio que há algo de estranho nessa vaca, melhor não saber o que...";
+		close2;
+		set EP7_INTRO,3;
+		changequest 70401,70402;
+		end;
+	case 1:
+	case 2:
+	case 3:
+		mes "^FF0000[Margareth]^000000";
+		mes "Você falhou ao ordenhar a vaca.";
+		mes "Porém, ela demonstra uma certa animosidade para com você...";
+		close2;
+		percentheal -10,0;
+		specialeffect2 596;
+		end;}		
+
+OnTouch:
+	if (EP7_INTRO == 2) {showevent 1,0;} end;
+}
+//===================================================================
+
+ars_in10,45,102,4	script	Soeur Anne#ep7	958,{
+
+set @name$,"Soeur Anne";
+
+	mes "^FF0000[Soeur Anne]^000000"; 
+	mes "Os ^0000FFAprendizes^000000 vêm tendo sonhos estranhos. No Templo, eles falam sobre grandes mudanças no universo."; 
+	close;
+}
+//===================================================================
+
+ars_in10,59,98,4	script	Cama#ep7	111,{
+
+if (EP7_INTRO == 4)  goto sub1;
+
+	mes ((Sex)?"^0000FF[":"^FF0000[")+strcharinfo(0)+"]^000000"; 
+	mes "Não estou cansad"+((Sex)?"o":"a")+" ainda."; 
+	close;
+
+sub1:
+
+	mes ((Sex)?"^0000FF[":"^FF0000[")+strcharinfo(0)+"]^000000"; 
+	mes "Será que devo relaxar?";
+	next;
+	menu "• Sim",submenu1,"• Não",-;
+
+	close;
+
+submenu1:
+
+	mes ((Sex)?"^0000FF[":"^FF0000[")+strcharinfo(0)+"]^000000"; 
+	mes "O sono está vindo rápido, de leve...";
+	sleep2 2000;
+	mes "Algumas visões estranhas, como um sonho...";
+	sleep2 2000;
+	mes "Algo está me chamando...";
+	close2;
+	warp "ars_dun21",152,99;
+	end; 
+	
+}
+
+//_________________________________________________________________
+//___________________Le Rêve : La Liche ___________________________
+//_________________________________________________________________
+
+ars_dun21,152,87,0	script	#eventintro2	-1,0,10,{
+
+OnTouch:
+
+	if (EP7_INTRO == 4)  goto sub1;
+	end;
+	
+	sub1:	
+		
+		if ($@ep7intro2 == 0) {donpcevent "EP7_intro::OnEvent4"; set $@ep7intro2,1;mapannounce "ars_dun21","Feiticeiro: "+strcharinfo(0)+", você está atrasado. Aproxime-se, tenho algo a mostrar para você.",0,0x9966CC|bc_self;}
+		end;
+}
+//===================================================================
+
+ars_dun21,150,83,2	script	Feiticeiro#ep7shan	735,{
+
+	mes ((Sex)?"^0000FF[":"^FF0000[")+strcharinfo(0)+"]^000000"; 
+	mes "É um mago estranho, não consigo ver sua face..."; 
+	close;
+
+	OnTalk1:
+		npctalk "Você está aqui por minha vontade, este é meu laboratório...";
+		end;
+
+	OnTalk2:
+		npctalk "Tenho coisas grandiosas para te revelar, então aproxime-se...";
+		end;
+
+	OnTalk3:
+		npctalk "Não se preocupe, esse é seu destino!";
+		sleep2 2000;
+		Emotion e_heh;
+		end;	
+}
+//===================================================================
+
+ars_dun21,61,105,5	script	Feiticeiro#ep7shan2	735,{
+
+if (EP7_INTRO == 4)  goto sub1;
+
+	mes "^0000FF[Feiticeiro]^000000"; 
+	mes "Você não pertence à esse lugar, vá embora!"; 
+	close;
+
+sub1:
+	if ($@ep7intro3 == 1) {
+		mes "^0000FF[Feiticeiro]^000000"; 
+		mes "Apenas imagine profundamente por enquanto, é apenas uma história de alguns segundos.";
+		close;
+	}
+
+	mes "^0000FF[Feiticeiro]^000000";
+	mes "Saudações, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000, farei com que você entenda seu futuro..."; 
+	set $@player2$,strcharinfo(0);
+	set $@player3$,getcharid(0);
+	donpcevent "EP7_intro::OnEvent5";
+	close;
+
+
+	OnTalk1:
+		npctalk "Você pertence à um grande destino, é o motivo de estar aqui...";
+		end;
+
+	OnTalk2:
+		npctalk "Neste momento, não há muito que possa entender sobre sua situação...";
+		end;
+
+	OnTalk3:
+		npctalk "Veja, farei com que entenda o que será de seu futuro...";
+		sleep2 2000;
+		Emotion e_heh;
+		end;	
+
+	OnTalk4:
+		npctalk "Aqui está você, em sua prisão...";
+		clone "ars_dun21",59,118,"EP7_intro::OnNothing",$@player3$;
+		specialeffect 52;
+		sleep2 500;
+		specialeffect 52;
+		sleep2 500;
+		specialeffect 52;
+		end;
+
+	OnTalk5:
+		npctalk "Você está em um confinamento, por entre os mundos de Yggdrasil.";
+		end;
+
+	OnTalk6:
+		npctalk "Os fracos sempre perderão, veja!";
+		sleep2 2000;
+		specialeffect 573;
+		end;
+
+	OnTalk7:
+		npctalk "E então, sua vida terá fim, você não pode ficar em meu caminho.";
+		sleep2 2000;
+		killmonsterall "ars_dun21";
+		end;
+
+	OnTalk8:
+		npctalk "O que acontece?!";
+		end;
+
+	OnTalk9:
+		npctalk "A Arquimaga Ornélia! E seus pobres feiticeiros do Conselho de Magos de Arsinoe!";
+		end;
+
+	OnTalk10:
+		npctalk "Esse velho Dragão deveria parar de perder tempo falando tanto...";
+		end;
+
+	OnTalk11:
+		npctalk "Enfim, vá! Espero que não chegue muito longe nisso!";
+		end;
+
+	OnMove1: npcwalkto 68,103; end;
+	OnMove2: npcwalkto 61,105; end;
+}
+//========================================================================================================
+ars_dun21,73,99,4	script	Arquimaga Ornélia#ep7i	971,{
+
+	mes "^FF0000[Arquimaga Ornélia]^000000"; 
+	mes ""+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000! Deixe me prosseguir! Iremos salvar você!"; 
+	close;
+
+	OnTalk1: specialeffect 651; end;
+	OnTalk2: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; enablenpc "Arquimaga Ornélia#ep7i"; end;	
+
+	OnTalk3:
+		npctalk "Ah, aqui está você! Nós finalmente pegamos você, maldito Lich!";
+		end;
+
+	OnTalk4:
+		npctalk "O Dragão de Gondar estava certo! Liberte-se, "+ $@player2$+"!";
+		end;
+
+	OnTalk5:
+		npctalk "Archosio! Ghoji! Oeste! O feitiço!";
+		end;
+
+	OnTalk6:
+		npctalk "Não vamos destruir você, não pertencemos mais a esse mundo...";
+		end;
+
+	OnTalk7:
+		npctalk "Vamos apenas trazer" + $@player2$ + "conosco, você conhece seu destino...";
+		end;
+
+	OnTalk8:
+		npctalk "" + $@player2$ + "! Vamos! Confie em mim!";
+		sleep2 4000;
+		warpchar "ars_dun22",109,18,$@player3$;
+		end;
+}
+//========================================================================================================
+ars_dun21,71,95,4	script	Arquimago Archosio#ep7i	64,{
+
+	mes "^0000FF[Arquimago Archosio]^000000"; 
+	mes "Você não deve perturbá-lo ainda...";
+	close;
+
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; enablenpc "Arquimago Archosio#ep7i"; end;	
+OnTalk2: npctalk "Certo, mestra!"; specialeffect 513; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;end;
+
+}
+//========================================================================================================
+ars_dun21,76,97,4	script	Feiticeiro Ghoji#ep7i	754,{
+
+	mes "^0000FF[Feiticeiro Ghoji]^000000"; 
+	mes "Você não deve perturbá-lo ainda...";
+	close;
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; enablenpc "Feiticeiro Ghoji#ep7i"; end;	
+OnTalk2: npctalk "Sim!"; specialeffect 513; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461; sleep2 500; specialeffect 461;end;
+
+}
+//========================================================================================================
+
+ars_dun21,75,104,4	script	Aprendiz Oeste#ep7i	755,{
+
+	mes "^0000FF[Aprendiz Oeste]^000000"; 
+	mes "Você não deve perturbá-lo ainda...";
+	close;
+
+OnTalk1: specialeffect 30; sleep2 500; specialeffect 341;sleep2 500; specialeffect 30; sleep2 500; enablenpc "Aprendiz Oeste#ep7i"; end;	
+OnTalk2: specialeffect 513; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460;sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460; sleep2 500; specialeffect 460;end;
+
+}
+
+//_________________________________________________________________
+//___________________Le Rêve : Le Château _________________________
+//_________________________________________________________________
+
+
+ars_dun22,112,89,4	script	Aerie#ep7intro	485,{
+
+	mes "^FF0000[Aerie]^000000"; 
+	mes "Você não deve perturbá-la ainda...";
+	close;
+
+OnTalk1: npctalk "Ragnarök!";specialeffect 622;end;
+OnTalk2: npctalk "" + $@player4$ +"! Você deve impedir que esse desastre aconteça!";end;
+OnTalk3: npctalk "Esse futuro pode não acontecer! Você pode impedir que o Mal realize isso!";end;
+OnTalk4: npctalk "Esse sonho é um pedido de socorro, uma tentativa de criar, de fazer uma geração de heróis aparecer!";end;
+
+OnTalk5: npctalk "Ornélia, abra o Portal! "+$@player4$+" siga adiante, sua aventura começa aqui!";end;
+OnTalk6: npctalk "Franshille, não esqueça. Boa sorte!";end;
+}
+//========================================================================================================
+ars_dun22,111,94,4	script	Prêtre Merlay#intro	481,{
+
+	mes "^0000FF[Prêtre Merlay]^000000"; 
+	mes "Você não deve perturbá-la ainda...";
+	close;
+
+OnTalk1: npctalk "Seguidor de Lalibela, criança pertencente aos Deuses!";end;
+OnTalk2: npctalk "Espero ouvir seu nome em breve";end;
+
+}
+//========================================================================================================
+ars_dun22,114,68,4	script	Arquimaga Ornélia#intro	971,6,6,{
+
+	mes "^FF0000[Arquimaga Ornélia]^000000";  
+	mes "Você não deve perturbá-la ainda...";
+	close;
+
+OnTalk1: npctalk ""+ $@player4$+", enfim! É provável que tenha muitas perguntas a me fazer...";end;
+OnTalk2: npctalk "Siga-me, explicarei o que está acontecendo...";end;
+OnTalk3: npctalk "Para que entenda, eu sou a autoridade primária entre os feiticeiros de Arsinoe, e esses são meus companheiros.";end;
+
+OnTalk4: npctalk "Arsinoe, a Capital deste continente, está ruindo e nós somos seus últimos defensores...";end;
+OnTalk5: npctalk "Urunesti, sua cidade, parte de Arsinoe, também não existirá mais...";end;
+OnTalk6: npctalk "Enquanto você dorme, essa é uma visão do futuro...";end;
+
+OnTalk7: npctalk "Deusa Aerie! Aqui está o eleito! Seu nome é "+$@player4$+"!";end;
+
+OnTalk8: npctalk "" + $@player4$ +", preste bem atenção, nós enviaremos você de volta à Urunesti...";end;
+OnTalk9: npctalk "Porém, você não deve permanecer lá, você deve seguir o caminho para completar seu destino.";end;
+OnTalk10: npctalk "Franshille vive em sua cidade, ele mostrará a você o caminho!";end;
+OnTalk11: npctalk "Se permanecer em Arsinoe, encontrará o Feiticeiro-Lich, por isso, deverá partir de Midgard.";end;
+
+OnTalk12: specialeffect 513; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465; sleep2 500; specialeffect 465;end;
+
+
+
+OnMove1: npcwalkto 115,86; end;	//vers groupe
+OnMove2: npcwalkto 114,68; end;	//vers début
+
+OnTouch:
+
+	if ($@ep7intro4 == 0) {donpcevent "EP7_intro::OnEvent7"; set $@player4$,strcharinfo(0);}end;
+
+}
+//========================================================================================================
+ars_dun22,117,94,4	script	Profeta Tanzgue#intro	805,{
+
+	mes "^0000FF[Profeta Tanzgue]^000000"; 
+	mes "Você não deve perturbá-lo ainda...";
+	close;
+
+OnTalk1: npctalk "Eu sou o Profeta Tanzgue, servo de Danifae, Deusa de minha ordem!"; end;
+OnTalk2: npctalk "Nós falhamos em nossa missão..."; end;
+OnTalk3: npctalk "Nós tinhamos que impedir Shandalar, o Lich e Feiticeiro, que conseguiu escapar, com seus planos...";end;
+}
+//========================================================================================================
+
+ars_dun22,119,91,4	script	Clérigo Graivois#intro	752,{
+
+	mes "^0000FF[Clérigo Graivois]^000000"; 
+	mes "Você não deve perturbá-lo ainda...";
+	close;
+
+OnTalk1: npctalk "Clérigo Graivois! Líder dos Cavaleiros de Harpocrate dos Portões de Istar, defensores de Arsinoe!";
+
+}
+//========================================================================================================
+
+ars_dun22,113,100,0	script	#arsdun22a	45,1,1,{	
+
+		if (EP7_INTRO == 4) {set EP7_INTRO,5;changequest 70403,70404;}	
+		warp "ars_in10",59,102;
+		end;	
+}
+
+//_________________________________________________________________
+//___________________Introduction : Le Portail ____________________
+//_________________________________________________________________
+
+ars_in10,154,130,1	script	Franshille#ep7	705,{
+
+set @name$,"";
+
+if (EP7_INTRO == 5 || EP7_INTRO == 6)  goto sub1;
+
+	mes "^0000FF[Franshille]^000000"; 
+	mes "Vou ter muito trabalho, uma Era de Trevas se aproxima..."; 
+	close;
+
+sub1:
+	
+	mes "^0000FF[Franshille]^000000";
+ 	mes ""+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000, em sua expressão, você não chegou até aqui por acaso!";
+	mes "Então, esse sonho, estranho, não? Mas, permita-me fazer uma pergunta...";
+	next;
+	mes "^0000FF[Franshille]^000000";  
+	mes "Você aceita completar seu próprio destino? Abandonar sua cidade, seus amigos em busca de caminhos desconhecidos e sofrimento?"; 
+	next;
+	menu "• Sim, é meu destino!",submenu1,"• Estou com medo...",-;
+
+		mes "^0000FF[Franshille]^000000";  
+		mes "Bom, aproveite o tempo com seus amigos...";
+		close;
+
+	submenu1:
+
+		mes "^0000FF[Franshille]^000000";  
+		mes "Você fez a escolha certa, acredite em mim. Você precisa deixar Urunesti e Arsinoe!";
+		mes "Você está em completa exposição aqui, com o Feiticeiro-Lich e seus comparsas atrás de você.";
+		next;
+		mes "^0000FF[Franshille]^000000";  		
+		mes "Com Ornélia, pensamos que em ^0000FF"+$EP7CapiName$+"^000000, Capital de ^0000FFMidgard^000000, você poderá começar seu aprendizado.";
+		mes "Você encontrará meios, naquelas terras desconhecidas, para quando enfim chegar a maior idade, voltar a Arsinoe e impedir o Ragnarok!";
+		next;
+		mes "^0000FF[Franshille]^000000";  
+		mes "Enfim, com meus poderes, transportarei você para os Corredores do Tempo, que irão levar-te para ^0000FF"+$EP7CapiName$+"^000000.";
+		mes "Espero rever-te...";
+		close2;
+		if ($@ep7intro5 == 1)  {mes "^0000FF[Franshille]^000000"; mes "Eu preciso cuidar de "+$@player5$+", espere alguns instantes."; close;}
+		
+		set $@player5$,strcharinfo(0);
+		set $@player6,getcharid(0);
+		set $@ep7intro5,1;
+		set EP7_INTRO,6;
+		completequest 70404;
+
+	//effets
+	sleep2 1000;
+	specialeffect2 463;
+	sleep2 1000;
+	specialeffect2 467;
+	sleep2 1000;
+	specialeffect2 492;
+	sleep2 1000;
+	specialeffect2 311;
+	sleep2 1000;
+	specialeffect2 303;
+	sleep2 1000;
+	specialeffect2 466;
+	sleep2 1000;
+	specialeffect2 29;
+	sleep2 1000;
+	warpchar "ars_dun23",92,44,$@player6;
+	sleep2 1000;
+	set $@ep7intro5,0;
+	end;
+}
+
+//========================================================================================================
+
+ars_dun23,134,123,0	script	#arsdun23a	45,1,1,{	
+
+		if (EP7_INTRO == 6) {set EP7_INTRO,7;}	
+		dispbottom ""+strcharinfo(0)+" aqui está você em "+$EP7CapiName$+". Quando estiver forte o suficiente, deverá procurar  Daphnis em Alberta para retornar à Arsinoe e lutar contra as forças sombrias. No entanto, saudações de "+$EP7ServName$+"!";
+		warp $EP7map$,$EP7x,$EP7y;
+		savepoint $EP7map$,$EP7x,$EP7y;
+		end;	
+}
+
+//_________________________________________________________________
+//___________________Introduction : Personnages ___________________
+//_________________________________________________________________
+
+ars_fild41,113,93,4	script	Maire Ugressi#ep7	110,{
+
+	if (EP7_INTRO <= 6)  goto sub1;
+
+	mes "^0000FF[Maire Ugressi]^000000"; 
+	mes "Sou o prefeito dessa vila."; 
+	close;
+
+	sub1:
+
+		mes "^0000FF[Maire Ugressi]^000000"; 
+		mes "Saudações!";
+		mes "Atualmente, você está na introdução " + $EP7ServName$ + "...";
+		mes "Você pode simplesmente ir adiante sem assistí-la, porém, se é a primeira vez que passa por aqui, é recomendável que passe por ela!";
+		next;
+		menu "• Permanecer",-,"• Prosseguir",submenu1;
+
+			mes "^0000FF[Maire Ugressi]^000000"; 
+			mes "Você fez a escolha certa!";
+			close;
+
+		submenu1:
+
+			mes "^0000FF[Maire Ugressi]^000000"; 
+			mes "É você quem sabe...";
+			close2;
+			set EP7_INTRO,7;
+			warp $EP7map$,$EP7x,$EP7y;
+			savepoint $EP7map$,$EP7x,$EP7y;
+			end;
+
+}
+//===================================================================
+
+ars_fild41,71,67,4	script	Olívia#ep7	703,{
+
+	mes "^FF0000[Olívia]^000000"; 
+	mes "Eu quero sorvete!"; 
+	close;
+
+	OnTalk1:
+		npctalk "Paiê! Paiê!";
+		end;
+
+	OnTalk2:
+		npctalk "Mas, por que, papai?!";
+		end;
+
+	OnTalk3:
+		npctalk "Eu quero sorvete! Eu quero sorvete!";
+		end;
+
+	OnTalk4:
+		npctalk "E-Eu vou choraar!";
+		end;
+
+	OnTalk5:
+		npctalk "Eu quero sorvete! Eu quero sorvete!";
+		end;
+
+	OnTalk6:
+		npctalk "Oba! Oba! Oba!";
+		Emotion e_swt;
+		sleep2 1000;
+		Emotion e_swt;
+		end;
+
+}
+//===================================================================
+
+ars_fild41,76,67,4	script	Papaeye#ep7	50,{
+
+	mes "^0000FF[Papaeye]^000000"; 
+	mes "No meu tempo era diferente, nós éramos mais bem educados!"; 
+	close;
+
+	OnTalk1:
+		npctalk "Nada de sorvete pra você!";
+		end;
+
+	OnTalk2:
+		npctalk "Por que...";
+		end;
+
+	OnTalk3:
+		npctalk "Cale-se, pelo amor dos Deuses!";
+		Emotion e_omg;
+		end;
+
+	OnTalk4:
+		npctalk "Vamos pra casa se continuar com isso!";
+		end;
+
+	OnTalk5:
+
+		npctalk "Pare de chorar!";
+		Emotion e_sry;
+		end;
+	
+}
+//===================================================================
+
+ars_fild41,73,63,4	script	Sorveteiro#ep7	790,{
+
+	mes "^0000FF[Sorveteiro]^000000";
+	mes "Veja só como são as pessoas com seus filhos!";
+	mes "Veja, meu amigo, como é fácil fazer dinheiro.";
+	close;
+
+	OnTalk1:
+		npctalk "Hahaha! Isso sempre funciona!";
+		Emotion e_heh;
+		end;
+}
+//===================================================================
+
+ars_fild41,115,110,4	script	Vendedor#ep7a	82,{
+
+	mes "^0000FF[Vendedor]^000000"; 
+	mes "Frutas! Frutas maduras!"; 
+	close;
+
+	OnTalk1:
+		npctalk "Frutas! Frutas frescas e maduras!";
+		end;
+
+	OnTalk2:
+		npctalk "Ofertas! Aqui cavalheiros! Madames!";
+		end;
+	
+}
+
+//===================================================================
+
+ars_fild41,123,111,4	script	Vendedor#ep7b	84,{
+
+	mes "^0000FF[Vendedor]^000000"; 
+	mes "Bolinhos de Chocolate!"; 
+	close;
+
+	OnTalk1:
+		npctalk "Pães e Doces! Venham conferir!";
+		end;
+
+	OnTalk2:
+		npctalk "Pães quentinhos! Pães quentinhos!";
+		end;
+}
+
+//===================================================================
+ars_fild41,126,87,3	script	Aldeã#ep7uru1	77,4,4,{
+
+	mes "^FF0000[Aldeã]^000000"; 
+	mes "Olá, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000, bom, espero que tenha um bom dia!";
+	close2;
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	set .minX,0;
+	set .maxX,0;
+	set .minY,0;
+	set .maxY,0;
+	set .minD,0;
+	set .maxD,10;
+	set .maxLock,30;
+	npcspeed 200;
+	initnpctimer;
+	end;
+	
+OnTimer1000:
+
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("ars_walk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("ars_walk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnTouch:
+
+	switch( rand(3) ) {
+
+	case 0: npctalk "Prazer em ver você."; emotion e_kis; end;
+	case 1: npctalk "Não fique no meio do caminho!"; emotion e_omg; end;
+	case 2: npctalk "Está um belo dia hoje, não está?"; end;
+	case 3: npctalk "Que bom encontrar você!"; emotion e_ho; end;
+	}
+}
+
+ars_fild41,157,47,3	duplicate(Aldeã#ep7uru1)	Aldeão#ep7uru2	124,4,4
+ars_fild41,70,27,3	duplicate(Aldeã#ep7uru1)	Aldeã#ep7uru3	113,4,4
+ars_fild41,78,85,3	duplicate(Aldeã#ep7uru1)	Aldeão#ep7uru4	98,4,4
+ars_fild41,103,173,3	duplicate(Aldeã#ep7uru1)	Aldeão#ep7uru5	732,4,4
+
+//===================================================================
+ars_fild42,169,170,3	script	Galinha#ep7a	800,4,4,{
+
+set @name$,"Poule";
+	
+	mes ((Sex)?"^0000FF[":"^FF0000[")+strcharinfo(0)+"]^000000"; 
+	mes "Essa é uma Galinha da fazenda de ^0000FFFernandel^000000...";
+	close2;
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	set .minX,166;
+	set .maxX,123;
+	set .minY,47;
+	set .maxY,32;
+	set .minD,0;
+	set .maxD,10;
+	set .maxLock,30;
+	npcspeed 200;
+	initnpctimer;
+	end;
+	
+OnTimer1000:
+
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("ars_walk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("ars_walk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnTouch:
+	 npctalk "Có! Có! Có!"; end;
+
+}
+ars_fild42,162,110,3	duplicate(Galinha#ep7a)	Galinha#ep7b	800,4,4
+ars_fild42,133,78,3	duplicate(Galinha#ep7a)	Galinha#ep7c	800,4,4
+ars_fild42,158,65,3	duplicate(Galinha#ep7a)	Galinha#ep7d	800,4,4
+
+//===================================================================
+
+ars_fild41,94,62,1	script	Elandor, O Magnífico#1	410,{
+
+	mes "^0000FF[Elandor]^000000"; 
+	mes "Por favor, não me atrapalhe! Estou ocupado preparando minhas magias.";
+	close;
+
+	OnTalk1:
+		npctalk "Venham, aproximem-se! O Show vai começar, meus amigos!";
+		end;
+
+	OnTalk2:
+		npctalk "Eu, Elandor, irei entreter todos vocês!";
+		end;
+
+	OnTalk3:
+		npctalk "Para começar minhas magias, preciso de um voluntário...";
+		end;
+
+	OnTalk4:
+		npctalk "Você, meu caro senhor, aproxime-se!";
+		end;
+
+	OnTalk5:
+		npctalk "Vou transformá-lo em um Gênio de Fogo!";
+		end;	
+
+	OnTalk6:
+		npctalk "Arrristakaaa kirrrlinnoo tiiiktch'kaaa! Shaaarak!";
+		specialeffect 513; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;end;
+		end;
+
+	OnTalk7:
+		npctalk "Cuidado! Ele pode lançar Bolas de Fogo! Mas, mas o que ele fará?!";
+		end;	
+
+	OnTalk8:
+		npctalk "Oh! Não! Ele não virou um Poring! Eu errei em alguma coisa!";
+		specialeffect 611;
+		end;
+
+	OnTalk9:
+		npctalk "Não, por favor!"; specialeffect 531;
+		end;
+
+	OnTalk10:
+		npctalk "Aaaaarghhhh!"; specialeffect 531; sleep2 2000; disablenpc "Elandor, O Magnífico#1"; end;
+
+	OnTalk11:
+		npctalk "Arrristakaaa kirrrlinnoo tiiiktch'kaaa! Shaaarak!"; enablenpc "Elandor, O Magnífico#1";
+		specialeffect 513; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;specialeffect 460; sleep2 500;end;
+		end;
+
+	OnTalk12:
+		npctalk "E então, meus amigos, por enquanto é só! Espero vê-los em breve."; specialeffect 611;
+		end;
+
+}
+
+//===================================================================
+
+ars_fild41,94,68,4	script	Espectadora#ep7i1	68,{
+
+	mes "^FF0000[Espectadora]^000000"; 
+	mes "Que espetáculo magnífico!"; 
+	close;
+
+	OnTalk1: npctalk "Oh, Elandor!";end;
+	OnTalk2: npctalk "Eu! Me escolha!";end;	
+	OnTalk3: npctalk "Wouhaa! Ele é forte!";end;
+	OnTalk4: npctalk "Socorro!";end;	
+	OnTalk5: npctalk "Nããããããããoo!";end;	
+	OnTalk6: npctalk "Parabéns!"; emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;end;	
+}
+//===================================================================
+
+ars_fild41,90,67,4	script	Espectador#ep7i2	97,{
+
+	mes "^0000FF[Espectador]^000000"; 
+	mes "Eu quero ver o que acontece, adoro shows de mágica!"; 
+	close;
+
+	OnTalk1: npctalk "Shhh, começou!";end;
+	OnTalk2: npctalk "Elandor, aqui!";end;
+	OnTalk3: npctalk "Oh! Incrível!";end;
+	OnTalk4: npctalk "Fujam todos!";end;
+	OnTalk5: npctalk "Denovo! Denovo!"; emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;emotion e_thx;  sleep2 1000;end;	
+	OnTalk6: npctalk "Bom, quando isso vai começar?";end;	
+}
+//===================================================================
+
+ars_fild41,97,66,4	script	Espectador#ep7i3	904,{
+
+	mes "^0000FF[Espectador]^000000"; 
+	mes "Eu queria saber um pouco de magia..."; 
+	close;
+
+	OnTalk1: npctalk "Youhouuu !";end;
+	OnTalk2: npctalk "Oh! Obrgiado, Elandor!";end;
+
+	OnTalk3: specialeffect 513; end;
+	OnTalk4: npctalk "Aahhhhh!"; setnpcdisplay("Espectador#ep7i3", "Espectador", 1832, 2); end;
+	OnTalk5: npctalk "Kowaa Bungaaa !";specialeffect 22; specialeffect 71; sleep2 800;specialeffect 71;specialeffect 62; sleep2 800; specialeffect 92; specialeffect 97; sleep2 800;specialeffect 22; specialeffect 71;end;
+
+	OnTalk6: setnpcdisplay("Espectador#ep7i3", "Espectador", 1708, 2); end;
+	OnTalk7: npctalk "Eu vou te matar, Elandor !";end;
+
+	OnTalk8: npctalk "Aldeões estúpidos, matarei todos para o meu único prazer!";end;
+	OnTalk9: setnpcdisplay("Espectador#ep7i3", "Espectador", 904, 0); specialeffect 622;end;
+
+	OnTalk10: npctalk "Oh! Obrigado! Isso foi maravilhoso!";end;
+
+	
+	OnMove1: npcwalkto 96,63; end;	//vers elandor
+	OnMove2: npcwalkto 94,65; end;	//encore plus près
+	OnMove3: npcwalkto 97,66; end;	//retour
+}
+
+
+//Debut serveur ars_fild41 30,54

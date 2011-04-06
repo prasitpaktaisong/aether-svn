@@ -1,0 +1,62 @@
+function	script	checkmap	{
+	// configure
+	setarray .@maps$[0],"bat_c01","bat_c02","bat_c03","quiz_01","p_track01","arug_cas05","gdt01","gdt02","pvp01","pvp02","pvp03","pvp04","pvp05","poring_c01";
+
+	set .@map$, getarg(0);
+	set .@count, getarraysize(.@maps$);
+	for(set .@i,0; .@i < .@count; set .@i,.@i+1){
+		if (.@map$ == .@maps$[.@i]){
+			return 1;
+		}
+	}
+	return 0;
+}
+
+-	script	blockdc	-1,{
+
+OnPCLoadMapEvent:
+	getmapxy .@map$, .@x, .@y, 0;
+	set .@result, callfunc("checkmap", .@map$);
+	if (.@result == 0){
+		end;
+	}
+	set .@account_id, getcharid(3);
+	
+	set .@query$, "SELECT `mac_address` FROM `login` WHERE `account_id` =" + .@account_id;
+	set .@result, query_sql(.@query$, .@mac_address$);
+	
+	set .@query$, "SELECT DISTINCT `login`.`account_id` FROM `char`,`login` WHERE `login`.`mac_address` = '" + .@mac_address$ + "' AND `char`.`online` = 1";
+	set .@result, query_sql(.@query$, .@account_id2);
+
+	set .@count, .@result;
+	if (.@result > 1){
+		for (set .@i,0; .@i < .@count; set .@i,.@i+1){
+			if (.@account_id != .@account_id2[.@i]){
+				if (attachrid(.@account_id2[.@i])){
+					getmapxy .@map$, .@x, .@y, 0;
+					set .@result, callfunc("checkmap", .@map$);
+					if (.@result == 1){
+						atcommand "@kick "+strcharinfo(0);
+					}
+					detachrid;
+				}
+			}
+		}
+	}
+}
+
+// maps to block dc
+bat_c01	mapflag	loadevent
+bat_c02	mapflag	loadevent
+bat_c03	mapflag	loadevent
+quiz_01	mapflag	loadevent
+p_track01	mapflag	loadevent
+arug_cas05	mapflag	loadevent
+gdt01	mapflag	loadevent
+gdt02	mapflag	loadevent
+pvp01	mapflag	loadevent
+pvp02	mapflag	loadevent
+pvp03	mapflag	loadevent
+pvp04	mapflag	loadevent
+pvp05	mapflag	loadevent
+poring_c01	mapflag	loadevent

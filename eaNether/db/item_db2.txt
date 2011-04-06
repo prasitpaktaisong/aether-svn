@@ -1,0 +1,282 @@
+// _________                                    
+// \_   ___ \_______  ____   ____  __ __  ______
+// /    \  \/\_  __ \/  _ \ /    \|  |  \/  ___/
+// \     \____|  | \(  <_> )   |  \  |  /\___ \ 
+//  \______  /|__|   \____/|___|  /____//____  >
+//         \/                   \/           \/  
+//-----------------------------------------------
+// Cronus - item_db2.txt
+//-----------------------------------------------
+// Database de Itens Customizados
+//
+// Estrutura da database:
+// ID,Name,Name,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Upper,Gender,Loc,wLV,eLV,Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
+//
+// Legenda do campo 'Type':
+//  0 = De uso : cura
+//  2 = De uso : outro
+//  3 = miscelancia
+//  4 = Arma
+//  5 = Armaduras
+//  6 = Cartas
+//  7 = Ovo de bichinho
+//  8 = Equipamento para Bichinho
+//  10 = Flecha
+//  11 = De uso : Consumo "contado" (itens com o script "pet" ou "itemskill")
+// Adicione seus custom itens a partir daqui
+//=============================================================
+//== Oficiais - Conversões ====================================
+5585,Tiara_de_Runas,Tiara de Runas,5,20,,100,,1,,1,0xFFFFFFFF,7,2,256,,1,1,564,{ bonus2 bSubEle,Ele_Neutral,3; bonus bHit,5; },{},{}
+5673,Sinos_de_Cerejeira,Sinos de Cerejeira,5,20,,100,,2,,1,0xFFFFFFFF,7,2,256,,30,1,602,{ bonus bNoCastCancel,0; bonus bCastrate,35; },{},{}
+5781,Persica,Persica,5,20,,100,,0,,1,0xFFFFFFFF,7,2,256,,1,1,659,{ bonus bMaxSP,20; bonus bFlee,1; if(isequipped(2269)) { bonus bMaxSP,30; bonus bInt,1; } if(isequipped(2270)) { bonus bFlee,2; bonus bLuk,1; } },{},{}
+18543,Chapéu_de_Bruxa,Chapéu de Bruxa,5,20,,400,,0,,0,0xFFFFFFFF,7,2,256,,60,0,717,{},{},{}
+19513,Bico,Bico,5,20,,100,,0,,0,0xFFFFFFFF,7,2,1,,1,0,699,{},{},{}
+19514,Bigode,Bigode,5,20,,100,,0,,0,0xFFFFFFFF,7,2,1,,1,0,700,{},{},{}
+19515,Chapéuzinho_Amarelo,Chapéuzinho Amarelo,5,20,,100,,0,,0,0xFFFFFFFF,7,2,256,,1,1,701,{},{},{}
+19517,Crista,Crista,5,20,,100,,0,,0,0xFFFFFFFF,7,2,256,,1,0,703,{ if(isequipped(20149,19513)) bonus bAllStats,3; },{},{}
+19521,Chapéu Côco,Chapéu Côco,5,20,,100,,0,,0,0xFFFFFFFF,7,2,256,,1,0,706,{ if(isequipped(19514,2239)) bonus bAllStats,2; },{},{}
+
+//== Aether - Administração ===================================
+20001,Bênção_de_Valhalla,Bênção de Valhalla,3,1,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+20002,Safira_de_Hod,Safira de Hod,11,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ if(!getpvpmode()) callfunc "TeleVIP"; },{},{}
+20003,Bênção_de_Valhalla,Bênção de Valhalla,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ CallFunc ("addVip", GetCharID (3), 120); DoEvent "#vipadmin::OnCheckVip"; },{},{}
+20004,Moeda_de_Freya,Moeda de Freya,3,1,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+20005,Pacote_de_Iguarias_de_Combate,Pacote de Iguarias de Combate,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem groupranditem(9),1; },{},{}
+20006,Pacote_de_Iguarias_de_Guerra,Pacote de Iguarias de Guerra,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem groupranditem(10),1; },{},{}
+20007,Insígnia_de_Zorya,Insígnia de Zorya,2,1,,0,,,,,0xFFFFFF,7,2,,,,,,{ callfunc "InsZorya"; },{},{}
+20008,Manual_de_Combate de Daath,Manual de Combate de Daath,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_EXPBOOST,3600000,50; },{},{}
+20009,Grimório_de_Combate de Daath,Grimório de Combate de Daath,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_EXPBOOST,3600000,100; },{},{}
+20010,Enciclopédia_de_Combate de Daath,Enciclopédia de Combate de Daath,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_EXPBOOST,3600000,200; },{},{}
+20011,Doce_de_Licor_de_Daath,Doce de Licor de Daath,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_ITEMBOOST,3600000,100;},{},{}
+20012,Doce_de_Licor_Especial_de_Daath,Doce de Licor Especial de Daath,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_ITEMBOOST,3600000,200;},{},{}
+20013,Bênção_de_Valhalla_de_Guildas,Bênção de Valhalla de Guildas,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ CallFunc ("addVip", GetCharID (3), 120); DoEvent "#vipadmin::OnCheckVip"; },{},{}
+20014,Cartão_de_Pontos_de_Evento,Cartão de Pontos de Evento,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "CheckPO"; },{},{}
+20015,Frasco_de_Coca-Cola,Frasco de Coca-Cola,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20016,Frasco_de_Fanta_Laranja,Frasco de Fanta Laranja,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20017,Frasco_de_Fanta_Uva,Frasco de Fanta Uva,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20018,Frasco_de_Guaraná_Kuat,Frasco de Guaraná Kuat,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20019,Frasco_de_Sprite,Frasco de Sprite,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20020,Frasco_de_Aquarius,Frasco de Aquarius,2,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Refrigerantes"; },{},{}
+20021,Gorro_de_Natal_Especial,Gorro de Natal Especial,5,,,200,,,,,0xFFFFFFFF,7,2,256,,,0,390,{  bonus bAllStats,2; bonus2 bAddMonsterDropItem,539,100;  },{},{}
+20022,Fragmento_do_Espírito_de_Natal,Fragmento do Espírito de Natal,3,1,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+20023,Pequena_Insígnia_de_Zorya,Pequena Insígnia de Zorya,2,1,,0,,,,,0xFFFFFF,7,2,,,,,,{ callfunc "InsZorya2"; },{},{}
+20024,Ovo_de_Espírito_Natalino,Ovo de Espírito Natalino,7,20,,0,,,,,,,,,,,,,{},{},{}
+20025,Novelo_de_Lã_Fina,Novelo de Lã Fina,3,1,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+20026,Capuz_Rosado_de_Boneca,Capuz Rosado de Boneca,3,1,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+20027,Cartão_do_Ano_Novo_Chinês,Cartão do Ano Novo Chinês,3,1,,10,,,,,,,,,,,,,{},{},{}
+20028,Pacote_Surpresa_Aethernal,Pacote Surpresa Aethernal,2,10,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem groupranditem(11),1; },{},{}
+20029,Moeda_de_Evento,Moeda de Evento,3,1,,0,,,,,,,,,,,,,{},{},{}
+20030,Pacote_de_Maroll,Pacote de Maroll,2,0,,1500,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 12016,5; getitem 12710,3; getitem 14537,1; getitem 14526,1; getitem 12375,1; },{},{}
+
+20031,Pequeno_Kit_de_Poções_Brancas,Pequeno Kit de Poções Brancas,2,0,,750,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 504,10; },{},{}
+20032,Grande_Kit_de_Poções_Brancas,Grande Kit de Poções Brancas,2,0,,1800,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 504,25; },{},{}
+20033,Pequeno_Kit_de_Poções_Azuis,Pequeno Kit de Poções Azuis,2,0,,750,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 505,10; },{},{}
+20034,Grande_Kit_de_Poções_Azuis,Grande Kit de Poções Azuis,2,0,,1800,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 505,25; },{},{}
+20035,Pequeno_Kit_de_Poções_Brancas_Compactas,Pequeno Kit de Poções Brancas Compactas,2,0,,250,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 547,10; },{},{}
+20036,Grande_Kit_de_Poções_Brancas_Compactas,Grande Kit de Poções Brancas Compactas,2,0,,650,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 547,25; },{},{}
+20037,Pequeno_Kit_de_Sementes_de_Yggdrasil,Pequeno Kit de Sementes de Yggdrasil,2,0,,1500,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 608,10; },{},{}
+20038,Grande_Kit_de_Sementes_de_Yggdrasil,Grande Kit de Sementes de Yggdrasil,2,0,,3750,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 608,25; },{},{}
+20039,Pequeno_Kit_de_Frutos_de_Yggdrasil,Pequeno Kit de Frutos de Yggdrasil,2,0,,1500,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 607,10; },{},{}
+20040,Grande_Kit_de_Frutos_de_Yggdrasil,Grande Kit de Frutos de Yggdrasil,2,0,,3750,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 607,25; },{},{}
+20041,Pequeno_Kit_de_Garrafas_de_Veneno,Pequeno Kit de Garrafas de Veneno,2,0,,500,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 678,10; },{},{}
+20042,Grande_Kit_de_Garrafas_de_Veneno,Grande Kit de Garrafas de Veneno,2,0,,1250,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 678,25; },{},{}
+20043,Pequeno_Kit_de_Demonstração_Ácida,Pequeno Kit de Demonstração Ácida,2,0,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 7135,10; getitem 7136,10;},{},{}
+20044,Grande_Kit_de_Demonstração_Ácida,Grande Kit de Demonstração Ácida,2,0,,250,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 7135,25; getitem 7136,25;},{},{}
+
+20045,Ficha_de_Carnaval_Amarela,Ficha de Carnaval Amarela,3,1,,10,,,,,,,,,,,,,{},{},{}
+20046,Ficha_de_Carnaval_Azul,Ficha de Carnaval Azul,3,1,,10,,,,,,,,,,,,,{},{},{}
+20047,Ficha_de_Carnaval_Vermelha,Ficha de Carnaval Vermelha,3,1,,10,,,,,,,,,,,,,{},{},{}
+20048,Ficha_de_Carnaval_Verde,Ficha de Carnaval Verde,3,1,,10,,,,,,,,,,,,,{},{},{}
+20049,Chave_da_Imperatriz,Chave da Imperatriz,3,1,,0,,,,,,,,,,,,,{},{},{}
+20050,Broche_da_Imperatriz,Broche da Imperatriz,3,1,,0,,,,,,,,,,,,,{},{},{}
+20051,Ovo_de_Eva,Ovo de Eva,7,20,,0,,,,,,,,,,,,,{},{},{}
+
+20052,Emblema_de_Confronto,Emblema de Confronto,3,1,,0,,,,,,,,,,,,,{},{},{}
+20053,Emblema_de_Confronto_Ancestral,Emblema de Confronto Ancestral,3,1,,0,,,,,,,,,,,,,{},{},{}
+20054,Orbe_de_Confronto,Orbe de Confronto,3,1,,0,,,,,,,,,,,,,{},{},{}
+20055,Orbe_de_Confronto_Ancestral,Orbe de Confronto Ancestral,3,1,,0,,,,,,,,,,,,,{},{},{}
+
+//== Aether - Itens Coloridos =================================
+20101,Boina_Alada_Preta,Boina Alada Preta,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1201,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20102,Boina_Alada_Amarela,Boina Alada Amarela,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1202,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20103,Boina_Alada_Verde,Boina Alada Verde,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1203,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20104,Boina_Alada_Laranja,Boina Alada Laranja,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1204,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20105,Boina_Alada_Rosa,Boina Alada Rosa,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1205,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20106,Boina_Alada_Violeta,Boina Alada Violeta,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1206,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20107,Boina_Alada_Vermelha,Boina Alada Vermelha,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1207,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20108,Boina_Alada_Branca,Boina Alada Branca,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1208,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+20109,Maçã_Dourada_de_Idun,Maçã Dourada de Idun,5,0,,100,,,,0,0xFFFFFFFF,7,2,1,,,0,1209,{ bonus2 bAddMonsterDropItem,505,150; },{},{}
+20110,Balao_de_Amor_ao_Aether,Balao de Amor ao Aether,5,,,100,,,,,0xFFFFFFFF,7,2,256,,,0,1210,{  bonus bSpeedRate,25; bonus bAspdRate,-10; bonus bCastrate,25; },{},{}
+20111,Máscara_de_Fugitivo_Preta,Máscara de Fugitivo Preta,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1211,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20112,Máscara_de_Fugitivo_Azul,Máscara de Fugitivo Azul,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1212,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20113,Máscara_de_Fugitivo_Amarela,Máscara de Fugitivo Amarela,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1213,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20114,Máscara_de_Fugitivo_Verde,Máscara de Fugitivo Verde,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1214,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20115,Máscara_de_Fugitivo_Violeta,Máscara de Fugitivo Violeta,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1215,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20116,Máscara_de_Fugitivo_Branca,Máscara de Fugitivo Branca,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1216,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20117,Máscara_de_Fugitivo_Laranja,Máscara de Fugitivo Laranja,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1217,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20118,Máscara_de_Fugitivo_Rosa,Máscara de Fugitivo Rosa,5,,,100,,0,,0,0xFFFFFFFF,7,2,1,,60,0,1218,{ bonus bBaseAtk,5; if(BaseJob == Job_Rogue) skill "RG_GANGSTER",1; },{},{}
+20119,Chapéu_de_Drops_Saltitante,Chapéu de Drops Saltitante,5,,,300,,2,,0,0xFFFFFFFF,7,2,256,,10,1,1219,{ bonus bLuk,1; bonus bUnbreakableHelm,0; },{},{}
+20120,Chapéu_de_Poporing_Saltitante,Chapéu de Poporing Saltitante,5,,,300,,2,,0,0xFFFFFFFF,7,2,256,,10,1,1220,{ bonus bLuk,1; bonus bUnbreakableHelm,0; },{},{}
+20121,Chapéu_de_Marin_Saltitante,Chapéu de Marin Saltitante,5,,,300,,2,,0,0xFFFFFFFF,7,2,256,,10,1,1221,{ bonus bLuk,1; bonus bUnbreakableHelm,0; },{},{}
+
+20122,Asas_da_Vitória_Douradas,Asas da Vitória Douradas,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1222,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; bonus2 bAddRace,RC_Undead,5; bonus2 bMagicAddRace,RC_Undead,5; bonus2 bSubRace,RC_Undead,5; },{},{}
+20123,Boneca_de_Alice_Dourada,Boneca de Alice Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1223,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20124,Boneca_de_Lady_Solace_Dourada,Boneca de Lady Solace Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1224,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20125,Boneca_de_Lady_Tanee_Dourada,Boneca de Lady Tanee Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1225,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bInt,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20126,Boneco_de_Pesar_de_Thanatos_Dourado,Boneco de Pesar de Thanatos Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1226,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bStr,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20127,Chapéu_Alado_Dourado,Chapéu Alado Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1227,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bStr,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20128,Chapéu_de_Dragão_Bebê_Dourado,Chapéu de Dragão Bebê Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1228,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; autobonus "{ bonus bAspdRate,5; }",10,30000,0,"{ specialeffect2 EF_HASTEUP; }"; },{},{}
+20129,Chapéu_de_Graduação_em_Magia_Dourado,Chapéu de Graduação em Magia Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1229,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20130,Chapéu_de_Tendrillion_Dourado,Chapéu de Tendrillion Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1230,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bStr,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20131,Chapéu_do_Rei_Sapo_Dourado,Chapéu do Rei Sapo Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1231,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20132,Chifres_Majestosos_Malignos_Dourados,Chifres Majestosos Malignos Dourados,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1232,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20133,Cocar_de_Grand_Peco_Dourado,Chapéu de Grand Peco Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1233,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bStr,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20134,Coroa_Chinesa_Dourada,Coroa Chinesa Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1234,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20135,Coroa_de_Cerejeira_Dourada,Coroa de Cerejeira Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1235,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bInt,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20136,Espírito_de_Fenrir_Dourado,Espírito de Fenrir Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1236,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bStr,3; autobonus "{ bonus bBaseAtk,50; }",50,10000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; },{},{}
+20137,Espírito_de_Sekhmet_Dourado,Espírito de Sekhmet Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1237,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bInt,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20138,Gorro_de_Modonna_Dourado,Gorro de Modonna Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1238,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bDex,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20139,Orgulho_Pirata_Dourado,Orgulho Pirata Dourado,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1239,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bAgi,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20140,Touca_de_Pijama_Dourada,Touca de Pijama Dourada,5,,0,300,,5,,1,0xFFFFFFFF,7,2,256,,0,0,1240,{ bonus2 bSubRace,RC_DemiHuman,5; bonus bVit,3; bonus2 bAddItemHealRate,504,10; bonus2 bAddItemHealRate,547,10; },{},{}
+20141,Gorro_de_Gato_Azul,Gorro de Gato Azul,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1242,{ bonus bFlee,6; },{},{}
+20142,Gorro_de_Gato_Branco,Gorro de Gato Branco,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1243,{ bonus bFlee,6; },{},{}
+20143,Gorro_de_Gato_Laranja,Gorro de Gato Laranja,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1244,{ bonus bFlee,6; },{},{}
+20144,Gorro_de_Gato_Preto,Gorro de Gato Preto,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1245,{ bonus bFlee,6; },{},{}
+20145,Gorro_de_Gato_Rosa,Gorro de Gato Rosa,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1246,{ bonus bFlee,6; },{},{}
+20146,Gorro_de_Gato_Verde,Gorro de Gato Verde,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1247,{ bonus bFlee,6; },{},{}
+20147,Gorro_de_Gato_Vermelho,Gorro de Gato Vermelho,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1248,{ bonus bFlee,6; },{},{}
+20148,Gorro_de_Gato_Violeta,Gorro de Gato Violeta,5,20,,100,,5,,1,0xFFFFFFFF,7,2,256,,1,1,1249,{ bonus bFlee,6; },{},{}
+20149,Asinhas,Asinhas,5,20,,100,,0,,0,0xFFFFFFFF,7,2,512,,1,0,1250,{},{},{}
+
+20152,Lacinho_Enfeitado_Preto,Lacinho Enfeitado Preto,5,20,,100,,0,,1,0xFFFFFFFF,7,2,256,,25,1,1253,{ bonus bMdef,5; },{},{}
+20153,Lacinho_Enfeitado_Vermelho,Lacinho Enfeitado Vermelho,5,20,,100,,0,,1,0xFFFFFFFF,7,2,256,,25,1,1254,{ bonus bMdef,5; },{},{}
+20154,Elmo_Angelical_de_Vênus,Elmo Angelical de Vênus,5,20,,1600,,5,,0,0xFFFFFFFF,7,2,256,,74,1,1255,{ bonus bAgi,1; bonus bLuk,1; bonus bMdef,3; },{},{}
+
+//20150,Boneco_de_Keter,Boneco de Keter,5,0,,30,,5,,,0xFFFFFFFF,7,2,256,,0,0,1049,{},{},{}
+//20151,Boneco_de_Keter,Boneco de Keter,5,0,,30,,5,,,0xFFFFFFFF,7,2,256,,0,0,1050,{},{},{}
+
+22001,Espírito_de_Lupus,Espírito de Lupus,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1252,{},{},{}
+22002,Espírito_de_Felinus,Espírito de Felinus,5,30000,,600,,1,,0,0xFFFFFFFF,7,2,256,,0,1,1253,{},{},{}
+
+//== • Itens Temporários
+23001,Presilha_Aprimorada,Presilha Aprimorada,5,3500,,200,,0,,0,0xFFFFFFFF,7,2,136,,0,0,0,{ bonus bMaxHPRate,3; bonus bMaxSP,50; },{},{}
+23002,Túnica_Aprimorada_Anti-congelante,Túnica Aprimorada_Anti-congelante,5,3500,,150,,5,,0,0xFFFFFFFF,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; bonus2 bSubEle,Ele_Water,5; bonus2 bResEff,Eff_Freeze,10000; },{},{}
+23003,Sobrepeliz_Aprimorado_de_Balder,Sobrepeliz Aprimorado de Balder,5,3500,,200,,4,,0,0xFFFFFFFF,7,2,4,,0,1,0,{ bonus bMaxHPRate,3; bonus2 bSubEle,Ele_Neutral,20; },{},{}
+23004,Vembrassa_Aprimorada_de_Prometeu,Vembrassa Aprimorada de Prometeu,5,3500,,150,,5,,0,0xFFFFFFFF,7,2,32,,0,1,4,{ bonus bMaxHPRate,3; bonus2 bSubRace,RC_DemiHuman,30; },{},{}
+23005,Sapatos_Aprimorados_de_Fada,Sapatos Aprimorados de Fada,5,3500,,200,,4,,0,0xFFFFFFFF,7,2,64,,0,1,0,{ bonus bMaxHPRate,3; bonus bMaxSPrate,15; bonus bSPrecovRate,3; },{},{}
+23006,Sapatos_Aprimorados_Verdes,Sapatos Aprimorados Verdes,5,3500,,200,,4,,0,0xFFFFFFFF,7,2,64,,0,1,0,{ bonus bMaxHPrate,13; bonus bAgi,1; },{},{}
+23007,Boina_Aprimorada,Boina Aprimorada,5,30000,,300,,5,,0,0xFFFFFFFF,7,2,256,,0,0,1241,{ bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,5; bonus bMaxHPRate,3; },{},{}
+23008,Pacote_de_Equipamentos_de_Guilda_A,Pacote de Equipamentos de Guilda A,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ rentitem 23001,1296000; rentitem 23001,1296000; rentitem 23002,1296000; rentitem 23003,1296000; rentitem 23004,1296000; rentitem 23006,1296000; rentitem 23007,1296000; },{},{}
+23009,Pacote_de_Equipamentos_de_Guilda_B,Pacote de Equipamentos de Guilda B,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ rentitem 23001,1296000; rentitem 23001,1296000; rentitem 23002,1296000; rentitem 23003,1296000; rentitem 23004,1296000; rentitem 23005,1296000; rentitem 23007,1296000;  },{},{}
+23010,Pacote_de_Suprimentos_de_Guilda_A,Pacote de Suprimentos de Guilda A,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 7135,200; getitem 7136,200; },{},{}
+23011,Pacote_de_Suprimentos_de_Guilda_B,Pacote de Suprimentos de Guilda B,2,,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 678,100; },{},{}
+23012,Brasão_de_Guilda,Brasão de Guilda,11,,,0,,,,,0xFFFFFF,7,2,,,,,,{ if(!getpvpmode()) callfunc "GuildWarp"; },{},{}
+
+//==== • Armaduras
+15015,Túnica_Aprimorada,Túnica Aprimorada,5,3500,,150,,5,,1,0xFFFFFFFF,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+15016,Casaco_Aprimorado,Casaco Aprimorada,5,3500,,600,,7,,1,0xFFFFFFFF,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+15017,Manto_Sagrado_Aprimorado,Manto Sagrado Aprimorado,5,3500,,300,,8,,1,0x00000030,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; bonus bMdef,5; },{},{}
+15018,Malha_Aprimorada,Malha Aprimorada,5,3500,,250,,8,,1,0x00000008,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; bonus bDex,1; },{},{}
+15019,Traje_de_Gatuno_Aprimorada,Traje de Gatuno Aprimorada,5,3500,,100,,8,,1,0x00000040,7,2,16,,0,1,0,{ bonus bMaxHPRate,3; bonus bAgi,1; },{},{}
+
+//==== • Escudos
+2149,Vembrassa_Aprimorada,Vembrassa Aprimorada,5,3500,,150,,5,,1,0xFFFFFFFE,7,2,32,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+2150,Broquel_Aprimorado,Broquel Aprimorado,5,3500,,300,,6,,1,0x00080072,7,2,32,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+2151,Escudo_Aprimorado,Escudo Aprimorado,5,3500,,650,,8,,1,0x00000002,7,2,32,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+
+//==== • Acessórios
+2828,Presilha_Aprimorada,Presilha Aprimorada,5,3500,,200,,0,,1,0xFFFFFFFE,7,2,8,,0,0,0,{ bonus bMaxHPRate,3; bonus bMaxSP,50; },{},{}
+
+//==== • Sapatos
+2459,Sapatos_Aprimorados,Sapatos Aprimorados,5,3500,,200,,4,,1,0xFFFFFFFE,7,2,64,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+2460,Botas_Aprimorados,Botas Aprimorados,5,3500,,300,,6,,1,0x0080006A,7,2,64,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+2461,Grevas_Aprimoradas,Grevas Aprimoradas,5,3500,,400,,7,,1,0x00004080,7,2,64,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+
+//==== • Capas
+2562,Sobrepeliz_Aprimorado,Sobrepeliz Aprimorado,5,3500,,200,,4,,1,0xFFFFFFFE,7,2,4,,0,1,0,{ bonus bMaxHPRate,3; },{},{}
+
+//== • Arsinoe
+29000,Cabelos de Bandido,Cabelos de Bandido,3,0,,10,,,,,,,,,,,,,{},{},{}
+29001,Aprendiz de Gawelle,Aprendiz de Gawelle,3,0,,10,,,,,,,,,,,,,{},{},{}
+29002,Flor de Lophophora,Flor de Lophophora,3,0,,10,,,,,,,,,,,,,{},{},{}
+29003,Alma de Calliope,Alma de Calliope,3,0,,10,,,,,,,,,,,,,{},{},{}
+29004,Alma de Euterpe,Alma de Euterpe,3,0,,10,,,,,,,,,,,,,{},{},{}
+29005,Alma de Urânia,Alma de Urânia,3,0,,10,,,,,,,,,,,,,{},{},{}
+29006,Carta do Clérigo Graivois,Carta do Clérigo Graivois,3,0,,10,,,,,,,,,,,,,{},{},{}
+29007,Carta de Pevnec,Carta de Pevnec,3,0,,10,,,,,,,,,,,,,{},{},{}
+29008,Tinta de Polvo,Tinta de Polvo,3,0,,10,,,,,,,,,,,,,{},{},{}
+29009,Tinta Vermelha Purificada,Tinta Vermelha Purificada,3,0,,10,,,,,,,,,,,,,{},{},{}
+29010,Lotus Negra,Lotus Negra,3,0,,10,,,,,,,,,,,,,{},{},{}
+29011,Cartão de Membro,Cartão de Membro,3,0,,10,,,,,,,,,,,,,{},{},{}
+29012,Pele de Marmota,Pele de Marmota,3,0,,10,,,,,,,,,,,,,{},{},{}
+29013,Excremento,Excremento,3,0,,10,,,,,,,,,,,,,{},{},{}
+29014,Osso de Mamute,Osso de Mamute,3,0,,10,,,,,,,,,,,,,{},{},{}
+29015,Presa de Goblin,Presa de Goblin,3,0,,10,,,,,,,,,,,,,{},{},{}
+29016,Rubi de Gondar,Rubi de Gondar,3,0,,10,,,,,,,,,,,,,{},{},{}
+29017,Mapa de Arsinoe Nº01,Mapa de Arsinoe Nº01,3,0,,1,,,,,,,,,,,,,{},{},{}
+29018,Mapa de Arsinoe Nº02,Mapa de Arsinoe Nº02,3,0,,1,,,,,,,,,,,,,{},{},{}
+29019,Mapa de Arsinoe Nº03,Mapa de Arsinoe Nº03,3,0,,1,,,,,,,,,,,,,{},{},{}
+29020,Mapa de Arsinoe Nº04,Mapa de Arsinoe Nº04,3,0,,1,,,,,,,,,,,,,{},{},{}
+29021,Mapa de Arsinoe Nº05,Mapa de Arsinoe Nº05,3,0,,1,,,,,,,,,,,,,{},{},{}
+29022,Mapa de Arsinoe Nº06,Mapa de Arsinoe Nº06,3,0,,1,,,,,,,,,,,,,{},{},{}
+29023,Mapa de Arsinoe Nº07,Mapa de Arsinoe Nº07,3,0,,1,,,,,,,,,,,,,{},{},{}
+29024,Mapa de Arsinoe Nº08,Mapa de Arsinoe Nº08,3,0,,1,,,,,,,,,,,,,{},{},{}
+29025,Mapa de Arsinoe Nº09,Mapa de Arsinoe Nº09,3,0,,1,,,,,,,,,,,,,{},{},{}
+29026,Mapa de Arsinoe Nº10,Mapa de Arsinoe Nº10,3,0,,1,,,,,,,,,,,,,{},{},{}
+29027,Mapa de Arsinoe Nº11,Mapa de Arsinoe Nº11,3,0,,1,,,,,,,,,,,,,{},{},{}
+29028,Mapa de Arsinoe Nº12,Mapa de Arsinoe Nº12,3,0,,1,,,,,,,,,,,,,{},{},{}
+29029,Mapa de Arsinoe Nº13,Mapa de Arsinoe Nº13,3,0,,1,,,,,,,,,,,,,{},{},{}
+29030,Mapa de Arsinoe Nº14,Mapa de Arsinoe Nº14,3,0,,1,,,,,,,,,,,,,{},{},{}
+29031,Mapa de Arsinoe Nº15,Mapa de Arsinoe Nº15,3,0,,1,,,,,,,,,,,,,{},{},{}
+29032,Mapa de Arsinoe Nº16,Mapa de Arsinoe Nº16,3,0,,1,,,,,,,,,,,,,{},{},{}
+29033,Mapa de Arsinoe Nº17,Mapa de Arsinoe Nº17,3,0,,1,,,,,,,,,,,,,{},{},{}
+29034,Mapa de Arsinoe Nº18,Mapa de Arsinoe Nº18,3,0,,1,,,,,,,,,,,,,{},{},{}
+29035,Mapa de Arsinoe Nº19,Mapa de Arsinoe Nº19,3,0,,1,,,,,,,,,,,,,{},{},{}
+29036,Mapa de Arsinoe Nº20,Mapa de Arsinoe Nº20,3,0,,1,,,,,,,,,,,,,{},{},{}
+29037,Fragmento Vermelho,Fragmento Vermelho,3,0,,10,,,,,,,,,,,,,{},{},{}
+29038,Fragmento Verde,Fragmento Verde,3,0,,10,,,,,,,,,,,,,{},{},{}
+29039,Fragmento Amarelo,Fragmento Amerelo,3,0,,10,,,,,,,,,,,,,{},{},{}
+29040,Fragmento Azul,Fragmento Azul,3,0,,10,,,,,,,,,,,,,{},{},{}
+29041,Crânio do Líder,Crânio do Líder,3,0,,10,,,,,,,,,,,,,{},{},{}
+29042,Resquícios de Djoser,Resquícios de Djoser,3,0,,10,,,,,,,,,,,,,{},{},{}
+29043,Fêmur de Djoser,Fêmur de Djoser,3,0,,10,,,,,,,,,,,,,{},{},{}
+29044,Colar Orc,Colar Orc,3,0,,10,,,,,,,,,,,,,{},{},{}
+29045,Colar do Escravo,Colar do Escravo,3,0,,10,,,,,,,,,,,,,{},{},{}
+29046,Asa de Saigneur,Asa de Saigneur,3,0,,10,,,,,,,,,,,,,{},{},{}
+29047,Coração de Sylphide,Coração de Sylphide,3,0,,10,,,,,,,,,,,,,{},{},{}
+29048,Óleo de Rana,Óleo de Rana,3,0,,10,,,,,,,,,,,,,{},{},{}
+29049,Cogumelo Negro,Cogumelo Negro,3,0,,10,,,,,,,,,,,,,{},{},{}
+29050,Vinho Suave,Vinho Suave,3,0,,10,,,,,,,,,,,,,{},{},{}
+29051,Sombras,Sombras,3,0,,10,,,,,,,,,,,,,{},{},{}
+29052,Enguia,Enguia,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29053,Peixinho Dourado ,Peixinho Dourado,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 500,0;},{},{}
+29054,Peixe-Escorpião,Peixe-Escorpião,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29055,Polvo,Polvo,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29056,Limande,Limande,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29057,Cavalo-Marinho,Cavalo-Marinho,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29058,Tubarão,Tubarão,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29059,Sardinha,Sardinha,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29060,Lambari,Lambari,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29061,Salmão,Salmão,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29062,Lagosta,Lagosta,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 500,0;},{},{}
+29063,Salmão Rosa,Salmão Rosa,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 500,0;},{},{}
+29064,Perch Amarelo,Perche Amarelo,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29065,Piranha,Piranha,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29066,Carpa,Carpa,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29067,Atum,Atum,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29068,Peixe-Anjo,Peixe-Anjo,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 250,0;},{},{}
+29069,Peixe Palhaço,Peixe Palhaço,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 500,0;},{},{}
+29070,Dourado,Dourado,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29071,Sapo,Sapo,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 125,0;},{},{}
+29072,Peixe Lanterna,Peixe Lanterna,0,25,,1,,,,,0xFFFFFFFF,7,2,,,,,,{itemheal 500,0;},{},{}
+29073,Isca,Isca,3,0,,10,,,,,,,,,,,,,{},{},{}
+29074,Vara de Pesca,Vara de Pesca,3,0,,10,,,,,,,,,,,,,{},{},{}
+29075,Vara Profissional,Vara Profissional,3,0,,10,,,,,,,,,,,,,{},{},{}
+29076,Gancho,Gancho,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @ep7_Draw,1;},{},{}
+29077,Tranquilizante,Tranquilizante,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @GlaceTrap1,1;},{},{}
+29078,Atordoante,Atordoante,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @GlaceTrap2,1;},{},{}
+29079,Inversor,Inversor,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @GlaceTrap3,1;},{},{}
+29080,Pé de Gigante,Pé de Gigante,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @GlaceBonus1,15;},{},{}
+29081,Cogumelo,Cogumelo,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;set @GlaceBonus2,15;},{},{}
+29082,Energético,Energético,0,25,,5,,,,,0xFFFFFFFF,7,2,,,,,,{specialeffect2 53;sc_start SC_SpeedUp0,30000,0;},{},{}
+29083,Livro de Contas de Nemours,Livro de Contas de Nemours,3,,,10,,,,,,,,,,,,,{},{},{}

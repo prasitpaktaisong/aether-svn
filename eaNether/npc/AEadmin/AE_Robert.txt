@@ -1,0 +1,164 @@
+//== Aether Script ===========================================
+// • NPC Assistente da Realeza
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Utilidades
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Assistente Robert (03/08/2010)
+//============================================================
+
+daath,37,260,3	script	Assistente Robert#daath	833,{
+	mes "^0000FF[Robert]^000000";
+	mes "Pois não, "+strcharinfo(0)+"?";
+	if(getgmlevel() < 80){
+		mes "Oh, desculpe, sou servo apenas da ^0000FFRealeza^000000";
+		close;
+	}
+	mes "Deseja fazer ou retirar alguma restrição em algum mapa?";
+	switch(select("• Sim","• Não")){
+		case 1:
+			next;
+			mes "^0000FF[Robert]^000000";
+			mes "Em qual ^0000FFMapa^000000 gostaria de atuar?";
+			input @map$;
+			next;
+			
+			mes "^0000FF[Robert]^000000";
+			mes "Que tipo de ^0000FFBloqueio^000000 gostaria de ativar?";
+			switch(select(
+				"• Bloquear Armazém",
+				"• Bloquear Armazém do Clã",
+				"• Bloquear Barreira de Gelo",
+				"• Bloquear Habilidades",
+				"• Bloquear Teleporte",
+				"• Bloquear Memorização",
+				"• Bloquear Queda de Itens",
+				"• Bloquear Penalidade",
+				"• Bloquear Guildas em Confrontos",
+				"• Bloqueio Geral",
+				"• Remover Bloqueios",
+				"• Cancelar")){
+				case 1:
+					next;
+					
+					setmapflag @map$,mf_nostorage;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+					
+				case 2:	
+					next;
+					
+					setmapflag @map$,mf_noguildstorage;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+					
+				case 3:
+					next;
+					
+					setmapflag @map$,mf_noicewall;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+				
+				case 4:
+					next;
+					
+					setmapflag @map$,mf_noskill;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+				
+				case 5:
+					next;
+					
+					setmapflag @map$,mf_noteleport;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;				
+				
+				case 6:
+					next;
+					
+					setmapflag @map$,mf_nomemo;
+					setmapflag @map$,mf_noreturn;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;			
+
+				case 7:
+					next;
+					
+					setmapflag @map$,mf_nodrop;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+
+				case 8:		
+					next;
+					
+					setmapflag @map$,mf_nopenalty;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+					
+				case 9:		
+					next;
+					
+					setmapflag @map$,mf_pvp_noguild;
+					mes "^0000FF[Robert]^000000";
+					mes "Bloqueio em ^0000FF"+@map$+"^000000 aplicado!";
+					close;
+
+				case 10:
+					next;
+				
+					setmapflag @map$,mf_nostorage;
+					setmapflag @map$,mf_guildnostorage;
+					setmapflag @map$,mf_noicewall;
+					setmapflag @map$,mf_noskill;
+					setmapflag @map$,mf_noteleport;
+					setmapflag @map$,mf_nomemo;
+					setmapflag @map$,mf_noreturn;
+					setmapflag @map$,mf_nodrop;
+					setmapflag @map$,mf_nopenalty;
+					setmapflag @map$,mf_pvp_noguild;
+					mes "^0000FF[Robert]^000000";
+					mes "Todos os bloqueios foram aplicados em ^0000FF"+@map$+"^000000!";
+					close;			
+					
+					
+				case 11:
+					next;
+					
+					removemapflag @map$,mf_nostorage;
+					removemapflag @map$,mf_noguildstorage;
+					removemapflag @map$,mf_noicewall;
+					removemapflag @map$,mf_noskill;
+					removemapflag @map$,mf_noteleport;
+					removemapflag @map$,mf_nomemo;
+					removemapflag @map$,mf_noreturn;
+					removemapflag @map$,mf_nodrop;
+					removemapflag @map$,mf_nopenalty;
+					removemapflag @map$,mf_pvp_noguild;					
+					mes "^0000FF[Robert]^000000";
+					mes "Todos os ^0000FFBloqueios^000000 foram removidos.";
+					close;
+				
+				case 12:
+					close;
+			}
+		case 2:
+			close;
+	}
+
+}
+
+daath	mapflag	nostorage
+daath	mapflag	noguildstorage
+daath	mapflag	restricted	7
+rwc01	mapflag	restricted	7

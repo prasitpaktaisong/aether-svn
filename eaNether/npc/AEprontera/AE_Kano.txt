@@ -1,0 +1,183 @@
+//== Aether Script ===========================================
+// • Kano, Arenas de Batalha
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • Teleportador para as Arenas de Batalha
+//===== Changelog: ===========================================
+// • 1.0 - Adicionadas cinco modalidades de Confronto.
+//============================================================	
+
+prontera,147,193,3	script	Kano, Arenas de Batalha	416,{
+
+	mes "^0000FF[Kano]^000000";
+	mes "Olá, "+strcharinfo(0)+".";
+	mes "Você deseja ir à uma das ^0000FFArenas de Combate?^000000";
+	switch(select(
+		"• Não, obrigado.",
+		"• Campo de Caça ("+(getmapusers("pvp01"))+")",
+		"• Arena de Combate ("+(getmapusers("pvp02"))+")",
+		"• Arena da Morte ("+(getmapusers("pvp05"))+")",
+		"• Arena de Duelos ("+(getmapusers("pvp04"))+")",
+		"• Campo de Batalha ("+(getmapusers("pvp03"))+")"
+	)){
+	case 1:
+		close;
+	
+	case 2:
+		next;
+		mes "^0000FF[Kano]^000000";
+		mes "Esse é o ^0000FFCampo de Caça^000000, onde a disputa é realizada em um campo aberto.";
+		mes "Deseja participar?";
+		menu "• Sim",-,"• Não",fim;
+		
+		set @Place, rand(1,5);
+		close2;
+		if(@Place == 1) warp "pvp01",143,39;
+		if(@Place == 2) warp "pvp01",127,118;
+		if(@Place == 3) warp "pvp01",212,129;
+		if(@Place == 4) warp "pvp01",127,221;
+		if(@Place == 5) warp "pvp01",51,138;
+		end;
+		
+	case 3:
+		next;
+		mes "^0000FF[Kano]^000000";
+		mes "Esse é o ^0000FFArena de Combate^000000, onde a disputa é realizada em um lugar fechado.";
+		mes "Deseja participar?";
+		menu "• Sim",-,"• Não",fim;
+		
+		set @Place, rand(1,5);
+		close2;
+		if(@Place == 1) warp "pvp02",50,50;
+		if(@Place == 2) warp "pvp02",91,48;
+		if(@Place == 3) warp "pvp02",50,91;
+		if(@Place == 4) warp "pvp02",49,8;
+		if(@Place == 5) warp "pvp02",8,49;
+		end;
+
+	case 4:
+		next;
+		mes "^0000FF[Kano]^000000";
+		mes "Esse é o ^0000FFArena da Morte^000000, onde a disputa é realizada em um lugar fechado, porém, todos os efeitos de poderes alheios, como os provindos de Sacerdotes e Espiritualistas, todos eles, serão cancelados antes que você entre.";
+		mes "Deseja participar?";
+		menu "• Sim",-,"• Não",fim;
+		
+		set @Place, rand(1,5);
+		close2;
+		sc_end SC_ALL;
+		if(@Place == 1) warp "pvp05",50,44;
+		if(@Place == 2) warp "pvp05",19,49;
+		if(@Place == 3) warp "pvp05",80,49;
+		if(@Place == 4) warp "pvp05",50,77;
+		if(@Place == 5) warp "pvp05",49,23;
+		end;
+	
+	case 5:
+		set @Duelo, getmapusers("pvp04");
+		if(@Duelo < 2){
+			next;
+			mes "^0000FF[Kano]^000000";
+			mes "Esse é o ^0000FFArena de Duelos^000000, onde a disputa é realizada em um contra um";
+			mes "Deseja participar?";
+			menu "• Sim",-,"• Não",fim;
+		
+			set @Place, rand(1,4);
+			close2;
+			if(@Place == 1) warp "pvp04",20,40;
+			if(@Place == 2) warp "pvp04",40,59;
+			if(@Place == 3) warp "pvp04",59,40;
+			if(@Place == 4) warp "pvp04",39,19;
+			end;
+		}
+		next;
+		mes "^0000FF[Kano]^000000";
+		mes "Um duelo está acontecendo.";
+		close;
+	
+	case 6:
+		next;
+		mes "^0000FF[Kano]^000000";
+		mes "Esse é o ^0000FFCampo de Batalha^000000, onde a disputa é realizada entre Guildas";
+		mes "Deseja participar?";
+		menu "• Sim",-,"• Não",fim;
+		
+		set @Place, rand(1,4);
+		close2;
+		if(@Place == 1) warp "pvp03",13,49;
+		if(@Place == 2) warp "pvp03",49,86;
+		if(@Place == 3) warp "pvp03",85,49;
+		if(@Place == 4) warp "pvp03",50,13;
+		end;
+		
+	fim:
+		close;
+	}
+}
+
+pvp01	mapflag	nomemo
+pvp01	mapflag	nowarp
+pvp01	mapflag	nowarpto
+pvp01	mapflag	noreturn
+pvp01	mapflag	noteleport
+pvp01	mapflag	noicewall
+pvp01	mapflag	gvg	off
+pvp01	mapflag	pvp
+pvp01	mapflag	nosave	SavePóint
+pvp01	mapflag	nopenalty
+pvp01	mapflag	nobranch
+pvp01	mapflag	noexp
+
+pvp02	mapflag	nomemo
+pvp02	mapflag	nowarp
+pvp02	mapflag	nowarpto
+pvp02	mapflag	noreturn
+pvp02	mapflag	noteleport
+pvp02	mapflag	noicewall
+pvp02	mapflag	gvg	off
+pvp02	mapflag	pvp
+pvp02	mapflag	nosave	SavePóint
+pvp02	mapflag	nopenalty
+pvp02	mapflag	nobranch
+pvp02	mapflag	noexp
+
+pvp03	mapflag	nomemo
+pvp03	mapflag	nowarp
+pvp03	mapflag	nowarpto
+pvp03	mapflag	noreturn
+pvp03	mapflag	noteleport
+pvp03	mapflag	noicewall
+pvp03	mapflag	pvp	off
+pvp03	mapflag	gvg
+pvp03	mapflag	nosave	SavePóint
+pvp03	mapflag	nopenalty
+pvp03	mapflag	nobranch
+pvp03	mapflag	noexp
+
+pvp04	mapflag	nomemo
+pvp04	mapflag	nowarp
+pvp04	mapflag	nowarpto
+pvp04	mapflag	noreturn
+pvp04	mapflag	noteleport
+pvp04	mapflag	noicewall
+pvp04	mapflag	gvg	off
+pvp04	mapflag	pvp
+pvp04	mapflag	nosave	SavePóint
+pvp04	mapflag	nopenalty
+pvp04	mapflag	nobranch
+pvp04	mapflag	noexp
+
+pvp05	mapflag	nomemo
+pvp05	mapflag	nowarp
+pvp05	mapflag	nowarpto
+pvp05	mapflag	noreturn
+pvp05	mapflag	noteleport
+pvp05	mapflag	noicewall
+pvp05	mapflag	gvg	off
+pvp05	mapflag	pvp
+pvp05	mapflag	nosave	SavePóint
+pvp05	mapflag	nopenalty
+pvp05	mapflag	nobranch
+pvp05	mapflag	noexp

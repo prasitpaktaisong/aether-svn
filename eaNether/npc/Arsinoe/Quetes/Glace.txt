@@ -1,0 +1,697 @@
+//_________________________________________________________________
+//___________________  EPISODE : VII  _____________________________
+//_________________________________________________________________
+//
+//Néraka - Glace
+//
+//_________________________________________________________________
+//___________________ Index _______________________________________
+//_________________________________________________________________
+//
+// 1 = Glace : Inscriptions
+// 2 = Glace : Script
+// 3 = Glace : Blocs
+// 4 = Glace : Panneaux
+// 5 = Glace : Bonus
+//
+//_________________________________________________________________
+//___________________Glace : Inscriptions _________________________
+//_________________________________________________________________
+
+ars_dun33,30,261,1	script	Cheik BarYoucef#ep7	774,{
+
+set @name$,"Cheik BarYoucef";
+
+	mes "[" + @name$ + "]";
+	mes "Good " + strcharinfo(0) + ",";
+	mes "I'll finally be able to prepare my sorbet!";
+	close2;
+	warp "ars_dun33",255,256;
+	end;
+}
+
+//========================================================================================================
+
+
+ars_dun33,262,255,1	script	Arganie#ep7	951,{
+
+set @name$,"Arganie";
+
+if($@ep7glace==0)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "You can participate in the delivery of Ice";
+	close;}
+
+if($@ep7glace==1)  { 
+	mes "[" + @name$ + "]";
+	mes "Well " + strcharinfo(0) + ",";
+	mes "The registration takes place at this time.";
+	close;}
+
+if($@ep7glace>=2)  { 
+	mes "[" + @name$ + "]";
+	mes "Good " + strcharinfo(0) + ",";
+	mes "The delivery of the ice takes place at this time.";
+	close;}
+
+
+OnBG:
+	waitingroom "Delivery of Ice - Waiting Room",1,"EP7_glace::OnBGJoin",1;
+	end;
+}
+
+//========================================================================================================
+ars_dun33,259,247,0	script	#arsdun33a	45,1,1,{
+	
+	set @name$,"Inscripitons";
+
+	if ($@ep7glace == 0)  goto sub1;
+	if ($@ep7glace == 1)  goto sub2;
+	if ($@ep7glace >= 2)  goto sub3;
+	
+	sub1:
+		
+		mes "[" + @name$ + "]";
+		mes "You should talk to Arganie to start Delivery of Ice.";
+		close;
+
+	sub2:
+		mes "[" + @name$ + "]";
+		mes "Would you like to register?";
+		next;
+		menu "Yes !",submenu1,"No",-;
+
+			close;
+
+		submenu1:
+
+			if(checkcart() == 1 || (countitem(12016)>0) || (countitem(662)>0) || checkriding() == 1){
+				mes "[" + @name$ + "]";
+				mes "You shouldn't have a cart, a Peco, Authoritative Badges or Speed Potions on you.";
+				close;}
+
+
+			if ($@ep7_glacenb >= 5) {mes "[" + @name$ + "]";mes "Sorry, but there are already 5 people listed";close;}
+
+			setarray $GlaceJoueur$[$@ep7_glacenb],strcharinfo(0);
+			set $@ep7_glacenb,$@ep7_glacenb+1;
+			mapannounce "ars_dun33",""+strcharinfo(0)+" has register !",1,0x66FF00;
+			sc_end SC_ALL;
+			set @ep7_JGlacepl,1;
+			if ($@ep7_glacenb == 1) {warp "ars_dun33",248,230;}
+			if ($@ep7_glacenb == 2) {warp "ars_dun33",254,230;}
+			if ($@ep7_glacenb == 3) {warp "ars_dun33",260,230;}
+			if ($@ep7_glacenb == 4) {warp "ars_dun33",266,230;}
+			if ($@ep7_glacenb == 5) {warp "ars_dun33",272,230;}
+			end;
+
+	sub3:
+		
+		mes "[" + @name$ + "]";
+		mes "Registration is closed for now because the Ice Delivery is underway";
+		close;	
+}
+
+
+//_________________________________________________________________
+//___________________Glace : Script _______________________________
+//_________________________________________________________________
+
+-	script	EP7_glace	-1,{
+
+OnInit:
+	//Temps
+	stopnpctimer;
+	setnpctimer 0;
+	
+	//Pour fixer le temps record
+	if ($GlaceRecord == 0){
+	set $GlaceRecord,1000000;}
+
+	//Initialisation des coordonnées
+	movenpc "Glace#0",248,217;
+	movenpc "Glace#1",254,217;
+	movenpc "Glace#2",260,217;
+	movenpc "Glace#3",266,217;
+	movenpc "Glace#4",272,217;
+
+	//Fenêtre
+	donpcevent "Arganie#ep7::OnBG";
+
+	//Ligne de Départ
+	setcell "ars_dun33",246,221,273,221,cell_walkable,0; //non walkable : Ligne de Départ
+
+	//Variables
+	set $@ep7glace,0; //off 1= inscriptions en cours / 2= event en cours
+	set $@ep7_glacenb,0; //Nb de joueurs à l'inscription à zéro
+	set $@GlaceEnd,0; //Arrivées
+
+	//Récompense (Silver Coins) / Le dernier = record (5 joueurs + 1 pour le record)
+	setarray $@GlaceRec[0],$ep7_Tcoins,$ep7_Tcoins,$ep7_Tcoins,$ep7_Tcoins,$ep7_Tcoins,$ep7_Tcoins; 
+	setarray $@GlaceNb[0],150,100,80,70,60,1000; 
+
+	//NPC
+	disablenpc "#arsdun33a";
+	disablenpc "Glace#0";
+	disablenpc "Glace#1";
+	disablenpc "Glace#2";
+	disablenpc "Glace#3";
+	disablenpc "Glace#4";
+	end;	
+
+OnBGJoin:
+
+	if( $@ep7glace == 1 || $@ep7glace == 2 ) {end;}
+	if( $EP7Annonce == 0 ) {mapannounce "ars_dun33","The Delivery of the Ice of Neraka just begun, you still have two minutes to register!",1,0xFF6600;}
+	if( $EP7Annonce == 1 ) {announce "The Delivery of the Ice of Neraka just begun, you still have two minutes to register!",0,0xFF6600;}
+
+	//Inscriptions Ouvertes
+	set $@ep7glace,1;
+
+	//Noms des derniers participants
+	deletearray $GlaceJoueur$[0],4; //Suppr les 5 noms participants
+
+	deletearray $GlaceEnd$[0],4; //Suppr les 5 noms arrivées
+	deletearray $GlaceTime[0],4; //Suppr les 5 temps
+	deletearray $GlaceTimeS[0],4; //temps
+
+
+	//Vers les inscriptions
+	enablenpc "#arsdun33a";
+
+	sleep2 120000; //2 Minutes pour s'inscrire	
+	mapannounce "ars_dun33","The registrations are closed, we will soon begin.",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	set $@ep7glace,2; //Inscriptions closes
+
+	sleep2 15000;
+
+	if ($@ep7_glacenb >= 1) {enablenpc "Glace#0";}
+	if ($@ep7_glacenb >= 2) {enablenpc "Glace#1";}
+	if ($@ep7_glacenb >= 3) {enablenpc "Glace#2";}
+	if ($@ep7_glacenb >= 4) {enablenpc "Glace#3";}
+	if ($@ep7_glacenb >= 5) {enablenpc "Glace#4";}
+	
+	mapannounce "ars_dun33","5",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	mapannounce "ars_dun33","4",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	mapannounce "ars_dun33","3",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	mapannounce "ars_dun33","2",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	mapannounce "ars_dun33","1",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 1000;
+	mapannounce "ars_dun33","C'est parti !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+
+	setcell "ars_dun33",246,221,273,221,cell_walkable,1; //walkable : Ligne de Départ
+	initnpctimer;
+
+
+	disablenpc "#arsdun33a";
+	sleep2 10000;
+	mapannounce "ars_dun33","You have 20 minutes to finish the race!",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	end;
+//=========================================
+
+OnTimer300000:
+
+	mapannounce "ars_dun33","You still have 15 minutes !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	end;
+
+OnTimer600000:
+
+	mapannounce "ars_dun33","You still have 10 minutes !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	end;
+
+OnTimer900000:
+
+	mapannounce "ars_dun33","You still have 5 minutes !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	end;
+
+OnTimer1200000:
+
+	mapannounce "ars_dun33","It's over !",bc_map,"0xFF3333",FW_NORMAL,20,0,40;
+	sleep2 5000;
+	areawarp "ars_dun33",0,400,400,0,"ars_dun33",255,256;
+	sleep2 5000;
+	donpcevent "EP7_glace::OnInit";
+	end;
+	
+//=========================================
+OnPCLoginEvent:
+
+	getmapxy @map$,@x,@y,0;
+	if ( @map$ == "ars_dun33" && @ep7_JGlacepl == 0) {dispbottom "You don't follow the rules.";warp "ars_dun33",255,256;end;}
+	end;
+
+//=========================================
+OnEnd:
+
+	setarray $GlaceTime[$@GlaceEnd],getnpctimer(0);//Temps
+	end;
+
+//=========================================
+
+}
+
+//_________________________________________________________________
+//___________________Glace : Blocs ________________________________
+//_________________________________________________________________
+
+ars_dun33,248,217,4	script	Glace#0	1778,{
+
+	if ($GlaceJoueur$[0] != strcharinfo(0)){
+
+	if (@GlaceTrap1 == 1) {dispbottom "You have to crush the Block "+$GlaceJoueur$[0]+"."; set .GlaceTrap1,1; set @GlaceTrap1,0;end;}
+	if (@GlaceTrap2 == 1) {dispbottom "You have to stun "+$GlaceJoueur$[0]+"."; set .GlaceTrap2,1;set @GlaceTrap2,0;end;}
+	if (@GlaceTrap3 == 1) {dispbottom "You just reversed the direction of Block "+$GlaceJoueur$[0]+".";set .GlaceTrap3,20; set @GlaceTrap3,0; end;}
+
+	dispbottom "This is the block of ice"+$GlaceJoueur$[0]+", you can't push.";end;}
+
+
+	set $@GlaceNom$,strcharinfo(0);
+	callfunc "arsi_glace";
+	end;
+
+}
+
+//===========================================================================
+ars_dun33,254,217,4	script	Glace#1	1778,{
+
+	if ($GlaceJoueur$[1] != strcharinfo(0)){
+
+	if (@GlaceTrap1 == 1) {dispbottom "You have to crush the Block "+$GlaceJoueur$[1]+"."; set .GlaceTrap1,1; set @GlaceTrap1,0;end;}
+	if (@GlaceTrap2 == 1) {dispbottom "You have to stun "+$GlaceJoueur$[1]+"."; set .GlaceTrap2,1;set @GlaceTrap2,0;end;}
+	if (@GlaceTrap3 == 1) {dispbottom "You just reversed the direction of Block "+$GlaceJoueur$[1]+".";set .GlaceTrap3,20; set @GlaceTrap3,0; end;}
+
+	dispbottom "This is the block of ice "+$GlaceJoueur$[1]+", you can't push.";end;}
+
+	set $@GlaceNom$,strcharinfo(0);
+	callfunc "arsi_glace";
+	end;
+
+}
+//===========================================================================
+ars_dun33,260,217,4	script	Glace#2	1778,{
+
+	if ($GlaceJoueur$[2] != strcharinfo(0)){
+
+	if (@GlaceTrap1 == 1) {dispbottom "You have to crush the Block "+$GlaceJoueur$[2]+"."; set .GlaceTrap1,1; set @GlaceTrap1,0;end;}
+	if (@GlaceTrap2 == 1) {dispbottom "You have to stun "+$GlaceJoueur$[2]+"."; set .GlaceTrap2,1;set @GlaceTrap2,0;end;}
+	if (@GlaceTrap3 == 1) {dispbottom "You just reversed the direction of Block "+$GlaceJoueur$[2]+".";set .GlaceTrap3,20; set @GlaceTrap3,0; end;}
+
+	dispbottom "This is the block of ice "+$GlaceJoueur$[2]+", you can't push.";end;}
+
+	set $@GlaceNom$,strcharinfo(0);
+	callfunc "arsi_glace";
+	end;
+}
+//===========================================================================
+ars_dun33,266,217,4	script	Glace#3	1778,{
+
+	if ($GlaceJoueur$[3] != strcharinfo(0)){
+
+	if (@GlaceTrap1 == 1) {dispbottom "You have to crush the Block "+$GlaceJoueur$[3]+"."; set .GlaceTrap1,1; set @GlaceTrap1,0;end;}
+	if (@GlaceTrap2 == 1) {dispbottom "You have to stun "+$GlaceJoueur$[3]+"."; set .GlaceTrap2,1;set @GlaceTrap2,0;end;}
+	if (@GlaceTrap3 == 1) {dispbottom "You just reversed the direction of Block "+$GlaceJoueur$[3]+".";set .GlaceTrap3,20; set @GlaceTrap3,0; end;}
+
+	dispbottom "This is the block of ice "+$GlaceJoueur$[3]+", you can't push.";end;}
+	
+	set $@GlaceNom$,strcharinfo(0);
+	callfunc "arsi_glace";
+	end;
+}
+//===========================================================================
+ars_dun33,272,217,4	script	Glace#4	1778,{
+
+	if ($GlaceJoueur$[4] != strcharinfo(0)){
+
+	if (@GlaceTrap1 == 1) {dispbottom "You have to crush the Block "+$GlaceJoueur$[4]+"."; set .GlaceTrap1,1; set @GlaceTrap1,0;end;}
+	if (@GlaceTrap2 == 1) {dispbottom "You have to stun "+$GlaceJoueur$[4]+"."; set .GlaceTrap2,1;set @GlaceTrap2,0;end;}
+	if (@GlaceTrap3 == 1) {dispbottom "You just reversed the direction of Block "+$GlaceJoueur$[4]+".";set .GlaceTrap3,20; set @GlaceTrap3,0; end;}
+
+	dispbottom "This is the block of ice "+$GlaceJoueur$[4]+", you can't push.";end;}
+
+	set $@GlaceNom$,strcharinfo(0);
+	callfunc "arsi_glace";
+	end;
+}
+
+//===========================================================================
+
+function	script	arsi_glace	{
+
+//===============================================
+//Calcul des Coordonnées
+//===============================================
+
+	//Coordonnées Joueur et NPC
+	getmapxy .@mapname$,.@mapxNPC,.@mapyNPC,1;
+	getmapxy .@mapname$,.@mapxPC,.@mapyPC,0;
+
+
+	//Vérification de la distance
+	if (distance(.@mapxNPC,.@mapyNPC,.@mapxPC,.@mapyPC)>2) {
+	dispbottom "You can't push your block of ice to this distance.";
+	end;
+	}
+
+	if (@GlaceBonus1 == 0) {npcspeed 96;}
+	if (@GlaceBonus2 >= 1) {npcspeed 20;set @GlaceBonus2,@GlaceBonus2-1;}
+
+	if (@GlaceBonus1 == 0) {set .@rand, rand(4,6);}
+	if (@GlaceBonus1 >= 1) {set .@rand, rand(8,12); set @GlaceBonus1,@GlaceBonus1-1;}
+
+	//  X
+	if (.@mapxPC<.@mapxNPC) set .@movementX, .@rand;
+	else if (.@mapxPC>.@mapxNPC) set .@movementX, -.@rand;
+	else set .@movementX, 0;
+
+	//  Y
+	if (.@mapyPC<.@mapyNPC) set .@movementY, .@rand;
+	else if (.@mapyPC>.@mapyNPC) set .@movementY, -.@rand;
+	else set $@movementY, 0;
+
+
+//===============================================
+// Mouvement du NPC
+//===============================================
+
+	if (.GlaceTrap1 == 1) {dispbottom "A player has just blocked your Ice Block, you will stay frozen for 15 seconds";sleep2 15000; set .GlaceTrap1,0; end;}
+	if (.GlaceTrap2 == 1) {dispbottom "A player has just stunned you!";set .GlaceTrap2,0; sc_start SC_CONFUSION,10000,0; end;}
+
+	//====================================
+	if (.GlaceTrap3 >= 1) {
+	if (@ep7_Draw == 0) {
+	set .@mapxNPC, .@mapxNPC-.@movementX;
+	set .@mapyNPC, .@mapyNPC-.@movementY;}
+
+	if (@ep7_Draw == 1) {
+	set .@mapxNPC, .@mapxNPC+.@movementX;
+	set .@mapyNPC, .@mapyNPC+.@movementY;
+	set @ep7_Draw,0;
+	}}
+	//====================================
+
+
+	if (@ep7_Draw == 0) {
+	set .@mapxNPC, .@mapxNPC+.@movementX;
+	set .@mapyNPC, .@mapyNPC+.@movementY;}
+
+	if (@ep7_Draw == 1) {
+	set .@mapxNPC, .@mapxNPC-.@movementX;
+	set .@mapyNPC, .@mapyNPC-.@movementY;
+	set @ep7_Draw,0;
+	}
+
+	npcwalkto .@mapxNPC,.@mapyNPC;
+	goto L_situation;
+	end;
+
+//===============================================
+// Si Arrivée
+//===============================================
+
+//Trouver les coordonnées y ou x à fixer
+L_situation:
+
+if ((.@mapxNPC<=45) &&(.@mapyNPC>=235)) {
+
+
+	if($@GlaceNom$ == $GlaceJoueur$[0]) {disablenpc "Glace#0";}
+	if($@GlaceNom$ == $GlaceJoueur$[1]) {disablenpc "Glace#1";}
+	if($@GlaceNom$ == $GlaceJoueur$[2]) {disablenpc "Glace#2";}
+	if($@GlaceNom$ == $GlaceJoueur$[3]) {disablenpc "Glace#3";}
+	if($@GlaceNom$ == $GlaceJoueur$[4]) {disablenpc "Glace#4";}
+
+	set .@GlaceplaceT,$@GlaceEnd+1;
+	mapannounce "ars_dun33",""+$@GlaceNom$+" has just arrived at ["+ .@GlaceplaceT +"] Place !",0,0x00CCFF;
+	
+	setarray $GlaceEnd$[$@GlaceEnd],$@GlaceNom$;
+	donpcevent "EP7_glace::OnEnd";
+
+
+	if (EP7_NERAKA == 8) {set EP7_NERAKA,9; dispbottom "You have validate your quest mercenary!";changequest 70436,70437;}
+
+	warp "ars_dun33",32,250;
+	getitem $@GlaceRec[$@GlaceEnd],$@GlaceNb[$@GlaceEnd];
+
+//Calcul du Temps
+
+	set $GlaceTimeS[$@GlaceEnd], $GlaceTime[$@GlaceEnd]/1000;
+
+
+	//Si Record
+	if($GlaceTime[$@GlaceEnd] < $GlaceRecord) {
+
+	set $GlaceRecNom$,$GlaceEnd$[$@GlaceEnd];
+	set $GlaceRecord,$GlaceTime[$@GlaceEnd];
+	set $GlaceRecordS,$GlaceTimeS[$@GlaceEnd];
+	getitem $@GlaceRec[5],$@GlaceNb[5];
+	}
+	//Passage au suivant
+	set $@GlaceEnd,$@GlaceEnd+1;
+	
+		end;}
+
+
+
+	}
+
+
+//_________________________________________________________________
+//___________________Glace : Panneaux _____________________________
+//_________________________________________________________________
+
+ars_dun33,249,262,3	script	Informations#ep71	857,{
+
+set @name$,"Informations";
+
+	mes "[" + @name$ + "]";
+	mes "What will you do ?";
+	next;
+
+	switch( select("Participants:Rank:Record:Rules:Quit") ){
+
+	case 1: 
+	mes "^FF0000~ Participants Delivery of ice of Neraka ~^000000";
+	mes "- First Participant : ^4d4dff - " + $GlaceJoueur$[0] + "^000000 -";
+	mes "- Second Participant : ^4d4dff - " + $GlaceJoueur$[1] + "^000000 -";
+	mes "- Third Participant : ^4d4dff - " + $GlaceJoueur$[2] + "^000000 -";
+	mes "- Fourth Participant : ^4d4dff - " + $GlaceJoueur$[3] + "^000000 -";
+	mes "- Fifth Participant : ^4d4dff - " + $GlaceJoueur$[4] + "^000000 -";
+	close2;
+	set @ep7_JMarapl,9;
+	end;
+
+	case 2: 
+	mes "^FF0000~ Winners of the Ice Delivery of Neraka ~^000000";
+	mes "- 1 : ^4d4dff - " + $GlaceEnd$[0] + "^000000 / ^4d4dffTemps : "+$GlaceTimeS[0]+" secondes^000000 -";
+	mes "- 2 : ^4d4dff - " + $GlaceEnd$[1] + "^000000 / ^4d4dffTemps : "+$GlaceTimeS[1]+" secondes^000000 -";
+	mes "- 3 : ^4d4dff - " + $GlaceEnd$[2] + "^000000 / ^4d4dffTemps : "+$GlaceTimeS[2]+" secondes^000000 -";
+	mes "- 4 : ^4d4dff - " + $GlaceEnd$[3] + "^000000 / ^4d4dffTemps : "+$GlaceTimeS[3]+" secondes^000000 --";
+	mes "- 5 : ^4d4dff - " + $GlaceEnd$[4] + "^000000 / ^4d4dffTemps : "+$GlaceTimeS[4]+" secondes^000000 --";
+	close;
+
+//===========================================
+	case 3:  
+	mes "[" + @name$ + "]";
+	mes "The Record is held by "+$GlaceRecNom$+".";
+	mes "With a time: "+$GlaceRecordS+" seconds.";
+	close;
+
+//===========================================
+	case 4:  
+	mes "[" + @name$ + "]";
+	mes "You have to push your block of ice and finish the race in under 20 minutes.";
+	mes "You have the possibility of playing five simultaneously. If your block of ice can not move, you can use a pole to get the ice pack towards you.";
+	mes "bonuses and penalties are available at different locations of the trail!";
+	close;
+
+
+//===========================================
+	case 5: close;
+}
+}
+
+
+//_________________________________________________________________
+//___________________Glace : Bonus ________________________________
+//_________________________________________________________________
+
+ars_dun33,274,130,5	script	#ep7glace1	-1,15,0,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 1) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,222,158,5	script	#ep7glace2	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 2) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,180,261,5	script	#ep7glace3	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 3) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,167,208,5	script	#ep7glace4	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 4) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,165,125,5	script	#ep7glace5	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 5) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+ars_dun33,129,193,4	duplicate(#ep7glace5)	#ep7glace5a	-1
+
+//===========================================
+ars_dun33,157,77,5	script	#ep7glace6	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 6) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+
+//===========================================
+ars_dun33,254,39,5	script	#ep7glace7	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 7) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,169,18,5	script	#ep7glace8	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 8) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,85,38,5	script	#ep7glace9	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 9) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+//===========================================
+ars_dun33,43,141,5	script	#ep7glace10	-1,0,15,{
+
+OnTouch:
+
+if (@ep7_JGlacepl == 10) {
+		set @ep7_JGlacepl,@ep7_JGlacepl+1;	
+		setarray .@ep7_addice[0],29077,29078,29079,29080,29081,29082;
+		set .@rand, rand(0,5);
+		dispbottom "You just got " + getitemname(.@ep7_addice[.@rand]) + ".";
+		getitem .@ep7_addice[.@rand],1;
+		specialeffect2 65;
+		end;}
+end;
+}
+
+
+
+
+ars_dun33,188,253,5	shop	Crochet#1	924,29076:-1
+ars_dun33,280,122,5	shop	Crochet#2	924,29076:-1
+ars_dun33,115,148,5	shop	Crochet#3	924,29076:-1
+ars_dun33,267,36,5	shop	Crochet#4	924,29076:-1
+ars_dun33,61,81,5	shop	Crochet#5	924,29076:-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+

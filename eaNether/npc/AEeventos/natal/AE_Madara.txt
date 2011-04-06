@@ -1,0 +1,10 @@
+prontera,157,191,3	script	Madara	714,{
+	mes "^0000FF[Madara]^000000";
+	if(countitem(12132) < 1){
+		mes "Hey, por que você também não entra no clima do ^0000FFEspírito Natalino^000000?";
+		getitem 12132,1;
+		close;
+	}	
+	mes "Procure por ^0000FFMilley^000000, sei que ele anda precisando de ajuda para resgatar os ^0000FFFragmentos^000000 do ^0000FFEspírito de Natal^000000!";
+	close;
+}

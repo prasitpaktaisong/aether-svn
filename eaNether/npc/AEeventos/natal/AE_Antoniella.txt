@@ -1,0 +1,54 @@
+daath,37,252,3	script	Antoniella#xmas	714,{
+	mes "^FF0000[Madara]^000000";
+	mes "O que deseja fazer?";
+	next;
+	
+	switch(select("• Ligar","• Desligar","• Cancelar")){	
+		case 1:
+			donpcevent "AntoniosPortais::OnEventoLiga";
+			mes "^FF0000[Madara]^000000";
+			mes "Feito!";
+			close;
+			
+		case 2:
+			donpcevent "AnunciadorNatal::OnInit";
+			mes "^FF0000[Madara]^000000";
+			mes "Feito!";
+			close;
+		
+		case 3:
+			close;
+	}
+	
+OnWhisperGlobal:
+	if(compare(@whispervar0$,"on")){
+		monster "xmas_dun03",0,0,"Antoniella",2706,10,"Antoniella#xmas::OnAntKill";
+	}
+	end;
+	
+OnAntKill:
+	set @antoniella, rand(1,20);
+	if(@antoniella == 1 && $antoniella <= 7 && countitem(5381) < 1){
+		getitem 5381,1;
+		set $antoniella, $antoniella + 1;
+	}
+	if(@antoniella == 2 && countitem(5384) < 1){
+		getitem 5384,1;
+	}
+	if(@antoniella > 2 && countitem(2784) < 1){
+		getitem 2784,1;
+	}
+	set #AE_EvtPt, #AE_EvtPt+2;
+	dispbottom "[Invasão Natalina]";
+	dispbottom "- Você adquiriu 2 Pontos de Evento."; 
+	dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";	
+	end;
+}
+
+xmas_dun02,132,209,0	script	XmasDun3	45,1,1,{
+	end;
+	
+OnTouch:
+	warp "xmas_dun03",0,0;
+	end;
+}

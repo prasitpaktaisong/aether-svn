@@ -1,0 +1,6 @@
+function	script	CheckPO	{
+		dispbottom "[Cartão de Pontos]"; 
+		dispbottom "- Atualmente, você possui "+#AE_EvtPt+" Pontos de Evento.";
+		getitem 20014,1;
+		end;
+}

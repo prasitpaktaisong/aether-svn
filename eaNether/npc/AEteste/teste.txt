@@ -1,0 +1,17 @@
+daath,30,251,5	script	PvP Event Test	76,{
+	end;
+	
+OnPCKillEvent:
+	mes "Lol!";
+	close;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 40) end;
+	if (compare(@whispervar0$,"on")){
+		setmapflag "daath",mf_pvp_noguild;
+	}
+	if (compare(@whispervar0$,"off")){
+		removemapflag "gefg_cas04",mf_blocked;
+	}
+	end;
+}

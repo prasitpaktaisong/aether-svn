@@ -1,0 +1,11 @@
+// Old Violet Box Obtainable Items Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+
+10,12075,1650	//Língua no Vapor
+10,12080,1650	//Coquetel Sopro do Dragão
+10,12095,1650	//Tônico de Hwergelmir
+10,12090,1650	//Escorpiões do Deserto no Vapor
+10,12085,1650	//Cozido Imortal
+10,12100,1650	//Nove Caudas Cozidas
