@@ -1,0 +1,166 @@
+//== Aether Script ===========================================
+// • NPCs de Amatsu
+//===== Por: =================================================
+// • Ciel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Amatsu
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Ayaka - Máscara do Exterminador (25/07/2010)
+//============================================================
+
+//== • Ayaka Hirahara, A Ninja - Quest: Máscara do Exterminador=
+amatsu,248,88,5	script	Ayaka Hirahara, A Ninja	760,{
+if(countitem(551) >= 20 && AE_MDE != 1 ){
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Se apenas um desejo puder ser completo.";
+	mes "Eu diria 'adeus' ao meu antigo eu.";
+	mes "Não querer mudar é algo impossível.";
+	mes "Pois algum dia a cerejeira irá desabrochar!";
+	emotion e_ho,0;
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Vejo que você tem alguns Sushis..";
+	mes "Eu amo Sushi, se você me der estes posso lhe contar uma história";
+	mes "O que me diz?";
+	switch(select("• Tudo bem, pode ficar!:• Não quero saber sua história.")){
+		case 1:
+		next;
+		set @delsushi,countitem(551);
+		delitem 551,@delsushi;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Oh, muito obrigada!!";
+		mes "Você tem um bom coração.";
+		mes "Vou lhe contar minha história, então..";
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Eu morei em Amatsu minha vida toda";
+		mes "e com muito treino e dedicação eu consegui me tornar uma ninja, quando era jovem...";
+		switch(select("• Mas, Amatsu é uma cidade comercial..")){
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Uh... Er...";
+		mes "Ahn... essa é uma outra história, que cabe a outro momento.'";
+		mes "Faz de conta que eu sou de Amatsu agora, tudo bem?";
+		emotion e_swt,0;
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Então, cresci aqui e me tornei Ninja.";
+		mes "Eu amava pescar com os outros, por isso eu gosto muito de sushi";
+		mes "e eu sempre ria quando um deles atirava o arpão e gritava 'VEM CÁ'! Hahahah.";
+		mes "Bons tempos...";
+		emotion e_heh,0;
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Poxa, essa história me lembrou nossa tradicional máscara...";
+		mes "Era praticamente nossa marca registrada!";
+		mes "Acho que ainda consigo fazê-la, se me trouxer os itens.";
+		emotion e_hmm,0;
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Quer tentar? ^_^";
+			switch(select("• Vamos tentar!!:• Fica pra próxima.")){
+				case 1:
+				next;
+				mes "^FF0000[Ayaka Hirahara]^000000";
+				mes "Ótimo!! Vamos tentar!!";
+				mes "Traga-me:";
+				mes "• ^FF0000 Espinho de Porco-Espinho ^000000×^FF0000250^000000";
+				mes "• ^FF0000 Máscara Ninja ^000000× ^FF0000250^000000";
+				next;
+				mes "^FF0000[Ayaka Hirahara]^000000";
+				mes "Estarei esperando para fazermos a máscara!";
+				mes "Sayonara!";
+				set AE_MDE,1;
+				close;
+				
+				case 2:
+				next;
+				mes "^FF0000[Ayaka Hirahara]^000000";
+				mes "Ah, tudo bem então...";
+				mes "Apareça mais vezes por essas bandas.";
+				mes "Sayonara!";
+				close;
+			}
+		}
+	
+			case 2:
+			next;
+			mes "^FF0000[Ayaka Hirahara]^000000";
+			mes "Oh, que rude!!";
+			mes "Vá embora! Sayonara!";
+			close;
+		}
+	} else if(AE_MDE != 1){
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Se apenas um desejo puder ser completo.";
+		mes "Eu diria 'adeus' ao meu antigo eu.";
+		mes "Não querer mudar é algo impossível.";
+		mes "Pois algum dia a cerejeira irá desabrochar!";
+		emotion e_ho,0;
+		close;
+	}
+	
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Já está de volta?";
+	mes "E então, conseguiu tudo pra nossa máscara?";
+	switch(select("• Está tudo aqui.:• Erm.. pode repetir o que precisa?:• Ainda não, volto depois.")){
+		case 1:
+		next;
+		mes "^FF0000[Ayaka Hirahara]^000000";
+		mes "Hum, deixe-me conferir se não há nada faltando";
+		next;
+		if(countitem(1027) < 250){
+			mes "^FF0000[Ayaka Hirahara]^000000";
+			mes "Hum, parece que está faltando algo ainda..";
+			mes "Se você esqueceu tudo o que é necessário, basta me perguntar denovo, tá?";
+			emotion e_hmm,0;
+			close;
+		}else if(countitem(7157) < 250){
+			mes "^FF0000[Ayaka Hirahara]^000000";
+			mes "Hum, parece que está faltando algo ainda..";
+			mes "Se você esqueceu tudo o que é necessário, basta me perguntar denovo, tá?";
+			emotion e_hmm,0;
+			close;
+		} else {
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Perfeito!! Está tudo aqui!";
+	mes "Vamos fazer a sua máscara!";
+	delitem 1027,250;
+	delitem 7157,250;
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Prontinho.";
+	mes "Ficou idêntica a que eu costumava usar.";
+	mes "Já não tenho mais idade pra isso, hahaha.";
+	getitem 5462,1;
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Obrigada pelo Sushi!";
+	mes "E boa sorte em suas aventuras, sayonara!";
+	set AE_MDE,0;
+	close;
+	}
+	
+	case 2:
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Mas claro.";
+	mes "Eu preciso de:";
+	mes "• ^FF0000 Espinho de Porco-Espinho ^000000×^FF0000250^000000";
+	mes "• ^FF0000 Máscara Ninja ^000000×^FF0000250^000000";
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Não se apresse, estarei sempre aqui!";
+	close;
+	
+	case 3:
+	next;
+	mes "^FF0000[Ayaka Hirahara]^000000";
+	mes "Tudo bem, não se apresse!";
+	mes "Estarei sempre aqui.";
+	close;
+	}
+}
+	

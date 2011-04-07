@@ -1,0 +1,95 @@
+prontera,145,192,5	script	Lady Madallen#prt	430,{
+	mes "^FF0000[Madallen]^000000";
+	mes "Olá, "+((Sex)?"caro ^0000FF":"cara ^FF0000")+""+strcharinfo(0)+"^000000.";
+	mes "Você carrega com você algumas ^FF0000Caveiras^000000 de ^FF0000Arena^000000? Posso te conseguir algumas ^0000FFSementes de Yggdrasil^000000 em troca delas.";
+	switch(select("• Trocar","• Cancelar")){
+		case 1:
+			next;
+			mes "^FF0000[Madallen]^000000";
+			mes "Quantas ^FF0000Caveiras^000000 você tem?";
+			switch(select("• ^0000FF20^000000 Caveiras","• ^0000FF40^000000 Caveiras","• ^0000FF50^000000 Caveiras","• Cancelar")){
+				case 1:
+					next;
+					if(countitem(7420) < 20){
+						mes "^FF0000[Madallen]^000000";
+						mes "Você não tem ^FF0000Caveiras^000000 o suficiente!";
+						close;
+					}
+					mes "^FF0000[Madallen]^000000";
+					mes "Por essa quantidade, posso te dar:";
+					mes "• ^FF0000Semente de Yggdrasil^000000 × ^FF00005^000000";
+					mes "Você aceita?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+							delitem 7420,20;
+							mes "^FF0000[Madallen]^000000";
+							mes "Aqui está!";
+							emotion e_ok,0;
+							specialeffect2 543; 
+							getitem 608,5;
+							close;
+							
+						case 2:
+							close;
+					}
+						
+				case 2:
+					next;
+					if(countitem(7420) < 40){
+						mes "^FF0000[Madallen]^000000";
+						mes "Você não tem ^FF0000Caveiras^000000 o suficiente!";
+						close;
+					}
+					mes "^FF0000[Madallen]^000000";
+					mes "Por essa quantidade, posso te dar:";
+					mes "• ^FF0000Semente de Yggdrasil^000000 × ^FF000015^000000";
+					mes "Você aceita?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+							delitem 7420,40;
+							mes "^FF0000[Madallen]^000000";
+							mes "Aqui está!";
+							emotion e_ok,0;
+							specialeffect2 543; 
+							getitem 608,15;
+							close;
+							
+						case 2:
+							close;
+					}
+
+				case 3:
+					next;
+					if(countitem(7420) < 50){
+						mes "^FF0000[Madallen]^000000";
+						mes "Você não tem ^FF0000Caveiras^000000 o suficiente!";
+						close;
+					}
+					mes "^FF0000[Madallen]^000000";
+					mes "Por essa quantidade, posso te dar:";
+					mes "• ^FF0000Semente de Yggdrasil^000000 × ^FF000025^000000";
+					mes "Você aceita?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+							delitem 7420,50;
+							mes "^FF0000[Madallen]^000000";
+							mes "Aqui está!";
+							emotion e_ok,0;
+							specialeffect2 543; 
+							getitem 608,25;
+							close;
+							
+						case 2:
+							close;
+					}
+				case 4:
+					close;
+			}
+		case 2:
+			close;
+	}
+	
+}

@@ -1,0 +1,123 @@
+//== Aether Script ===========================================
+// • NPCs de Prontera
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Prontera
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Herven - Rubor de Batalha (28/07/2010)
+// • 1.1 - Adicionado Sarah - Elmo de Anubis (12/08/2010)
+//============================================================
+
+//== • Herven - Quest: Rubor de Batalha ======================
+prt_in,160,61,5	script	Herven, O Pesquisador	805,{
+	If (AE_Rubor >= 1){
+		mes "^0000FF[Herven]^000000";
+		mes "Boa sorte! Espero que as lendas sejam verdadeiras.";
+		close;
+	}	
+	mes "^0000FF[Herven]^000000";
+	mes "^0000FF*lendo em voz baixa*^000000";
+	mes "E em seu desespero em salvar a doce companheira, o ^FF0000Rubor da Batalha^000000 coberto pelo suor de seu rosto, o protegeu naquele golpe definitivo...";
+	next;
+
+	mes "^0000FF[Herven]^000000";
+	mes "O lendário ^0000FFRubor de Batalha^000000 e suas lendas...";
+	
+	switch(select("• Perguntar sobre o ^FF0000Rubor de Batalha^000000.","• Cancelar.")){
+		case 1:	
+			next;
+			mes "^0000FF[Herven]^000000";
+			mes "Oh! Não havia notado você aí.";
+			mes "Estava ouvindo a história?";
+			mes "Antigamente, guerreiros voltavam de suas batalhas contando que em seus momentos de maior perigo, seus rostos mantinham um rubor, um misto de desespero com esperança e bravura, que os fazia sentir a salvo, ao menos um pouco. Eles chamavam isso de ^FF0000Rubor de Batalha^000000";
+			switch(select("• E há como aprender a usá-lo?","• Que besteira!")){
+				case 1:
+					next;
+					mes "^0000FF[Herven]^000000";
+					mes "Eu ouço falar sobre isso há muito tempo, mas, em tempos de poucos confrontos como esses, é difícil achar alguém que realmente saiba fazer proveito disso.";
+					mes "Talvez um sábio senhor chamado ^0000FFLogan^000000 possa ajudá-lo.";
+					mes "Porque não o procura? Ouvi dizer que ele se mantém eremita em meio as ^00FF00Colinas de Moscóvia^000000.";
+					switch(select("• Vou fazer isso!","• Que perda de tempo!")){
+						case 1:
+							next;
+							mes "^0000FF[Herven]^000000";
+							mes "Boa sorte! Espero que as lendas sejam verdadeiras.";
+							set AE_Rubor,1;
+							close;
+						case 2:
+							close;
+					}
+				case 2:
+					close;
+			}
+		case 2:
+			close;
+	}		
+}
+
+//== • Sarah - Quest: Elmo de Anubis =========================
+prontera,143,295,5	script	Sarah#prt	882,{
+	if(AE_Anubis > 0){
+		mes "^FF0000[Sarah]^000000";
+		mes "Que audacioso...";
+		mes "Você não tem essa capacidade, mas vou te dar a chance de descobrir.";
+		next;
+		
+		emotion e_heh,0;	
+		mes "^FF0000[Sarah]^000000";
+		mes "Siga para a ^0000FFCatedral^000000 de ^0000FFHugel^000000 e procure pelos três irmãos ^0000FFSayvell^000000, diga à ^0000FFFeng^000000 que eu mandei procurá-lo.";
+		mes "Boa sorte.";
+		close;
+	}
+	mes "^FF0000[Sarah]^000000";
+	mes "Sombra, silêncio e tranquilidade...";
+	mes "É mesmo impressionante poder encontrar isso em uma capital, depois de tanto tempo...";
+	switch(select("• Tanto tempo?","• Nada")){
+		case 1:
+			next;
+			emotion	e_heh,0;
+			mes "^FF0000[Sarah]^000000";
+			mes "Heh.";
+			mes "Você não entenderia, certamente...";
+			next;
+			
+			mes "^FF0000[Sarah]^000000";
+			mes "Eu sou do tempo em que os ^0000FFDeuses^000000 renegados traziam as ^0000FFtrevas^000000 para toda ^0000FFMidgard^000000.";
+			mes "Esse assunto te interessa?";
+			switch(select("• Sim","• Não")){
+				case 1:
+					next;
+					emotion	e_heh,0;
+					mes "^FF0000[Sarah]^000000";
+					mes "Hum...";
+					mes "Então, você se acha tão forte quanto um ^0000FFDeus^000000?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+							mes "^FF0000[Sarah]^000000";
+							mes "Que audacioso...";
+							mes "Você não tem essa capacidade, mas vou te dar a chance de descobrir.";
+							next;
+							
+							emotion e_heh,0;	
+							mes "^FF0000[Sarah]^000000";
+							mes "Siga para a ^0000FFCatedral^000000 de ^0000FFHugel^000000 e procure pelos três irmãos ^0000FFSayvell^000000, diga à ^0000FFFeng^000000 que eu mandei procurá-lo.";
+							mes "Boa sorte.";
+							set AE_Anubis,1;
+							close;
+							
+						case 2:
+							close;
+					}
+				case 2:
+					close;
+			}
+		case 2:
+			close;	
+	}
+}
+
+

@@ -1,0 +1,118 @@
+// *****************************************************
+//                 Item Security System
+// *****************************************************
+
+-	script	SecuritySystem	-1,{
+	end;
+
+OnSettings:
+	while( 1 ){
+		mes "^0000FF[Sistema de Segurança]^000000";
+		mes "• Código de Segurança:";
+		if( #SECURITYCODE ){
+			mes "^FFFFFF______________^2E8B57Habilitado^000000";
+		mes "• Transferência de Itens:";
+			if( getsecurity() ){
+				mes "^FFFFFF______________^2E8B57Desabilitado^000000";
+				set .@Menu2$, "• Permitir Transferência de Itens";
+			}
+			else {
+				mes "^FFFFFF______________^FF0000Habilitado^000000";
+				set .@Menu2$, "• Bloquear Transferência de Itens";
+			}
+			next;
+			
+			set .@Option, select("• Alterar Código de Segurança",.@Menu2$,"• Desabilitar Código de Segurança","• Cancelar");
+		} else {
+			mes "^FFFFFF______________^FF0000Desabilitado^000000";
+			next;
+			set .@Option, select("• Definir Código de Segurança","• Cancelar") + 4;
+		}
+		
+		switch( .@Option ){
+			case 1: // Cambiar Clave
+				mes "^0000FF[Sistema de Segurança]^000000";
+				mes "O Código de Segurança deverá ser um número de ^0000FF4^000000 dígitos entre ^0000FF1000^000000 e ^0000FF9999^000000.";
+				mes "Insira sua Código de Segurança atual.";
+				next;
+
+				input .@Pass;
+				if( .@Pass != #SECURITYCODE )
+				{
+					mes "^0000FF[Sistema de Segurança]^000000";
+					mes "Código de Segurança inválida.";
+					close;
+				}
+			
+			case 5:
+				mes "^0000FF[Sistema de Segurança]^000000";
+				mes "Insira seu novo Código de Segurança.";
+				mes "O Código de Segurança deverá ser um número de ^0000FF4^000000 dígitos entre ^0000FF1000^000000 e ^0000FF9999^000000.";
+				next;
+				
+				input .@Pass;
+				if( .@Pass < 1000 || .@Pass > 9999 )
+				{
+					mes "^0000FF[Sistema de Segurança]^000000";
+					mes "Código de Segurança inválido!";
+					close;
+				}
+				
+				mes "^0000FF[Sistema de Segurança]^000000";
+				mes "Confirme seu novo Código de Segurança.";
+				next;
+
+				input .@CPass;
+				if( .@CPass != .@Pass ){
+					mes "^0000FF[Sistema de Segurança]^000000";
+					mes "As Código de Seguranças inseridas não coincidem.";
+					mes "Operação cancelada.";
+					close;
+				}
+				
+				set #SECURITYCODE, .@Pass;
+				break;
+			case 2: // Permitir Salidas - Bloquear Salidas
+				if( getsecurity() ){
+					mes "^0000FF[Sistema de Segurança]^000000";
+					mes "Insira seu Código de Segurança.";
+					next;
+					
+					input .@Pass;
+					if( #SECURITYCODE != .@Pass )
+					{
+						mes "^0000FF[Sistema de Segurança]^000000";
+						mes "Código de Segurança inválido!";
+						close;
+					}
+					
+					setsecurity 0;
+				}
+				else if( #SECURITYCODE > 0 )
+					setsecurity 1;
+				else
+					setsecurity 0;
+				break;
+			case 3: // Quitar Clave
+				mes "^0000FF[Sistema de Segurança]^000000";
+				mes "Insira seu Código de Segurança atual.";
+				next;
+				
+				input .@Pass;
+				if( #SECURITYCODE != .@Pass ){
+					mes "^0000FF[Sistema de Segurança]^000000";
+					mes "Código de Segurança inválido.";
+					close;
+				}
+				set #SECURITYCODE, 0;
+				setsecurity 0;
+				break;
+			case 4:
+			case 6:
+				mes "^0000FF[Sistema de Segurança]^000000";
+				mes "Use ^0000FF@security^000000 caso deseje o ^0000FFSistema de Segurança^000000 novamente.";
+				close;
+		}
+	}
+	end;
+}

@@ -1,0 +1,44 @@
+prontera,155,190,3	script	Carmem#carv	485,{
+	mes "^FF0000[Carmem]^000000";
+	if(#AE_PerCarnaval >= 1){
+		mes "Divirta-se nesse ^0000FFCarnaval^000000!";	
+		close;
+	}
+	mes "Aproveitando que estamos nas festividades de ^0000FFCarnaval^000000, por que não escolhe uma dessas para usar?";
+	next;
+	
+	switch(select("• Peruca Carnavalesca Feliz","• Peruca Carnavalesca Brilhante","• Peruca Carnavalesca Chamativa","• Peruca Carnavalesca Fantástica","• Cancelar")){
+		case 1:
+			getitem 5273,1;
+			mes "^FF0000[Carmem]^000000";
+			mes "Divirta-se!";
+			set #AE_PerCarnaval,1;
+			close;
+			
+		case 2:
+			getitem 5274,1;
+			mes "^FF0000[Carmem]^000000";
+			mes "Divirta-se!";
+			set #AE_PerCarnaval,1;
+			close;
+
+		case 3:
+			getitem 5275,1;
+			mes "^FF0000[Carmem]^000000";
+			mes "Divirta-se!";
+			set #AE_PerCarnaval,1;
+			close;
+
+		case 4:
+			getitem 5276,1;
+			mes "^FF0000[Carmem]^000000";
+			mes "Divirta-se!";
+			set #AE_PerCarnaval,1;
+			close;
+
+		case 5:
+			mes "^FF0000[Carmem]^000000";
+			mes "Oh, tudo bem, até depois então.";
+			close;
+	}
+}
