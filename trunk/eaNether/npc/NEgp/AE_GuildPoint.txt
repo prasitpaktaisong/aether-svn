@@ -1,0 +1,773 @@
+function	script	GuildWarp	{
+	if(strcharinfo(3) == "grandma" || strcharinfo(3) == "newlife" || strcharinfo(3) == "new_1-1" || strcharinfo(3) == "bat_a01" || strcharinfo(3) == "bat_a02" || strcharinfo(3) == "bat_a03" || strcharinfo(3) == "bat_a04" || strcharinfo(3) == "bat_a05" || strcharinfo(3) == "bat_b01" || strcharinfo(3) == "bat_b02" || strcharinfo(3) == "bat_b03" || strcharinfo(3) == "bat_b04" || strcharinfo(3) == "bat_b05" || strcharinfo(3) == "bat_c01" || strcharinfo(3) == "bat_c02" || strcharinfo(3) == "bat_c03" || strcharinfo(3) == "bat_c04" || strcharinfo(3) == "bat_c05" || strcharinfo(3) == "bat_c06" || strcharinfo(3) == "bat_c07" || strcharinfo(3) == "bat_c08"){
+		dispbottom "- Não é possível utilizar o Brasão de Guilda neste local!";
+		end;
+	}
+	if (getcharid(2) == $GP01){
+		warp "gp01",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP02){
+		warp "gp02",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP03){
+		warp "gp03",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP04){
+		warp "gp04",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP05){
+		warp "gp05",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP06){
+		warp "gp06",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP07){
+		warp "gp07",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP08){
+		warp "gp08",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP09){
+		warp "gp09",167,121;
+		end;
+	}
+	if (getcharid(2) == $GP10){
+		warp "gp10",167,121;
+		end;
+	}
+	if(getcharid(2) != 0){
+		dispbottom "- A Guilda "+GetGuildName(getcharid(2))+" não possui um Quartel General!";
+	} else {
+		dispbottom "- Você não possui uma Guilda!";
+	}
+	end;
+}
+
+prontera,166,189,3	script	Quartéis Generais#prt	470,{
+	mes "^FF0000[Agrias]^000000";
+	mes "Saudações, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	mes "Gostaria de visitar um ^0000FFQuartel General^000000?";
+	next;
+	
+	switch(select(	"• "+getguildname($GP01)+" - "+$GP01ST$+"",
+					"• "+getguildname($GP02)+" - "+$GP02ST$+"",
+					"• "+getguildname($GP03)+" - "+$GP03ST$+"",
+					"• "+getguildname($GP04)+" - "+$GP04ST$+"",
+					"• "+getguildname($GP05)+" - "+$GP05ST$+"",
+					"• "+getguildname($GP06)+" - "+$GP06ST$+"",
+					"• "+getguildname($GP07)+" - "+$GP07ST$+"",
+					"• "+getguildname($GP08)+" - "+$GP08ST$+"",
+					"• "+getguildname($GP09)+" - "+$GP09ST$+"",
+					"• "+getguildname($GP10)+" - "+$GP10ST$+"",
+					"• Cancelar")){
+		case 1:
+			if(getcharid(2) == $GP01){
+				warp "gp01",167,121;
+				end;				
+			}
+			if(($GP01ST$ == "^FF0000Fechado^000000") || ($GP01ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP01 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP01)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp01","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp01",59,69;
+				end;				
+			}
+			
+		case 2:
+			if(getcharid(2) == $GP02){
+				warp "gp02",167,121;
+				end;				
+			}
+			if(($GP02ST$ == "^FF0000Fechado^000000") || ($GP02ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP02 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP02)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp02","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;			
+				warp "gp02",59,69;
+				end;				
+			}
+					
+		case 3:
+			if(getcharid(2) == $GP03){
+				warp "gp03",167,121;
+				end;				
+			}
+			if(($GP03ST$ == "^FF0000Fechado^000000") || ($GP03ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP03 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP03)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp03","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;			
+				warp "gp03",59,69;
+				end;				
+			}
+			
+		case 4:
+			if(getcharid(2) == $GP04){
+				warp "gp04",167,121;
+				end;				
+			}
+			if(($GP04ST$ == "^FF0000Fechado^000000") || ($GP04ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP04 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP04)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp04","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp04",59,69;
+				end;				
+			}
+			
+		case 5:
+			if(getcharid(2) == $GP05){
+				warp "gp05",167,121;
+				end;				
+			}
+			if(($GP05ST$ == "^FF0000Fechado^000000") || ($GP05ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP05 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP05)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp05","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp05",59,69;
+				end;				
+			}
+			
+		case 6:
+			if(getcharid(2) == $GP06){
+				warp "gp06",167,121;
+				end;				
+			}
+			if(($GP06ST$ == "^FF0000Fechado^000000") || ($GP06ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP06 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP06)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp06","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp06",59,69;
+				end;				
+			}
+			
+		case 7:
+			if(getcharid(2) == $GP07){
+				warp "gp07",167,121;
+				end;				
+			}
+			if(($GP07ST$ == "^FF0000Fechado^000000") || ($GP07ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP07 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP07)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp04","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp07",59,69;
+				end;				
+			}
+
+		case 8:
+			if(getcharid(2) == $GP08){
+				warp "gp08",167,121;
+				end;				
+			}
+			if(($GP08ST$ == "^FF0000Fechado^000000") || ($GP08ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP08 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP08)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp08","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp08",59,69;
+				end;				
+			}
+			
+		case 9:
+			if(getcharid(2) == $GP09){
+				warp "gp09",167,121;
+				end;				
+			}
+			if(($GP09ST$ == "^FF0000Fechado^000000") || ($GP09ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP09 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP09)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp09","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp09",59,69;
+				end;				
+			}
+			
+		case 10:
+			if(getcharid(2) == $GP10){
+				warp "gp10",167,121;
+				end;				
+			}
+			if(($GP10ST$ == "^FF0000Fechado^000000") || ($GP10ST$ == "^FF0000Indisponível^000000")){
+				mes "^FF0000[Agrias]^000000";
+				mes "Desculpe, car"+((Sex)?"o ^0000FF":"a ^FF0000")+strcharinfo(0)+"^000000.";
+				if($GP10 != 0){
+					mes "A passagem de ^0000FFVisitantes^000000 para o ^0000FFQuartel^000000 da ^0000FFGuilda^000000 "+getguildname($GP10)+" está fechada.";
+				} else {
+					mes "Esse ^0000FFQuartel General^000000 está vazio e sua passagem não é permitida";
+				}				
+				close;
+			} else {
+				mapannounce "gp10","Hermann: "+((Sex)?"O":"A")+" visitante "+strcharinfo(0)+" acabou de entrar no Quartel General.",0;
+				warp "gp10",59,69;
+				end;				
+			}
+			
+		case 11:
+			mes "^FF0000[Agrias]^000000";		
+			mes "Como queira, senhor"+((Sex)?"":"a")+".";
+			close;
+	}
+}	
+
+daath,37,254,3	script	Agrias#daath	470,{
+	mes "^FF0000[Agrias]^000000";
+	mes "Saudações, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	if(getgmlevel() < 99){
+		close;
+	}
+	mes "Gostaria de ativar ou alterar algum ^0000FFQuartel General^000000?";
+	next;
+	
+	switch(select(	"• Quartel General 01 - ^0000FF"+getguildname($GP01)+"^000000",
+					"• Quartel General 02 - ^0000FF"+getguildname($GP02)+"^000000",
+					"• Quartel General 03 - ^0000FF"+getguildname($GP03)+"^000000",
+					"• Quartel General 04 - ^0000FF"+getguildname($GP04)+"^000000",
+					"• Quartel General 05 - ^0000FF"+getguildname($GP05)+"^000000",
+					"• Quartel General 06 - ^0000FF"+getguildname($GP06)+"^000000",
+					"• Quartel General 07 - ^0000FF"+getguildname($GP07)+"^000000",
+					"• Quartel General 08 - ^0000FF"+getguildname($GP08)+"^000000",
+					"• Quartel General 09 - ^0000FF"+getguildname($GP09)+"^000000",
+					"• Quartel General 10 - ^0000FF"+getguildname($GP10)+"^000000",
+					"• Cancelar")){
+		case 1:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP01;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP01A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP01B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP01C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP01D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP01E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP01F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP01G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";
+				case 1:
+					set $GP01ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP01ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP01ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}			
+			
+		case 2:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP02;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP02A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP02B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP02C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP02D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP02E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP02F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP02G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";			
+				case 1:
+					set $GP02ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP02ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP02ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}	
+			
+		case 3:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP03;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP03A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP03B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP03C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP03D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP03E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP03F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP03G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";
+				case 1:
+					set $GP03ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP03ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP03ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}	
+			
+		case 4:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP04;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP04A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP04B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP04C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP04D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP04E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP04F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP04G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";
+				case 1:
+					set $GP04ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP04ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP04ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}	
+			
+		case 5:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP05;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP05A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP05B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP05C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP05D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP05E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP05F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP05G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";		
+				case 1:
+					set $GP05ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP05ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP05ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}	
+			
+		case 6:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP06;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP06A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP06B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP06C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP06D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP06E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP06F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP06G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";			
+				case 1:
+					set $GP06ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP06ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP06ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}	
+			
+		case 7:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP07;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP07A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP07B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP07C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP07D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP07E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP07F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP07G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";			
+				case 1:
+					set $GP07ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP07ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP07ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}
+			
+		case 8:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP08;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP08A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP08B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP08C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP08D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP08E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP08F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP08G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";		
+				case 1:
+					set $GP08ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP08ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP08ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}
+			
+		case 9:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP09;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP09A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP09B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP09C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP09D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP09E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP09F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP09G;
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";		
+				case 1:
+					set $GP09ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP09ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP09ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}
+			
+		case 10:
+			mes "^FF0000[Agrias]^000000";
+			mes "Número da ^0000FFGuilda^000000?";
+			input $GP10;
+			mes "Número de ^0000FFPacotes do Deus Odin^000000?";
+			input $GP10A;
+			mes "Número de ^0000FFManuais de Combate^000000?";
+			input $GP10B;
+			mes "Número de ^0000FFGomas de Mascar^000000?";
+			input $GP10C;
+			mes "Número de ^0000FFBênçãos de Valhalla de Guildas^000000?";			
+			input $GP10D;
+			next;
+			
+			mes "^FF0000[Agrias]^000000";			
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra A^000000?";
+			input $GP10E;
+			mes "Número de ^0000FFPacote de Suprimentos de Guerra B^000000?";
+			input $GP10F;
+			mes "Número de ^0000FFPacote de Equipamentos de Guerra^000000?";
+			input $GP10G;			
+			mes "Status do ^0000FFQuartel General^000000?";
+			switch(select("• ^0000FFAberto^000000","• ^FF0000Fechado^000000","• ^FF0000Indisponível^000000")){
+				donpcevent "::OnGPFlag";		
+				case 1:
+					set $GP10ST$, "^0000FFAberto^000000";
+					mes "Concluído.";
+					close;
+					
+				case 2:
+					set $GP10ST$, "^FF0000Fechado^000000";
+					mes "Concluído.";
+					close;				
+				
+				case 3:
+					set $GP10ST$, "^FF0000Indisponível^000000";
+					mes "Concluído.";
+					close;					
+			}
+		
+		case 11:
+			mes "^FF0000[Agrias]^000000";		
+			mes "Como queira, senhor"+((Sex)?"":"a")+".";
+			close;			
+	}
+}
+
+gp01	mapflag	nowarpto
+gp01	mapflag	nowarp
+gp01	mapflag	nomemo
+gp01	mapflag	nosave	SavePòint
+gp01	mapflag	noteleport
+gp01	mapflag	nopenalty
+
+gp02	mapflag	nowarpto
+gp02	mapflag	nowarp
+gp02	mapflag	nomemo
+gp02	mapflag	nosave	SavePòint
+gp02	mapflag	noteleport
+gp02	mapflag	nopenalty
+
+gp03	mapflag	nowarpto
+gp03	mapflag	nowarp
+gp03	mapflag	nomemo
+gp03	mapflag	nosave	SavePòint
+gp03	mapflag	noteleport
+gp03	mapflag	nopenalty
+
+gp04	mapflag	nowarpto
+gp04	mapflag	nowarp
+gp04	mapflag	nomemo
+gp04	mapflag	nosave	SavePòint
+gp04	mapflag	noteleport
+gp04	mapflag	nopenalty
+
+gp05	mapflag	nowarpto
+gp05	mapflag	nowarp
+gp05	mapflag	nomemo
+gp05	mapflag	nosave	SavePòint
+gp05	mapflag	noteleport
+gp05	mapflag	nopenalty
+
+gp06	mapflag	nowarpto
+gp06	mapflag	nowarp
+gp06	mapflag	nomemo
+gp06	mapflag	nosave	SavePòint
+gp06	mapflag	noteleport
+gp06	mapflag	nopenalty
+
+gp07	mapflag	nowarpto
+gp07	mapflag	nowarp
+gp07	mapflag	nomemo
+gp07	mapflag	nosave	SavePòint
+gp07	mapflag	noteleport
+gp07	mapflag	nopenalty
+
+gp08	mapflag	nowarpto
+gp08	mapflag	nowarp
+gp08	mapflag	nomemo
+gp08	mapflag	nosave	SavePòint
+gp08	mapflag	noteleport
+gp08	mapflag	nopenalty
+
+gp09	mapflag	nowarpto
+gp09	mapflag	nowarp
+gp09	mapflag	nomemo
+gp09	mapflag	nosave	SavePòint
+gp09	mapflag	noteleport
+gp09	mapflag	nopenalty
+
+gp10	mapflag	nowarpto
+gp10	mapflag	nowarp
+gp10	mapflag	nomemo
+gp10	mapflag	nosave	SavePòint
+gp10	mapflag	noteleport
+gp10	mapflag	nopenalty

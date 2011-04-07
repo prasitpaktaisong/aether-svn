@@ -1,0 +1,155 @@
+//== Aether Script ===========================================
+// • NPCs de Einbech
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Einbech
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Allen, O Andróide - Olhos Biônicos (20/05/2010)
+// • 1.0 - Adicionado Professor Bogus - Olhos Biônicos (20/05/2010)
+//============================================================	
+
+//== • Allen, O Andróide - Quest: Olhos Biônicos =============
+ein_in01,171,169,3	script	Allen, O Andróide#ein 	1740,{
+	if(AE_Bionicos > 2){
+		mes "^0000FF[Allen]^000000";
+		mes "Me ajude...";
+		close;
+	}
+	if(AE_Bionicos == 2){
+		mes "^0000FF[Allen]^000000";
+		mes "Meus olhos...";
+		mes "É tudo tão confuso...";
+		mes "^FF0000Matar...";
+		next;
+		
+		mes "^0000FF[Allen]^000000";
+		mes "Eu sinto, tanto poder...";
+		mes "E vontade... de ver a morte...";
+		mes "Me ajude, tire esses ^0000FFOlhos^000000 malditos do meu corpo...";
+		set AE_Bionicos, 3;
+		close;
+	}	
+	if(AE_Bionicos > 0){
+		mes "^0000FF[Allen]^000000";
+		mes "Me ajude...";
+		close;
+	}
+	mes "^0000FF[Allen]^000000";
+	mes "Minhas mãos...";
+	mes "O que...";
+	mes "O que fizeram comigo...";
+	next;
+	
+	mes "^0000FF[Allen]^000000";
+	mes "Me ajude...";
+	set AE_Bionicos, 1;
+	close;
+}
+
+//== • Professor Bógus - Quest: Olhos Biônicos =============
+ein_in01,170,140,3	script	Professor Bógus#ein 	121,{
+	if(AE_Bionicos == 4){
+		if((countitem(715) >= 50) && (countitem(7319) >= 100) && (countitem(7327) >= 50) && (countitem(7093) >= 50)){
+			mes "^0000FF[Professor Bógus]^000000";
+			mes "Nossa, vejo que conseguiu tudo.";
+			mes "Me dê um instante.";
+			next;
+			
+			delitem 715,50;
+			delitem 7319,100;
+			delitem 7327,50;
+			delitem 7093,50;
+			mes "^0000FF[Professor Bógus]^000000";
+			mes "Acredito que isso deve resolver.";
+			mes "Espero que isso torne a vida de ^0000FFAllen^000000 um pouco mais fácil";
+			next;
+			
+			getitem 5325,1;
+			mes "^0000FF[Professor Bógus]^000000";
+			mes "Pode ficar com isso, mas use com cuidado, lembre-se de ^0000FFAllen^000000.";	
+			set AE_Bionicos, 0;
+			close;
+		}
+		mes "^0000FF[Professor Bógus]^000000";
+		mes "Não sou ^0000FFKiel^000000, mas creio que posso fazer olhos novos para ele. Isso o libertaria daquele pesadelo.";
+		next;
+		
+		mes "^0000FF[Professor Bógus]^000000";
+		mes "Traga-me:";
+		mes "• ^FF0000 Gema Amarela ^000000×^FF0000 50^000000";
+		mes "• ^FF0000 Placa de Ferro Usada ^000000×^FF0000 100^000000";
+		mes "• ^FF0000 Lanterna de Capacete ^000000×^FF0000 1^000000";
+		mes "• ^FF0000 Engrenagem ^000000×^FF0000 50^000000";
+		mes "E poderemos ajudá-lo. Ficarei esperando";
+		set AE_Bionicos, 4;
+		close;
+	}
+	if(AE_Bionicos == 3){
+		mes "^0000FF[Professor Bógus]^000000";
+		mes "O que posso fazer por você, "+strcharinfo(0)+"?";
+		switch(select("• Pergutar sobre os ^0000FFOlhos^000000 de ^0000FFAllen^000000.","• Nada, obrigado.")){
+			case 1:
+				next;
+				mes "^0000FF[Professor Bógus]^000000";
+				mes "^0000FFAllen^000000 tem em seu corpo, um dos mais avançados ^0000FFOlhos Biônicos^000000 já desenvolvidos. Ele garante a quem os usa, capacidades especiais, porém, tê-los incorporados em seu rosto deve ser perturbador.";
+				switch(select("• E você pode ajudá-lo?","• Não há nada a se fazer.")){
+				case 1:
+					next;
+					mes "^0000FF[Professor Bógus]^000000";
+					mes "Não sou ^0000FFKiel^000000, mas creio que posso fazer olhos novos para ele. Isso o libertaria daquele pesadelo.";
+					next;
+				
+					mes "^0000FF[Professor Bógus]^000000";
+					mes "Traga-me:";
+					mes "• ^FF0000 Gema Amarela ^000000×^FF0000 50^000000";
+					mes "• ^FF0000 Placa de Ferro Usada ^000000×^FF0000 100^000000";
+					mes "• ^FF0000 Lanterna de Capacete ^000000×^FF0000 1^000000";
+					mes "• ^FF0000 Engrenagem ^000000×^FF0000 50^000000";
+					mes "E poderemos ajudá-lo. Ficarei esperando";
+					set AE_Bionicos, 4;
+					close;
+				
+				case 2:
+					close;
+				}
+			case 2:
+				close;
+		}		
+	}
+	if(AE_Bionicos == 2){
+		mes "^0000FF[Professor Bógus]^000000";
+		mes "^0000FFAllen^000000...";
+		mes "^0000FFAllen^000000 está morto...";
+		next;
+			
+		mes "^0000FF[Professor Bógus]^000000";
+		mes "Ele e vários outros foram vítimas de ^0000FFKiel^000000. Ele os estuda, os modifica. Transforma corpos vivos em máquinas de matar...";
+		mes "Ao menos ele lembra quem é...";
+		close;
+	}
+	mes "^0000FF[Professor Bógus]^000000";
+	mes "Como a ciência pode se tornar algo tão triste.";	
+	if(AE_Bionicos > 0){
+		switch(select("• Perguntar sobre Allen.","• Nada a comentar.")){
+		case 1:
+			next;
+			mes "^0000FF[Professor Bógus]^000000";
+			mes "^0000FFAllen^000000...";
+			mes "^0000FFAllen^000000 está morto...";
+			next;
+			
+			mes "^0000FF[Professor Bógus]^000000";
+			mes "Ele e vários outros foram vítimas de ^0000FFKiel^000000. Ele os estuda, os modifica. Transforma corpos vivos em máquinas de matar...";
+			mes "Ao menos ele lembra quem é...";
+			set AE_Bionicos,2;
+			close;
+		
+		case 2:
+			close;
+		}	
+	}
+	close;
+}

@@ -1,0 +1,32 @@
+zorya,191,200,3	script	Milk#zorya	544,3,3,{
+	if(#s2aether > 0){
+		mes "^0000FF[Milk]^000000";
+		mes "Você gostou do presente? Meoow!";
+		close;
+	}
+	mes "^0000FF[Milk]^000000";
+	mes "Meow, "+((Sex)?"^0000FF":"^FF0000")+strcharinfo(0)+"^000000.";
+	mes "Eu vivo no mundo de ^0000FFAethernal^000000 há muito tempo!";
+	mes "Você tem algo a me dizer?";
+
+	input @is2aether$;
+	if(@is2aether$ == "Eu amo Aether!"){
+		mes "^0000FF[Milk]^000000";
+		mes "MEOW!";
+		mes "Por compartilharmos a mesma paixão, vou te dar um presente!";
+		next;
+
+		set #s2aether,1;
+		getitem 20110,1;
+		mes "^0000FF[Milk]^000000";
+		mes "Espero que goste!";
+		close;
+	}
+	mes "^0000FF[Milk]^000000";
+	mes "Desculpe, não entendi o que disse...";
+	close;
+
+OnTouch:
+	if(rand(1,4) == 1) npctalk "Meow...";
+	end;
+}

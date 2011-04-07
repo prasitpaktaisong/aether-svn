@@ -1,0 +1,261 @@
+gon_in,89,24,0	script	Mesa de Cabeceira#gon	111,{
+	if(AE_Niele >= 4){
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "Ah! Aqui está o livro, vejamos...";
+		mes "^0000FF*Folheia as páginas procurando pistas*^000000";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "Hum...";
+		mes "...e os cinquenta pares de asas de libéluas carregavam com esforço...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...envolvidos com aquela centena de metais em pano escuro que a aqueciam...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...e, durante a criação, por onde caminhava, a cada passo, vinte e cinco flores do amor desabrochavam...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...com aquele sorriso perverso que carregava, tocou a grama e dez flores selvagens cresceram...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...com um sopro, as cinquenta ervas brancas ao seu redor brilharam ainda mais...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...a fúria a tomou, as asas foram partidas e cinco centenas de flechas luminosas ofuscaram a luz do sol, destroçando suas próprias criações...";
+		next;
+
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "...até o último ser vivo que voava desafiando as dimensões teve sua carta caída ao chão...";
+		next;
+		
+		mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+		mes "Acho que é só!";
+		set AE_Niele,5;
+		close;
+	}
+	mes ((Sex)?"^0000FF":"^FF0000")+"["+strcharinfo(0)+"}^000000";
+	mes "Está trancado, talvez eu deva falar com ^0000FFRitten^000000 antes.";
+	close;
+}
+
+gon_in,100,20,3	script	Jovem Ritten#gon	86,{
+	if(AE_Niele == 5){
+		if((countitem(7064) >= 100) && (countitem(7167) >= 100) && (countitem(7864) >= 25) && (countitem(10009) >= 10) && (countitem(509) >= 50) && (countitem(1760) >= 500) && (countitem(4040) >= 1)){
+			delitem 7064,100;
+			delitem 7167,100;
+			delitem 7864,25;
+			delitem 10009,10;
+			delitem 509,50;
+			delitem 1760,500;
+			delitem 4040,1;
+			mes "^0000FF[Ritten]^000000";				
+			mes "Quando você entrou por aquela porta, já sabia o que você procurava.";
+			mes "Como fora capaz de entender todos os símbolos, pode ficar com isso.";
+			mes "Que ^FF0000Gná^000000 proteja.";
+			close2;
+			set AE_Niele,0;
+			specialeffect2 488;
+			getitem 5466,1;
+			end;
+		}	
+	}
+	if(AE_Niele == 4){
+		mes "^0000FF[Ritten]^000000";			
+		mes "Muito bem, destranquei ^0000FFMesa de Cabeceira^000000.";
+		close;
+	}
+	if(AE_Niele == 3){
+		if(countitem(7456) >= 200){
+			mes "^0000FF[Ritten]^000000";			
+			mes "Oh! Vejo que você conseguiu!";
+			next;
+			
+			delitem 7456,200;
+			mes "^0000FF[Ritten]^000000";			
+			mes "Muito bem, vou destrancar a ^0000FFMesa de Cabeceira^000000.";
+			set AE_Niele,4;
+			close;
+		}
+		mes "^0000FF[Ritten]^000000";
+		mes "Lembre-se, preciso de:";
+		mes "• ^FF0000Condimento Vermelho^000000 × ^FF0000200^000000";		
+		close;
+	}
+	mes "^0000FF[Ritten]^000000";
+	mes "Olá, interessado em algum condimento para cozinha?";
+	if(AE_Niele == 2){
+		switch(select("• Estou procurando um livro sobre ^FF0000Gná^000000...","• Não, não, estou saindo.")){
+			case 1:
+				next;
+
+				mes "^0000FF[Ritten]^000000";
+				mes "Hum...";
+				mes "O livro de meus avós...";
+				next;
+				
+				mes "^0000FF[Ritten]^000000";
+				mes "Ele está guardado naquela mesa de cabeceira";
+				mes "Posso deixar você lê-lo em troca de um favor...";
+				switch(select("• Do que você precisa?","• Não, descobrirei sozinho.")){
+					case 1:
+						next;		
+						mes "^0000FF[Ritten]^000000";
+						mes "Preciso de um ingrediente raro, em grande quantidade, para o tipo de receita que faço por aqui.";
+						next;
+				
+						mes "^0000FF[Ritten]^000000";
+						mes "Então, em troca de:";
+						mes "• ^FF0000Condimento Vermelho^000000 × ^FF0000200^000000";
+						mes "Deixarei-te ver o livro.";
+						set AE_Niele,3;
+						close;
+						
+					case 2:
+						close;
+				}
+			case 2:
+				close;
+			
+		}		
+	}
+	close;
+}
+
+gon_in,17,94,5	script	Almannie, A Anciã#gon	760,{
+	mes "^FF0000[Almannie]^000000";
+	mes "Já não sou mais tão nova, preciso descansar...";
+	if(AE_Niele == 1){
+		switch(select("• Gostaria de perguntar-lhe algo...","• Desculpe, tenha um bom descanso.")){
+			case 1:
+				next;
+				mes "^FF0000[Almannie]^000000";
+				mes "Oh, claro. Em que posso ajudar,"+((Sex)?"meu filho":"minha filha")+"?";
+				next;
+				
+				mes "^FF0000[Almannie]^000000";
+				mes "^0000FFAsas de Gon Ryun^000000? É sobre isso que quer saber?";
+				mes "Nossa, há muito não sou perguntada sobre nada do gênero.";
+				next;
+				
+				mes "^FF0000[Almannie]^000000";
+				mes "Bom, antigamente, cada um dos ^0000FFDeuses^000000 gostava de dar seu toque à suas criações em ^0000FFMidgard^000000, mas isso foi antes dos homens serem tão mais parecidos...";	
+				next;
+				
+				mes "^FF0000[Almannie]^000000";
+				mes "Os feiticeiros da época canalizavam o poder de ^FF0000Gná^000000 em uma insígnia em forma de ^0000FFAsa^000000. Ninguém mais, além da própria ^0000FFDeusa^000000 deve saber como fazê-la hoje...";
+				next;
+
+				mes "^FF0000[Almannie]^000000";
+				mes "Sua única manifestação nesse mundo, hoje, é a própria ^0000FFCidade^000000 de ^0000FFGon Ryun^000000, que, inclusive, mantém-se no ar com tais poderes.";
+				switch(select("• Há como conseguir um?","• É um poder perdido...")){
+					case 1:
+						next;
+						mes "^FF0000[Almannie]^000000";						
+						mes "Talvez.";
+						next;
+						
+						mes "^FF0000[Almannie]^000000";						
+						mes "É possível que, com os ^0000FFItens^000000 corretos, alguém ainda possa recriar esse artefato...";
+						switch(select("• ^0000FFItens^000000 certos?","• Tudo bem, eu desisto.")){
+							case 1:
+								next;
+								mes "^FF0000[Almannie]^000000";
+								mes "Sim, símbolos quais quer de valor para ^FF0000Gná^000000...";
+								mes "Há um livro, herdado pelo jovem ^0000FFRitten^000000 que conta toda a sua simbologia.";
+								next;
+								
+								mes "^FF0000[Almannie]^000000";
+								mes "Porcure-o em uma casa, à sudeste dessa cidade e peça-lhe o livro e, quem sabe assim, você descubra algo.";
+								set AE_Niele,2;
+								close;
+								
+							case 2:
+								close;
+						}
+
+					case 2:
+						close;
+				}
+				
+			case 2:
+				close;
+		}
+	}
+	close;
+}	
+
+gonryun,126,139,5	script	Chelly, A Mensageira#gon	485,{
+	if(AE_Niele == 1){
+		mes "^FF0000[Chelly]^000000";
+		mes "Muito bem! Preciso ir andando! Uma mensagem precisa ser entregue.";
+		mes "Boa sorte!";
+		close;
+	}
+
+	mes "^FF0000[Chelly]^000000";
+	mes "Oh! Um andarilho da ^0000FFTerra^000000 na cidade dos céus? Que raro!";
+	next;
+
+	mes "^FF0000[Chelly]^000000";
+	mes "O que o traz por aqui?";
+	switch(select("• Andarilho da ^0000FFTerra^000000?","• Nada, estou de passagem.")){
+		case 1:
+			next;
+			mes "^FF0000[Chelly]^000000";
+			mes "Oh! Sim, sim, habitantes das cidades lá embaixo.";
+			mes "Hoje, até que as coisas mudaram, mas antigamente, poucos podiam vir até aqui.";
+			next;
+			
+			mes "^FF0000[Chelly]^000000";
+			mes "Os ^0000FFAncestrais^000000 de ^0000FFGon Ryun^000000 eram seres portadores de poderes muito singulares.";
+			mes "Voar até aqui era muito fácil!";
+			switch(select("• V-Voar?","• Bobagens!")){
+				case 1:
+					next;
+					mes "^FF0000[Chelly]^000000";
+					mes "Sim, há muitos séculos atrás, para o povo de ^0000FFGon Ryun^000000, a ^FF0000Deusa Gná^000000 deu a capacidade de viajarem pelos céus.";
+					next;
+					
+					mes "^FF0000[Chelly]^000000";
+					mes "Por isso, os que nasciam aqui eram conhecidos como ^0000FFMensageiros^000000";
+					mes "Como ^0000FFGon Ryun^000000 ainda é responsável pelas cartas e mensagens em toda ^0000FFMidgard^000000, as ^0000FFAsas de Gná^000000 são nosso símbolo.";
+					switch(select("• E esses poderes?","• Histórias, histórias...")){
+						case 1:
+							next;
+							mes "^FF0000[Chelly]^000000";
+							mes "Em geral, os nascidos aqui tem a aptidão para desenvolvê-los, mas, alguns antigos ^0000FFAnciãos^000000 afirmam que a bênção dada por ^FF0000Gná^000000 a um dos ^0000FFDezenove Primeiros^000000...";
+							next;
+							
+							mes "^FF0000[Chelly]^000000";
+							mes "É que tem a capacidade de materializá-los.";
+							mes "Você pode procurar por alguém que saiba sobre isso aqui em ^0000FFGon Ryun^000000, os mais velhos, talvez ^FF0000Almmanie^000000.";
+							switch(select("• Sim! Farei isso!","• Não, perda de tempo.")){
+								case 1:
+									next;
+									mes "^FF0000[Chelly]^000000";
+									mes "Muito bem! Preciso ir andando! Uma mensagem precisa ser entregue.";
+									mes "Boa sorte!";
+									set AE_Niele,1;
+									close;
+									
+								case 2:
+									close;
+							}
+							
+						case 2:
+							close;
+					}
+					
+				case 2:
+					close;
+			}
+		case 2:
+			close;
+	}
+}

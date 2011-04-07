@@ -1,0 +1,258 @@
+//== Aether Script ===========================================
+// • NPCs de Yuno
+//===== Por: =================================================
+// • Haziel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Yuno
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Alexia - Máscara do Fugitivo (20/05/2010)
+// • 1.0 - Adicionado Umbrus - Landárias Asas de Anjo (12/07/2010)
+//============================================================
+
+//== • Alexia - Quest: Máscara do Fugitivo ===================
+yuno_in01,103,102,5	script	Alexia, A Xamã#yun	720,{
+	if(AE_Fugitivo > 1){
+		if(countitem(2265) >= 1){
+			mes "^0000FF[Dewey]^000000";
+			mes "Vejo que trouxe a ^FF0000Máscara de X^000000...";
+			mes "Então, que cor prefere?";
+			switch(select("• Azul","• Amarela","• Branca","• Laranja","• Preta","• Rosa","• Verde","• Vermelha","• Violeta")){
+				case 1:
+					if ((countitem(978)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Azul^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 978,1;
+					next;
+					getitem 20112,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+				
+				case 2:
+					if ((countitem(976)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Amarela^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 976,1;
+					next;
+					getitem 20113,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+
+				case 3:
+					if ((countitem(982)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Branca^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 982,1;
+					next;
+					getitem 20116,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;									
+
+				case 4:
+					if ((countitem(980)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Laranja^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 980,1;
+					next;
+					getitem 20117,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+
+				case 5:
+					if ((countitem(983)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Preta^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 983,1;
+					next;
+					getitem 20111,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+
+				case 6:
+					if ((countitem(982)<1) || (countitem(975)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Branca^000000 e uma ^0000FFTintura Vermelha^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 982,1;
+					delitem 975,1;
+					next;
+					getitem 20118,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;	
+					
+				case 7:
+					if ((countitem(979)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Verde^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 979,1;
+					next;
+					getitem 20114,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+
+				case 8:
+					if ((countitem(975)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Vermelha^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 975,1;
+					next;
+					getitem 5361,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+
+				case 9:
+					if ((countitem(981)<1)){
+						next;
+						mes "^0000FF[Dewey]^000000";
+						mes "Você precisa me trazer uma ^0000FFTintura Violeta^000000!";
+						close;
+					}
+					delitem 2265,1;
+					delitem 981,1;
+					next;
+					getitem 20115,1;
+					set AE_Fugitivo, 0;
+					mes "^0000FF[Dewey]^000000";
+					mes "Aqui está. Espero que isso te ajude em sua jornada.";
+					close;
+			}					
+		}
+		mes "^0000FF[Dewey]^000000";
+		mes "Traga-me uma ^FF0000Máscara de X^000000 e uma ^FF0000Tintura^000000 da cor que preferir e farei uma para você.";
+		close;
+	}
+	mes "^FF0000[Alexia]^000000";
+	mes "Hehehehe...";
+	mes "Oh, desculpe, estava lendo algo engraçado...";
+	if(AE_Fugitivo == 1){
+		if(countitem(4181) >= 1){
+			if(select("• Mostrar ^FF0000Carta Mascarado^000000.:• Não fazer nada.") == 2) close;
+			next;
+			
+			mes "^FF0000[Alexia]^000000";
+			mes "^0000FFDewey^000000...";
+			next;
+			
+			mes "^0000FF[Dewey]^000000";
+			mes "^0000FF*falando pelo corpo de ^FF0000Alexia^000000*^000000";
+			mes "Bom ver você novamente, ^0000FF"+strcharinfo(0)+"^000000...";
+			mes "Quando eu ainda vivia em seu mundo, usava uma Máscara em meu rosto, como a que uso em meu corpo Fantasma.";
+			next;
+			
+			delitem 4181, 1;
+			mes "^0000FF[Dewey]^000000";
+			mes "Traga-me uma ^FF0000Máscara de X^000000 e uma ^FF0000Tintura^000000 da cor que preferir e farei uma para você.";
+			set AE_Fugitivo, 2;
+			close;
+		}
+		next;
+		
+		mes "^FF0000[Alexia]^000000";
+		mes "Ajudar ^0000FFDewey^000000?";
+		mes "Eu preciso de um meio intermediário... uma ^FF0000Carta Mascarado^000000 para fazer a conexão...";
+		close;
+	}	
+	close;
+}
+
+//== • Umbra - Quest: Lendárias Asas de Anjo ==================
+yuno,202,186,3	script	Umbrus, O Anjo#yun	1700,{
+	if(AE_Asas == 3){
+		mes "^0000FF[Umbrus]^000000";
+		mes "Se tu desejas uma, basta que me traga:";
+		mes "• ^FF0000Pena Macia^000000 × ^FF0000200^000000";
+		mes "• ^FF0000Água Benta^000000 × ^FF0000100^000000";
+		mes "• ^FF0000Bíblia [2]^000000 × ^FF00001^000000";
+		if(((countitem(7063)) >= 200) && ((countitem(523)) >= 100) && ((countitem(1551)) >= 1)){
+			switch(select("• Entregar-lhe os itens.","• Não fazer nada.")){
+				case 1:
+					next;
+					delitem 7063,200;
+					delitem 523,100;
+					delitem 1551,1;
+					mes "^0000FF[Umbrus]^000000";
+					mes "É bom perceber que há aqueles que enxergam a essência do lado da ^0000FFLuz^000000...";
+					set AE_Asas, 0;
+					getitem 5210,1;
+					close;
+				case 2:
+					close;
+			}
+		}
+		close;
+	}
+
+	mes "^0000FF[Umbrus]^000000";
+	mes "Na presença dos raios iluminados celestes é que a pureza das ^0000FFAlmas^000000 se demonstram...";
+	if(AE_Asas == 2){
+		switch(select("• Perguntar sobre as ^FF0000Lendas Angelicais^000000.","• Não fazer nada.")){
+			case 1:
+				next;
+				mes "^0000FF[Umbrus]^000000";
+				mes "Hum...";
+				mes "As ^FF0000Lendárias Asas de Anjo^000000 são, na verdade, um ^0000FFArtefato^000000 feito com o ^0000FFCoração de Anjo^000000, dado à aqueles que querem experimentar o poder da ^0000FFLuz^000000.";
+				next;
+				
+				mes "^0000FF[Umbrus]^000000";
+				mes "Se tu desejas uma, basta que me traga:";
+				mes "• ^FF0000Pena Macia^000000 × ^FF0000200^000000";
+				mes "• ^FF0000Água Benta^000000 × ^FF0000100^000000";
+				mes "• ^FF0000Bíblia [2]^000000 × ^FF00001^000000";
+				set AE_Asas,3;
+				close;
+				
+			case 2:
+				close;
+		}	
+	}
+	close;
+
+}

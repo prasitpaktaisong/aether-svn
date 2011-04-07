@@ -1,0 +1,208 @@
+//== Aether Script ===========================================
+// • NPCs de Ayotaya
+//===== Por: =================================================
+// • Ciel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Ayothaya
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Motoyo Doidage - Boina Romântica [1] (23/07/2010)
+//============================================================
+
+//== • Motoyo Doidage, A Estilista-Escritora-Louca - Quest: Boina Romântica =============
+ayothaya,44,145,3	script	Motoyo Doidage#ayo	759,{
+	if(AE_BoinaRom == 0){ goto Start; }
+	if(AE_BoinaRom == 1){ goto Step1; }
+	if(AE_BoinaRom == 2){ goto Step2; }
+	if(AE_BoinaRom == 3){ goto Step3; }
+	if(AE_BoinaRom == 4){ goto Step4; }	
+
+Start:
+	mes "^FF0000[Motoyo Doidage]^000000";
+	mes "Oh.. tão romântico...";
+	mes "Essa brisa calma..";
+	mes "Essa água calma..";
+	mes "Essa pessoa calma.. *olha*";
+	next;
+	mes "^FF0000[Motoyo Doidage]^000000";
+	mes "Oh.....";
+	emotion e_gasp,0;
+	next;
+	mes "^FF0000[Motoyo Doidage]^000000";
+	mes "Oi, como vai você?";
+	mes "Que bons ventos o trás aqui?";
+	switch(select("• Vou bem, tchau. (Maluca!)","• Soube que você faz boinas...")){
+	case 1:
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Volte para me visitar!";
+		emotion e_ho,0;
+		close;
+	case 2:
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Siiiiimmm!";
+		mes "Lindas Boinas Românticas!!";
+		mes "...nossa...";
+		mes "...estou tão famosa assim? hohohohoho";
+		emotion e_heh,0;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Mas sim... ahn...";
+		mes "Você quer uma??";
+		switch(select("• Ai, eu adoraria, amiga.","• Só estou de passagem mesmo.")){
+		case 1:
+			next;
+			mes "^FF0000[Motoyo Doidage]^000000";
+			mes "Que ótimoooo!!";
+			mes "Só preciso me lembrar do que preciso..";
+			next;
+			mes "^FF0000[Motoyo Doidage]^000000";
+			mes "Hum...";
+			mes "...";
+			mes "...";
+			emotion e_hmm,0;
+			next;
+			mes "^FF0000[Motoyo Doidage]^000000";
+			mes "AHHHHHH, CLARO!!! Me traga:";
+			mes "• ^FF0000 Laço[1] ^000000×^FF0000 1^000000";
+			mes "É... acho que é isso...";
+			emotion e_gasp,0;
+			set AE_BoinaRom,1;
+			next;
+			mes "^FF0000[Motoyo Doidage]^000000";
+			mes "Estarei esperando!";
+			close;
+		case 2:
+			next;
+			mes "^FF0000[Motoyo Doidage]^000000";
+			mes "Oh que pena...";
+			mes "Eu gosto de companhia, hohohoho!";
+			mes "Volte mais vezes!";
+			emotion e_ho,0;
+			close;
+		}
+	}
+Step1:
+	if(countitem(2209) < 1){
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Parece que você ainda não tem tudo que eu preciso!";
+		mes "Eu preciso de:";
+		mes "• ^FF0000 Laço[1] ^000000×^FF0000 1^000000";
+		mes "Estarei esperando!";
+		emotion e_ho,0;
+		close;
+	} else {
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Nossa, você foi rápido!";
+		mes "Vou já fazer a Boina Romântica...";
+		delitem 2209,1;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Hum... acho que esqueci de algo...";
+		mes "Deixa eu pensar... ahn...";
+		mes "AH CLARO!! Como pude esquecer..";
+		mes "Eu preciso também de:";
+		mes "• ^FF0000 Boina ^000000×^FF0000 1^000000";
+		emotion e_gasp,0;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Estarei esperando!";
+		set AE_BoinaRom,2;
+		close;
+	}
+
+Step2:
+	if(countitem(5172) < 1){
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Parece que você ainda não trouxe o que eu preciso!";
+		mes "Eu preciso de:";
+		mes "• ^FF0000 Boina ^000000×^FF0000 1^000000";
+		mes "Estarei esperando!";
+		emotion e_ho,0;
+		close;
+	} else {
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Pronto!! Agora sim!!";
+		mes "Vou já fazer a Boina Romântica...";
+		delitem 5172,1;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Hum... acho que ainda falta algo..";
+		mes "Deixa eu pensar... ahn....";
+		mes "AH CLARO!! Como pude esquecer.. denovo.. hohohoho";
+		emotion e_shy,0;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Agora eu preciso apenas de:";
+		mes "• ^FF0000 Flor Romântica ^000000×^FF0000 1^000000";
+		emotion e_ok,0;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Estarei esperando!";
+		set AE_BoinaRom,3;
+		close;
+	}
+	
+Step3:
+	if(countitem(2269) < 1) {
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Parece que você ainda não trouxe o que eu preciso!";
+		mes "Agora eu preciso apenas de:";
+		mes "• ^FF0000 Flor Romântica ^000000×^FF0000 1^000000";
+		mes "Estarei esperando!";
+		emotion e_ho,0;
+		close;
+	} else {
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "É isso!!";
+		mes "Vou já fazer a Boina Romântica...";
+		delitem 2269,1;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Ops...";
+		mes "Se eu disser que esqueci algo, você vai se irritar? >.<";
+		mes "Faltaram apenas:";
+		mes "• ^FF0000 Folha Romântica ^000000×^FF0000 1^000000";
+		emotion e_sob,0;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Dessa vez tenho certeza, só falta isso!!";
+		mes "Estarei esperando!";
+		emotion e_ho,0;
+		set AE_BoinaRom,4;
+		close;
+	}
+	
+Step4:
+	if(countitem(2270) < 1){
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Parece que você ainda não trouxe o que falta!";
+		mes "Está faltando:";
+		mes "• ^FF0000 Folha Romântica ^000000×^FF0000 1^000000";
+		mes "Estarei esperando!";
+		emotion e_ho,0;
+		close;
+	} else {
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "SIIIIIMM!! AGORA SIIIMM!!";
+		mes "Vou já fazer a Boina Romântica...";
+		misceffect 709;
+		delitem 2270,1;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Ficou linda!";
+		mes "Caiu perfeitamente em você!";
+		getitem 5379,1;
+		equip 5379;
+		misceffect 709;
+		next;
+		mes "^FF0000[Motoyo Doidage]^000000";
+		mes "Espero vê-lo novamente!";
+		mes "Venha me visitar mais vezes!!";
+		emotion e_heh,0;
+		set AE_BoinaRom,0;
+		close;
+	}
+}

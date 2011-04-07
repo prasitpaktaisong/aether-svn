@@ -1,0 +1,160 @@
+//== Aether Script ========================================
+// • Warps
+//== Autores ==============================================
+// • Kamper (Cronus Emulator)
+//== Versão ===============================================
+// • 1.0 - Kamper
+// • 1.2 - Mooka
+// • 1.4 - RoM
+// • 1.5 - Heaven
+// • 1.6 - Haziel (Adaptação Aether)
+//== Descrição: ===========================================
+// • Banqueiro
+//=========================================================
+prontera,162,195,5	script	Sir Ney, O Banqueiro	903,{
+
+//========== Configuração: ==========
+// Custo para cada transação:
+set .@custo,0;
+set .@depmax,10000000;
+set .@saqmax,10000000;
+set .@trasfmax,10000000;
+//===================================
+
+	if(getd("$banco_"+getcharid(3)))
+	{
+		mes "^0000FF[Sir Ney]^000000";
+		mes "A sua conta recebeu uma transferência de "+getd("$banco_"+getcharid(3))+" Zenys.";
+		set #bancoZ,#bancoZ+getd("$banco_"+getcharid(3));
+		setd "$banco_"+getcharid(3),0;
+		mes "Agora ela possui "+#bancoZ+" Zenys.";
+		next;
+	}
+	mes "^0000FF[Sir Ney]^000000";
+	mes "Bem-vindo ao Banco de Prontera, como posso ajudá-lo?";
+	next;
+	switch(select("• Depósito:• Saque:• Saldo:• Transferência:• Cancelar")){
+		case 1:
+			mes "^0000FF[Sir Ney]^000000";
+			mes "Bem... Quanto você gostaria de depositar? O valor máximo que você poderá depositar é de";			
+			if(Zeny > .@depmax){mes .@depmax+" Zenys.";}else{mes Zeny+" Zenys.";}
+			next;
+			input @zeny;
+			next;
+			mes "^0000FF[Sir Ney]^000000";
+			if(@zeny < 1 || @zeny > .@depmax){
+				mes "Desculpe, mas você precisa digitar um valor aceito.";
+				close;
+			}
+			if(@zeny > Zeny){
+				mes "Desculpe, mas você não possui essa quantidade de Zenys.";
+				close;
+			}
+			set Zeny, Zeny - @zeny;
+			set #bancoZ, #bancoZ + @zeny;
+			mes "Muito obrigado! Seus Zenys estão em boas mãos.";
+			close;
+
+		case 2:
+			mes "^0000FF[Sir Ney]^000000";
+			mes "Bem... Quanto você gostaria de sacar? O valor máximo que você poderá sacar neste momento é de";
+			if(#bancoZ > .@saqmax){mes .@saqmax+" Zenys.";}else{mes #bancoZ+" Zenys.";}
+						next;
+			input @zeny;
+			next;
+			mes "^0000FF[Sir Ney]^000000";
+			if(@zeny < 1 || @zeny > .@saqmax){
+				mes "Desculpe, mas você precisa digitar um valor aceito.";
+				close;
+			}
+			if(@zeny > #bancoZ){
+				mes "Desculpe, mas você não possui essa quantidade de Zenys.";
+				close;
+			}
+			set #bancoZ, #bancoZ - @zeny;
+			set Zeny, Zeny + @zeny;	
+			mes "Muito obrigado! Continue usando nossos serviços.";
+			close;
+	
+		case 3:
+			mes "^0000FF[Sir Ney]^000000";
+			mes "Bem... Um momento, deixe-me checar as papeladas.";
+			next;
+			mes "^0000FF[Sir Ney]^000000";
+			mes "Você possui atualmente em nossos serviços "+#bancoZ+" Zenys.";
+			mes "O número de sua conta é "+(getcharid(3) - 2000000)+".";
+			close;
+
+		case 4:
+			mes "^0000FF[Sir Ney]^000000";
+			mes "Bem... Para que conta deseja fazer a transferência?";
+			if(.@custo){mes "Lembrando que será descontado "+.@custo+" Zenys como taxa.";}
+			mes "O número da conta é informado ao ver o saldo.";
+			mes "Informe o número da conta:";
+			while(1){
+				next;
+				input @account;
+				mes "^0000FF[Sir Ney]^000000";
+				mes "Para a conta "+@account+", está certo disso?";
+				next;
+				switch(select("• Não:• Sim:• Cancelar.")){
+					case 1:
+						mes "^0000FF[Sir Ney]^000000";
+						mes "Ok, tente mais uma vez.";
+						break;
+
+					case 2:
+						mes "^0000FF[Sir Ney]^000000";
+						mes "Tudo certo... Quanto gostaria de transferir? O valor máximo que você poderá transferir neste momento é de "+.@trasfmax+" Zenys.";
+						next;
+						input @zeny;
+						mes "^0000FF[Sir Ney]^000000";
+						if(@zeny < 1 || @zeny > .@trasfmax){
+						mes "Desculpe, mas você precisa digitar um valor aceito.";
+						close;
+						}
+						mes "Quer que seja transferido da conta do banco ou do seu próprio dinheiro?";
+						if(select("• Conta do Banco.:• Meu Próprio dinheiro.")==1){
+							mes "^0000FF[Sir Ney]^000000";
+							if((@zeny + .@custo) > #bancoZ){
+							if(.@custo){mes "Desculpe, mas você não possui "+(@zeny + .@custo)+"(Valor + Custo) Zenys em sua conta do banco.";
+							close;
+							}else{
+							mes "Desculpe, mas você não possui "+@zeny+" em sua conta do banco.";
+							close;
+							}
+							set @acc_transf,@account+2000000;
+							set #bancoZ, #bancoZ - (@zeny + .@custo);
+							setd "$banco_"+@acc_transf,getd("$banco_"+@acc_transf)+@zeny;
+							mes "Obrigado... Você transferiu "+@zeny+" Zenys para a conta "+@account+".";
+							mes "Continue utilizando nossos serviços.";
+							close;
+						}else{
+							mes "^0000FF[Sir Ney]^000000";
+							if((@zeny + .@custo) > Zeny){
+								if(.@custo){mes "Desculpe, mas você não possui "+(@zeny + .@custo)+"(Valor + Custo) Zenys.";
+								close;
+								}else{
+								mes "Desculpe, mas você não possui "+@zeny+" Zenys.";
+								close;
+							}
+							set @acc_transf,@account+2000000;
+							set Zeny, Zeny - (@zeny + .@custo);
+							setd "$banco_"+@acc_transf,getd("$banco_"+@acc_transf)+@zeny;
+							mes "Obrigado... Você transferiu "+@zeny+" Zenys para a conta "+@account+".";
+							mes "Continue utilizando nossos serviços.";
+							close;
+						}
+						}
+						}
+					case 3:
+						mes "^0000FF[Sir Ney]^000000";
+						mes "Tudo bem, obrigado por utilizar nossos serviços.";
+						close;
+				}
+				}
+		Case 5:
+			close;
+			
+	}
+}

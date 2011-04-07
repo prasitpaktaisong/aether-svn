@@ -1,0 +1,323 @@
+//== • Coca Cola Bar ======================================
+//== • Atendente Homero ===================================
+
+vip,15,27,4	script	Atendente Homero#vip	46,{
+	mes "^0000FF[Homero]^000000";
+	mes "Olá, "+((Sex)?"^0000FF":"^FF0000")+""+strcharinfo(0)+"^000000.";
+	if(agitcheck()){
+		mes "Perdão, mas meus serviços estão proibidos durante o período de ^0000FFGuerra do Emperium^000000";
+		close;
+	}
+	mes "Gostaria de beber algo?";
+	switch(select("• Sim.","• Não, obrigado.")){
+		case 1:
+			next;
+			mes "^0000FF[Homero]^000000";
+			mes "Bom, tenho ^0000FF6^000000 tipos de ^0000FFRefrigerantes^000000, cada um custa ^0000FF30^000000.^0000FF000^000000z.";
+			mes "Qual tu desejas?";
+			switch(select("• Coca-Cola","• Fanta Laranja","• Fanta Uva","• Kuat","• Sprite","• Aquarius","• Cancelar")){
+				case 1:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFCoca-Cola^000000 estimula a ^0000FFForça^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 593;
+								sc_start SC_STRFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Força foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+
+				case 2:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFFanta Laranja^000000 estimula a ^0000FFAgilidade^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 594;
+								sc_start SC_AGIFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Agilidade foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+					
+				case 3:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFFanta Uva^000000 estimula a ^0000FFVitalidade^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 595;
+								sc_start SC_VITFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Vitalidade foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+
+				case 4:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFKuat^000000 estimula a ^0000FFInteligência^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 596;
+								sc_start SC_INTFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Inteligência foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+					
+				case 5:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFSprite^000000 estimula a ^0000FFDestreza^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 597;
+								sc_start SC_DEXFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Destreza foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+
+				case 6:
+					next;
+					
+
+					mes "^0000FF[Homero]^000000";
+					mes "Dizem que ^0000FFAquarius^000000 estimula a ^0000FFSorte^000000";
+					mes "Deseja uma?";
+					switch(select("• Sim","• Não")){
+						case 1:
+							next;
+
+							if(zeny < 30000){
+								mes "^0000FF[Homero]^000000";
+								mes "Desculpe, você não tem dinheiro o suficiente.";
+								close;
+							}
+
+							set Zeny, zeny - 30000;	
+							mes "^0000FF[Homero]^000000";
+							mes "Aqui está!";
+							next;
+							
+							specialeffect2 7;
+							mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+							mes "Huuum...";
+							next;
+							
+							set @refri, rand(1,5);
+							if(@refri == 1){
+								specialeffect2 598;
+								sc_start SC_LUKFood, 600000, 5;
+								percentheal 100,100;
+								dispbottom "O Atributo Sorte foi Aumentado em +5 por 10 Minutos!";
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";
+								mes "Uau!";
+								emotion e_omg,1;
+								close;
+														
+							} else {
+								percentheal 100,100;
+								mes ((Sex)?"^0000FF[":"^FF0000[")+""+strcharinfo(0)+"]^000000";	
+								mes "Refrescante...";
+								close;
+							}
+						case 2:
+							close;
+						
+					}
+					
+				case 7:
+					close;
+			}
+
+		case 2:
+			mes "Volte sempre!";
+			close;
+	}
+
+}
+

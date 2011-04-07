@@ -1,0 +1,311 @@
+//== Aether Script ===========================================
+// • NPCs de Moscóvia
+//===== Por: =================================================
+// • Haziel
+// • Ciel
+//===== Versão Atual: ========================================
+// • 1.0
+//===== Descrição: ===========================================
+// • NPCs Aether - Cidade de Moscóvia
+//===== Changelog: ===========================================
+// • 1.0 - Adicionado Irina - Gorro Chullos (04/07/2010)
+// • 1.1 - Acidionado Mestre Logan - Rubor de Batalha (28/07/2010)
+// • 1.2 - Adicionada Pequena Fada Eline - Maçã Dourada de Idun (10/08/2010)
+//============================================================
+
+//== • Irina - Quest: Gorro Chullos ==========================
+moscovia,211,93,3	script	Irina#edq	958,{
+	if (checkweight(1201,1) == 0 ) {
+		mes "Um instante!!";
+		mes "Você tem muitos itens.";
+		mes "Você não pode receber isso.";
+		mes "Alivie seu peso e";
+		mes "tente denovo.";
+		close;
+	}
+	mes "^FF0000[Irina]^000000";
+	mes "Olá, viajante estrangeiro!";
+	mes "Você teve um bom dia";
+	mes "em Moscóvia?";
+	next;
+	mes "^FF0000[Irina]^000000";
+	mes "Uma lembrança especial por visitar Moscóvia...?";
+	next;
+	mes "^FF0000[Irina]^000000";
+	mes "Pra você, vamos fazer um Gorro Chullos.";
+	mes "O Gorro Chullos é prático e";
+	mes "é um belo enfeite! Você quer um?";
+	next;
+	if(select("• Saber sobre o Gorro Chullos.:• Fazer um Gorro Chullos.") == 1) {
+		mes "^FF0000[Irina]^000000";
+		mes "Quando eu te vi, você pareceu";
+		mes "querer por algo de pêlo espesso";
+		mes "em sua cabeça, para sair dessa";
+		mes "temperatura. Um Gorro Chullos!";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Se você veio aqui pela primeira";
+		mes "vez, você não deve saber... isso";
+		mes "Inverno aqui em Moscóvia é famoso por ser";
+		mes "tão longo e frio.";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Um Gorro Chullos é um chapéu especialmente";
+		mes "necessário para viver aqui durante as";
+		mes "estações frias. Sem esse chapéu, você";
+		mes "não pode suportar o inverno!";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Agora, o longo, longo inverno";
+		mes "terminou e o sol está brilhando... Mas";
+		mes "um dia o inverno vai voltar denovo.";
+		mes "Então, por precaução, você deve";
+		mes "manter seu Gorro Chullos sempre em mãos.";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Não se preocupe em se manter quente";
+		mes "enquanto usa o Gorro Chullos. Mesmo";
+		mes "durante o clima mais frio... Você";
+		mes "pode rolar na neve e o Gorro Chullos";
+		mes "continuará te mantendo aquecido!";
+		close;
+	}
+	mes "^FF0000[Irina]^000000";
+	mes "Você quer fazer um Gorro Chullos?";
+	mes "Heheh. Ótima idéia!";
+	mes "Essa é uma boa tarefa.";
+	mes "Você vai ser grato para sempre.";
+	next;
+	mes "^FF0000[Irina]^000000";
+	mes "Se você me trouxer os materiais,";
+	mes "nós podemos fazer um imediatamente!";
+	next;
+
+	mes "^FF0000[Irina]^000000";
+	mes "Os materiais são:";
+	mes "• ^FF0000Nove-Caudas^000000 × ^FF000020^000000";
+	mes "• ^FF0000Novelo^000000 × ^FF000010^000000";
+	mes "• ^FF0000Seda Macia^000000 × ^FF000010^000000";
+	mes "• ^FF0000Pele de Lontra^000000 × ^FF000020^000000";
+	mes "• ^FF0000Carretel^000000 × ^FF00001^000000.";
+	next;
+	if (countitem(1022) > 19 && countitem(7038) > 9 && countitem(7166) > 9 && countitem(7065) > 19 && countitem(7217) > 0) {
+		mes "^FF0000[Irina]^000000";
+		mes "É isso mesmo!";
+		mes "Me dê os materiais. Eu vou fazer o Gorro Chullos.";
+		next;
+		delitem 1022,20; //Fox_Tail
+		delitem 7038,10; //Yarn
+		delitem 7166,10; //Soft_Silk_Cloth
+		delitem 7065,20; //Sea_Otter_Leather
+		delitem 7217,1; //Spool
+		getitem 5243,1; //Chullos
+		mes "^FF0000[Irina]^000000";
+		mes "Certo, eu o fiz. Então, o que achou?";
+		mes "Você gostou?";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Se você precisar de um Gorro Chullos,";
+		mes "venha até mim, sempre,";
+		mes "com os materiais.";
+		mes "Eu vou fazê-lo ^_^";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Tudo bem?";
+		mes "Certo, então... Até logo!~";
+		close;
+	}else{
+		mes "^FF0000[Irina]^000000";
+		mes "Ah... Faltam alguns materiais. Nós";
+		mes "não podemos fazer o Gorro Chullos só com";
+		mes "esses materiais.";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Se você me trouxer os materiais corretos, eu";
+		mes "vou fazer um Gorro Chullos imediatamente.";
+		next;
+		mes "^FF0000[Irina]^000000";
+		mes "Os materiais são:";
+		mes "• ^FF0000Nove-Caudas^000000 × ^FF000020^000000";
+		mes "• ^FF0000Novelo^000000 × ^FF000010^000000";
+		mes "• ^FF0000Seda Macia^000000 × ^FF000010^000000";
+		mes "• ^FF0000Pele de Lontra^000000 × ^FF000020^000000";
+		mes "• ^FF0000Carretel^000000 × ^FF00001^000000.";
+		close;
+	}
+}
+
+//== • Mestre Logan - Quest: Rubor de Batalha ================
+moscovia,112,120,3	script	Mestre Logan#mos	823,{
+	If (AE_Rubor > 2){
+		mes "^0000FF[Mestre Logan]^000000";
+		mes "Agora, já não posso lhe ensinar nada, você está preparado para seguir em frente.";
+		mes "Vá até o saguão do ^FF0000Palácio de Splendide^000000 e procure por ^FF0000Ivayne^000000, uma das mais velhas ^FF0000Fadas^000000, mas não procure isso em sua aparência.";
+		next;
+		
+		mes "^0000FF[Mestre Logan]^000000";
+		mes "Quando encontrá-la, diga que ^0000FFLogan^000000 a pediu que te indicasse ^0000FFHarold^000000, o ^FF0000Ent^000000 que estuda humanos.";
+		mes "Boa sorte em sua busca.";
+		close;		
+	}
+	If (AE_Rubor == 2){
+		mes "^0000FF[Mestre Logan]^000000";
+		mes "Completou seu treinamento e me trouxe as ^FF0000350 Runas Sangrentas^000000?";
+		switch(select("• Sim, aqui estão!","• Ainda não, Mestre.")){
+			case 1:
+				if (countitem(7563)>=350){
+					next;
+					mes "^0000FF[Mestre Logan]^000000";
+					mes "Vejo que conseguiu, enfim, vou guardar isso comigo.";
+					delitem 7563,350;
+					next;
+				
+					mes "^0000FF[Mestre Logan]^000000";
+					mes "Agora, já não posso lhe ensinar nada, você está preparado para seguir em frente.";
+					mes "Vá até o saguão do ^FF0000Palácio de Splendide^000000 e procure por ^FF0000Ivayne^000000, uma das mais velhas ^FF0000Fadas^000000, mas não procure isso em sua aparência.";
+					next;		
+				
+					mes "^0000FF[Mestre Logan]^000000";
+					mes "Quando encontrá-la, diga que ^0000FFLogan^000000 a pediu que te indicasse ^0000FFHarold^000000, o ^FF0000Ent^000000 que estuda humanos.";
+					mes "Boa sorte em sua busca.";
+					set AE_Rubor,3;
+					close;
+				}
+				next;
+				mes "^0000FF[Mestre Logan]^000000";
+				mes "Não tente me enganar! Volte ao treinamento!";
+				close;
+			case 2:
+				close;
+		}
+	}	
+	If (AE_Rubor < 1){
+		mes "^0000FF[Mestre Logan]^000000";
+		mes "Mantenha o silêncio, por favor.";
+		mes "Silêncio é essencial para a concentração e disciplina perfeitos.";
+		close;
+	}	
+
+	mes "^0000FF[Mestre Logan]^000000";
+	mes "Mantenha o silêncio, por favor.";
+	
+	switch(select("• Perguntar sobre o ^FF0000Rubor de Batalha^000000.","•Manter o silêncio.")){
+		case 1:
+			next;
+			mes "^0000FF[Mestre Logan]^000000";	
+			mes "^FF0000Rubor de Batalha^000000?";
+			mes "Há muito tempo não ouço falar disso.";
+			next;
+			
+			mes "^0000FF[Mestre Logan]^000000";
+			mes "As vezes, ele aparece normalmente em situações de grande perigo, medo e desespero e o torna capaz de se livrar de perigos incríveis.";
+			mes "Porém, para usá-lo a seu favor, sempre que preciso, é necessária muita disciplina.";
+			
+			switch(select("• Você pode me ensinar?","• Acho que não sou capaz...")){
+				case 1:
+					next;
+					mes "^0000FF[Mestre Logan]^000000";
+					mes "Como eu disse, é uma arte de combate.";
+					mes "Arte essa provinda apenas de humanóides, como ^FF0000Humanos^000000, ^FF0000Elfos^000000, ^FF0000Orcs^000000 e coisas assim.";
+					next;
+				
+					mes "^0000FF[Mestre Logan]^000000";
+					mes "Então, precisa se preparar contra os mesmos.";
+					mes "Vá até o ^FF0000Templo de Rachel^000000 e enfrente os humanos amaldiçoados de lá.";
+					mes "Este será o seu treinamento, e, para me provar que está preparado, traga-me deles ^FF0000350 Runas Sangrentas^000000.";
+					mes "Estarei te esperando";
+					set AE_Rubor,2;
+					close;
+				case 2:
+					close;
+			}
+		case 2:
+			close;
+	}		
+}
+
+//== • Pequena Fada Eline - Quest: Maçã Dourada de Idun ======
+mosk_in,214,59,5	script	Pequena Fada Eline#mosk	446,{
+	if(AE_MIdun > 0){
+		mes "^FF0000[Eline]^000000";
+		mes "Vá à ^0000FFLou Yang^000000, procure um pouco de terra macia e devolva a ^0000FFThor^000000, como ^0000FFDeus^000000 também das ^0000FFColheitas^000000, ^0000FF108^000000 de suas ^0000FFMaçãs^000000."; 
+		next;
+		
+		mes "^FF0000[Eline]^000000";
+		mes "E, quem sabe, fazendo uma oferenda à ^0000FFFreya^000000, ela permita que você tenha uma.";
+		next;
+
+		mes "^FF0000[Eline]^000000";
+		mes "Difícilmente um ^0000FFDeus^000000 entregaria uma ^0000FFMaçã^000000 da ^0000FFImortalidade^000000 a um ^0000FFMortal^000000, mas você pode tentar...";		
+		close;
+	}
+
+	mes "^FF0000[Eline]^000000";
+	mes "Oh...";
+	mes "É raro ver pessoas encontrarem a ^0000FFFloresta Encantada de Moscóvia^000000. Você deve ter uma boa alma, "+strcharinfo(0)+".";
+	next;
+	
+	mes "^FF0000[Eline]^000000";
+	mes "Às vezes eu me pergunto se os ^0000FFHumanos^000000 e suas ^0000FFAlmas^000000 ainda são dignas de povoar em ^0000FFMidgard^000000 sob os cuidados dos ^0000FFDeuses^000000...";
+	
+	switch(select("• Perguntar sobre os ^0000FFDeuses^000000.","• Nada.")){
+		case 1:
+			next;
+			mes "^FF0000[Eline]^000000";
+			mes "Tu podes tentar enteder o que eles significam, mas palavras nunca serão o suficiente."; 
+			next;
+			
+			mes "^FF0000[Eline]^000000";
+			mes "Nós, ^0000FFFadas^000000 somos feitas diretamente de seus poderes, e, com nossa ligação com a ^0000FFNatureza^000000, ajudamos a cultivas as ^0000FFMaçãs Douradas de Idun^000000.";
+
+			switch(select("• ^0000FFMaçã Dourada de Idun^000000?","• Nada.")){
+				case 1:
+					next;
+					mes "^FF0000[Eline]^000000";
+					mes "Sim, o ^0000FfFruto Sagrado^000000 que mantém a ^0000FFImortalidade^000000 dos ^0000FFDeuses^000000";
+					next;
+
+					mes "^FF0000[Eline]^000000";
+					mes "Não que um humano sem ^0000FFAlma Divina^000000 sofra esse efeito com uma, mas ela contém, em essência, poderes ocultos.";
+					
+					switch(select("• Como consigo uma?","• Nada.")){
+						case 1:
+							next;
+							mes "^FF0000[Eline]^000000";
+							mes "Não se consegue. É algo digno apenas aos deuses a menos que sua oferenda à ^0000FFIdun^000000 seja satisfatória mas...";
+							mes "Não será fácil.";
+							switch(select("• Quero tentar!","• Nada.")){
+								case 1:
+									next;
+									mes "^FF0000[Eline]^000000";
+									mes "...";
+									mes "Que audácia.";
+									mes "Mas, se quer mesmo ir adiante...";
+									next;
+									
+									mes "^FF0000[Eline]^000000";
+									mes "Vá à ^0000FFLou Yang^000000, procure um pouco de terra macia e devolva a ^0000FFThor^000000, como ^0000FFDeus^000000 também das ^0000FFColheitas^000000, ^0000FF108^000000 de suas ^0000FFMaçãs^000000."; 
+									next;
+									
+									mes "^FF0000[Eline]^000000";
+									mes "E, quem sabe, fazendo uma oferenda à ^0000FFFreya^000000, ela permita que você tenha uma.";
+									next;
+
+									mes "^FF0000[Eline]^000000";
+									mes "Difícilmente um ^0000FFDeus^000000 entregaria uma ^0000FFMaçã^000000 da ^0000FFImortalidade^000000 a um ^0000FFMortal^000000, mas você pode tentar...";		
+									set AE_MIdun,1;
+									close;
+
+								case 2:
+									close;
+							}
+						case 2:
+							close;
+					}					
+				case 2:
+					close;
+			}
+		case 2:
+			close;
+	}
+}
