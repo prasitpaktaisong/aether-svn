@@ -1,0 +1,36 @@
+±âº» Á¤º¸ Ã¢ ÃÖ¼Ò/ÃÖ´ë		 Informações Básicas  
+Ä³¸¯ÅÍ Á¤º¸ Ã¢ On/Off		Infos. do Personagem 
+½ºÅ³ ¸ñ·Ï Ã¢ On/Off			    Habilidades    
+Äù½ºÆ® ¸ñ·Ï Ã¢ On/Off		   Lista de Quests   
+Ä£±¸ Ã¢ On/Off				   Contatos   
+ÆÄÆ¼ Ã¢ On/Off				     Grupo    
+´ëÈ­¹æ ¸¸µé±â				 Criar Chat  
+Ä«Æ® Ã¢ On/Off				 Ver Carrinho 
+Áöµµ On/Off					Mapa-múndi 
+¾ÆÀÌÅÛ Ã¢ On/Off			   Inventário   
+±æµå Ã¢ On/Off				Infos. do Clã 
+ÀÌ¸ð¼Ç ¸ñ·Ï Ã¢ On/Off		 Lista de Emoticons  
+¾É±â/¼­±â					 Sentar  
+¹Ì´Ï ¸Ê »óÅÂ				Ofuscar Mapa
+´ÜÃàÅ° ¸ñ·Ï Ã¢ On/Off		  Lista de Atalhos   
+Ä¿¸Çµå Ã¢ On/Off			    Comandos    
+¸ðµç Ã¢ ´Ý±â				Limpar Tela 
+
+Ã¤ÆÃÃ¢ On/Off				Esconder chat
+Ã¤ÆÃÃ¢ Å©±â È®´ë/Ãà¼Ò		    Aumentar Chat    
+»óÅÂ °ÔÀÌÁö On/Off			  Esconder HP/SP  
+½ºÅ©¸°¼¦ Âï±â				 ScreenShot  
+¸Þ¸ð¸®¾ó ´øÀü Ã¢ On/Off		 Janela de Calabouços  
+Æê Á¤º¸ Ã¢ On/Off			Infos. sobre Pet 
+È£¹® Á¤º¸ Ã¢ On/Off			Infos. sobre Homun.
+¿ëº´ Á¤º¸ Ã¢ On/Off			Infos. sobre Merce.
+È£¹® ´ë±â ¸í·É				Comando Homunc
+¿ëº´ ´ë±â ¸í·É				Comando Mercen
+Ä£±¸ ¼³Á¤ Ã¢				Config. Cont
+ÆÄÆ¼ ¼³Á¤ Ã¢				Config Grupo
+¸ÅÅ©·Î						Atalho
+±ê¹ß						Emot
+
+
+
+
