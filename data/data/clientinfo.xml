@@ -4,9 +4,9 @@
         <servicetype>korea</servicetype>
         <servertype>sakray</servertype>
     <connection>
-            <display>Nome do Servidor</display>
+            <display>Netherheim</display>
             <desc>None</desc>
-            <balloon>xD</balloon>
+            <balloon>NetherHeim</balloon>
             <address>127.0.0.1</address>
             <port>6900</port>            
             <version>24</version>
